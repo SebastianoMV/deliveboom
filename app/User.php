@@ -15,6 +15,11 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    public function typologies(){
+        return $this->belongsToMany('App\Typology');
+    }
+
     protected $fillable = [
         'name', 'email', 'password', 'address', 'vat_number', 'city', 'image'
     ];
