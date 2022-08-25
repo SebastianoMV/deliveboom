@@ -17,42 +17,43 @@ class TypologiesTableSeeder extends Seeder
         [
             [
                 'name' => 'Giapponese',
-                'image' => ''
+                'image' => 'tipology_02.jpg'
             ],
             [
                 'name' => 'Pizzeria',
-                'image' => ''
+                'image' => 'tipology_07.jpg'
             ],
             [
                 'name' => 'Burgers',
-                'image' => ''
+                'image' => 'tipology_08.jpg'
             ],
             [
                 'name' => 'Cinese',
-                'image' => ''
+                'image' => 'tipology_05.jpg'
             ],
             [
                 'name' => 'SteakHouse',
-                'image' => ''
+                'image' => 'tipology_03.jpg'
             ],
             [
                 'name' => 'Italiano',
-                'image' => ''
+                'image' => 'tipology_01.jpg'
             ],
             [
                 'name' => 'Messicano',
-                'image' => ''
+                'image' => 'tipology_04.jpg'
             ],
             [
                 'name' => 'Pesce',
-                'image' => ''
+                'image' => 'tipology_06.jpg'
             ],
 
         ];
 
         foreach($typologies as $typology){
             $new_typology = new Typology();
-            $new_typology->name = $typologies;
+            $new_typology->name = $typology['name'];
+            $new_typology->image = $typology['image'];
             $new_typology->save();
 
         };
