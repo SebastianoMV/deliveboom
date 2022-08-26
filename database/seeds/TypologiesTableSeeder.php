@@ -15,6 +15,7 @@ class TypologiesTableSeeder extends Seeder
     {
         $typologies = config('typologies');
 
+
         foreach ($typologies as $typology) {
             $new_typology = new Typology();
             $new_typology->name = $typology['name'];
