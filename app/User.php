@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -41,4 +42,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function generateSlug($nome){
+        $slug = Str::slug($nome, '-');
+        $base_slug = $slug;
+        $slug_exist = User::where('slug', $slug)->first();
+        $c = 1;
+
+        while($slug_exist){
+            $slug = $base_slug . '-' . $c;
+            $c++;
+            $slug_exist = User::where('slug', $slug)->first();
+        }
+
+        return $slug;
+    }
 }

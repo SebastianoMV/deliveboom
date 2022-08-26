@@ -20,8 +20,9 @@ class UsersTableSeeder extends Seeder
             $new_user->vat_number = $user['vat_number'];
             $new_user->city = $user['city'];
             $new_user->image = $user['image'];
-            $new_user->slug = Str::slug($user['name'], '-');
+            $new_user->slug = User::generateSlug($user['name']);
             $new_user->save();
+
         };
     }
 }
