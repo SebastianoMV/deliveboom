@@ -53,7 +53,9 @@ class FoodController extends Controller
      */
     public function show($id)
     {
-        //
+        $food = Food::find($id);
+
+        return view('admin.pages.show', compact('food'));
     }
 
     /**
