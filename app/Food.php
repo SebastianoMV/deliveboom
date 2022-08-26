@@ -14,7 +14,11 @@ class Food extends Model
         return $this->belongsToMany('App\Order');
     }
 
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
     protected $fillable = [
-        'name', 'description', 'price', 'is_visible', 'vegan', 'image'
+        'name', 'description', 'price', 'is_visible', 'vegan', 'image', 'address', 'email', 'city', 'vat_number'
     ];
 }

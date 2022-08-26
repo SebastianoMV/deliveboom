@@ -21,6 +21,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Typology');
     }
 
+    public function foods(){
+        return $this->hasMany('App\Food');
+    }
+
     protected $fillable = [
         'name', 'email', 'password', 'address', 'vat_number', 'city', 'image'
     ];

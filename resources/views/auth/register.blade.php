@@ -39,6 +39,33 @@
                             </div>
                         </div>
 
+
+
+
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control @error('password') is-invalid @enderror" name="address" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Città') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="city" type="text" class="form-control @error('password') is-invalid @enderror" name="city" required autocomplete="city">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="vat_number" class="col-md-4 col-form-label text-md-right">{{ __('Partita Iva') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="vat_number" type="text" class="form-control @error('password') is-invalid @enderror" name="vat_number" required autocomplete="vat_number">
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
