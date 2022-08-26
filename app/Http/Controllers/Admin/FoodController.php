@@ -17,7 +17,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods= Food::orderBy('id','desc')->get();
+        $foods = Food::orderBy('id', 'desc')->get();
 
         return view('admin.pages.index', compact('foods'));
     }
@@ -51,7 +51,9 @@ class FoodController extends Controller
      */
     public function show($id)
     {
-        //
+        $food = Food::find($id);
+
+        return view('admin.pages.show', compact('food'));
     }
 
     /**
