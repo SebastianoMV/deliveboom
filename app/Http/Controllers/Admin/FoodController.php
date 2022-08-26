@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Food;
@@ -17,7 +18,8 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods= Food::orderBy('id','desc')->get();
+        $activeUser= Auth::id();
+        $foods = Food::where('user_id', $activeUser)->get();
 
         return view('admin.pages.index', compact('foods'));
     }

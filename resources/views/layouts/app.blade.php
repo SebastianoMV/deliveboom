@@ -26,7 +26,7 @@
                 <a class="navbar-brand" href="{{ route('home') }}">
                     Vai alla Home Pubblica
                 </a>
-                <a class="navbar-brand" href="{{url('admin/food')}}">
+                <a class="navbar-brand" href="{{ route('admin.food.index')}}">
                     Vai alla Index
                 </a>
 
