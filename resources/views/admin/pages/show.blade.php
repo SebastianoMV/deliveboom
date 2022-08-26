@@ -10,9 +10,18 @@
                 <h5 class="card-title">{{ $food->name }}</h5>
                 <h6 class="card-title">€ {{ $food->price }}</h6>
                 <p class="card-text">{{ $food->description }}</p>
-                <p class="card-text">{{ $food->is_visible }}</p>
-                <p class="card-text">{{ $food->vegan }}</p>
-
+                <p class="card-text">
+                    @if ($food->is_visible == 1)
+                    disponibile
+                    @else non disponibile
+                    @endif
+                </p>
+                <p>Vegetariana:
+                    @if ($food->vegan == 1)
+                      si
+                    @else no
+                    @endif
+                </p>
 
                 <a href="{{ route('admin.food.index') }}" class="btn btn-outline-primary">Torna indietro</a>
                 <a href="#" class="btn btn-outline-success">Modifica</a>

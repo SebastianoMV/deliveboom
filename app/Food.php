@@ -19,6 +19,6 @@ class Food extends Model
     }
 
     protected $fillable = [
-        'name', 'description', 'price', 'is_visible', 'vegan', 'image', 'address', 'email', 'city', 'vat_number'
+        'name', 'description', 'price', 'is_visible', 'vegan', 'image', 'category_id'
     ];
 }

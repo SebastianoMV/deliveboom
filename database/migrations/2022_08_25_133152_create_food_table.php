@@ -18,7 +18,7 @@ class CreateFoodTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->decimal('price');
-            $table->boolean('is_visible');
+            $table->boolean('is_visible')->default(1);
             $table->boolean('vegan');
             $table->string('image')->nullable();
             $table->timestamps();

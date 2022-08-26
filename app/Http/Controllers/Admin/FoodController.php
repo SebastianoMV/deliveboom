@@ -19,7 +19,8 @@ class FoodController extends Controller
     public function index()
     {
         $activeUser= Auth::id();
-        $foods = Food::where('user_id', $activeUser)->get();
+        // $foods = Food::where('user_id', $activeUser)->get();
+        $foods = Food::orderBy('id','desc')->get();
 
         return view('admin.pages.index', compact('foods'));
     }
@@ -31,7 +32,10 @@ class FoodController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.pages.create',compact('categories'));
+
     }
 
     /**
@@ -42,7 +46,13 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $new_food= new Food();
+        $new_food->fill($data);
+        $new_food->user_id = Auth::id();
+        $new_food->save();
+
+        return redirect()->route('admin.food.show', $new_food);
     }
 
     /**
@@ -66,7 +76,10 @@ class FoodController extends Controller
      */
     public function edit($id)
     {
-        //
+        $food = Food::find($id);
+        $categories = Category::all();
+
+        return view('admin.pages.edit', compact('food','categories'));
     }
 
     /**
@@ -78,7 +91,11 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $food = Food::find($id);
+        $food->update($data);
+
+        return redirect()->route('admin.food.show', $food);
     }
 
     /**
@@ -89,6 +106,9 @@ class FoodController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $food = Food::find($id);
+        $food->delete();
+
+        return redirect()->route('admin.food.index');
     }
 }

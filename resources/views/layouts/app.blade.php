@@ -28,8 +28,11 @@
                 <a class="navbar-brand" href="{{ route('home') }}">
                     Vai alla Home Pubblica
                 </a>
-                <a class="navbar-brand" href="{{url('admin/food')}}">
+                <a class="navbar-brand" href="{{route('admin.food.index')}}">
                     Vai alla Index
+                </a>
+                <a class="navbar-brand" href="{{route('admin.food.create')}}">
+                    Aggiungi un nuovo prodotto
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
