@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
-use App\Typology;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -48,6 +48,7 @@ class RegisterController extends Controller
             'city' => ['required', 'string', 'min:2', 'max:255'],
             'vat_number' => ['required', 'string', 'min:11', 'max:11'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'tipologies' => ['required']
         ]);
     }
 
@@ -68,8 +69,10 @@ class RegisterController extends Controller
             'city' => $data['city'],
             'vat_number' => $data['vat_number'],
             'password' => Hash::make($data['password']),
-            'slug' => $data['name']
-
+            'slug' => $data['name'],
         ]);
+
+        // $new_post->tags()->attach($data["tags"]);
+
     }
 }

@@ -30,21 +30,6 @@
 
 
                             <div class="form-group row">
-
-                                @foreach ($typologies as $typology)
-                                    <label for="tipologies"
-                                        class="col-md-4 col-form-label text-md-right">{{ $typology->name }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="tipologies" type="checkbox" class="" name="tipologies[]"
-                                            value="{{ $typology->id }}" @if (in_array($typology->id, old('tipologies', []))) checked @endif>
-
-                                    </div>
-                                @endforeach
-
-                            </div>
-
-                            <div class="form-group row">
                                 <label for="email"
                                     class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -144,6 +129,21 @@
                                         </span>
                                     @enderror
                                 </div>
+                            </div>
+
+                            <span>Choose one or more typologies:</span>
+                            <div class="form-group row">
+
+
+                                @foreach ($typologies as $typology)
+                                    <label for="{{ $typology->name }}"
+                                        class="col-md-4 col-form-label text-md-right">{{ $typology->name }}</label>
+
+                                    <input id="{{ $typology->name }}" type="checkbox" class="ml-3" name="tipologies[]"
+                                        value="{{ $typology->id }}" @if (in_array($typology->id, old('tipologies', []))) checked @endif>
+                                @endforeach
+
+
                             </div>
 
                             <div class="form-group row mb-0">
