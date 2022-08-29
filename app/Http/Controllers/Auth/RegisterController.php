@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'city' => $data['city'],
             'vat_number' => $data['vat_number'],
             'password' => Hash::make($data['password']),
-            'slug' => $data['name'],
+            'slug' => User::generateSlug($data['name'])
         ]);
 
         // $new_post->tags()->attach($data["tags"]);

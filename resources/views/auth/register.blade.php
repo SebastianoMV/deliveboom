@@ -134,7 +134,6 @@
                             <span>Choose one or more typologies:</span>
                             <div class="form-group row">
 
-
                                 @foreach ($typologies as $typology)
                                     <label for="{{ $typology->name }}"
                                         class="col-md-4 col-form-label text-md-right">{{ $typology->name }}</label>
@@ -142,7 +141,6 @@
                                     <input id="{{ $typology->name }}" type="checkbox" class="ml-3" name="tipologies[]"
                                         value="{{ $typology->id }}" @if (in_array($typology->id, old('tipologies', []))) checked @endif>
                                 @endforeach
-
 
                             </div>
 
