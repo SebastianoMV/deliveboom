@@ -5,7 +5,7 @@
         <div class="row justify-email-center">
             <div class="col">
                 <div class="card">
-                    <div class="card-header">foods</div>
+                    <div class="card-header">Foods</div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -23,7 +23,7 @@
                                         <th scope="row">{{ $food->id }}</th>
                                         <td><strong>{{ $food->name }}</strong></td>
                                         <td>
-                                            <img class="w-25" src="{{$food->image}}" alt="{{$food->name}}">
+                                            <img class="w-25" src="{{ $food->image }}" alt="{{ $food->name }}">
                                         </td>
                                         <td>{{ $food->price }}</td>
 
@@ -33,7 +33,7 @@
                                             <a class="btn btn-success" href="{{ route('admin.food.edit', $food) }}">Edit</a>
                                             <form class="d-inline"
                                                 onclick="return confirm('Sei sicuro di voler eliminare {{ $food->name }}?')"
-                                                action="{{route('admin.food.destroy',$food)}}" method="POST">
+                                                action="{{ route('admin.food.destroy', $food) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-dark"> Delete</button>

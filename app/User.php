@@ -17,16 +17,18 @@ class User extends Authenticatable
      * @var array
      */
 
-    public function typologies(){
+    public function typologies()
+    {
         return $this->belongsToMany('App\Typology');
     }
 
-    public function foods(){
+    public function foods()
+    {
         return $this->hasMany('App\Food');
     }
 
     protected $fillable = [
-        'name', 'email', 'password', 'address', 'vat_number', 'city', 'image'
+        'name', 'email', 'password', 'address', 'vat_number', 'city', 'image', 'slug'
     ];
 
     /**
@@ -47,13 +49,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function generateSlug($nome){
+    public static function generateSlug($nome)
+    {
         $slug = Str::slug($nome, '-');
         $base_slug = $slug;
         $slug_exist = User::where('slug', $slug)->first();
         $c = 1;
 
-        while($slug_exist){
+        while ($slug_exist) {
             $slug = $base_slug . '-' . $c;
             $c++;
             $slug_exist = User::where('slug', $slug)->first();

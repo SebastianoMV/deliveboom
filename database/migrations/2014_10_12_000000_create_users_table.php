@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('vat_number');
             $table->string('image')->nullable();
-            $table->string('slug')->default('ciao');
+            $table->string('slug')->default('default');
             $table->string('city');
             $table->rememberToken();
             $table->timestamps();
