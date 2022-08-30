@@ -31,7 +31,7 @@ class RegisterController extends Controller
         return view('auth.register', compact('typologies'));
     }
 
-
+    //ecco il cambiamento
 
     protected function validator(array $data)
     {
@@ -43,7 +43,7 @@ class RegisterController extends Controller
             'vat_number' => ['required', 'string', 'min:11', 'max:11'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
             'tipologies' => ['required']
-            ]);
+        ]);
 
 
         return $user;
@@ -66,6 +66,5 @@ class RegisterController extends Controller
 
 
         return $user;
-
     }
 }
