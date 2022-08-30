@@ -64,9 +64,8 @@ class RegisterController extends Controller
 
         $user->typologies()->attach($data['tipologies']);
 
-        $typologies = Typology::all();
 
-        return compact('user', 'typologies');
+        return $user;
 
     }
 }
