@@ -131,7 +131,7 @@
                                 </div>
                             </div>
 
-                            <span>Choose one or more typologies:</span>
+                            <div class="mt-4">Choose one or more typologies:</div>
                             <div class="form-group row">
 
                                 @foreach ($typologies as $typology)

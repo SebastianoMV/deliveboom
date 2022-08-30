@@ -12,19 +12,21 @@
                 <p class="card-text">{{ $food->description }}</p>
                 <p class="card-text">
                     @if ($food->is_visible == 1)
-                    disponibile
-                    @else non disponibile
+                        disponibile
+                    @else
+                        non disponibile
                     @endif
                 </p>
                 <p>Vegetariana:
                     @if ($food->vegan == 1)
-                      si
-                    @else no
+                        si
+                    @else
+                        no
                     @endif
                 </p>
 
-                <a href="{{ route('admin.food.index') }}" class="btn btn-outline-primary">Torna indietro</a>
-                <a href="#" class="btn btn-outline-success">Modifica</a>
+                <a href="{{ route('admin.food.index') }}" class="btn btn-primary">Torna indietro</a>
+                <a href="{{ route('admin.food.edit', $food) }}" class="btn btn-secondary">Modifica</a>
             </div>
         </div>
 
