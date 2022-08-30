@@ -15,9 +15,9 @@ class FoodController extends Controller
 
     public function index()
     {
-        $activeUser= Auth::id();
+        $activeUser = Auth::id();
         // $foods = Food::where('user_id', $activeUser)->get();
-        $foods = Food::orderBy('id','desc')->get();
+        $foods = Food::orderBy('id', 'desc')->get();
 
         return view('admin.pages.index', compact('foods'));
     }
@@ -27,14 +27,13 @@ class FoodController extends Controller
     {
         $categories = Category::all();
 
-        return view('admin.pages.create',compact('categories'));
-
+        return view('admin.pages.create', compact('categories'));
     }
 
     public function store(FoodRequest $request)
     {
         $data = $request->all();
-        $new_food= new Food();
+        $new_food = new Food();
         $new_food->fill($data);
         $new_food->user_id = Auth::id();
         $new_food->save();
@@ -54,7 +53,7 @@ class FoodController extends Controller
         $food = Food::find($id);
         $categories = Category::all();
 
-        return view('admin.pages.edit', compact('food','categories'));
+        return view('admin.pages.edit', compact('food', 'categories'));
     }
 
     public function update(FoodRequest $request, $id)

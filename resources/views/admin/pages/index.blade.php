@@ -29,14 +29,15 @@
 
 
                                         <td class="w-25">
-                                            <a class="btn btn-danger" href="{{ route('admin.food.show', $food) }}">Show</a>
-                                            <a class="btn btn-success" href="{{ route('admin.food.edit', $food) }}">Edit</a>
+                                            <a class="btn btn-primary" href="{{ route('admin.food.show', $food) }}">Show</a>
+                                            <a class="btn btn-secondary"
+                                                href="{{ route('admin.food.edit', $food) }}">Edit</a>
                                             <form class="d-inline"
                                                 onclick="return confirm('Sei sicuro di voler eliminare {{ $food->name }}?')"
                                                 action="{{ route('admin.food.destroy', $food) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button type="submit" class="btn btn-dark"> Delete</button>
+                                                <button type="submit" class="btn btn-danger"> Delete</button>
                                             </form>
                                         </td>
                                     </tr>
