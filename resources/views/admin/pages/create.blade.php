@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('admin.food.store') }}" method="POST">
+        <form action="{{ route('admin.food.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Nome</label>
@@ -14,8 +14,9 @@
             </div>
             <div class="form-group">
                 <label for="image">Immagine </label>
-                <input type="text" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" id="image"
-                    placeholder="Inserisci url">
+                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" id="image"
+                    placeholder="Inserisci immagine"
+                    accept="image/*">
                 @error('image')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror

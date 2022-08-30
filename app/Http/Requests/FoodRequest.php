@@ -18,7 +18,7 @@ class FoodRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:50',
             'description' => 'required|min:5|max:255',
-            'image' => 'nullable|max:255',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif|max:10000',
             'price' => 'required|max:99.99|numeric',
 
         ];

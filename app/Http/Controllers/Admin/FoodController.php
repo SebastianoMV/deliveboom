@@ -33,6 +33,8 @@ class FoodController extends Controller
     public function store(FoodRequest $request)
     {
         $data = $request->all();
+        $data['image'] = $this->imageUploader($request, $data);
+
         $new_food = new Food();
         $new_food->fill($data);
         $new_food->user_id = Auth::id();
@@ -71,5 +73,17 @@ class FoodController extends Controller
         $food->delete();
 
         return redirect()->route('admin.food.index');
+    }
+
+    public function imageUploader($request, $data){
+        if($request->file('image')){
+
+            $file = $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('foods'), $filename);
+            $data['image']= $filename;
+
+            return $data['image'];
+        }
     }
 }

@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="card m-auto" style="width: 20rem;">
-            <img class="card-img-top" src="{{ $food->image }}" alt="{{ $food->name }}" title="{{ $food->name }}">
+            <img class="card-img-top" src="{{asset('foods/'.$food->image)}}" alt="{{ $food->name }}" title="{{ $food->name }}">
 
             <div class="card-body">
                 <h5 class="card-title">{{ $food->name }}</h5>
