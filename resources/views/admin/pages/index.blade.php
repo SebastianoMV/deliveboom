@@ -5,7 +5,10 @@
         <div class="row justify-email-center">
             <div class="col">
                 <div class="card">
-                    <div class="card-header">Foods</div>
+                    <div class="card-header">
+                        Foods
+                        <a href="{{ route('admin.orders.index') }}"> Orders</a>
+                    </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>

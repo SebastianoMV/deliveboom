@@ -31,7 +31,6 @@ class RegisterController extends Controller
         return view('auth.register', compact('typologies'));
     }
 
-    //ecco il cambiamento
 
     protected function validator(array $data)
     {
