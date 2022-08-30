@@ -14,7 +14,6 @@ class CreateTypologyUserTable extends Migration
     public function up()
     {
         Schema::create('typology_user', function (Blueprint $table) {
-            $table->id();
 
             $table->unsignedBigInteger('user_id');
 

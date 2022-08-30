@@ -15,14 +15,6 @@ class TypologyUserTableSeeder extends Seeder
     {
         $users_type = config('users');
 
-        // foreach($users as $user){
-        //     $user = User::where($user->id = $c);
-        //     $c++;
-        //     $typology_id = $user->id_category;
-
-        //     $user->typologies()->attach($typology_id);
-        // }
-        $users = User::all();
         $c = 1;
         foreach($users_type as $user_type){
 

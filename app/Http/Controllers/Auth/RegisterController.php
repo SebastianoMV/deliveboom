@@ -55,26 +55,20 @@ class RegisterController extends Controller
         return $user;
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
     protected function create(array $data)
     {
 
-       $user = User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'address' => $data['address'],
-        'city' => $data['city'],
-        'vat_number' => $data['vat_number'],
-        'password' => Hash::make($data['password']),
-        'slug' => User::generateSlug($data['name']),
-
-    ]);
-
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'address' => $data['address'],
+            'city' => $data['city'],
+            'vat_number' => $data['vat_number'],
+            'password' => Hash::make($data['password']),
+            'slug' => User::generateSlug($data['name']),
+        ]);
+        $user->typologies()->attach($data['tipologies']);
+        dd($user->typologies);
         return $user;
 
         // $new_post->tags()->attach($data["tags"]);
