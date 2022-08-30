@@ -9,6 +9,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Verona',
         'image' => 'logo_01.jpg',
+        'id_category' => 1,
     ],
     [
         'name' => 'Yoshinoya',
@@ -18,6 +19,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Reggio Calabria',
         'image' => 'logo_02.png',
+        'id_category' => 1,
     ],
     [
         'name' => 'Sorbillo',
@@ -27,6 +29,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Genova',
         'image' => 'logo_03.png',
+        'id_category' => 2,
     ],
     [
         'name' => 'Spontini',
@@ -36,6 +39,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Verona',
         'image' => 'logo_04.png',
+        'id_category' => 2,
     ],
     [
         'name' => 'Flower Burger',
@@ -45,6 +49,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Verona',
         'image' => 'logo_05.png',
+        'id_category' => 3,
     ],
     [
         'name' => 'Five Guys',
@@ -54,6 +59,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Verona',
         'image' => 'logo_06.png',
+        'id_category' => 3,
     ],
     [
         'name' => 'Eataly',
@@ -63,6 +69,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Ancona',
         'image' => 'logo_07.jpg',
+        'id_category' => 6,
     ],
     [
         'name' => 'La Piadineria',
@@ -72,6 +79,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Verona',
         'image' => 'logo_08.jpg',
+        'id_category' => 6,
     ],
     [
         'name' => 'RoadHouse',
@@ -81,6 +89,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Verona',
         'image' => 'logo_09.webp',
+        'id_category' => 5,
     ],
     [
         'name' => 'Old Wild West',
@@ -90,6 +99,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Ancona',
         'image' => 'logo_10.jpg',
+        'id_category' => 5,
     ],
     [
         'name' => 'Panda Express',
@@ -99,6 +109,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Verona',
         'image' => 'logo_11.png',
+        'id_category' => 4,
     ],
     [
         'name' => 'Wok to Walk',
@@ -108,6 +119,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Verona',
         'image' => 'logo_12.png',
+        'id_category' => 4,
     ],
     [
         'name' => 'Taco Bell',
@@ -117,6 +129,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Ancona',
         'image' => 'logo_13.webp',
+        'id_category' => 7,
     ],
     [
         'name' => 'Calavera',
@@ -126,6 +139,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Verona',
         'image' => 'logo_14.png',
+        'id_category' => 7,
     ],
     [
         'name' => 'Pescaria',
@@ -135,6 +149,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Verona',
         'image' => 'logo_15.jpg',
+        'id_category' => 8,
     ],
     [
         'name' => 'NordSee',
@@ -144,6 +159,7 @@ return [
         'vat_number' => '12345678910',
         'city' => 'Verona',
         'image' => 'logo_16.png',
+        'id_category' => 8,
     ],
 
 ];
