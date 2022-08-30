@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Typology;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -15,29 +16,22 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
+
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+    public function showRegistrationForm()
+    {
+        $typologies = Typology::all();
+        return view('auth.register', compact('typologies'));
+    }
+
+
 
     protected function validator(array $data)
     {
@@ -67,11 +61,12 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'slug' => User::generateSlug($data['name']),
         ]);
-        $user->typologies()->attach($data['tipologies']);
-        dd($user->typologies);
-        return $user;
 
-        // $new_post->tags()->attach($data["tags"]);
+        $user->typologies()->attach($data['tipologies']);
+
+        $typologies = Typology::all();
+
+        return compact('user', 'typologies');
 
     }
 }
