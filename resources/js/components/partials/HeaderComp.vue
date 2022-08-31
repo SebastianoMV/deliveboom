@@ -1,21 +1,41 @@
 <template>
     <header class="fixed-top">
 
-        <nav class="container d-flex justify-content-between align-items-center">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">LOGO</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div id="logo">
-                LOGO
-            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Cucina <span class="sr-only">(current)</span></a>
+                    </li>
 
-            <div class="actions">
-                <ul class="d-flex list-unstyled mb-0">
-                    <li><router-link :to="{name: 'home'}">Home</router-link></li>
-                    <li><router-link> pagina2</router-link></li>
-                    <li><router-link> pagina3</router-link></li>
-                    <li><router-link> pagina4</router-link></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+
                 </ul>
+
+                    <ul class="d-flex list-unstyled mb-0">
+                        <li><router-link :to="{name: 'home'}">Home</router-link></li>
+                        <li><router-link :to="{name: 'cart'}">Carrello</router-link></li>
+                        <li><a href="/admin">Login</a></li>
+                    </ul>
+
             </div>
         </nav>
+
 
     </header>
 </template>
