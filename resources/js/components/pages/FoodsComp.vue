@@ -1,7 +1,7 @@
 <template>
     <div class="mt-5 container">
 
-        <nav class="navbar navbar-expand-lg top">
+        <nav class="navbar navbar-expand-lg top shadow-lg">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li>
@@ -23,8 +23,20 @@
             </div>
         </nav>
 
-        <div class="foods container">
-            <FoodItem/>
+        <div class="foods container py-4 py-sm-5">
+
+            <h2 class="text-center pt-2 pt-sm-0 mb-sm-5">Pizza</h2>
+
+            <div class="row pt-3 pt-sm-0">
+                <FoodItem />
+                <FoodItem />
+                <FoodItem />
+                <FoodItem />
+                <FoodItem />
+                <FoodItem />
+                <FoodItem />
+                <FoodItem />
+            </div>
         </div>
 
     </div>
@@ -42,11 +54,10 @@ export default {
 <style lang="scss" scoped>
     .top{
         background-color: #fff;
-        max-width: 1280px;
+        max-width: 1260px;
         height: 96px;
         padding: 0px 15px;
         border-radius: 10px;
-        box-shadow: 0.3rem 0.3rem 0.3rem #888888;
 
         li{
             margin: 0px 20px;
@@ -71,12 +82,8 @@ export default {
     }
 
 
-
     .foods{
         max-width: 1280px;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        border-radius: 10px;
     }
 
 
