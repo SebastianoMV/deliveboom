@@ -8,7 +8,7 @@
                     @if(session('food_delete_success'))
                         <div class="alert alert-danger d-flex justify-content-between" role="danger">
                             <p>{{session('food_delete_success')}}</p>
-                            <a href="{{route('admin.food.index')}}" class="btn btn-danger">X</a>
+                            <a href="{{route('admin.food.index')}}" class="badge badge-danger">X</a>
                         </div>
                     @endif
                     <div class="card-header">
