@@ -44,7 +44,7 @@ class RegisterController extends Controller
             'city' => ['required', 'string', 'min:2', 'max:255'],
             'vat_number' => ['required', 'string', 'min:11', 'max:11'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
-            'tipologies' => ['required_without_all']
+            'tipologies' => ['required']
         ]);
     }
 
