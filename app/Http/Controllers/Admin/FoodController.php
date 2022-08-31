@@ -61,6 +61,7 @@ class FoodController extends Controller
     public function update(FoodRequest $request, $id)
     {
         $data = $request->all();
+        $data['image'] = $this->imageUploader($request, $data);
         $food = Food::find($id);
         $food->update($data);
 
@@ -80,7 +81,7 @@ class FoodController extends Controller
 
             $file = $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('foods'), $filename);
+            $file-> move(public_path('image/foods'), $filename);
             $data['image']= $filename;
 
             return $data['image'];

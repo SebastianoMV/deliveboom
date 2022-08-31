@@ -4,6 +4,8 @@
     <div class="container">
         <form action="{{ route('admin.food.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
+            {{-- NOME --}}
             <div class="form-group">
                 <label for="name">Nome</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" name="name" id="name"
@@ -12,6 +14,8 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
+
+            {{-- IMMAGINE --}}
             <div class="form-group">
                 <label for="image">Immagine </label>
                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" id="image"
@@ -21,6 +25,8 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
+
+            {{-- DESCRIZIONE --}}
             <div class="form-group">
                 <label for="description">Descrizione</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" cols="30" placeholder="Inserisci descrizione"
@@ -30,7 +36,7 @@
                 @enderror
             </div>
 
-
+            {{-- CATEGORIA --}}
             <select class="form-select form-control my-2" name="category_id">
                 <option disabled selected>Seleziona una categoria</option>
                 @foreach ($categories as $category)
@@ -40,16 +46,14 @@
                 @endforeach
             </select>
 
-            {{-- VEGETARIAN --}}
-          <input type="radio" value="1"  id="vegetariana" name="vegan">
-          <label class="form-check-label" for="vegetariana">Vegetariana</label>
+            {{-- VEGETARIANO --}}
+            <input type="radio" value="1"  id="vegetariana" name="vegan">
+            <label class="form-check-label" for="vegetariana">Vegetariana</label>
 
-          {{-- NON-VEGETARIAN --}}
+            <input type="radio" class="ml-3" value="0"  id="no-vegetariana" checked   name="vegan">
+            <label class="form-check-label" for="no-vegetariana">Non Vegetariana</label>
 
-          <input type="radio" class="ml-3" value="0"  id="no-vegetariana" checked   name="vegan">
-          <label class="form-check-label" for="no-vegetariana">Non Vegetariana</label>
-
-
+            {{-- PREZZO --}}
             <div class="form-group">
                 <label for="price">Prezzo</label>
                 <input type="text" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}" name="price" id="price"
@@ -58,7 +62,9 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
     </div>
 @endsection

@@ -2,9 +2,11 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('admin.food.update', $food) }}" method="POST">
+        <form action="{{ route('admin.food.update', $food) }}" method="POST" enctype="multipart/form-data">
             @method("PUT")
             @csrf
+
+            {{-- NOME --}}
             <div class="form-group">
                 <label for="name">Nome</label>
                 <input type="text"
@@ -16,18 +18,23 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
+
+            {{-- IMMAGINE --}}
             <div class="form-group">
                 <label for="image">Immagine </label>
-                <input type="text"
+                <input type="file"
                 class="form-control @error('image') is-invalid @enderror"
                 name="image"
                 value="{{ old('image', $food->image) }}"
                 id="image"
-                    placeholder="Inserisci url">
-                @error('image')
-                    <p class="text-danger">{{ $message }}</p>
-                @enderror
+                placeholder="Inserisci Immagine"
+                accept="image/*">
+                    @error('image')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
             </div>
+
+            {{-- DESCRIZIONE --}}
             <div class="form-group">
                 <label for="description">Descrizione</label>
                 <textarea
@@ -41,7 +48,7 @@
                 @enderror
             </div>
 
-
+            {{-- CATEGORIA --}}
             <select class="form-select form-control my-2" name="category_id">
                 <option disabled >Seleziona una categoria</option>
                 @foreach ($categories as $category)
@@ -51,16 +58,14 @@
                 @endforeach
             </select>
 
-            {{-- VEGETARIAN --}}
-          <input type="radio" value="1"  id="vegetariana" name="vegan" {{old('vegan', $food->vegan) == 1 ? 'checked' : ''}}>
-          <label class="form-check-label" for="vegetariana" >Vegetariana</label>
+            {{-- VEGETARIANO --}}
+            <input type="radio" value="1"  id="vegetariana" name="vegan" {{old('vegan', $food->vegan) == 1 ? 'checked' : ''}}>
+            <label class="form-check-label" for="vegetariana" >Vegetariana</label>
 
-          {{-- NON-VEGETARIAN --}}
+            <input type="radio" class="ml-3" value="0"  id="no-vegetariana" name="vegan" {{old('vegan', $food->vegan) == 0 ?  'checked' : ''}}>
+            <label class="form-check-label" for="no-vegetariana">Non Vegetariana</label>
 
-          <input type="radio" class="ml-3" value="0"  id="no-vegetariana" name="vegan" {{old('vegan', $food->vegan) == 0 ? 'checked' : ''}}>
-          <label class="form-check-label" for="no-vegetariana">Non Vegetariana</label>
-
-
+            {{-- PREZZO --}}
             <div class="form-group">
                 <label for="price">Prezzo</label>
                 <input type="text"
@@ -72,7 +77,9 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
     </div>
 @endsection
