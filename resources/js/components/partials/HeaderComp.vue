@@ -1,5 +1,5 @@
 <template>
-    <header class="fixed-top">
+    <header class="">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">LOGO</a>
@@ -27,11 +27,11 @@
 
                 </ul>
 
-                    <ul class="d-flex list-unstyled mb-0">
-                        <li><router-link :to="{name: 'home'}">Home</router-link></li>
-                        <li><router-link :to="{name: 'cart'}">Carrello</router-link></li>
-                        <li><a href="/admin">Login</a></li>
-                    </ul>
+                <ul class="d-flex list-unstyled mb-0">
+                    <li><router-link :to="{name: 'home'}">Home</router-link></li>
+                    <li><router-link :to="{name: 'cart'}">Carrello</router-link></li>
+                    <li><a href="/admin">Login</a></li>
+                </ul>
 
             </div>
         </nav>
