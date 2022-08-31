@@ -36,9 +36,6 @@ class RegisterController extends Controller
 
     protected function validator(array $data)
     {
-        $message = array(
-            'tipologies.required' => 'Please enter a valid tipologies'
-        );
 
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
@@ -47,8 +44,8 @@ class RegisterController extends Controller
             'city' => ['required', 'string', 'min:2', 'max:255'],
             'vat_number' => ['required', 'string', 'min:11', 'max:11'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
-            'tipologies' => ['required']
-        ], $message);
+            'tipologies' => ['required_without_all']
+        ]);
     }
 
     protected function create(array $data)

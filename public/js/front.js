@@ -2082,7 +2082,7 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("footer", [_c("div", {
-    staticClass: "container"
+    staticClass: "container-fluid"
   }, [_c("div", {
     staticClass: "footer-top debug"
   }, [_c("div", {
