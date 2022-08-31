@@ -1,25 +1,32 @@
 <template>
-    <div class="mt-5">
-        <div class="foods-menu">
-            logo restaurant
-            <ul class="navbar-nav container top ">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Pizza</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Sides</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Drinks</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Dessert</a>
-                </li>
-            </ul>
-        </div>
+    <div class="mt-5 container">
+
+        <nav class="navbar navbar-expand-lg top">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li>
+                        <a class="nav-link" href="#">Logo Restaurant</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active px-0" href="#">Pizza</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-0" href="#">Sides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-0" href="#">Drinks</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link px-0" href="#">Dessert</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
         <div class="foods container">
             <FoodItem/>
         </div>
+
     </div>
 </template>
 
@@ -33,37 +40,44 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .foods-menu{
-        width: 100%;
+    .top{
+        background-color: #fff;
+        max-width: 1280px;
+        height: 96px;
+        padding: 0px 15px;
+        border-radius: 10px;
+        box-shadow: 0.3rem 0.3rem 0.3rem #888888;
 
-        .top{
-            max-width: 1280px;
-            height: 96px;
-            margin-top: -3rem;
-            padding: 0px 15px;
-            border-radius: 10px;
+        li{
+            margin: 0px 20px;
 
-            li{
-                list-style: none;
+            a{
+                color: darkslategray;
+                font-size: 16px;
+                font-weight: 400;
 
-                a{
-                    color: black;
-                    font-size: 16px;
-                    padding: 12px 20px;
-                }
                 &:hover{
                      color: red;
                 }
             }
 
+            .active{
+                color: red;
+                border-bottom: 1px solid red;
+            }
+
         }
 
-        .foods{
-            max-width: 1280px;
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-            border-radius: 10px;
-        }
     }
+
+
+
+    .foods{
+        max-width: 1280px;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        border-radius: 10px;
+    }
+
 
 </style>

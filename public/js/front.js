@@ -2372,7 +2372,7 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "mt-5"
+    staticClass: "mt-5 container"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "foods container"
   }, [_c("FoodItem")], 1)]);
@@ -2382,39 +2382,49 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "foods-menu"
-  }, [_vm._v("\n        logo restaurant\n        "), _c("ul", {
-    staticClass: "navbar-nav container top"
-  }, [_c("li", {
-    staticClass: "nav-item active"
-  }, [_c("a", {
+  return _c("nav", {
+    staticClass: "navbar navbar-expand-lg top"
+  }, [_c("div", {
+    staticClass: "collapse navbar-collapse",
+    attrs: {
+      id: "navbarNav"
+    }
+  }, [_c("ul", {
+    staticClass: "navbar-nav"
+  }, [_c("li", [_c("a", {
     staticClass: "nav-link",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Logo Restaurant")])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link active px-0",
     attrs: {
       href: "#"
     }
   }, [_vm._v("Pizza")])]), _vm._v(" "), _c("li", {
     staticClass: "nav-item"
   }, [_c("a", {
-    staticClass: "nav-link",
+    staticClass: "nav-link px-0",
     attrs: {
       href: "#"
     }
   }, [_vm._v("Sides")])]), _vm._v(" "), _c("li", {
     staticClass: "nav-item"
   }, [_c("a", {
-    staticClass: "nav-link",
+    staticClass: "nav-link px-0",
     attrs: {
       href: "#"
     }
   }, [_vm._v("Drinks")])]), _vm._v(" "), _c("li", {
     staticClass: "nav-item"
   }, [_c("a", {
-    staticClass: "nav-link",
+    staticClass: "nav-link px-0",
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Dessert")])])])]);
+  }, [_vm._v("Dessert")])])])])]);
 }];
 render._withStripped = true;
 
@@ -7227,7 +7237,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".foods-menu[data-v-27464fde] {\n  width: 100%;\n}\n.foods-menu .top[data-v-27464fde] {\n  max-width: 1280px;\n  height: 96px;\n  margin-top: -3rem;\n  padding: 0px 15px;\n  border-radius: 10px;\n}\n.foods-menu .top li[data-v-27464fde] {\n  list-style: none;\n}\n.foods-menu .top li a[data-v-27464fde] {\n  color: black;\n  font-size: 16px;\n  padding: 12px 20px;\n}\n.foods-menu .top li[data-v-27464fde]:hover {\n  color: red;\n}\n.foods-menu .foods[data-v-27464fde] {\n  max-width: 1280px;\n  padding-top: 3rem;\n  padding-bottom: 3rem;\n  border-radius: 10px;\n}", ""]);
+exports.push([module.i, ".top[data-v-27464fde] {\n  background-color: #fff;\n  max-width: 1280px;\n  height: 96px;\n  padding: 0px 15px;\n  border-radius: 10px;\n  box-shadow: 0.3rem 0.3rem 0.3rem #888888;\n}\n.top li[data-v-27464fde] {\n  margin: 0px 20px;\n}\n.top li a[data-v-27464fde] {\n  color: darkslategray;\n  font-size: 16px;\n  font-weight: 400;\n}\n.top li a[data-v-27464fde]:hover {\n  color: red;\n}\n.top li .active[data-v-27464fde] {\n  color: red;\n  border-bottom: 1px solid red;\n}\n.foods[data-v-27464fde] {\n  max-width: 1280px;\n  padding-top: 3rem;\n  padding-bottom: 3rem;\n  border-radius: 10px;\n}", ""]);
 
 // exports
 
@@ -54884,9 +54894,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\Users\Win10\Boolean\laravel\deliveboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\Users\Win10\Boolean\laravel\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\Users\Win10\Boolean\laravel\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })
