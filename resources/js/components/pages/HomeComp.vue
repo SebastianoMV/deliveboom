@@ -1,90 +1,105 @@
 <template>
-    <section id="homepage">
-      <div class="jumbotron">
-        <div class="container">
-            <h1>Burgers & Fries</h1>
+    <main>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Burgers & Fries</h1>
+            </div>
         </div>
-      </div>
-      <div class="sliding-menu">
-        <div class="container">
-            <ul>
-                <!-- Prima versione statica, successivamente si dovranno ciclare -->
-                <li>
-                    <a href="#">
-                        <div class="icon">
-                            <img src="../../../../public/image/typologies/tipology_01.jpg" alt="">
-                        </div>
-                        <div class="typology-title">Giapponese</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="icon">
-                            <img src="../../../../public/image/typologies/tipology_02.jpg" alt="">
-                        </div>
-                        <div class="typology-title">Pizzeria</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="icon">
-                            <img src="../../../../public/image/typologies/tipology_03.jpg" alt="">
-                        </div>
-                        <div class="typology-title">Burgers</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="icon">
-                            <img src="../../../../public/image/typologies/tipology_04.jpg" alt="">
-                        </div>
-                        <div class="typology-title">Cinese</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="icon">
-                            <img src="../../../../public/image/typologies/tipology_05.jpg" alt="">
-                        </div>
-                        <div class="typology-title">SteakHouse</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="icon">
-                            <img src="../../../../public/image/typologies/tipology_06.jpg" alt="">
-                        </div>
-                        <div class="typology-title">Italiano</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="icon">
-                            <img src="../../../../public/image/typologies/tipology_07.jpg" alt="">
-                        </div>
-                        <div class="typology-title">Messicano</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="icon">
-                            <img src="../../../../public/image/typologies/tipology_08.jpg" alt="">
-                        </div>
-                        <div class="typology-title">Pesce</div>
-                    </a>
-                </li>
-            </ul>
+        <div class="sliding-menu">
+            <div class="container">
+                <ul>
+                    <!-- Prima versione statica, successivamente si dovranno ciclare -->
+                    <li>
+                        <a href="#">
+                            <div class="icon">
+                                <img src="../../../../public/image/typologies/tipology_01.jpg" alt="">
+                            </div>
+                            <div class="typology-title">Giapponese</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="icon">
+                                <img src="../../../../public/image/typologies/tipology_02.jpg" alt="">
+                            </div>
+                            <div class="typology-title">Pizzeria</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="icon">
+                                <img src="../../../../public/image/typologies/tipology_03.jpg" alt="">
+                            </div>
+                            <div class="typology-title">Burgers</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="icon">
+                                <img src="../../../../public/image/typologies/tipology_04.jpg" alt="">
+                            </div>
+                            <div class="typology-title">Cinese</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="icon">
+                                <img src="../../../../public/image/typologies/tipology_05.jpg" alt="">
+                            </div>
+                            <div class="typology-title">SteakHouse</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="icon">
+                                <img src="../../../../public/image/typologies/tipology_06.jpg" alt="">
+                            </div>
+                            <div class="typology-title">Italiano</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="icon">
+                                <img src="../../../../public/image/typologies/tipology_07.jpg" alt="">
+                            </div>
+                            <div class="typology-title">Messicano</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="icon">
+                                <img src="../../../../public/image/typologies/tipology_08.jpg" alt="">
+                            </div>
+                            <div class="typology-title">Pesce</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </section>
+        <section class="restaurants">
+            <div class="container cards-container">
+                <card-item/>
+                <card-item/>
+                <card-item/>
+                <card-item/>
+                <card-item/>
+                <card-item/>
+                <card-item/>
+                <card-item/>
+                <card-item/>
+            </div>
+        </section>
+    </main>
 </template>
 <script>
+import CardItem from './CardItem.vue'
 export default {
+  components: { CardItem },
     name: 'HomeComp',
 }
 </script>
 <style lang="scss" scoped>
-#homepage{
+main{
     .jumbotron{
         position: relative;
         padding: 150px 0 0 0;
@@ -101,6 +116,7 @@ export default {
     }
     .sliding-menu{
         background-color: aliceblue;
+        margin-bottom: 45px;
         ul{
             overflow-x: auto;
             white-space: nowrap;
@@ -121,7 +137,6 @@ export default {
                         height: 82.5px;
                         border-radius: 20px;
                         overflow: hidden;
-                        margin-bottom: 10px;
                         text-align: center;
                         transition: .2s box-shadow;
                         img{
@@ -129,6 +144,7 @@ export default {
                         }
                     }
                     .typology-title{
+                        padding-top: 10px;
                         transition: .2s text-shadow;
                     }
                 }
@@ -142,6 +158,12 @@ export default {
                 }
             }
         }
+    }
+    .cards-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 30px;
     }
 }
 </style>
