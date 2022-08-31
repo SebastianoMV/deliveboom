@@ -5,6 +5,12 @@
         <div class="row justify-email-center">
             <div class="col">
                 <div class="card">
+                    @if(session('food_delete_success'))
+                        <div class="alert alert-danger d-flex justify-content-between" role="danger">
+                            <p>{{session('food_delete_success')}}</p>
+                            <a href="{{route('admin.food.index')}}" class="btn btn-danger">X</a>
+                        </div>
+                    @endif
                     <div class="card-header">
                         Foods
                         <a href="{{ route('admin.orders.index') }}"> Orders</a>
