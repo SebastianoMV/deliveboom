@@ -140,7 +140,14 @@
 
                                     <input id="{{ $typology->name }}" type="checkbox" class="ml-3" name="tipologies[]"
                                         value="{{ $typology->id }}" @if (in_array($typology->id, old('tipologies', []))) checked @endif>
+
                                 @endforeach
+
+                                @error('tipologies')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                @enderror
 
                             </div>
 
