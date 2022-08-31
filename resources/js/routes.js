@@ -9,6 +9,7 @@ Vue.use(VueRouter);
 import HomeComp from "./components/pages/HomeComp";
 import CartComp from "./components/pages/CartComp";
 import CheckoutComp from "./components/pages/CheckoutComp";
+import FoodsComp from "./components/pages/FoodsComp";
 
 const router = new VueRouter({
     mode: "history",
@@ -27,6 +28,11 @@ const router = new VueRouter({
             path: "/checkout",
             name: "checkout",
             component: CheckoutComp,
+        },
+        {
+            path: "/foods",
+            name: "foods",
+            component: FoodsComp,
         },
     ],
 });

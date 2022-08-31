@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mt-5">
         <div class="foods-menu">
             logo restaurant
             <ul class="navbar-nav container top ">
@@ -18,18 +18,17 @@
             </ul>
         </div>
         <div class="foods container">
-            <FoodItem />
+            <FoodItem/>
         </div>
     </div>
 </template>
 
 <script>
+import FoodItem from './FoodItem.vue';
+
 export default {
     name: "FoodsComp",
-
-    components: {
-        FoodItem
-    }
+    components: { FoodItem }
 }
 </script>
 
@@ -51,8 +50,6 @@ export default {
                     color: black;
                     font-size: 16px;
                     padding: 12px 20px;
-
-
                 }
                 &:hover{
                      color: red;
@@ -67,11 +64,6 @@ export default {
             padding-bottom: 3rem;
             border-radius: 10px;
         }
-
     }
-
-
-
-
 
 </style>

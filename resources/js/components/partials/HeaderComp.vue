@@ -30,6 +30,7 @@
                 <ul class="d-flex list-unstyled mb-0">
                     <li><router-link :to="{name: 'home'}">Home</router-link></li>
                     <li><router-link :to="{name: 'cart'}">Carrello</router-link></li>
+                    <li><router-link :to="{name: 'foods'}">Foods</router-link></li>
                     <li><a href="/admin">Login</a></li>
                 </ul>
 
