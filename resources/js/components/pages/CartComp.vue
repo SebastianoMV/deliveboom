@@ -6,7 +6,7 @@
             <h4>Carrello</h4>
           </div>
           <div class="col-6 debug p-4 text-center">
-            <h4>Checkout</h4>
+            <h4><router-link :to="{name: 'checkout'}">Checkout</router-link></h4>
           </div>
         </div>
         <div class="row">

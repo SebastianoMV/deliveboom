@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 // importo i componenti
 import HomeComp from "./components/pages/HomeComp";
 import CartComp from "./components/pages/CartComp";
+import CheckoutComp from "./components/pages/CheckoutComp";
 
 const router = new VueRouter({
     mode: "history",
@@ -21,6 +22,11 @@ const router = new VueRouter({
             path: "/carrello",
             name: "cart",
             component: CartComp,
+        },
+        {
+            path: "/checkout",
+            name: "checkout",
+            component: CheckoutComp,
         },
     ],
 });
