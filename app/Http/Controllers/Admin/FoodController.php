@@ -73,7 +73,7 @@ class FoodController extends Controller
         $food = Food::find($id);
         $food->delete();
 
-        return redirect()->route('admin.food.index');
+        return redirect()->route('admin.food.index')->with('food_delete_success', "$food->name eliminata correttamente!");
     }
 
     public function imageUploader($request, $data){

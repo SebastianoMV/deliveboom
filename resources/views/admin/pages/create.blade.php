@@ -53,6 +53,15 @@
             <input type="radio" class="ml-3" value="0"  id="no-vegetariana" checked   name="vegan">
             <label class="form-check-label" for="no-vegetariana">Non Vegetariana</label>
 
+            <br>
+
+            {{-- DISPONIBILE --}}
+            <input type="radio" value="1"  id="disponibile" name="is_visible" checked>
+            <label class="form-check-label" for="disponibile" >Disponibile</label>
+
+            <input type="radio" class="ml-3" value="0"  id="no-disponibile" name="is_visible">
+            <label class="form-check-label" for="no-disponibile">Non Disponibile</label>
+
             {{-- PREZZO --}}
             <div class="form-group">
                 <label for="price">Prezzo</label>
