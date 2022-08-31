@@ -12,7 +12,8 @@ import CartComp from "./components/pages/CartComp";
 const router = new VueRouter({
     mode: "history",
     linkExactActiveClass: "active",
-    routes: [{
+    routes: [
+        {
             path: "/",
             name: "home",
             component: HomeComp,
