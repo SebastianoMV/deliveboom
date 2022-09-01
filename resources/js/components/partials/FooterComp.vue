@@ -4,7 +4,7 @@
             <div class="footer-top">
                 <div class="row">
                     <div class="col-xl-3 ">
-                        <h3>Deliverb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h3>
+                        <h3>Deliveb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h3>
                     </div>
                     <div class="col-2">
                         <ul>
