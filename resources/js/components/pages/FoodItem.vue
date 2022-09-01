@@ -1,4 +1,5 @@
 <template>
+
     <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
         <div class="food-item card pb-2">
             <a href="#">
@@ -36,6 +37,7 @@
             </div>
         </div>
     </div>
+
 </template>
 <script>
 export default {
