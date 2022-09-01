@@ -55135,9 +55135,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })
