@@ -2552,18 +2552,27 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
+  return _c("div", [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "mt-5 container"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "foods container py-4 py-sm-5"
   }, [_c("h2", {
     staticClass: "text-center pt-2 pt-sm-0 mb-sm-5"
   }, [_vm._v("Pizza")]), _vm._v(" "), _c("div", {
     staticClass: "row pt-3 pt-sm-0"
-  }, [_c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem")], 1)])]);
+  }, [_c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem"), _vm._v(" "), _c("FoodItem")], 1)])])]);
 };
 
 var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "jumbotron"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("h1", [_vm._v("Burgers & Fries")])])]);
+}, function () {
   var _vm = this,
       _c = _vm._self._c;
 
@@ -7441,7 +7450,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".top[data-v-27464fde] {\n  background-color: #fff;\n  max-width: 1260px;\n  height: 96px;\n  padding: 0px 15px;\n  border-radius: 10px;\n}\n.top li[data-v-27464fde] {\n  margin: 0px 20px;\n}\n.top li a[data-v-27464fde] {\n  color: darkslategray;\n  font-size: 16px;\n  font-weight: 400;\n}\n.top li a[data-v-27464fde]:hover {\n  color: red;\n}\n.top li .active[data-v-27464fde] {\n  color: red;\n  border-bottom: 1px solid red;\n}\n.foods[data-v-27464fde] {\n  max-width: 1280px;\n}", ""]);
+exports.push([module.i, ".jumbotron[data-v-27464fde] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\n.jumbotron h1[data-v-27464fde] {\n  font-weight: bolder;\n}\n.top[data-v-27464fde] {\n  background-color: #fff;\n  max-width: 1260px;\n  height: 96px;\n  padding: 0px 15px;\n  border-radius: 10px;\n}\n.top li[data-v-27464fde] {\n  margin: 0px 20px;\n}\n.top li a[data-v-27464fde] {\n  color: darkslategray;\n  font-size: 16px;\n  font-weight: 400;\n}\n.top li a[data-v-27464fde]:hover {\n  color: red;\n}\n.top li .active[data-v-27464fde] {\n  color: red;\n  border-bottom: 1px solid red;\n}\n.foods[data-v-27464fde] {\n  max-width: 1280px;\n}", ""]);
 
 // exports
 

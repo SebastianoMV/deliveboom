@@ -1,4 +1,11 @@
 <template>
+    <div>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Burgers & Fries</h1>
+            </div>
+        </div>
+
     <div class="mt-5 container">
         <nav class="navbar navbar-expand-lg top shadow-lg">
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -35,6 +42,7 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 <script>
 import FoodItem from './FoodItem.vue';
@@ -44,6 +52,20 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    .jumbotron{
+        position: relative;
+        padding: 150px 0 0 0;
+        margin: 0;
+        border-radius: 0;
+        background-color: rgb(170, 0, 0);
+        color: white;
+        height: 250px;
+        background-image: url(/* INSERIRE IMMAGINE DI SFONDO QUI!!! */);
+        background-size: cover;
+        h1{
+            font-weight: bolder;
+        }
+    }
     .top{
         background-color: #fff;
         max-width: 1260px;
