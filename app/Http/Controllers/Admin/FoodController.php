@@ -50,7 +50,6 @@ class FoodController extends Controller
             abort(403);
         };
 
-
         return view('admin.pages.show', compact('food'));
     }
 

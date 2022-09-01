@@ -1,17 +1,26 @@
 <template>
-    <a href="#" class="card-item">
+    <router-link :to="{name: 'foods'}" class="card-item">
         <div class="card-images">
-            <img src="../../../../public/image/typologies/tipology_07.jpg" alt="" class="thumbnail">
-            <img src="../../../../public/image/users/logo_03.png" alt="" class="restaurant-logo">
+            <img src="../../../../public/image/categories/pizza-margherita.jpg" alt="" class="thumbnail">
+            <img :src="`/image/users/${user.image}`" alt="" class="restaurant-logo">
         </div>
-        <h3>Sorbillo!</h3>
+        <h3>{{user.name}}</h3>
         <p>Viva la pizza! La pizza è buona!</p>
-    </a>
+    </router-link>
 </template>
 
 <script>
+
 export default {
-    name: "CardItem"
+    name: "CardItem",
+    props: {
+        user: Object,
+    },
+    data(){
+        return{
+
+        }
+    }
 }
 </script>
 

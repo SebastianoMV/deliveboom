@@ -1932,7 +1932,13 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "CardItem"
+  name: "CardItem",
+  props: {
+    user: Object
+  },
+  data: function data() {
+    return {};
+  }
 });
 
 /***/ }),
@@ -2094,7 +2100,45 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     CardItem: _CardItem_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  name: 'HomeComp'
+  name: 'HomeComp',
+  data: function data() {
+    return {
+      userApiUrl: 'http://127.0.0.1:8000/api/foods',
+      users: [],
+      typologies: []
+    };
+  },
+  mounted: function mounted() {
+    this.getUserApi();
+  },
+  methods: {
+    getUserApi: function getUserApi() {
+      var _this = this;
+
+      axios.get(this.userApiUrl).then(function (r) {
+        _this.users = r.data.users;
+        _this.typologies = r.data.tipologies;
+        console.log(_this.typologies);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getUserByTypology: function getUserByTypology(id) {
+      var _this2 = this;
+
+      axios.get(this.userApiUrl + '/user-typology/' + id).then(function (r) {
+        _this2.users = [];
+        _this2.users = r.data.users;
+        console.log(id);
+        console.log(_this2.users);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    showMenu: function showMenu(slug) {
+      console.log(slug);
+    }
+  }
 });
 
 /***/ }),
@@ -2168,34 +2212,31 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("a", {
+  return _c("router-link", {
     staticClass: "card-item",
     attrs: {
-      href: "#"
+      to: {
+        name: "foods"
+      }
     }
   }, [_c("div", {
     staticClass: "card-images"
   }, [_c("img", {
     staticClass: "thumbnail",
     attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/typologies/tipology_07.jpg */ "./public/image/typologies/tipology_07.jpg"),
+      src: __webpack_require__(/*! ../../../../public/image/categories/pizza-margherita.jpg */ "./public/image/categories/pizza-margherita.jpg"),
       alt: ""
     }
   }), _vm._v(" "), _c("img", {
     staticClass: "restaurant-logo",
     attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/users/logo_03.png */ "./public/image/users/logo_03.png"),
+      src: "/image/users/".concat(_vm.user.image),
       alt: ""
     }
-  })]), _vm._v(" "), _c("h3", [_vm._v("Sorbillo!")]), _vm._v(" "), _c("p", [_vm._v("Viva la pizza! La pizza è buona!")])]);
-}];
+  })]), _vm._v(" "), _c("h3", [_vm._v(_vm._s(_vm.user.name))]), _vm._v(" "), _c("p", [_vm._v("Viva la pizza! La pizza è buona!")])]);
+};
+
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -2640,11 +2681,44 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("main", [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("section", {
+  return _c("main", [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "sliding-menu"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("ul", _vm._l(_vm.typologies, function (typology) {
+    return _c("li", {
+      key: typology.id,
+      on: {
+        click: function click($event) {
+          return _vm.getUserByTypology(typology.id);
+        }
+      }
+    }, [_c("a", {
+      attrs: {
+        href: "#"
+      }
+    }, [_c("div", {
+      staticClass: "icon"
+    }, [_c("img", {
+      attrs: {
+        src: "/image/typologies/".concat(typology.image),
+        alt: typology.name
+      }
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "typology-title"
+    }, [_vm._v(_vm._s(typology.name))])])]);
+  }), 0)])]), _vm._v(" "), _c("section", {
     staticClass: "restaurants"
   }, [_c("div", {
     staticClass: "container cards-container"
-  }, [_c("card-item"), _vm._v(" "), _c("card-item"), _vm._v(" "), _c("card-item"), _vm._v(" "), _c("card-item"), _vm._v(" "), _c("card-item"), _vm._v(" "), _c("card-item"), _vm._v(" "), _c("card-item"), _vm._v(" "), _c("card-item"), _vm._v(" "), _c("card-item")], 1)])]);
+  }, _vm._l(_vm.users, function (user) {
+    return _c("card-item", {
+      key: user.id,
+      attrs: {
+        user: user
+      }
+    });
+  }), 1)])]);
 };
 
 var staticRenderFns = [function () {
@@ -2656,119 +2730,6 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "container"
   }, [_c("h1", [_vm._v("Burgers & Fries")])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "sliding-menu"
-  }, [_c("div", {
-    staticClass: "container"
-  }, [_c("ul", [_c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("div", {
-    staticClass: "icon"
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/typologies/tipology_01.jpg */ "./public/image/typologies/tipology_01.jpg"),
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "typology-title"
-  }, [_vm._v("Giapponese")])])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("div", {
-    staticClass: "icon"
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/typologies/tipology_02.jpg */ "./public/image/typologies/tipology_02.jpg"),
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "typology-title"
-  }, [_vm._v("Pizzeria")])])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("div", {
-    staticClass: "icon"
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/typologies/tipology_03.jpg */ "./public/image/typologies/tipology_03.jpg"),
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "typology-title"
-  }, [_vm._v("Burgers")])])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("div", {
-    staticClass: "icon"
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/typologies/tipology_04.jpg */ "./public/image/typologies/tipology_04.jpg"),
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "typology-title"
-  }, [_vm._v("Cinese")])])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("div", {
-    staticClass: "icon"
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/typologies/tipology_05.jpg */ "./public/image/typologies/tipology_05.jpg"),
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "typology-title"
-  }, [_vm._v("SteakHouse")])])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("div", {
-    staticClass: "icon"
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/typologies/tipology_06.jpg */ "./public/image/typologies/tipology_06.jpg"),
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "typology-title"
-  }, [_vm._v("Italiano")])])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("div", {
-    staticClass: "icon"
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/typologies/tipology_07.jpg */ "./public/image/typologies/tipology_07.jpg"),
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "typology-title"
-  }, [_vm._v("Messicano")])])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("div", {
-    staticClass: "icon"
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/typologies/tipology_08.jpg */ "./public/image/typologies/tipology_08.jpg"),
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "typology-title"
-  }, [_vm._v("Pesce")])])])])])]);
 }];
 render._withStripped = true;
 
@@ -54127,69 +54088,14 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./public/image/typologies/tipology_01.jpg":
-/*!*************************************************!*\
-  !*** ./public/image/typologies/tipology_01.jpg ***!
-  \*************************************************/
+/***/ "./public/image/categories/pizza-margherita.jpg":
+/*!******************************************************!*\
+  !*** ./public/image/categories/pizza-margherita.jpg ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "../images/tipology_01.jpg?c6c9c8ffe828d312a36d2ede5cf7edcc";
-
-/***/ }),
-
-/***/ "./public/image/typologies/tipology_02.jpg":
-/*!*************************************************!*\
-  !*** ./public/image/typologies/tipology_02.jpg ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "../images/tipology_02.jpg?aecd0771cb34ee7a4f88ba1cdef5575e";
-
-/***/ }),
-
-/***/ "./public/image/typologies/tipology_03.jpg":
-/*!*************************************************!*\
-  !*** ./public/image/typologies/tipology_03.jpg ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "../images/tipology_03.jpg?225a111dc6ff50e9593677cb3562da3b";
-
-/***/ }),
-
-/***/ "./public/image/typologies/tipology_04.jpg":
-/*!*************************************************!*\
-  !*** ./public/image/typologies/tipology_04.jpg ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "../images/tipology_04.jpg?11d83e423021676189885167147d80e7";
-
-/***/ }),
-
-/***/ "./public/image/typologies/tipology_05.jpg":
-/*!*************************************************!*\
-  !*** ./public/image/typologies/tipology_05.jpg ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "../images/tipology_05.jpg?db6db15967c04c5a8b4f9352f2f824ee";
-
-/***/ }),
-
-/***/ "./public/image/typologies/tipology_06.jpg":
-/*!*************************************************!*\
-  !*** ./public/image/typologies/tipology_06.jpg ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "../images/tipology_06.jpg?e00644e7e6637824eaeb95c8119f38ab";
+module.exports = "../images/pizza-margherita.jpg?eab54fdf55e37b9e82ee457874eecf53";
 
 /***/ }),
 
@@ -54201,28 +54107,6 @@ module.exports = "../images/tipology_06.jpg?e00644e7e6637824eaeb95c8119f38ab";
 /***/ (function(module, exports) {
 
 module.exports = "../images/tipology_07.jpg?9a2cb7a6ad8dfae59014d40ca2354463";
-
-/***/ }),
-
-/***/ "./public/image/typologies/tipology_08.jpg":
-/*!*************************************************!*\
-  !*** ./public/image/typologies/tipology_08.jpg ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "../images/tipology_08.jpg?80f6fa4872f33b1b3edf84072489cfd7";
-
-/***/ }),
-
-/***/ "./public/image/users/logo_03.png":
-/*!****************************************!*\
-  !*** ./public/image/users/logo_03.png ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "../images/logo_03.png?929443a6cbb0275683d09ea785f891ab";
 
 /***/ }),
 
@@ -55144,9 +55028,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Boolean\deliveboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })

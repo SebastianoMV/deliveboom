@@ -9,95 +9,96 @@
             <div class="container">
                 <ul>
                     <!-- Prima versione statica, successivamente si dovranno ciclare -->
-                    <li>
+
+                    <li v-for="typology in typologies" :key="typology.id" @click="getUserByTypology(typology.id)">
                         <a href="#">
                             <div class="icon">
-                                <img src="../../../../public/image/typologies/tipology_01.jpg" alt="">
+                                <img :src="`/image/typologies/${typology.image}`" :alt="typology.name">
                             </div>
-                            <div class="typology-title">Giapponese</div>
+                            <div class="typology-title">{{typology.name}}</div>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <div class="icon">
-                                <img src="../../../../public/image/typologies/tipology_02.jpg" alt="">
-                            </div>
-                            <div class="typology-title">Pizzeria</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="icon">
-                                <img src="../../../../public/image/typologies/tipology_03.jpg" alt="">
-                            </div>
-                            <div class="typology-title">Burgers</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="icon">
-                                <img src="../../../../public/image/typologies/tipology_04.jpg" alt="">
-                            </div>
-                            <div class="typology-title">Cinese</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="icon">
-                                <img src="../../../../public/image/typologies/tipology_05.jpg" alt="">
-                            </div>
-                            <div class="typology-title">SteakHouse</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="icon">
-                                <img src="../../../../public/image/typologies/tipology_06.jpg" alt="">
-                            </div>
-                            <div class="typology-title">Italiano</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="icon">
-                                <img src="../../../../public/image/typologies/tipology_07.jpg" alt="">
-                            </div>
-                            <div class="typology-title">Messicano</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="icon">
-                                <img src="../../../../public/image/typologies/tipology_08.jpg" alt="">
-                            </div>
-                            <div class="typology-title">Pesce</div>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
         </div>
         <section class="restaurants">
             <div class="container cards-container">
-                <card-item/>
-                <card-item/>
-                <card-item/>
-                <card-item/>
-                <card-item/>
-                <card-item/>
-                <card-item/>
-                <card-item/>
-                <card-item/>
+
+                <card-item
+                    v-for="user in users"
+                    :key="user.id"
+                    :user="user"
+
+                    />
+
             </div>
         </section>
     </main>
 </template>
+
+<!-- SCRIPT -->
 <script>
+
 import CardItem from './CardItem.vue'
 export default {
-  components: { CardItem },
+    components: { CardItem },
     name: 'HomeComp',
+
+    data(){
+        return{
+            userApiUrl: 'http://127.0.0.1:8000/api/foods',
+            users: [],
+            typologies: [],
+
+        }
+    },
+
+    mounted(){
+        this.getUserApi()
+    },
+
+    methods: {
+        getUserApi(){
+            axios.get(this.userApiUrl)
+            .then(r =>{
+                this.users = r.data.users;
+                this.typologies = r.data.tipologies;
+                console.log(this.typologies);
+            })
+            .catch(error =>{
+                console.log(error);
+            })
+        },
+
+        getUserByTypology(id){
+            axios.get(this.userApiUrl + '/user-typology/' + id)
+            .then(r => {
+
+                this.users = [];
+                this.users = r.data.users;
+                console.log(id);
+                console.log(this.users);
+
+            })
+            .catch(error =>{
+                console.log(error);
+            })
+        },
+
+        showMenu(slug){
+            console.log(slug);
+        }
+
+    }
+
 }
+
+
 </script>
+
+
+<!-- STYLE -->
 <style lang="scss" scoped>
 main{
     .jumbotron{
@@ -114,7 +115,7 @@ main{
             font-weight: bolder;
         }
     }
-    .sliding-menu{
+     .sliding-menu{
         background-color: aliceblue;
         margin-bottom: 45px;
         ul{
