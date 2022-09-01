@@ -2105,7 +2105,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       userApiUrl: 'http://127.0.0.1:8000/api/foods',
       users: [],
-      typologies: []
+      typologies: [],
+      length: 6
     };
   },
   mounted: function mounted() {
@@ -2137,6 +2138,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     showMenu: function showMenu(slug) {
       console.log(slug);
+    },
+    loadMore: function loadMore() {
+      if (this.length > this.users.length) return;
+      this.length = this.length + 3;
+    }
+  },
+  computed: {
+    usersLoaded: function usersLoaded() {
+      return this.users.slice(0, this.length);
     }
   }
 });
@@ -2689,14 +2699,21 @@ var render = function render() {
     staticClass: "restaurants"
   }, [_c("div", {
     staticClass: "container cards-container"
-  }, _vm._l(_vm.users, function (user) {
+  }, _vm._l(_vm.usersLoaded, function (user) {
     return _c("card-item", {
       key: user.id,
       attrs: {
         user: user
       }
     });
-  }), 1)])]);
+  }), 1), _vm._v(" "), _c("div", {
+    staticClass: "load-more mx-auto",
+    on: {
+      click: function click($event) {
+        return _vm.loadMore();
+      }
+    }
+  }, [_vm._v("Carica piú prodotti")])])]);
 };
 
 var staticRenderFns = [function () {
@@ -7503,7 +7520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 90px;\n  font-size: 16px;\n  font-weight: bold;\n}\nmain .sliding-menu ul li div[data-v-4b10c5b8] {\n  color: black;\n  text-align: center;\n  text-decoration: none;\n}\nmain .sliding-menu ul li div .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li div .icon img[data-v-4b10c5b8] {\n  height: 100%;\n}\nmain .sliding-menu ul li div .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}", ""]);
+exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 90px;\n  font-size: 16px;\n  font-weight: bold;\n}\nmain .sliding-menu ul li div[data-v-4b10c5b8] {\n  color: black;\n  text-align: center;\n  text-decoration: none;\n}\nmain .sliding-menu ul li div .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li div .icon img[data-v-4b10c5b8] {\n  height: 100%;\n}\nmain .sliding-menu ul li div .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\n.load-more[data-v-4b10c5b8] {\n  text-transform: uppercase;\n  font-size: 14px;\n  font-weight: 900;\n  width: 20%;\n  margin-bottom: 20px;\n  text-align: center;\n  color: #fff;\n  background-color: #3b3b3b;\n  padding: 8px 0;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.4s;\n}\n.load-more[data-v-4b10c5b8]:hover {\n  background-color: #fff;\n  border: 1px solid black;\n  color: black;\n}", ""]);
 
 // exports
 
@@ -55179,9 +55196,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })

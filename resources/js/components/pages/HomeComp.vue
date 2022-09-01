@@ -26,13 +26,14 @@
             <div class="container cards-container">
 
                 <card-item
-                    v-for="user in users"
+                    v-for="user in usersLoaded"
                     :key="user.id"
                     :user="user"
-
                     />
 
-            </div>
+                </div>
+
+                <div @click="loadMore()" class="load-more mx-auto">Carica pi&uacute; prodotti</div>
         </section>
     </main>
 </template>
@@ -50,7 +51,7 @@ export default {
             userApiUrl: 'http://127.0.0.1:8000/api/foods',
             users: [],
             typologies: [],
-
+            length: 6
         }
     },
 
@@ -88,9 +89,21 @@ export default {
 
         showMenu(slug){
             console.log(slug);
-        }
+        },
 
-    }
+        loadMore(){
+            if (this.length > this.users.length) return;
+            this.length = this.length + 3;
+        },
+
+    },
+
+    computed: {
+
+        usersLoaded() {
+            return this.users.slice(0, this.length);
+        }
+    },
 
 }
 
@@ -165,6 +178,27 @@ main{
         flex-wrap: wrap;
         justify-content: center;
         column-gap: 30px;
+    }
+}
+
+.load-more{
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 900;
+    width: 20%;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+    background-color: #3b3b3b;
+    padding: 8px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .4s;
+
+    &:hover{
+        background-color: #fff;
+        border: 1px solid black;
+        color: black;
     }
 }
 </style>
