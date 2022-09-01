@@ -5,33 +5,42 @@
             <a href="#">
                 <img src="../../../../public/image/typologies/tipology_07.jpg" alt="Pizza">
             </a>
+
             <div class="food-description card-body">
+
                 <h5 class="fs-md">Pizza Vegan Delux</h5>
                 <p class="fs-ms text-muted">
                     Broccoli, Mushrooms, Bell pepper, Corn, Onion, Mozzarella, Parmesan
                 </p>
-                <div class="d-flex mb-1">
-                    <div class="form-check form-option form-check-justified mb2">
-                        <input class="form-check-input" type="radio" name="size1" id="s1" checked>
-                        <label class="form-option-label" for="s1">Small</label>
+
+                <div class="d-flex mb-1 w-100">
+                    <div class="btn btn-group-toggle p-0 w-25">
+                        <label class="btn active">
+                            <input type="radio" name="options" id="small" autocomplete="off" checked>Small
+                        </label>
                     </div>
-                    <div class="form-check form-option form-check-justified mb2">
-                        <input class="form-check-input" type="radio" name="size1" id="m1" checked>
-                        <label class="form-option-label" for="m1">Medium</label>
+                    <div class="btn btn-group-toggle p-0 w-50">
+                        <label class="btn w-100">
+                            <input type="radio" name="options" id="medium" autocomplete="off" checked>Medium
+                        </label>
                     </div>
-                    <div class="form-check form-option form-check-justified mb2">
-                        <input class="form-check-input" type="radio" name="size1" id="l1" checked>
-                        <label class="form-option-label" for="l1">Large</label>
+                    <div class="btn btn-group-toggle p-0 ml-0 w-25">
+                        <label class="btn">
+                            <input type="radio" name="options" id="large" autocomplete="off" checked>Large
+                        </label>
                     </div>
                 </div>
-                <div class="d-flex mb-3">
-                    <div class="form-check form-option form-check-justified mb2">
-                        <input class="form-check-input" type="radio" name="base1" id="standart1" checked>
-                        <label class="form-option-label" for="standart1">Standart</label>
+
+                <div class="d-flex mb-3 w-100">
+                    <div class="btn btn-group-toggle p-0 w-50">
+                        <label class="btn active w-100">
+                            <input type="radio" name="options" id="standart" autocomplete="off" checked>Standart
+                        </label>
                     </div>
-                    <div class="form-check form-option form-check-justified mb2">
-                        <input class="form-check-input" type="radio" name="base1" id="thin1" checked>
-                        <label class="form-option-label" for="thin1">Thin</label>
+                    <div class="btn btn-group-toggle p-0 w-50">
+                        <label class="btn w-100">
+                            <input type="radio" name="options" id="thin" autocomplete="off" checked>Thin
+                        </label>
                     </div>
 
                 </div>
@@ -55,6 +64,22 @@ export default {
 
         img{
             width: 100%;
+        }
+
+        label{
+            font-size: 10px;
+            border: 1px solid lightgray;
+            margin-top: 0;
+        }
+
+        .size{
+            flex-basis: 0;
+            flex-grow: 1;
+        }
+
+        .active{
+            color: #fe696a;
+            border-color: #fe696a;
         }
     }
 </style>

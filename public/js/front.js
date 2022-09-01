@@ -2372,85 +2372,70 @@ var staticRenderFns = [function () {
   }, [_vm._v("Pizza Vegan Delux")]), _vm._v(" "), _c("p", {
     staticClass: "fs-ms text-muted"
   }, [_vm._v("\n                Broccoli, Mushrooms, Bell pepper, Corn, Onion, Mozzarella, Parmesan\n            ")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex mb-1"
+    staticClass: "d-flex mb-1 w-100"
   }, [_c("div", {
-    staticClass: "form-check form-option form-check-justified mb2"
+    staticClass: "btn btn-group-toggle p-0 w-25"
+  }, [_c("label", {
+    staticClass: "btn active"
   }, [_c("input", {
-    staticClass: "form-check-input",
     attrs: {
       type: "radio",
-      name: "size1",
-      id: "s1",
+      name: "options",
+      id: "small",
+      autocomplete: "off",
       checked: ""
     }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "form-option-label",
-    attrs: {
-      "for": "s1"
-    }
-  }, [_vm._v("Small")])]), _vm._v(" "), _c("div", {
-    staticClass: "form-check form-option form-check-justified mb2"
+  }), _vm._v("Small\n                    ")])]), _vm._v(" "), _c("div", {
+    staticClass: "btn btn-group-toggle p-0 w-50"
+  }, [_c("label", {
+    staticClass: "btn w-100"
   }, [_c("input", {
-    staticClass: "form-check-input",
     attrs: {
       type: "radio",
-      name: "size1",
-      id: "m1",
+      name: "options",
+      id: "medium",
+      autocomplete: "off",
       checked: ""
     }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "form-option-label",
-    attrs: {
-      "for": "m1"
-    }
-  }, [_vm._v("Medium")])]), _vm._v(" "), _c("div", {
-    staticClass: "form-check form-option form-check-justified mb2"
+  }), _vm._v("Medium\n                    ")])]), _vm._v(" "), _c("div", {
+    staticClass: "btn btn-group-toggle p-0 ml-0 w-25"
+  }, [_c("label", {
+    staticClass: "btn"
   }, [_c("input", {
-    staticClass: "form-check-input",
     attrs: {
       type: "radio",
-      name: "size1",
-      id: "l1",
+      name: "options",
+      id: "large",
+      autocomplete: "off",
       checked: ""
     }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "form-option-label",
-    attrs: {
-      "for": "l1"
-    }
-  }, [_vm._v("Large")])])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex mb-3"
+  }), _vm._v("Large\n                    ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex mb-3 w-100"
   }, [_c("div", {
-    staticClass: "form-check form-option form-check-justified mb2"
+    staticClass: "btn btn-group-toggle p-0 w-50"
+  }, [_c("label", {
+    staticClass: "btn active w-100"
   }, [_c("input", {
-    staticClass: "form-check-input",
     attrs: {
       type: "radio",
-      name: "base1",
-      id: "standart1",
+      name: "options",
+      id: "standart",
+      autocomplete: "off",
       checked: ""
     }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "form-option-label",
-    attrs: {
-      "for": "standart1"
-    }
-  }, [_vm._v("Standart")])]), _vm._v(" "), _c("div", {
-    staticClass: "form-check form-option form-check-justified mb2"
+  }), _vm._v("Standart\n                    ")])]), _vm._v(" "), _c("div", {
+    staticClass: "btn btn-group-toggle p-0 w-50"
+  }, [_c("label", {
+    staticClass: "btn w-100"
   }, [_c("input", {
-    staticClass: "form-check-input",
     attrs: {
       type: "radio",
-      name: "base1",
-      id: "thin1",
+      name: "options",
+      id: "thin",
+      autocomplete: "off",
       checked: ""
     }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "form-option-label",
-    attrs: {
-      "for": "thin1"
-    }
-  }, [_vm._v("Thin")])])])])])]);
+  }), _vm._v("Thin\n                    ")])])])])])]);
 }];
 render._withStripped = true;
 
@@ -2489,7 +2474,19 @@ var staticRenderFns = [function () {
 
   return _c("nav", {
     staticClass: "navbar navbar-expand-lg top shadow-lg"
-  }, [_c("div", {
+  }, [_c("button", {
+    staticClass: "navbar-toggler",
+    attrs: {
+      type: "button",
+      "data-toggle": "collapse",
+      "data-target": "#navbarNav",
+      "aria-controls": "navbarNav",
+      "aria-expanded": "false",
+      "aria-label": "Toggle navigation"
+    }
+  }, [_c("span", {
+    staticClass: "navbar-toggler-icon"
+  })]), _vm._v(" "), _c("div", {
     staticClass: "collapse navbar-collapse",
     attrs: {
       id: "navbarNav"
@@ -7342,7 +7339,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  width: 100%;\n  border-radius: 5px;\n}\n.food-item img[data-v-ed5020b2] {\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  width: 100%;\n  border-radius: 5px;\n}\n.food-item img[data-v-ed5020b2] {\n  width: 100%;\n}\n.food-item label[data-v-ed5020b2] {\n  font-size: 10px;\n  border: 1px solid lightgray;\n  margin-top: 0;\n}\n.food-item .size[data-v-ed5020b2] {\n  flex-basis: 0;\n  flex-grow: 1;\n}\n.food-item .active[data-v-ed5020b2] {\n  color: #fe696a;\n  border-color: #fe696a;\n}", ""]);
 
 // exports
 
@@ -7361,7 +7358,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".top[data-v-27464fde] {\n  background-color: #fff;\n  max-width: 1260px;\n  height: 96px;\n  padding: 0px 15px;\n  border-radius: 10px;\n}\n.top li[data-v-27464fde] {\n  margin: 0px 20px;\n}\n.top li a[data-v-27464fde] {\n  color: darkslategray;\n  font-size: 16px;\n  font-weight: 400;\n}\n.top li a[data-v-27464fde]:hover {\n  color: red;\n}\n.top li .active[data-v-27464fde] {\n  color: red;\n  border-bottom: 1px solid red;\n}\n.foods[data-v-27464fde] {\n  max-width: 1280px;\n}", ""]);
+exports.push([module.i, ".top[data-v-27464fde] {\n  background-color: #fff;\n  max-width: 1260px;\n  height: 96px;\n  padding: 0px 15px;\n  border-radius: 10px;\n}\n.top li[data-v-27464fde] {\n  margin: 0px 20px;\n}\n.top li a[data-v-27464fde] {\n  color: darkslategray;\n  font-size: 0.75rem;\n  font-weight: 400;\n}\n.top li a[data-v-27464fde]:hover {\n  color: red;\n}\n.top li .active[data-v-27464fde] {\n  color: red;\n  border-bottom: 1px solid red;\n}\n.foods[data-v-27464fde] {\n  max-width: 1280px;\n}", ""]);
 
 // exports
 
