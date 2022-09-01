@@ -44,20 +44,22 @@ class FoodController extends Controller
         return redirect()->route('admin.food.show', $new_food);
     }
 
-    public function show($id)
+    public function show(Food $food)
     {
-        // if(Auth::id() != $id){
-        //     abort(403);
-        // };
+        if(Auth::id() != $food->user->id){
+            abort(403);
+        };
 
-        $food = Food::find($id);
 
         return view('admin.pages.show', compact('food'));
     }
 
-    public function edit($id)
+    public function edit(Food $food)
     {
-        $food = Food::find($id);
+        if(Auth::id() != $food->user->id){
+            abort(403);
+        };
+
         $categories = Category::all();
 
         return view('admin.pages.edit', compact('food', 'categories'));
