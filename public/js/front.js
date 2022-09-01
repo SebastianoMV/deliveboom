@@ -7038,7 +7038,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".card-item[data-v-2a9d8c59] {\n  width: 350px;\n  height: 360px;\n  color: black;\n  text-decoration: none;\n  margin-bottom: 30px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n  overflow: hidden;\n  text-align: center;\n}\n.card-item .card-images[data-v-2a9d8c59] {\n  position: relative;\n  width: 100%;\n  height: 62.5%;\n  margin-bottom: 40px;\n}\n.card-item .card-images .thumbnail[data-v-2a9d8c59] {\n  height: 100%;\n  width: 100%;\n}\n.card-item .card-images .restaurant-logo[data-v-2a9d8c59] {\n  height: 60px;\n  border-radius: 7px;\n  position: absolute;\n  bottom: 0;\n  right: 50%;\n  transform: translate(50%, 50%);\n}\n.card-item h3[data-v-2a9d8c59] {\n  font-weight: bolder;\n}\n.card-item p[data-v-2a9d8c59] {\n  font-size: 14px;\n  color: gray;\n}", ""]);
+exports.push([module.i, ".card-item[data-v-2a9d8c59] {\n  min-width: 350px;\n  height: 360px;\n  color: black;\n  text-decoration: none;\n  margin-bottom: 30px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n  overflow: hidden;\n  text-align: center;\n}\n.card-item .card-images[data-v-2a9d8c59] {\n  position: relative;\n  width: 100%;\n  height: 62.5%;\n  margin-bottom: 40px;\n}\n.card-item .card-images .thumbnail[data-v-2a9d8c59] {\n  height: 100%;\n  width: 100%;\n}\n.card-item .card-images .restaurant-logo[data-v-2a9d8c59] {\n  height: 60px;\n  border-radius: 7px;\n  position: absolute;\n  bottom: 0;\n  right: 50%;\n  transform: translate(50%, 50%);\n}\n.card-item h3[data-v-2a9d8c59] {\n  font-weight: bolder;\n}\n.card-item p[data-v-2a9d8c59] {\n  font-size: 14px;\n  color: gray;\n}", ""]);
 
 // exports
 
