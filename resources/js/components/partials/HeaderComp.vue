@@ -30,7 +30,6 @@
                 <ul class="d-flex list-unstyled mb-0">
                     <li><router-link :to="{name: 'home'}" class="navigation-list-element"><i class="fa-solid fa-house"></i></router-link></li>
                     <li><router-link :to="{name: 'cart'}" class="navigation-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
-                    <li><router-link :to="{name: 'foods'}" class="navigation-list-element"><i class="fa-solid fa-bowl-food"></i></router-link></li>
                     <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-right-to-bracket"></i></a></li>
                 </ul>
 

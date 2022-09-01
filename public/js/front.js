@@ -2258,11 +2258,11 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", [_c("div", {
-    staticClass: "container debug mt-5"
+    staticClass: "container top my-5"
   }, [_c("div", {
-    staticClass: "row"
+    staticClass: "row my-5"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "col-6 debug p-4 text-center"
+    staticClass: "col-6 p-4 text-center"
   }, [_c("h4", [_c("router-link", {
     attrs: {
       to: {
@@ -2277,8 +2277,10 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "col-6 debug p-4 text-center"
-  }, [_c("h4", [_vm._v("Carrello")])]);
+    staticClass: "col-6 active p-4 text-center"
+  }, [_c("h4", [_vm._v("Carrello "), _c("i", {
+    staticClass: "fa-solid fa-cart-arrow-down"
+  })])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -2286,12 +2288,12 @@ var staticRenderFns = [function () {
   return _c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-8 debug"
+    staticClass: "col-8"
   }, [_c("div", {
-    staticClass: "food py-4 debug d-flex justify-content-between align-items-center"
+    staticClass: "divider-solid line-divider-solid py-2 d-flex justify-content-between align-items-center"
   }, [_c("img", {
     attrs: {
-      src: "",
+      src: __webpack_require__(/*! ../../../../public/image/categories/hamburgerjpg.jpg */ "./public/image/categories/hamburgerjpg.jpg"),
       alt: ""
     }
   }), _vm._v(" "), _c("div", {
@@ -2307,12 +2309,14 @@ var staticRenderFns = [function () {
       type: "number"
     }
   }), _vm._v(" "), _c("div", {
-    staticClass: "remove"
-  }, [_vm._v("Remove")])])]), _vm._v(" "), _c("div", {
-    staticClass: "food py-4 debug d-flex justify-content-between align-items-center"
+    staticClass: "remove text-danger"
+  }, [_vm._v("Remove "), _c("i", {
+    staticClass: "fa-solid fa-trash-can"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "divider-solid py-4 d-flex justify-content-between align-items-center"
   }, [_c("img", {
     attrs: {
-      src: "",
+      src: __webpack_require__(/*! ../../../../public/image/categories/hamburgerjpg.jpg */ "./public/image/categories/hamburgerjpg.jpg"),
       alt: ""
     }
   }), _vm._v(" "), _c("div", {
@@ -2328,12 +2332,14 @@ var staticRenderFns = [function () {
       type: "number"
     }
   }), _vm._v(" "), _c("div", {
-    staticClass: "remove"
-  }, [_vm._v("Remove")])])]), _vm._v(" "), _c("div", {
-    staticClass: "food py-4 debug d-flex justify-content-between align-items-center"
+    staticClass: "remove text-danger"
+  }, [_vm._v("Remove "), _c("i", {
+    staticClass: "fa-solid fa-trash-can"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "divider-solid py-4 d-flex justify-content-between align-items-center"
   }, [_c("img", {
     attrs: {
-      src: "",
+      src: __webpack_require__(/*! ../../../../public/image/categories/hamburgerjpg.jpg */ "./public/image/categories/hamburgerjpg.jpg"),
       alt: ""
     }
   }), _vm._v(" "), _c("div", {
@@ -2345,35 +2351,23 @@ var staticRenderFns = [function () {
   }, [_vm._v("9")])]), _vm._v(" "), _c("div", {
     staticClass: "quantity"
   }, [_c("h6", [_vm._v("Quantity")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
     attrs: {
       type: "number"
     }
   }), _vm._v(" "), _c("div", {
-    staticClass: "remove"
-  }, [_vm._v("Remove")])])]), _vm._v(" "), _c("div", {
-    staticClass: "food py-4 debug d-flex justify-content-between align-items-center"
-  }, [_c("img", {
-    attrs: {
-      src: "",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "prodotto"
-  }, [_c("h5", [_vm._v("Pizza Pepperoni")]), _vm._v(" "), _c("div", {
-    staticClass: "descrizione"
-  }, [_vm._v("Size:Medium")]), _vm._v(" "), _c("div", {
-    staticClass: "prezzo"
-  }, [_vm._v("9")])]), _vm._v(" "), _c("div", {
-    staticClass: "quantity"
-  }, [_c("h6", [_vm._v("Quantity")]), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "number"
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "remove"
-  }, [_vm._v("Remove")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-4 debug"
-  }, [_c("h5", [_vm._v("Total")]), _vm._v(" "), _c("h5", [_vm._v("$24")]), _vm._v(" "), _c("label", {
+    staticClass: "remove text-danger"
+  }, [_vm._v("Remove "), _c("i", {
+    staticClass: "fa-solid fa-trash-can"
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-4 checkout"
+  }, [_c("div", {
+    staticClass: "text-center mb-5 divider-solid"
+  }, [_c("h5", {
+    staticClass: "fw-bold"
+  }, [_vm._v("Total")]), _vm._v(" "), _c("h5", {
+    staticClass: "fs-1"
+  }, [_vm._v("$24")]), _vm._v(" "), _c("br")]), _vm._v(" "), _c("label", {
     attrs: {
       "for": "comments"
     }
@@ -2382,7 +2376,7 @@ var staticRenderFns = [function () {
       name: "comments",
       id: "comments",
       cols: "30",
-      rows: "10"
+      rows: "5"
     }
   }), _vm._v(" "), _c("label", {
     attrs: {
@@ -2395,7 +2389,7 @@ var staticRenderFns = [function () {
       placeholder: "promo"
     }
   }), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-danger w-100 my-3 d-block"
+    staticClass: "btn btn-outline-danger w-100 my-3 d-block"
   }, [_vm._v("Apply promo code")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-danger w-100 my-3 d-block"
   }, [_vm._v("Checkout")])])]);
@@ -2693,11 +2687,7 @@ var render = function render() {
           return _vm.getUserByTypology(typology.id);
         }
       }
-    }, [_c("a", {
-      attrs: {
-        href: "#"
-      }
-    }, [_c("div", {
+    }, [_c("div", [_c("div", {
       staticClass: "icon"
     }, [_c("img", {
       attrs: {
@@ -2926,15 +2916,6 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-cart-shopping"
-  })])], 1), _vm._v(" "), _c("li", [_c("router-link", {
-    staticClass: "navigation-list-element",
-    attrs: {
-      to: {
-        name: "foods"
-      }
-    }
-  }, [_c("i", {
-    staticClass: "fa-solid fa-bowl-food"
   })])], 1), _vm._v(" "), _vm._m(2)])])])]);
 };
 
@@ -7439,7 +7420,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".card-item[data-v-2a9d8c59] {\n  min-width: 350px;\n  height: 360px;\n  color: black;\n  text-decoration: none;\n  margin-bottom: 30px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n  overflow: hidden;\n  text-align: center;\n}\n.card-item .card-images[data-v-2a9d8c59] {\n  position: relative;\n  width: 100%;\n  height: 62.5%;\n  margin-bottom: 40px;\n}\n.card-item .card-images .thumbnail[data-v-2a9d8c59] {\n  height: 100%;\n  width: 100%;\n}\n.card-item .card-images .restaurant-logo[data-v-2a9d8c59] {\n  height: 60px;\n  border-radius: 7px;\n  position: absolute;\n  bottom: 0;\n  right: 50%;\n  transform: translate(50%, 50%);\n}\n.card-item h3[data-v-2a9d8c59] {\n  font-weight: bolder;\n}\n.card-item p[data-v-2a9d8c59] {\n  font-size: 14px;\n  color: gray;\n}", ""]);
+exports.push([module.i, ".card-item[data-v-2a9d8c59] {\n  min-width: 350px;\n  max-width: 30%;\n  height: 360px;\n  color: black;\n  text-decoration: none;\n  margin-bottom: 30px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n  overflow: hidden;\n  text-align: center;\n}\n.card-item .card-images[data-v-2a9d8c59] {\n  position: relative;\n  width: 100%;\n  height: 62.5%;\n  margin-bottom: 40px;\n}\n.card-item .card-images .thumbnail[data-v-2a9d8c59] {\n  height: 100%;\n  width: 100%;\n}\n.card-item .card-images .restaurant-logo[data-v-2a9d8c59] {\n  height: 60px;\n  border-radius: 7px;\n  position: absolute;\n  bottom: 0;\n  right: 50%;\n  transform: translate(50%, 50%);\n}\n.card-item h3[data-v-2a9d8c59] {\n  font-weight: bolder;\n}\n.card-item p[data-v-2a9d8c59] {\n  font-size: 14px;\n  color: gray;\n}", ""]);
 
 // exports
 
@@ -7458,7 +7439,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".debug[data-v-04ef5265] {\n  border: 1px solid black;\n  background-color: rgba(255, 0, 0, 0.3);\n}\n.food img[data-v-04ef5265] {\n  width: 30%;\n}", ""]);
+exports.push([module.i, ".debug[data-v-04ef5265] {\n  border: 1px solid black;\n  background-color: rgba(255, 0, 0, 0.3);\n}\na[data-v-04ef5265] {\n  color: #FF6666;\n  text-decoration: none;\n}\nh4[data-v-04ef5265] {\n  color: #FF6666;\n}\nh4[data-v-04ef5265]:hover {\n  color: red;\n}\n.active[data-v-04ef5265] {\n  color: red;\n  border-bottom: 1px solid red;\n}\n.top[data-v-04ef5265] {\n  background-color: #fff;\n  box-shadow: 0px 0px 15px 10px #DEDEDE;\n}\n.divider-solid[data-v-04ef5265] {\n  border-bottom: 1px solid lightgrey;\n}\n.divider-solid img[data-v-04ef5265] {\n  width: 20%;\n}\n.checkout[data-v-04ef5265] {\n  background-color: rgb(246, 249, 252);\n}", ""]);
 
 // exports
 
@@ -7534,7 +7515,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 90px;\n  font-size: 16px;\n  font-weight: bold;\n}\nmain .sliding-menu ul li a[data-v-4b10c5b8] {\n  color: black;\n  text-align: center;\n  text-decoration: none;\n}\nmain .sliding-menu ul li a .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li a .icon img[data-v-4b10c5b8] {\n  height: 100%;\n}\nmain .sliding-menu ul li a .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}", ""]);
+exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 90px;\n  font-size: 16px;\n  font-weight: bold;\n}\nmain .sliding-menu ul li div[data-v-4b10c5b8] {\n  color: black;\n  text-align: center;\n  text-decoration: none;\n}\nmain .sliding-menu ul li div .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li div .icon img[data-v-4b10c5b8] {\n  height: 100%;\n}\nmain .sliding-menu ul li div .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}", ""]);
 
 // exports
 
@@ -54238,6 +54219,17 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+
+/***/ "./public/image/categories/hamburgerjpg.jpg":
+/*!**************************************************!*\
+  !*** ./public/image/categories/hamburgerjpg.jpg ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "../images/hamburgerjpg.jpg?d75e51cfc5d87bee434ebece24af5751";
 
 /***/ }),
 

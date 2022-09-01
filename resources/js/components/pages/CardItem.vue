@@ -27,6 +27,7 @@ export default {
 <style lang="scss" scoped>
 .card-item{
     min-width: 350px;
+    max-width: 30%;
     height: 360px;
     color: black;
     text-decoration: none;

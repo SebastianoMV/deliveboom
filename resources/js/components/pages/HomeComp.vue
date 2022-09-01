@@ -11,12 +11,12 @@
                     <!-- Prima versione statica, successivamente si dovranno ciclare -->
 
                     <li v-for="typology in typologies" :key="typology.id" @click="getUserByTypology(typology.id)">
-                        <a href="#">
+                        <div>
                             <div class="icon">
                                 <img :src="`/image/typologies/${typology.image}`" :alt="typology.name">
                             </div>
                             <div class="typology-title">{{typology.name}}</div>
-                        </a>
+                        </div>
                     </li>
 
                 </ul>
@@ -129,7 +129,7 @@ main{
                 margin-right: 90px;
                 font-size: 16px;
                 font-weight: bold;
-                a{
+                div{
                     color: black;
                     text-align: center;
                     text-decoration: none;
