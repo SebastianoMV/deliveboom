@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-8 debug">
             <div class="food py-4 debug d-flex justify-content-between align-items-center">
-                <img  src="../../../../public/image/foods/202208310742immagini-magliette-diritto-autore-e1602668592213.jpg" alt="">
+                <img  src="" alt="">
                 <div class="prodotto">
                 <h5>Pizza Pepperoni</h5>
                 <div class="descrizione">Size:Medium</div>
@@ -25,7 +25,7 @@
             </div>
             </div>
             <div class="food py-4 debug d-flex justify-content-between align-items-center">
-              <img  src="../../../../public/image/foods/202208310742immagini-magliette-diritto-autore-e1602668592213.jpg" alt="">
+              <img  src="" alt="">
               <div class="prodotto">
                 <h5>Pizza Pepperoni</h5>
                 <div class="descrizione">Size:Medium</div>
@@ -38,7 +38,6 @@
             </div>
             </div>
             <div class="food py-4 debug d-flex justify-content-between align-items-center">
-              <img  src="../../../../public/image/foods/202208310742immagini-magliette-diritto-autore-e1602668592213.jpg" alt="">
               <div class="prodotto">
                 <h5>Pizza Pepperoni</h5>
                 <div class="descrizione">Size:Medium</div>
@@ -51,7 +50,7 @@
             </div>
             </div>
             <div class="food py-4 debug d-flex justify-content-between align-items-center">
-              <img  src="../../../../public/image/foods/202208310742immagini-magliette-diritto-autore-e1602668592213.jpg" alt="">
+              <img  src="" alt="">
               <div class="prodotto">
                 <h5>Pizza Pepperoni</h5>
                 <div class="descrizione">Size:Medium</div>
