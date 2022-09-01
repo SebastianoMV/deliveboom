@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\FoodRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Food;
@@ -71,6 +72,11 @@ class FoodController extends Controller
     public function destroy($id)
     {
         $food = Food::find($id);
+        // $destination = 'image/foods'.$food->image;
+        $image_path = public_path("/image/foods/").$food->image;
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
         $food->delete();
 
         return redirect()->route('admin.food.index')->with('food_delete_success', "$food->name eliminata correttamente!");
