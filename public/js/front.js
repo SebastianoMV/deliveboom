@@ -2290,7 +2290,12 @@ var staticRenderFns = [function () {
     staticClass: "remove"
   }, [_vm._v("Remove")])])]), _vm._v(" "), _c("div", {
     staticClass: "food py-4 debug d-flex justify-content-between align-items-center"
-  }, [_c("div", {
+  }, [_c("img", {
+    attrs: {
+      src: "",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("div", {
     staticClass: "prodotto"
   }, [_c("h5", [_vm._v("Pizza Pepperoni")]), _vm._v(" "), _c("div", {
     staticClass: "descrizione"

@@ -38,6 +38,7 @@
             </div>
             </div>
             <div class="food py-4 debug d-flex justify-content-between align-items-center">
+              <img  src="" alt="">
               <div class="prodotto">
                 <h5>Pizza Pepperoni</h5>
                 <div class="descrizione">Size:Medium</div>
