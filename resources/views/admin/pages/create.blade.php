@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('admin.food.store') }}" method="POST" enctype="multipart/form-data">
+        <form id="foodCreateForm" action="{{ route('admin.food.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             {{-- NOME --}}
@@ -13,6 +13,7 @@
                 @error('name')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
+                <p id="error-name" class="text-danger"></p>
             </div>
 
             {{-- IMMAGINE --}}
@@ -24,6 +25,7 @@
                 @error('image')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
+                <p id="error-image" class="text-danger"></p>
             </div>
 
             {{-- DESCRIZIONE --}}
@@ -34,6 +36,7 @@
                 @error('description')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
+                <p id="error-description" class="text-danger"></p>
             </div>
 
             {{-- CATEGORIA --}}
@@ -70,6 +73,7 @@
                 @error('price')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
+                <p id="error-price" class="text-danger"></p>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

@@ -8,9 +8,10 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form id="userCreateForm" method="POST" action="{{ route('register') }}">
                             @csrf
 
+                            {{-- NOME --}}
                             <div class="form-group row">
                                 <label for="name"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Name') }}</label>
@@ -25,10 +26,12 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <p id="error-name" class="text-danger"></p>
                                 </div>
                             </div>
 
-
+                            {{-- EMAIL --}}
                             <div class="form-group row">
                                 <label for="email"
                                     class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -43,10 +46,12 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <p id="error-email" class="text-danger"></p>
                                 </div>
                             </div>
 
-
+                            {{-- INDIRIZZO --}}
                             <div class="form-group row">
                                 <label for="address"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
@@ -60,9 +65,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <p id="error-address" class="text-danger"></p>
                                 </div>
                             </div>
 
+                            {{-- CITTA --}}
                             <div class="form-group row">
                                 <label for="city"
                                     class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
@@ -77,9 +84,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <p id="error-city" class="text-danger"></p>
                                 </div>
                             </div>
 
+                            {{-- P. IVA --}}
                             <div class="form-group row">
                                 <label for="vat_number"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Vat Number') }}</label>
@@ -94,9 +103,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <p id="error-vat" class="text-danger"></p>
                                 </div>
                             </div>
 
+                            {{-- PASSWORD --}}
                             <div class="form-group row">
                                 <label for="password"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -111,9 +122,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <p id="error-password" class="text-danger"></p>
                                 </div>
                             </div>
 
+                            {{-- CONFERMA PASSWORD --}}
                             <div class="form-group row">
                                 <label for="password-confirm"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
@@ -128,6 +141,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <p id="error-password-confirm" class="text-danger"></p>
                                 </div>
                             </div>
 
@@ -148,6 +162,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                 @enderror
+                                <p id="error-tipologies" class="text-danger"></p>
 
                             </div>
 

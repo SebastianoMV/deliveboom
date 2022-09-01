@@ -17,8 +17,8 @@ class FoodController extends Controller
     public function index()
     {
         $activeUser = Auth::id();
-        // $foods = Food::where('user_id', $activeUser)->get();
-        $foods = Food::orderBy('id', 'desc')->get();
+        $foods = Food::where('user_id', $activeUser)->get();
+        //$foods = Food::orderBy('id', 'desc')->get();
 
         return view('admin.pages.index', compact('foods'));
     }
@@ -46,6 +46,10 @@ class FoodController extends Controller
 
     public function show($id)
     {
+        // if(Auth::id() != $id){
+        //     abort(403);
+        // };
+
         $food = Food::find($id);
 
         return view('admin.pages.show', compact('food'));
