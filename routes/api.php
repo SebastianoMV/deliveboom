@@ -13,5 +13,8 @@ Route::namespace('Api')
     ->prefix('foods')
     ->group(function(){
         Route::get('/', 'PageController@index');
-        Route::get('/user-typology/{id}', 'PageController@getFoodByTypology');
+        Route::get('/user-typology/{id}', 'PageController@getUserByTypology');
+
+        Route::get('/menu/{slug}', 'PageController@getUserBySlug');
+        Route::get('/food-category/{id}', 'PageController@getFoodByUserWithCategory');
     });

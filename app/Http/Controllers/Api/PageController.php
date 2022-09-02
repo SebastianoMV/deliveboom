@@ -19,9 +19,22 @@ class PageController extends Controller
         return response()->json(compact('tipologies', 'users'));
     }
 
-    public function getFoodByTypology($id){
+    public function getUserByTypology($id){
         $tipology = Typology::where('id', $id)->with('users')->first();
 
         return response()->json($tipology);
+    }
+
+    public function getUserBySlug($slug){
+        $user = User::where('slug', $slug)->first();
+
+        return response()->json($user);
+    }
+
+    public function getFoodByUserWithCategory($id){
+
+        $foods = Food::where('user_id', $id)->with('category')->get();
+
+        return response()->json($foods);
     }
 }

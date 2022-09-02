@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'foods'}" class="card-item">
+    <router-link :to="{name: 'foods', params: { slug: user.slug }}" class="card-item">
         <div class="card-images">
             <img src="../../../../public/image/categories/pizza-margherita.jpg" alt="" class="thumbnail">
             <img :src="`/image/users/${user.image}`" alt="" class="restaurant-logo">

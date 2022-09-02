@@ -30,7 +30,7 @@ const router = new VueRouter({
             component: CheckoutComp,
         },
         {
-            path: "/foods",
+            path: "/foods/:slug",
             name: "foods",
             component: FoodsComp,
         },

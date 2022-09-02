@@ -8,7 +8,6 @@
         <div class="sliding-menu">
             <div class="container">
                 <ul>
-                    <!-- Prima versione statica, successivamente si dovranno ciclare -->
 
                     <li v-for="typology in typologies" :key="typology.id" @click="getUserByTypology(typology.id)">
                         <div>
@@ -87,6 +86,7 @@ export default {
             })
         },
 
+
         showMenu(slug){
             console.log(slug);
         },
@@ -139,7 +139,7 @@ main{
             list-style: none;
             li{
                 display: inline-block;
-                margin-right: 90px;
+                margin-right: 60px;
                 font-size: 16px;
                 font-weight: bold;
                 div{
