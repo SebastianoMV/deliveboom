@@ -6,7 +6,11 @@
                 <nav class="jumbo-nav">
                     <img :src="`/image/users/${user.image}`" alt="">
                     <ul>
-                        <li v-for="food in foods" :key="food.id"><a href="#">{{food.category.name}}</a></li>
+                        <li v-for="category in categories" :key="category.id" @click="foodsbyCategory(category.id) ">
+                            <a >
+                                {{category.name}}
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -29,6 +33,7 @@ export default {
     components: { FoodItem },
     data() {
         return{
+            categories:[],
             user: [],
             foods:[],
             userApiUrl: 'http://127.0.0.1:8000/api/foods',
@@ -53,11 +58,36 @@ export default {
         getFoodsApi(id){
             axios.get(this.userApiUrl + '/food-category/' + id)
             .then(r => {
-                this.foods = r.data;
+                this.foods = r.data.foods;
+                this.categories = r.data.categories;
                 console.log(id);
-                console.log(this.foods);
+                console.log(this.categories);
             })
         },
+
+        // foodsbyCategoryApi(id){
+        //     axios.get(this.userApiUrl + '/food-category-filtered/' + id)
+        //     .then(r => {
+        //         this.foods = r.data;
+        //     })
+
+        // },
+
+        // foodsbyCategory(id){
+        //     if();
+        // },
+
+        foodHasCategory(category){
+            let flag = false;
+            let food=[];
+            for (let index = 0; index < this.foods.length; index++) {
+
+                if (this.foods[index].category_id == category) {
+                    flag = true;
+                }
+            }
+            return flag;
+        }
     },
 }
 </script>

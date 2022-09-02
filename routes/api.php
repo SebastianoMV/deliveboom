@@ -17,4 +17,6 @@ Route::namespace('Api')
 
         Route::get('/menu/{slug}', 'PageController@getUserBySlug');
         Route::get('/food-category/{id}', 'PageController@getFoodByUserWithCategory');
+
+        Route::get('/food-category-filtered/{id}', 'PageController@getFoodByCategory');
     });

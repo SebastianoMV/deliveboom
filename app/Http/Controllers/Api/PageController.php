@@ -34,6 +34,13 @@ class PageController extends Controller
     public function getFoodByUserWithCategory($id){
 
         $foods = Food::where('user_id', $id)->with('category')->get();
+        $categories = Category::all();
+
+        return response()->json(compact('foods','categories'));
+    }
+
+    public function getFoodByCategory($id){
+        $foods = Food::where('user_id', $id)->where('category_id', $id)->get();
 
         return response()->json($foods);
     }

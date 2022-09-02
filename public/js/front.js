@@ -2083,6 +2083,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      categories: [],
       user: [],
       foods: [],
       userApiUrl: 'http://127.0.0.1:8000/api/foods'
@@ -2106,10 +2107,30 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get(this.userApiUrl + '/food-category/' + id).then(function (r) {
-        _this2.foods = r.data;
+        _this2.foods = r.data.foods;
+        _this2.categories = r.data.categories;
         console.log(id);
-        console.log(_this2.foods);
+        console.log(_this2.categories);
       });
+    },
+    // foodsbyCategoryApi(id){
+    //     axios.get(this.userApiUrl + '/food-category-filtered/' + id)
+    //     .then(r => {
+    //         this.foods = r.data;
+    //     })
+    // },
+    foodsbyCategory: function foodsbyCategory() {},
+    foodHasCategory: function foodHasCategory(category) {
+      var flag = false;
+      var food = [];
+
+      for (var index = 0; index < this.foods.length; index++) {
+        if (this.foods[index].category_id == category) {
+          flag = true;
+        }
+      }
+
+      return flag;
     }
   }
 });
@@ -2566,14 +2587,15 @@ var render = function render() {
       src: "/image/users/".concat(_vm.user.image),
       alt: ""
     }
-  }), _vm._v(" "), _c("ul", _vm._l(_vm.foods, function (food) {
+  }), _vm._v(" "), _c("ul", _vm._l(_vm.categories, function (category) {
     return _c("li", {
-      key: food.id
-    }, [_c("a", {
-      attrs: {
-        href: "#"
+      key: category.id,
+      on: {
+        click: function click($event) {
+          return _vm.foodsbyCategory(category.id);
+        }
       }
-    }, [_vm._v(_vm._s(food.category.name))])]);
+    }, [_c("a", [_vm._v("\n                            " + _vm._s(category.name) + "\n                        ")])]);
   }), 0)])])]), _vm._v(" "), _c("div", {
     staticClass: "foods-container container"
   }, [_c("h1", [_vm._v(_vm._s(_vm.user.name))]), _vm._v(" "), _c("div", {
@@ -2610,7 +2632,13 @@ var render = function render() {
     staticClass: "sliding-menu"
   }, [_c("div", {
     staticClass: "container"
-  }, [_c("ul", _vm._l(_vm.typologies, function (typology) {
+  }, [_c("ul", [_c("li", {
+    on: {
+      click: function click($event) {
+        return _vm.getUserApi();
+      }
+    }
+  }, [_vm._m(1)]), _vm._v(" "), _vm._l(_vm.typologies, function (typology) {
     return _c("li", {
       key: typology.id,
       on: {
@@ -2628,7 +2656,7 @@ var render = function render() {
     })]), _vm._v(" "), _c("div", {
       staticClass: "typology-title"
     }, [_vm._v(_vm._s(typology.name))])])]);
-  }), 0)])]), _vm._v(" "), _c("section", {
+  })], 2)])]), _vm._v(" "), _c("section", {
     staticClass: "restaurants"
   }, [_c("div", {
     staticClass: "container cards-container"
@@ -2658,6 +2686,15 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "container"
   }, [_c("h1", [_vm._v("Burgers & Fries")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", [_c("div", {
+    staticClass: "icon"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "typology-title"
+  }, [_vm._v("Tutti i ristoranti")])]);
 }];
 render._withStripped = true;
 
@@ -7453,7 +7490,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 60px;\n  font-size: 16px;\n  font-weight: bold;\n}\nmain .sliding-menu ul li div[data-v-4b10c5b8] {\n  color: black;\n  text-align: center;\n  text-decoration: none;\n}\nmain .sliding-menu ul li div .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li div .icon img[data-v-4b10c5b8] {\n  height: 100%;\n}\nmain .sliding-menu ul li div .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\n.load-more[data-v-4b10c5b8] {\n  text-transform: uppercase;\n  font-size: 14px;\n  font-weight: 900;\n  width: 20%;\n  margin-bottom: 20px;\n  text-align: center;\n  color: #fff;\n  background-color: #3b3b3b;\n  padding: 8px 0;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.4s;\n}\n.load-more[data-v-4b10c5b8]:hover {\n  background-color: #fff;\n  border: 1px solid black;\n  color: black;\n}", ""]);
+exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 60px;\n  font-size: 16px;\n  font-weight: bold;\n}\nmain .sliding-menu ul li div[data-v-4b10c5b8] {\n  color: black;\n  text-align: center;\n  text-decoration: none;\n}\nmain .sliding-menu ul li div .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li div .icon img[data-v-4b10c5b8] {\n  height: 100%;\n}\nmain .sliding-menu ul li div .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\n.load-more[data-v-4b10c5b8] {\n  text-transform: uppercase;\n  font-size: 14px;\n  font-weight: 900;\n  width: 20%;\n  margin-bottom: 20px;\n  text-align: center;\n  color: #fff;\n  background-color: #3b3b3b;\n  padding: 8px 0;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.4s;\n  border: 1px solid #3b3b3b;\n}\n.load-more[data-v-4b10c5b8]:hover {\n  background-color: #fff;\n  border: 1px solid black;\n  color: black;\n}", ""]);
 
 // exports
 

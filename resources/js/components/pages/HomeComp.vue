@@ -9,6 +9,15 @@
             <div class="container">
                 <ul>
 
+                    <li @click="getUserApi()">
+                        <div>
+                            <div class="icon">
+                                <!-- <img :src="`/image/typologies/${typology.image}`" :alt="typology.name"> -->
+                            </div>
+                            <div class="typology-title">Tutti i ristoranti</div>
+                        </div>
+                    </li>
+
                     <li v-for="typology in typologies" :key="typology.id" @click="getUserByTypology(typology.id)">
                         <div>
                             <div class="icon">
@@ -194,6 +203,7 @@ main{
     border-radius: 5px;
     cursor: pointer;
     transition: all .4s;
+    border: 1px solid #3b3b3b;
 
     &:hover{
         background-color: #fff;
