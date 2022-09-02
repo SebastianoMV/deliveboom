@@ -4,10 +4,10 @@
             <div class="container">
                 <h1>Burgers & Fries</h1>
                 <nav class="jumbo-nav">
-                    <img :src="`/image/users/${user.image}`" alt="">
+                    <img :src="`/image/users/${user.image}`" alt="" @click="getUser($route.params.slug)">
                     <ul>
-                        <li v-for="category in categories" :key="category.id" @click="foodsbyCategory(category.id) ">
-                            <a >
+                        <li v-for="category in categories" :key="category.id" @click="filteredFoods(category.id)" v-show="foodHasCategory(category.id)">
+                            <a  >
                                 {{category.name}}
                             </a>
                         </li>
@@ -18,7 +18,7 @@
         <div class="foods-container container">
             <h1>{{user.name}}</h1>
             <div class="wrapper">
-                <FoodItem v-for="food in foods" :key="food.id" />
+                <FoodItem v-for="food in foodsFiltered" :key="food.id" />
 
             </div>
         </div>
@@ -36,6 +36,7 @@ export default {
             categories:[],
             user: [],
             foods:[],
+            foodsFiltered:[],
             userApiUrl: 'http://127.0.0.1:8000/api/foods',
 
         }
@@ -59,6 +60,7 @@ export default {
             axios.get(this.userApiUrl + '/food-category/' + id)
             .then(r => {
                 this.foods = r.data.foods;
+                this.foodsFiltered = r.data.foods;
                 this.categories = r.data.categories;
                 console.log(id);
                 console.log(this.categories);
@@ -77,9 +79,20 @@ export default {
         //     if();
         // },
 
+        filteredFoods(category){
+            this.foodsFiltered = [];
+            for (let index = 0; index < this.foods.length; index++) {
+
+                if (this.foods[index].category_id == category) {
+                    this.foodsFiltered.push(this.foods[index]);
+                }
+            }
+            console.log(this.foodsFiltered);
+            return;
+        },
+
         foodHasCategory(category){
             let flag = false;
-            let food=[];
             for (let index = 0; index < this.foods.length; index++) {
 
                 if (this.foods[index].category_id == category) {

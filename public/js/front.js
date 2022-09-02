@@ -2086,6 +2086,7 @@ __webpack_require__.r(__webpack_exports__);
       categories: [],
       user: [],
       foods: [],
+      foodsFiltered: [],
       userApiUrl: 'http://127.0.0.1:8000/api/foods'
     };
   },
@@ -2108,6 +2109,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get(this.userApiUrl + '/food-category/' + id).then(function (r) {
         _this2.foods = r.data.foods;
+        _this2.foodsFiltered = r.data.foods;
         _this2.categories = r.data.categories;
         console.log(id);
         console.log(_this2.categories);
@@ -2119,10 +2121,23 @@ __webpack_require__.r(__webpack_exports__);
     //         this.foods = r.data;
     //     })
     // },
-    foodsbyCategory: function foodsbyCategory() {},
+    // foodsbyCategory(id){
+    //     if();
+    // },
+    filteredFoods: function filteredFoods(category) {
+      this.foodsFiltered = [];
+
+      for (var index = 0; index < this.foods.length; index++) {
+        if (this.foods[index].category_id == category) {
+          this.foodsFiltered.push(this.foods[index]);
+        }
+      }
+
+      console.log(this.foodsFiltered);
+      return;
+    },
     foodHasCategory: function foodHasCategory(category) {
       var flag = false;
-      var food = [];
 
       for (var index = 0; index < this.foods.length; index++) {
         if (this.foods[index].category_id == category) {
@@ -2586,13 +2601,24 @@ var render = function render() {
     attrs: {
       src: "/image/users/".concat(_vm.user.image),
       alt: ""
+    },
+    on: {
+      click: function click($event) {
+        return _vm.getUser(_vm.$route.params.slug);
+      }
     }
   }), _vm._v(" "), _c("ul", _vm._l(_vm.categories, function (category) {
     return _c("li", {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: _vm.foodHasCategory(category.id),
+        expression: "foodHasCategory(category.id)"
+      }],
       key: category.id,
       on: {
         click: function click($event) {
-          return _vm.foodsbyCategory(category.id);
+          return _vm.filteredFoods(category.id);
         }
       }
     }, [_c("a", [_vm._v("\n                            " + _vm._s(category.name) + "\n                        ")])]);
@@ -2600,7 +2626,7 @@ var render = function render() {
     staticClass: "foods-container container"
   }, [_c("h1", [_vm._v(_vm._s(_vm.user.name))]), _vm._v(" "), _c("div", {
     staticClass: "wrapper"
-  }, _vm._l(_vm.foods, function (food) {
+  }, _vm._l(_vm.foodsFiltered, function (food) {
     return _c("FoodItem", {
       key: food.id
     });
