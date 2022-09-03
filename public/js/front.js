@@ -1953,7 +1953,50 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'CartComp'
+  name: 'CartComp',
+  data: function data() {
+    return {
+      items: null,
+      total: 0
+    };
+  },
+  mounted: function mounted() {
+    if (localStorage.cart) {
+      this.items = JSON.parse(localStorage.cart);
+      console.log(this.items);
+    }
+
+    this.itemTotals();
+  },
+  methods: {
+    addItem: function addItem(food) {
+      if (!food) {
+        return;
+      }
+
+      this.cart.push(food);
+      this.newItem = '';
+      this.saveCart();
+      this.itemTotals();
+    },
+    removeCart: function removeCart(index) {
+      this.items.splice(index, 1);
+      this.saveCart();
+      this.itemTotals();
+    },
+    saveCart: function saveCart() {
+      var parsed = JSON.stringify(this.items);
+      localStorage.setItem('cart', parsed);
+    },
+    itemTotals: function itemTotals() {
+      this.total = 0;
+
+      for (var index = 0; index < this.items.length; index++) {
+        this.total += parseFloat(this.items[index].price);
+        console.log(this.total);
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -2060,7 +2103,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "FoodItem"
+  name: "FoodItem",
+  props: {
+    food: Object
+  },
+  data: function data() {
+    return {
+      cart: [],
+      newItem: []
+    };
+  },
+  mounted: function mounted() {
+    if (localStorage.getItem('cart')) {
+      try {
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+      } catch (e) {
+        localStorage.removeItem('cart');
+      }
+    }
+  },
+  methods: {
+    addItem: function addItem(food) {
+      if (!food) {
+        return;
+      }
+
+      this.cart.push(food);
+      this.newItem = '';
+      this.saveCart();
+    },
+    removeCat: function removeCat(x) {
+      this.cart.splice(x, 1);
+      this.saveCart();
+    },
+    saveCart: function saveCart() {
+      var parsed = JSON.stringify(this.cart);
+      localStorage.setItem('cart', parsed);
+    }
+  }
 });
 
 /***/ }),
@@ -2115,15 +2195,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(_this2.categories);
       });
     },
-    // foodsbyCategoryApi(id){
-    //     axios.get(this.userApiUrl + '/food-category-filtered/' + id)
-    //     .then(r => {
-    //         this.foods = r.data;
-    //     })
-    // },
-    // foodsbyCategory(id){
-    //     if();
-    // },
     filteredFoods: function filteredFoods(category) {
       this.foodsFiltered = [];
 
@@ -2349,97 +2420,42 @@ var render = function render() {
         name: "checkout"
       }
     }
-  }, [_vm._v("Checkout")])], 1)])]), _vm._v(" "), _vm._m(1)])]);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "col-6 active p-4 text-center"
-  }, [_c("h4", [_vm._v("Carrello "), _c("i", {
-    staticClass: "fa-solid fa-cart-arrow-down"
-  })])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
+  }, [_vm._v("Checkout")])], 1)])]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-8"
-  }, [_c("div", {
-    staticClass: "divider-solid line-divider-solid py-2 d-flex justify-content-between align-items-center"
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/categories/hamburgerjpg.jpg */ "./public/image/categories/hamburgerjpg.jpg"),
-      alt: ""
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "prodotto"
-  }, [_c("h5", [_vm._v("Pizza Pepperoni")]), _vm._v(" "), _c("div", {
-    staticClass: "descrizione"
-  }, [_vm._v("Size:Medium")]), _vm._v(" "), _c("div", {
-    staticClass: "prezzo"
-  }, [_vm._v("9")])]), _vm._v(" "), _c("div", {
-    staticClass: "quantity"
-  }, [_c("h6", [_vm._v("Quantity")]), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "number"
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "remove text-danger"
-  }, [_vm._v("Remove "), _c("i", {
-    staticClass: "fa-solid fa-trash-can"
-  })])])]), _vm._v(" "), _c("div", {
-    staticClass: "divider-solid py-4 d-flex justify-content-between align-items-center"
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/categories/hamburgerjpg.jpg */ "./public/image/categories/hamburgerjpg.jpg"),
-      alt: ""
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "prodotto"
-  }, [_c("h5", [_vm._v("Pizza Pepperoni")]), _vm._v(" "), _c("div", {
-    staticClass: "descrizione"
-  }, [_vm._v("Size:Medium")]), _vm._v(" "), _c("div", {
-    staticClass: "prezzo"
-  }, [_vm._v("9")])]), _vm._v(" "), _c("div", {
-    staticClass: "quantity"
-  }, [_c("h6", [_vm._v("Quantity")]), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "number"
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "remove text-danger"
-  }, [_vm._v("Remove "), _c("i", {
-    staticClass: "fa-solid fa-trash-can"
-  })])])]), _vm._v(" "), _c("div", {
-    staticClass: "divider-solid py-4 d-flex justify-content-between align-items-center"
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/categories/hamburgerjpg.jpg */ "./public/image/categories/hamburgerjpg.jpg"),
-      alt: ""
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "prodotto"
-  }, [_c("h5", [_vm._v("Pizza Pepperoni")]), _vm._v(" "), _c("div", {
-    staticClass: "descrizione"
-  }, [_vm._v("Size:Medium")]), _vm._v(" "), _c("div", {
-    staticClass: "prezzo"
-  }, [_vm._v("9")])]), _vm._v(" "), _c("div", {
-    staticClass: "quantity"
-  }, [_c("h6", [_vm._v("Quantity")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "number"
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "remove text-danger"
-  }, [_vm._v("Remove "), _c("i", {
-    staticClass: "fa-solid fa-trash-can"
-  })])])])]), _vm._v(" "), _c("div", {
+  }, _vm._l(_vm.items, function (item, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "divider-solid line-divider-solid py-2 d-flex justify-content-between align-items-center"
+    }, [_c("img", {
+      attrs: {
+        src: __webpack_require__(/*! ../../../../public/image/categories/hamburgerjpg.jpg */ "./public/image/categories/hamburgerjpg.jpg"),
+        alt: ""
+      }
+    }), _vm._v(" "), _c("div", {
+      staticClass: "prodotto"
+    }, [_c("h5", [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("div", {
+      staticClass: "descrizione"
+    }, [_vm._v("Size:Medium")]), _vm._v(" "), _c("div", {
+      staticClass: "prezzo"
+    }, [_vm._v(_vm._s(item.price))])]), _vm._v(" "), _c("div", {
+      staticClass: "quantity"
+    }, [_c("h6", [_vm._v("Quantity")]), _vm._v(" "), _c("input", {
+      attrs: {
+        type: "number"
+      }
+    }), _vm._v(" "), _c("div", {
+      staticClass: "remove text-danger",
+      on: {
+        click: function click($event) {
+          return _vm.removeCart(index);
+        }
+      }
+    }, [_vm._v("Remove "), _c("i", {
+      staticClass: "fa-solid fa-trash-can"
+    })])])]);
+  }), 0), _vm._v(" "), _c("div", {
     staticClass: "col-4 checkout"
   }, [_c("div", {
     staticClass: "text-center mb-5 divider-solid"
@@ -2447,7 +2463,7 @@ var staticRenderFns = [function () {
     staticClass: "fw-bold"
   }, [_vm._v("Total")]), _vm._v(" "), _c("h5", {
     staticClass: "fs-1"
-  }, [_vm._v("$24")]), _vm._v(" "), _c("br")]), _vm._v(" "), _c("label", {
+  }, [_vm._v(_vm._s(_vm.total) + " €")]), _vm._v(" "), _c("br")]), _vm._v(" "), _c("label", {
     attrs: {
       "for": "comments"
     }
@@ -2472,7 +2488,18 @@ var staticRenderFns = [function () {
     staticClass: "btn btn-outline-danger w-100 my-3 d-block"
   }, [_vm._v("Apply promo code")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-danger w-100 my-3 d-block"
-  }, [_vm._v("Checkout")])])]);
+  }, [_vm._v("Checkout")])])])])]);
+};
+
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "col-6 active p-4 text-center"
+  }, [_c("h4", [_vm._v("Carrello "), _c("i", {
+    staticClass: "fa-solid fa-cart-arrow-down"
+  })])]);
 }];
 render._withStripped = true;
 
@@ -2540,13 +2567,6 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
   return _c("div", {
     staticClass: "food-item"
   }, [_c("img", {
@@ -2556,19 +2576,23 @@ var staticRenderFns = [function () {
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "food-item-text"
-  }, [_c("h5", [_vm._v("Pizza Br1 Special")]), _vm._v(" "), _c("p", [_vm._v("Pomodoro, Mozzarella di bufala, Stracchino, Wurstel")])]), _vm._v(" "), _c("div", {
+  }, [_c("h5", [_vm._v(_vm._s(_vm.food.name))]), _vm._v(" "), _c("p", [_vm._v("Pomodoro, Mozzarella di bufala, Stracchino, Wurstel")])]), _vm._v(" "), _c("div", {
     staticClass: "lower-btns"
   }, [_c("span", {
     staticClass: "price"
-  }, [_vm._v("€7.00")]), _vm._v(" "), _c("a", {
+  }, [_vm._v(_vm._s(_vm.food.price))]), _vm._v(" "), _c("a", {
     staticClass: "btn-cart",
-    attrs: {
-      href: "#"
+    on: {
+      click: function click($event) {
+        return _vm.addItem(_vm.food);
+      }
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-cart-plus"
   })])])]);
-}];
+};
+
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -2628,7 +2652,10 @@ var render = function render() {
     staticClass: "wrapper"
   }, _vm._l(_vm.foodsFiltered, function (food) {
     return _c("FoodItem", {
-      key: food.id
+      key: food.id,
+      attrs: {
+        food: food
+      }
     });
   }), 1)])]);
 };

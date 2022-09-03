@@ -18,7 +18,7 @@
         <div class="foods-container container">
             <h1>{{user.name}}</h1>
             <div class="wrapper">
-                <FoodItem v-for="food in foodsFiltered" :key="food.id" />
+                <FoodItem v-for="food in foodsFiltered" :key="food.id"  :food="food"/>
 
             </div>
         </div>
@@ -67,17 +67,6 @@ export default {
             })
         },
 
-        // foodsbyCategoryApi(id){
-        //     axios.get(this.userApiUrl + '/food-category-filtered/' + id)
-        //     .then(r => {
-        //         this.foods = r.data;
-        //     })
-
-        // },
-
-        // foodsbyCategory(id){
-        //     if();
-        // },
 
         filteredFoods(category){
             this.foodsFiltered = [];

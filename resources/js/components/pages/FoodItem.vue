@@ -2,20 +2,58 @@
     <div class="food-item">
         <img src="../../../../public/image/typologies/tipology_07.jpg" alt="">
         <div class="food-item-text">
-            <h5>Pizza Br1 Special</h5>
+            <h5>{{food.name}}</h5>
             <p>Pomodoro, Mozzarella di bufala, Stracchino, Wurstel</p>
         </div>
         <div class="lower-btns">
-            <span class="price">&euro;7.00</span>
-            <a class="btn-cart" href="#">
+            <span class="price">{{food.price}}</span>
+            <a class="btn-cart" @click="addItem(food)">
                 <i class="fa-solid fa-cart-plus"></i>
             </a>
+
         </div>
     </div>
 </template>
 <script>
 export default {
-    name: "FoodItem"
+    name: "FoodItem",
+    props: {
+        food: Object,
+    },
+    data(){
+        return{
+            cart: [],
+            newItem: [],
+        }
+  },
+  mounted() {
+    if (localStorage.getItem('cart')) {
+      try {
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+      } catch(e) {
+        localStorage.removeItem('cart');
+      }
+    }
+  },
+  methods: {
+    addItem(food) {
+      if (!food) {
+        return;
+      }
+
+      this.cart.push(food);
+      this.newItem = '';
+      this.saveCart();
+    },
+    removeCat(x) {
+      this.cart.splice(x, 1);
+      this.saveCart();
+    },
+    saveCart() {
+      const parsed = JSON.stringify(this.cart);
+      localStorage.setItem('cart', parsed);
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
