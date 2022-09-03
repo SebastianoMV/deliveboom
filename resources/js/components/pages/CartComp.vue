@@ -20,9 +20,15 @@
                     <div class="prezzo">{{item.price}}</div>
                 </div>
                 <div class="quantity">
-                    <h6>Quantity</h6>
-                    <input type="number">
-                    <div class="remove text-danger" @click="removeCart(index)">Remove <i class="fa-solid fa-trash-can"></i></div>
+
+                    <div class="commands">
+                        <div @click="removeItem(item)" class="command remove-item"> <b>-</b> </div>
+                        <div class="command amount">0</div>
+                        <div @click="addItem(item)" class="command add-item"> <b>+</b> </div>
+                    </div>
+
+
+                    <div class="remove text-danger" @click="removeItem(index)">Remove <i class="fa-solid fa-trash-can"></i></div>
                 </div>
             </div>
 
@@ -57,24 +63,23 @@
           mounted() {
             if (localStorage.cart) {
               this.items = JSON.parse(localStorage.cart);
-              console.log(this.items);
+
 
             }
             this.itemTotals();
           },
           methods: {
-            addItem(food) {
-              if (!food) {
+            addItem(item) {
+              if (!item) {
                 return;
               }
 
-              this.cart.push(food);
-              this.newItem = '';
+              this.items.push(item);
               this.saveCart();
               this.itemTotals()
             },
 
-            removeCart(index) {
+            removeItem(index) {
               this.items.splice(index, 1);
               this.saveCart();
               this.itemTotals()
@@ -90,7 +95,6 @@
 
                 for (let index = 0; index < this.items.length; index++) {
                      this.total += parseFloat(this.items[index].price);
-                     console.log(this.total);
                 }
 
             },
@@ -100,6 +104,34 @@
       }
       </script>
       <style lang="scss" scoped>
+        .commands{
+                width: 100%;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+
+                .amount{
+                    width: 40px;
+                    height: 32px;
+                    font-size: 14px;
+                    border: 1px solid rgb(230, 230, 230);
+                    cursor: default;
+                }
+            }
+
+            .command{
+                background-color: #fff;
+                width: 35px;
+                height: 32px;
+                border-radius: 50%;
+                border: 1px solid lightgray;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+
+
     .debug{
             border: 1px solid black;
             background-color: rgba(255, 0, 0, .3);

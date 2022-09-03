@@ -1963,23 +1963,21 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     if (localStorage.cart) {
       this.items = JSON.parse(localStorage.cart);
-      console.log(this.items);
     }
 
     this.itemTotals();
   },
   methods: {
-    addItem: function addItem(food) {
-      if (!food) {
+    addItem: function addItem(item) {
+      if (!item) {
         return;
       }
 
-      this.cart.push(food);
-      this.newItem = '';
+      this.items.push(item);
       this.saveCart();
       this.itemTotals();
     },
-    removeCart: function removeCart(index) {
+    removeItem: function removeItem(index) {
       this.items.splice(index, 1);
       this.saveCart();
       this.itemTotals();
@@ -1993,7 +1991,6 @@ __webpack_require__.r(__webpack_exports__);
 
       for (var index = 0; index < this.items.length; index++) {
         this.total += parseFloat(this.items[index].price);
-        console.log(this.total);
       }
     }
   }
@@ -2109,8 +2106,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      cart: [],
-      newItem: []
+      cart: []
     };
   },
   mounted: function mounted() {
@@ -2441,15 +2437,29 @@ var render = function render() {
       staticClass: "prezzo"
     }, [_vm._v(_vm._s(item.price))])]), _vm._v(" "), _c("div", {
       staticClass: "quantity"
-    }, [_c("h6", [_vm._v("Quantity")]), _vm._v(" "), _c("input", {
-      attrs: {
-        type: "number"
+    }, [_c("div", {
+      staticClass: "commands"
+    }, [_c("div", {
+      staticClass: "command remove-item",
+      on: {
+        click: function click($event) {
+          return _vm.removeItem(item);
+        }
       }
-    }), _vm._v(" "), _c("div", {
+    }, [_c("b", [_vm._v("-")])]), _vm._v(" "), _c("div", {
+      staticClass: "command amount"
+    }, [_vm._v("0")]), _vm._v(" "), _c("div", {
+      staticClass: "command add-item",
+      on: {
+        click: function click($event) {
+          return _vm.addItem(item);
+        }
+      }
+    }, [_c("b", [_vm._v("+")])])]), _vm._v(" "), _c("div", {
       staticClass: "remove text-danger",
       on: {
         click: function click($event) {
-          return _vm.removeCart(index);
+          return _vm.removeItem(index);
         }
       }
     }, [_vm._v("Remove "), _c("i", {
@@ -7467,7 +7477,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".debug[data-v-04ef5265] {\n  border: 1px solid black;\n  background-color: rgba(255, 0, 0, 0.3);\n}\na[data-v-04ef5265] {\n  color: #FF6666;\n  text-decoration: none;\n}\nh4[data-v-04ef5265] {\n  color: #FF6666;\n}\nh4[data-v-04ef5265]:hover {\n  color: red;\n}\n.active[data-v-04ef5265] {\n  color: red;\n  border-bottom: 1px solid red;\n}\n.top[data-v-04ef5265] {\n  background-color: #fff;\n  box-shadow: 0px 0px 15px 10px #DEDEDE;\n}\n.divider-solid[data-v-04ef5265] {\n  border-bottom: 1px solid lightgrey;\n}\n.divider-solid img[data-v-04ef5265] {\n  width: 20%;\n}\n.checkout[data-v-04ef5265] {\n  background-color: rgb(246, 249, 252);\n}", ""]);
+exports.push([module.i, ".commands[data-v-04ef5265] {\n  width: 100%;\n  display: flex;\n  justify-content: space-evenly;\n  align-items: center;\n}\n.commands .amount[data-v-04ef5265] {\n  width: 40px;\n  height: 32px;\n  font-size: 14px;\n  border: 1px solid rgb(230, 230, 230);\n  cursor: default;\n}\n.command[data-v-04ef5265] {\n  background-color: #fff;\n  width: 35px;\n  height: 32px;\n  border-radius: 50%;\n  border: 1px solid lightgray;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n}\n.debug[data-v-04ef5265] {\n  border: 1px solid black;\n  background-color: rgba(255, 0, 0, 0.3);\n}\na[data-v-04ef5265] {\n  color: #FF6666;\n  text-decoration: none;\n}\nh4[data-v-04ef5265] {\n  color: #FF6666;\n}\nh4[data-v-04ef5265]:hover {\n  color: red;\n}\n.active[data-v-04ef5265] {\n  color: red;\n  border-bottom: 1px solid red;\n}\n.top[data-v-04ef5265] {\n  background-color: #fff;\n  box-shadow: 0px 0px 15px 10px #DEDEDE;\n}\n.divider-solid[data-v-04ef5265] {\n  border-bottom: 1px solid lightgrey;\n}\n.divider-solid img[data-v-04ef5265] {\n  width: 20%;\n}\n.checkout[data-v-04ef5265] {\n  background-color: rgb(246, 249, 252);\n}", ""]);
 
 // exports
 
