@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8 ">
+          <div class="col-8">
             <div v-for="(item, index) in items" :key="index" class="divider-solid line-divider-solid  py-2  d-flex justify-content-between align-items-center">
                 <img  src="../../../../public/image/categories/hamburgerjpg.jpg" alt="">
 
@@ -33,18 +33,25 @@
             </div>
 
           </div>
-          <div class="col-4 checkout ">
-            <div class="text-center mb-5 divider-solid">
-                <h5 class="fw-bold">Total</h5>
-                <h5 class="fs-1">{{total}} &euro;</h5>
-                <br>
+          <div class="col-3 offset-1 checkout ">
+
+           <!-- Bottoni Paypal -->
+
+            <div class="text-center mb-5">
+                <div v-if="!paidFor">
+                    <h2>Totale: € {{total}}</h2>
+
+                </div>
+
+                <div v-if="paidFor">
+                    <h3 class="badge badge-primary">Complimenti, il pagamento è andato a buon fine!</h3>
+                </div>
+
+                <div ref="paypal"></div>
+
             </div>
-           <label for="comments">Additional comments</label>
-            <textarea name="comments" id="comments" cols="30" rows="5"></textarea>
-            <label for="comments">Apply promo code</label>
-            <input class="form-control" type="text" placeholder="promo">
-            <button class="btn btn-outline-danger w-100 my-3 d-block">Apply promo code</button>
-            <button class="btn btn-danger w-100 my-3 d-block">Checkout</button>
+
+            <!-- <button class="btn btn-danger w-100 my-3 d-block">Checkout</button> -->
           </div>
         </div>
       </div>
@@ -57,17 +64,27 @@
             return{
                 items:null,
                 total: 0,
-
+                loaded: false,
+                paidFor: false,
             }
         },
-          mounted() {
+
+          created() {
             if (localStorage.cart) {
               this.items = JSON.parse(localStorage.cart);
-
 
             }
             this.itemTotals();
           },
+
+          mounted: function() {
+                const script = document.createElement("script");
+                script.src =
+                "https://www.paypal.com/sdk/js?client-id=AaqarfSwF5hawgDSgK0AJhmMhT8ViEOAn05yrh4OgSmFlkLHffhSpeurRoHm_wcV_fk8Z5oZhQGMlOrl";
+                script.addEventListener("load", this.setLoaded);
+                document.body.appendChild(script);
+            },
+
           methods: {
             addItem(item) {
               if (!item) {
@@ -92,17 +109,42 @@
 
             itemTotals(){
                 this.total = 0;
-
                 for (let index = 0; index < this.items.length; index++) {
                      this.total += parseFloat(this.items[index].price);
                 }
-
             },
 
-
+            setLoaded: function() {
+                this.loaded = true;
+                window.paypal
+                .Buttons({
+                    createOrder: (data, actions) => {
+                    return actions.order.create({
+                        purchase_units: [
+                            {
+                                amount: {
+                                currency_code: "USD",
+                                value: this.total
+                                }
+                            }
+                        ]
+                    });
+                    },
+                    onApprove: async (data, actions) => {
+                    const order = await actions.order.capture();
+                    this.paidFor = true;
+                    console.log(order);
+                    },
+                    onError: err => {
+                    console.log(err);
+                    }
+                })
+                .render(this.$refs.paypal);
+            }
          }
       }
       </script>
+
       <style lang="scss" scoped>
         .commands{
                 width: 100%;
@@ -141,26 +183,27 @@
         text-decoration: none;
     }
     h4{
-                color: #FF6666;
-                &:hover{
-                    color: red;
-                }
-            }
-            .active{
+            color: #FF6666;
+            &:hover{
                 color: red;
-                border-bottom: 1px solid red;
             }
-    .top{
-        background-color: #fff;
-        box-shadow: 0px 0px 15px 10px #DEDEDE;
-    }
-    .divider-solid {
-        border-bottom: 1px solid lightgrey;
-      img{
-        width: 20%;
-      }
-    }
-    .checkout{
-        background-color: rgb(246, 249, 252);
-    }
-      </style>
+            }
+        .active{
+            color: red;
+            border-bottom: 1px solid red;
+        }
+        .top{
+            background-color: #fff;
+            box-shadow: 0px 0px 15px 10px #DEDEDE;
+        }
+        .divider-solid {
+            border-bottom: 1px solid lightgrey;
+        img{
+            width: 20%;
+        }
+        }
+        .checkout{
+            background-color: rgb(246, 249, 252);
+        }
+
+</style>
