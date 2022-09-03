@@ -8,7 +8,6 @@
         <div class="sliding-menu">
             <div class="container">
                 <ul>
-
                     <li @click="getUserApi()">
                         <div>
                             <div class="icon">
@@ -17,7 +16,6 @@
                             <div class="typology-title">Tutti i ristoranti</div>
                         </div>
                     </li>
-
                     <li v-for="typology in typologies" :key="typology.id" @click="getUserByTypology(typology.id)">
                         <div>
                             <div class="icon">
@@ -26,34 +24,27 @@
                             <div class="typology-title">{{typology.name}}</div>
                         </div>
                     </li>
-
                 </ul>
             </div>
         </div>
         <section class="restaurants">
             <div class="container cards-container">
-
                 <card-item
                     v-for="user in usersLoaded"
                     :key="user.id"
-                    :user="user"
-                    />
-
-                </div>
-
-                <div @click="loadMore()" class="load-more mx-auto">Carica pi&uacute; prodotti</div>
+                    :user="user"/>
+            </div>
+            <div @click="loadMore()" class="load-more mx-auto">Carica pi&uacute; prodotti</div>
         </section>
     </main>
 </template>
 
-<!-- SCRIPT -->
 <script>
 
 import CardItem from './CardItem.vue'
 export default {
     components: { CardItem },
     name: 'HomeComp',
-
     data(){
         return{
             userApiUrl: 'http://127.0.0.1:8000/api/foods',
@@ -62,11 +53,9 @@ export default {
             length: 6
         }
     },
-
     mounted(){
         this.getUserApi()
     },
-
     methods: {
         getUserApi(){
             axios.get(this.userApiUrl)
@@ -79,7 +68,6 @@ export default {
                 console.log(error);
             })
         },
-
         getUserByTypology(id){
             axios.get(this.userApiUrl + '/user-typology/' + id)
             .then(r => {
@@ -94,33 +82,22 @@ export default {
                 console.log(error);
             })
         },
-
-
         showMenu(slug){
             console.log(slug);
         },
-
         loadMore(){
             if (this.length > this.users.length) return;
             this.length = this.length + 3;
         },
-
     },
-
     computed: {
-
         usersLoaded() {
             return this.users.slice(0, this.length);
         }
     },
-
 }
-
-
 </script>
 
-
-<!-- STYLE -->
 <style lang="scss" scoped>
 main{
     .jumbotron{
@@ -188,27 +165,27 @@ main{
         justify-content: center;
         column-gap: 30px;
     }
-}
-
-.load-more{
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 900;
-    width: 20%;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #fff;
-    background-color: #3b3b3b;
-    padding: 8px 0;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all .4s;
-    border: 1px solid #3b3b3b;
-
-    &:hover{
-        background-color: #fff;
-        border: 1px solid black;
-        color: black;
+    .load-more{
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 900;
+        width: 20%;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #fff;
+        background-color: #3b3b3b;
+        padding: 8px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all .4s;
+        outline: 2px solid transparent;
+        outline-offset: -2px;
+        &:hover{
+            background-color: #fff;
+            color: #3b3b3b;
+            outline-color: #3b3b3b;
+        }
     }
 }
+
 </style>
