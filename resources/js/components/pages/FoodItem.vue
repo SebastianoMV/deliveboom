@@ -7,7 +7,7 @@
         <div class="food-item-bottom">
             <div class="description">{{food.description}}</div>
             <div class="lower-btns">
-                <span class="price">{{food.price}}</span>
+                <span class="price">&euro; {{food.price}}</span>
                 <div class="btn-cart" @click="addItem(food)">
                     <i class="fa-solid fa-cart-plus"></i>
                 </div>
@@ -15,7 +15,6 @@
         </div>
     </div>
 </template>
-
 <script>
 export default {
     name: "FoodItem",
@@ -80,7 +79,6 @@ export default {
     }
 }
 </script>
-
 <style lang="scss" scoped>
 .food-item{
     display: flex;

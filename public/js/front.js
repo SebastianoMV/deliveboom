@@ -2641,18 +2641,22 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "food-item"
+  }, [_c("div", {
+    staticClass: "food-item-top"
   }, [_c("img", {
     attrs: {
       src: "/images/foods/".concat(_vm.food.image),
       alt: _vm.food.name
     }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "food-item-text"
-  }, [_c("h5", [_vm._v(_vm._s(_vm.food.name))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.food.description))])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("h5", [_vm._v(_vm._s(_vm.food.name))])]), _vm._v(" "), _c("div", {
+    staticClass: "food-item-bottom"
+  }, [_c("div", {
+    staticClass: "description"
+  }, [_vm._v(_vm._s(_vm.food.description))]), _vm._v(" "), _c("div", {
     staticClass: "lower-btns"
   }, [_c("span", {
     staticClass: "price"
-  }, [_vm._v(_vm._s(_vm.food.price))]), _vm._v(" "), _c("div", {
+  }, [_vm._v("€ " + _vm._s(_vm.food.price))]), _vm._v(" "), _c("div", {
     staticClass: "btn-cart",
     on: {
       click: function click($event) {
@@ -2661,7 +2665,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-cart-plus"
-  })])])]);
+  })])])])]);
 };
 
 var staticRenderFns = [];
@@ -7578,7 +7582,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  width: 260px;\n  min-height: 380px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.food-item img[data-v-ed5020b2] {\n  height: 200px;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.food-item .food-item-text[data-v-ed5020b2] {\n  text-align: center;\n}\n.food-item .food-item-text h5[data-v-ed5020b2] {\n  font-weight: bolder;\n  margin-bottom: 20px;\n}\n.food-item .food-item-text p[data-v-ed5020b2] {\n  font-size: 14px;\n  color: gray;\n}\n.food-item .lower-btns[data-v-ed5020b2] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0 20px;\n  margin-bottom: 15px;\n}\n.food-item .lower-btns .price[data-v-ed5020b2] {\n  font-size: 25px;\n  color: #4E54C8;\n  font-weight: bold;\n}\n.food-item .lower-btns .btn-cart[data-v-ed5020b2] {\n  font-size: 20px;\n  background-color: #FE3638;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n  color: white;\n  border-radius: 5px;\n  padding: 0px 8px;\n  cursor: pointer;\n  transition: 0.2s all;\n}\n.food-item .lower-btns .btn-cart[data-v-ed5020b2]:hover {\n  background-color: #C5272A;\n}\n.food-item .lower-btns .btn-cart[data-v-ed5020b2]:active {\n  background-color: white;\n  color: #FE3638;\n  outline-color: #FE3638;\n}", ""]);
+exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 260px;\n  min-height: 380px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.food-item img[data-v-ed5020b2] {\n  height: 200px;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.food-item h5[data-v-ed5020b2] {\n  font-weight: bolder;\n  margin-bottom: 12px;\n  text-align: center;\n  overflow: hidden;\n}\n.food-item .food-item-bottom[data-v-ed5020b2] {\n  position: relative;\n  text-align: center;\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2] {\n  font-size: 14px;\n  color: gray;\n  height: 63px;\n  overflow-y: scroll;\n  padding: 8px 0;\n  margin-bottom: 10px;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::before {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 55px;\n  left: 0;\n  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom .lower-btns[data-v-ed5020b2] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0 20px;\n  margin-bottom: 15px;\n}\n.food-item .food-item-bottom .lower-btns .price[data-v-ed5020b2] {\n  font-size: 25px;\n  color: #4E54C8;\n  font-weight: bold;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2] {\n  font-size: 20px;\n  background-color: #FE3638;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n  color: white;\n  border-radius: 5px;\n  padding: 0px 8px;\n  cursor: pointer;\n  transition: 0.2s all;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:hover {\n  background-color: #C5272A;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:active {\n  background-color: white;\n  color: #FE3638;\n  outline-color: #FE3638;\n}", ""]);
 
 // exports
 
