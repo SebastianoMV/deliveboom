@@ -8,7 +8,8 @@
         <div class="sliding-menu">
             <div class="container">
                 <ul>
-                    <li @click="getUserApi()">
+                    <li
+                        @click="getUserApi()">
                         <div>
                             <div class="icon">
                                 <!-- <img :src="`/image/typologies/${typology.image}`" :alt="typology.name"> -->
@@ -16,10 +17,15 @@
                             <div class="typology-title">Tutti i ristoranti</div>
                         </div>
                     </li>
-                    <li v-for="typology in typologies" :key="typology.id" @click="getUserByTypology(typology.id)">
+                    <li
+                        v-for="typology in typologies"
+                        :key="typology.id"
+                        @click="getUserByTypology(typology.id)">
                         <div>
                             <div class="icon">
-                                <img :src="`/image/typologies/${typology.image}`" :alt="typology.name">
+                                <img
+                                    :src="`/image/typologies/${typology.image}`"
+                                    :alt="typology.name">
                             </div>
                             <div class="typology-title">{{typology.name}}</div>
                         </div>
@@ -34,13 +40,14 @@
                     :key="user.id"
                     :user="user"/>
             </div>
-            <div @click="loadMore()" class="load-more mx-auto">Carica pi&uacute; prodotti</div>
+            <div
+                @click="loadMore()"
+                class="load-more mx-auto"
+                v-if="length < users.length">Carica pi&uacute; ristoranti</div>
         </section>
     </main>
 </template>
-
 <script>
-
 import CardItem from './CardItem.vue'
 export default {
     components: { CardItem },
@@ -71,12 +78,10 @@ export default {
         getUserByTypology(id){
             axios.get(this.userApiUrl + '/user-typology/' + id)
             .then(r => {
-
                 this.users = [];
                 this.users = r.data.users;
                 console.log(id);
                 console.log(this.users);
-
             })
             .catch(error =>{
                 console.log(error);
@@ -97,7 +102,6 @@ export default {
     },
 }
 </script>
-
 <style lang="scss" scoped>
 main{
     .jumbotron{
@@ -173,7 +177,7 @@ main{
         margin-bottom: 20px;
         text-align: center;
         color: #fff;
-        background-color: #3b3b3b;
+        background-color: #3B3B3B;
         padding: 8px 0;
         border-radius: 5px;
         cursor: pointer;
@@ -182,10 +186,9 @@ main{
         outline-offset: -2px;
         &:hover{
             background-color: #fff;
-            color: #3b3b3b;
-            outline-color: #3b3b3b;
+            color: #3B3B3B;
+            outline-color: #3B3B3B;
         }
     }
 }
-
 </style>

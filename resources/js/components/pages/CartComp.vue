@@ -23,7 +23,7 @@
 
                     <div class="commands">
                         <div @click="removeItem(item)" class="command remove-item"> <b>-</b> </div>
-                        <div class="command amount">0</div>
+                        <div class="command amount">{{item.quantity}}</div>
                         <div @click="addItem(item)" class="command add-item"> <b>+</b> </div>
                     </div>
 

@@ -2191,10 +2191,31 @@ __webpack_require__.r(__webpack_exports__);
 
       try {
         if (localStorage.getItem('cart') == null) {
+          food.quantity = 1;
           this.cart.push(food);
           this.saveCart();
         } else {
-          this.cart = JSON.parse(localStorage.getItem('cart')); // let flag= true;
+          this.cart = JSON.parse(localStorage.getItem('cart'));
+          var chek = this.cart.find(function (_ref) {
+            var id = _ref.id;
+            return id == food.id;
+          });
+          console.log('check' + chek);
+
+          if (!chek) {
+            food.quantity = 1;
+            console.log('checkedcart' + this.cart);
+          } else {
+            for (var i = 0; i < this.cart.length + 1; i++) {
+              if (this.cart[i].id == food.id) {
+                this.cart[i].quantity = this.cart[i].quantity + 1;
+                console.log('quantita ' + this.cart[i].quantity);
+                console.log('cart' + this.cart);
+                this.saveCart();
+                return;
+              }
+            }
+          } // let flag= true;
           // for(let i = 0; i < this.cart.length + 1; i++){
           //     if(this.cart[i].id = food.id){
           //         flag = false;
@@ -2208,6 +2229,7 @@ __webpack_require__.r(__webpack_exports__);
           //         this.food.quantity = this.food.quantity +1;
           //     }
           // }
+
 
           this.cart.push(food);
           this.saveCart();
@@ -2535,7 +2557,7 @@ var render = function render() {
       }
     }, [_c("b", [_vm._v("-")])]), _vm._v(" "), _c("div", {
       staticClass: "command amount"
-    }, [_vm._v("0")]), _vm._v(" "), _c("div", {
+    }, [_vm._v(_vm._s(item.quantity))]), _vm._v(" "), _c("div", {
       staticClass: "command add-item",
       on: {
         click: function click($event) {
@@ -2797,14 +2819,14 @@ var render = function render() {
         user: user
       }
     });
-  }), 1), _vm._v(" "), _c("div", {
+  }), 1), _vm._v(" "), _vm.length < _vm.users.length ? _c("div", {
     staticClass: "load-more mx-auto",
     on: {
       click: function click($event) {
         return _vm.loadMore();
       }
     }
-  }, [_vm._v("Carica piú prodotti")])])]);
+  }, [_vm._v("Carica piú ristoranti")]) : _vm._e()])]);
 };
 
 var staticRenderFns = [function () {
@@ -7620,7 +7642,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 60px;\n  font-size: 16px;\n  font-weight: bold;\n}\nmain .sliding-menu ul li div[data-v-4b10c5b8] {\n  color: black;\n  text-align: center;\n  text-decoration: none;\n}\nmain .sliding-menu ul li div .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li div .icon img[data-v-4b10c5b8] {\n  height: 100%;\n}\nmain .sliding-menu ul li div .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nmain .load-more[data-v-4b10c5b8] {\n  text-transform: uppercase;\n  font-size: 14px;\n  font-weight: 900;\n  width: 20%;\n  margin-bottom: 20px;\n  text-align: center;\n  color: #fff;\n  background-color: #3b3b3b;\n  padding: 8px 0;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.4s;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n}\nmain .load-more[data-v-4b10c5b8]:hover {\n  background-color: #fff;\n  color: #3b3b3b;\n  outline-color: #3b3b3b;\n}", ""]);
+exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 60px;\n  font-size: 16px;\n  font-weight: bold;\n}\nmain .sliding-menu ul li div[data-v-4b10c5b8] {\n  color: black;\n  text-align: center;\n  text-decoration: none;\n}\nmain .sliding-menu ul li div .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li div .icon img[data-v-4b10c5b8] {\n  height: 100%;\n}\nmain .sliding-menu ul li div .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nmain .load-more[data-v-4b10c5b8] {\n  text-transform: uppercase;\n  font-size: 14px;\n  font-weight: 900;\n  width: 20%;\n  margin-bottom: 20px;\n  text-align: center;\n  color: #fff;\n  background-color: #3B3B3B;\n  padding: 8px 0;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.4s;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n}\nmain .load-more[data-v-4b10c5b8]:hover {\n  background-color: #fff;\n  color: #3B3B3B;\n  outline-color: #3B3B3B;\n}", ""]);
 
 // exports
 

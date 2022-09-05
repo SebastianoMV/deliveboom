@@ -42,11 +42,32 @@ export default {
             }
             try {
                 if(localStorage.getItem('cart') == null){
+                    food.quantity = 1;
                     this.cart.push(food);
                     this.saveCart();
                 }
                 else{
+
                     this.cart = JSON.parse(localStorage.getItem('cart'));
+
+                    let chek = this.cart.find(({ id }) => id == food.id);
+                    console.log('check' + chek);
+                    if(!chek){
+                        food.quantity = 1;
+                        console.log('checkedcart'+  this.cart)
+                    }else{
+                        for(let i = 0; i < this.cart.length + 1; i++){
+                            if(this.cart[i].id == food.id){
+                                this.cart[i].quantity = this.cart[i].quantity + 1
+                                console.log('quantita ' + this.cart[i].quantity);
+                                console.log('cart' + this.cart);
+                                this.saveCart();
+                                return
+                            }
+                        }
+
+                    }
+
                     // let flag= true;
                     // for(let i = 0; i < this.cart.length + 1; i++){
                     //     if(this.cart[i].id = food.id){
