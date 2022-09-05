@@ -12,36 +12,52 @@ use App\Order;
 
 class PageController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $tipologies = Typology::all();
         $users = User::all();
 
         return response()->json(compact('tipologies', 'users'));
     }
 
-    public function getUserByTypology($id){
+    public function getUserByTypology($id)
+    {
         $tipology = Typology::where('id', $id)->with('users')->first();
 
         return response()->json($tipology);
     }
 
-    public function getUserBySlug($slug){
+    public function getUserBySlug($slug)
+    {
         $user = User::where('slug', $slug)->first();
 
         return response()->json($user);
     }
 
-    public function getFoodByUserWithCategory($id){
+    public function getFoodByUserWithCategory($id)
+    {
 
         $foods = Food::where('user_id', $id)->with('category')->get();
         $categories = Category::all();
 
-        return response()->json(compact('foods','categories'));
+        return response()->json(compact('foods', 'categories'));
     }
 
-    public function getFoodByCategory($id){
+    public function getFoodByCategory($id)
+    {
         $foods = Food::where('user_id', $id)->where('category_id', $id)->get();
 
         return response()->json($foods);
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+        $new_order = new Order();
+        $new_order->fill($data);
+        $new_order->save();
+
+        return response()->json($new_order);
     }
 }

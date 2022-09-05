@@ -2028,11 +2028,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       loaded: false,
       paidFor: false,
-      product: {
-        name: 'Nome prodotto',
-        price: 20,
-        description: "Un prodotto meraviglioso"
-      }
+      orderApi: '/api/orders',
+      newOrder: {
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        total_price: 0,
+        status_payment: 1
+      },
+      items: null
     };
   },
   mounted: function mounted() {
@@ -2041,7 +2046,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     script.addEventListener("load", this.setLoaded);
     document.body.appendChild(script);
   },
+  created: function created() {
+    if (localStorage.cart) {
+      this.items = JSON.parse(localStorage.cart);
+    }
+
+    this.itemTotals();
+    console.log(this.items);
+  },
   methods: {
+    sendOrder: function sendOrder() {
+      axios.post(this.orderApi, this.newOrder).then(function (r) {
+        console.log(r.data);
+      });
+    },
+    itemTotals: function itemTotals() {
+      this.newOrder.total_price = 0;
+
+      for (var i = 0; i < this.items.length; i++) {
+        this.newOrder.total_price += parseFloat(this.items[i].price);
+      }
+    },
     setLoaded: function setLoaded() {
       var _this = this;
 
@@ -2050,10 +2075,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         createOrder: function createOrder(data, actions) {
           return actions.order.create({
             purchase_units: [{
-              description: _this.product.description,
               amount: {
                 currency_code: "USD",
-                value: _this.product.price
+                value: _this.newOrder.total_price
               }
             }]
           });
@@ -2542,21 +2566,168 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", [_c("div", {
-    staticClass: "container debug mt-5"
+    staticClass: "container my-5"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-6 debug p-4 text-center"
+    staticClass: "col-6 p-4 text-center"
   }, [_c("h4", [_c("router-link", {
     attrs: {
       to: {
         name: "cart"
       }
     }
-  }, [_vm._v("Carrello")])], 1)]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", [!_vm.paidFor ? _c("div", [_c("h1", [_vm._v(_vm._s(_vm.product.name))]), _vm._v(" "), _c("h2", [_vm._v(_vm._s(_vm.product.price) + " €")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.product.description))])]) : _vm._e(), _vm._v(" "), _vm.paidFor ? _c("div", [_c("h1", [_vm._v("Complimenti, il pagamento è andato a buon fine!")])]) : _vm._e(), _vm._v(" "), _c("div", {
-    ref: "paypal",
-    staticClass: "pay"
-  })])])]);
+  }, [_vm._v("Carrello "), _c("i", {
+    staticClass: "fa-solid fa-cart-arrow-down"
+  })])], 1)]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
+    staticClass: "row mt-4"
+  }, [_c("div", {
+    staticClass: "col-6"
+  }, [_c("form", [_c("h4", {
+    staticClass: "mb-3"
+  }, [_vm._v("Dettagli dell’ordine")]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model.trim",
+      value: _vm.newOrder.name,
+      expression: "newOrder.name",
+      modifiers: {
+        trim: true
+      }
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "name",
+      placeholder: "Nome"
+    },
+    domProps: {
+      value: _vm.newOrder.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.newOrder, "name", $event.target.value.trim());
+      },
+      blur: function blur($event) {
+        return _vm.$forceUpdate();
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model.trim",
+      value: _vm.newOrder.email,
+      expression: "newOrder.email",
+      modifiers: {
+        trim: true
+      }
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "email",
+      placeholder: "E-mail"
+    },
+    domProps: {
+      value: _vm.newOrder.email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.newOrder, "email", $event.target.value.trim());
+      },
+      blur: function blur($event) {
+        return _vm.$forceUpdate();
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model.trim",
+      value: _vm.newOrder.address,
+      expression: "newOrder.address",
+      modifiers: {
+        trim: true
+      }
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "address",
+      placeholder: "Indirizzo"
+    },
+    domProps: {
+      value: _vm.newOrder.address
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.newOrder, "address", $event.target.value.trim());
+      },
+      blur: function blur($event) {
+        return _vm.$forceUpdate();
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model.trim",
+      value: _vm.newOrder.phone,
+      expression: "newOrder.phone",
+      modifiers: {
+        trim: true
+      }
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "phone",
+      placeholder: "Telefono"
+    },
+    domProps: {
+      value: _vm.newOrder.phone
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.newOrder, "phone", $event.target.value.trim());
+      },
+      blur: function blur($event) {
+        return _vm.$forceUpdate();
+      }
+    }
+  })]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-primary mt-3 w-100",
+    attrs: {
+      type: "submit"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.sendOrder();
+      }
+    }
+  }, [_vm._v("Invia")])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-4 offset-1"
+  }, [!_vm.paidFor ? _c("div", [_c("h5", {
+    staticClass: "text-right p-3 text-muted"
+  }, [_vm._v("Totale ordine: "), _c("strong", [_vm._v(_vm._s(_vm.newOrder.total_price) + " €")])]), _vm._v(" "), _c("div", {
+    ref: "paypal"
+  })]) : _vm._e(), _vm._v(" "), _vm.paidFor ? _c("div", [_c("h4", {
+    staticClass: "alert alert-warning"
+  }, [_vm._v("Complimenti, il pagamento è andato a buon fine!")])]) : _vm._e()])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -2564,8 +2735,10 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "col-6 debug p-4 text-center"
-  }, [_c("h4", [_vm._v("Checkout")])]);
+    staticClass: "col-6 active p-4 text-center"
+  }, [_c("h4", [_vm._v("Checkout "), _c("i", {
+    staticClass: "fa-regular fa-credit-card"
+  })])]);
 }];
 render._withStripped = true;
 
@@ -7511,7 +7684,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".pay[data-v-5c3420ea] {\n  width: 35%;\n}\n.debug[data-v-5c3420ea] {\n  border: 1px solid black;\n  background-color: rgba(255, 0, 0, 0.3);\n}", ""]);
+exports.push([module.i, ".debug[data-v-5c3420ea] {\n  border: 1px solid black;\n}\na[data-v-5c3420ea] {\n  color: #FF6666;\n  text-decoration: none;\n}\n.active[data-v-5c3420ea] {\n  color: red;\n  border-bottom: 1px solid red;\n}", ""]);
 
 // exports
 
@@ -55233,9 +55406,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })
