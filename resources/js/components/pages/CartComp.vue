@@ -22,36 +22,26 @@
                 <div class="quantity">
 
                     <div class="commands">
-                        <div @click="removeItem(item)" class="command remove-item"> <b>-</b> </div>
+                        <div @click="removeItem(item , index)" class="command remove-item"> <b>-</b> </div>
                         <div class="command amount">{{item.quantity}}</div>
                         <div @click="addItem(item)" class="command add-item"> <b>+</b> </div>
                     </div>
 
 
-                    <div class="remove text-danger" @click="removeItem(index)">Remove <i class="fa-solid fa-trash-can"></i></div>
+                    <div class="remove text-danger" @click="removeAll(item , index)">Remove <i class="fa-solid fa-trash-can"></i></div>
                 </div>
             </div>
 
           </div>
           <div class="col-3 offset-1 checkout ">
 
-           <!-- Bottoni Paypal -->
 
             <div class="text-center mb-5">
-                <div v-if="!paidFor">
-                    <h2>Totale: € {{total}}</h2>
-
-                </div>
-
-                <div v-if="paidFor">
-                    <h3 class="badge badge-primary">Complimenti, il pagamento è andato a buon fine!</h3>
-                </div>
-
-                <div ref="paypal"></div>
+                <h2>Totale: € {{total}}</h2>
+                <button class="btn btn-danger w-100 my-3 d-block">Checkout</button>
 
             </div>
 
-            <!-- <button class="btn btn-danger w-100 my-3 d-block">Checkout</button> -->
           </div>
         </div>
       </div>
@@ -77,27 +67,27 @@
             this.itemTotals();
           },
 
-          mounted: function() {
-                const script = document.createElement("script");
-                script.src =
-                "https://www.paypal.com/sdk/js?client-id=AaqarfSwF5hawgDSgK0AJhmMhT8ViEOAn05yrh4OgSmFlkLHffhSpeurRoHm_wcV_fk8Z5oZhQGMlOrl";
-                script.addEventListener("load", this.setLoaded);
-                document.body.appendChild(script);
-            },
 
           methods: {
             addItem(item) {
-              if (!item) {
-                return;
-              }
-
-              this.items.push(item);
-              this.saveCart();
-              this.itemTotals()
+                item.quantity++;
+                this.itemTotals()
             },
 
-            removeItem(index) {
+            removeItem(item , index){
+                if(item.quantity > 1){
+                    item.quantity--;
+
+                }else{
+                    this.removeAll(index)
+                }
+
+                this.itemTotals()
+            },
+
+            removeAll(item , index) {
               this.items.splice(index, 1);
+              console.log(index);
               this.saveCart();
               this.itemTotals()
             },
@@ -110,37 +100,11 @@
             itemTotals(){
                 this.total = 0;
                 for (let index = 0; index < this.items.length; index++) {
-                     this.total += parseFloat(this.items[index].price);
+
+                    this.total += parseFloat(this.items[index].price)*this.items[index].quantity;
                 }
             },
 
-            setLoaded: function() {
-                this.loaded = true;
-                window.paypal
-                .Buttons({
-                    createOrder: (data, actions) => {
-                    return actions.order.create({
-                        purchase_units: [
-                            {
-                                amount: {
-                                currency_code: "USD",
-                                value: this.total
-                                }
-                            }
-                        ]
-                    });
-                    },
-                    onApprove: async (data, actions) => {
-                    const order = await actions.order.capture();
-                    this.paidFor = true;
-                    console.log(order);
-                    },
-                    onError: err => {
-                    console.log(err);
-                    }
-                })
-                .render(this.$refs.paypal);
-            }
          }
       }
       </script>

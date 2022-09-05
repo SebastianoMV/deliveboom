@@ -67,21 +67,6 @@ export default {
                         }
 
                     }
-
-                    // let flag= true;
-                    // for(let i = 0; i < this.cart.length + 1; i++){
-                    //     if(this.cart[i].id = food.id){
-                    //         flag = false;
-                    //     }
-                    // }
-                    // if(flag){
-                    //     this.food.quantity = 1;
-                    // }
-                    // for(let i = 0; i < this.cart.length + 1; i++){
-                    //     if(this.cart[i].id = food.id){
-                    //         this.food.quantity = this.food.quantity +1;
-                    //     }
-                    // }
                     this.cart.push(food);
                     this.saveCart();
                 }
