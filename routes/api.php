@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Api')
     ->prefix('foods')
-    ->group(function(){
+    ->group(function () {
         Route::get('/', 'PageController@index');
         Route::get('/user-typology/{id}', 'PageController@getUserByTypology');
 
@@ -20,3 +20,5 @@ Route::namespace('Api')
 
         Route::get('/food-category-filtered/{id}', 'PageController@getFoodByCategory');
     });
+
+Route::post('/orders', 'Api\PageController@store');
