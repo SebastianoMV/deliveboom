@@ -13,7 +13,6 @@ return [
         'vegan' => 1,
         'image' => 'food_01.jpg',
     ],
-
     [
         'name' => 'Margherita',
         'category_id' => 1,
@@ -24,8 +23,6 @@ return [
         'vegan' => 0,
         'image' => 'food_02.jpg',
     ],
-
-
     [
         'name' => 'Pilsner Urquell',
         'category_id' => '2',
@@ -37,8 +34,6 @@ return [
         'vegan' => 1,
         'image' => 'food_01.webp',
     ],
-
-
     [
         'name' => 'Grolsch Weizen',
         'category_id' => '2',
@@ -51,54 +46,16 @@ return [
         'vegan' => 1,
         'image' => 'food_04.jpg',
     ],
-
-    [
-        'name' => 'Bacon Cheeseburger',
-        'category_id' => '7',
-        'user_id' => '6',
-        'description' => 'Hamburger di carne cotti alla griglia sul momento, con formaggio americano.
-        50 cl',
-        'price' => '13.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_05.jpg',
-    ],
-
-    [
-        'name' => 'Cheeseburger',
-        'category_id' => '7',
-        'user_id' => '6',
-        'description' => 'Formaggio americano fuso tra hamburger di carne fresca appena grigliati',
-        'price' => '12.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_06.jpg',
-    ],
-
-
     [
         'name' => 'Coca Cola',
         'category_id' => '2',
-        'user_id' => '6',
+        'user_id' => '25',
         'description' => 'Un gusto unico, come te: prova il gusto originale di Coca-Cola',
         'price' => '2.50',
         'is_visible' => 1,
         'vegan' => 1,
         'image' => 'food_07.jpg',
     ],
-
-    [
-        'name' => 'Coca Cola Zero',
-        'category_id' => '2',
-        'user_id' => '6',
-        'description' => 'Coca-Cola Zero Zuccheri è la bevanda senza zuccheri dall’inconfondibile gusto Coca-Cola;',
-        'price' => '2.50',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_08.png',
-    ],
-
-
     [
         'name' => 'Ramen',
         'category_id' => '5',
@@ -109,9 +66,6 @@ return [
         'vegan' => 0,
         'image' => 'food_09.jpg',
     ],
-
-
-
     [
         'name' => 'Spaghetti di Riso con Gamberi',
         'category_id' => '5',
@@ -122,8 +76,6 @@ return [
         'vegan' => 0,
         'image' => 'food_10.jpg',
     ],
-
-
     [
         'name' => 'Tiramisù',
         'category_id' => '3',
@@ -134,9 +86,6 @@ return [
         'vegan' => 0,
         'image' => 'food_11.webp',
     ],
-
-
-
     [
         'name' => 'Torta al Cioccolao',
         'category_id' => '3',
@@ -147,61 +96,9 @@ return [
         'vegan' => 0,
         'image' => 'food_12.jpg',
     ],
-
-
-    [
-        'name' => 'Japanese Udon Noodles',
-        'category_id' => '5',
-        'user_id' => '2',
-        'description' => 'Noodles saltati in padella vengono cucinati con una salsa saporita e una miscela nutriente di carote',
-        'price' => '8.00',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_13.png',
-    ],
-
-
-
-    [
-        'name' => 'Riso Bianco',
-        'category_id' => '5',
-        'user_id' => '2',
-        'description' => 'Riso bianco al vapore',
-        'price' => '5.00',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_14.png',
-    ],
-
-
-    [
-        'name' => 'Cheesecake',
-        'category_id' => '3',
-        'user_id' => '2',
-        'description' => 'Cheesecake dolce e cremosa in stile newyorkese, cotta su una crosta burrosa di cracker graham',
-        'price' => '5.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_15.png',
-    ],
-
-
-
-    [
-        'name' => 'Chocolate Chip Cookie',
-        'category_id' => '3',
-        'user_id' => '2',
-        'description' => 'Biscotti ripieni di grossi pezzi di gocce di cioccolato.',
-        'price' => '4.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_16.png',
-    ],
-
-
     [
         'name' => 'Margherita',
-        'category_id' => 1,
+        'category_id' => '1',
         'user_id' => '4',
         'description' => 'Base croccante, impasto soffice, la pizza Spontini è unica nel panorama delle pizzerie.
         La fetta normale pesa poco più di 300 grammi.',
@@ -210,12 +107,9 @@ return [
         'vegan' => 0,
         'image' => 'food_17.jpg',
     ],
-
-
-
     [
         'name' => 'Margherita Doppia Mozzarella',
-        'category_id' => '5',
+        'category_id' => '1',
         'user_id' => '4',
         'description' => 'Base croccante, impasto soffice, la pizza Spontini è unica nel panorama delle pizzerie.
         La fetta normale pesa poco più di 300 grammi.',
@@ -224,8 +118,6 @@ return [
         'vegan' => 0,
         'image' => 'food_18.jpg',
     ],
-
-
     [
         'name' => 'Coca Cola',
         'category_id' => '2',
@@ -236,7 +128,6 @@ return [
         'vegan' => 1,
         'image' => 'food_07.jpg',
     ],
-
     [
         'name' => 'Coca Cola Zero',
         'category_id' => '2',
@@ -247,9 +138,6 @@ return [
         'vegan' => 1,
         'image' => 'food_08.png',
     ],
-
-
-
     [
         'name' => 'Jungle BBQ',
         'category_id' => '7',
@@ -260,9 +148,6 @@ return [
         'vegan' => 1,
         'image' => 'food_19.jpg',
     ],
-
-
-
     [
         'name' => 'Coccinella Burger',
         'category_id' => '7',
@@ -273,8 +158,6 @@ return [
         'vegan' => 1,
         'image' => 'food_20.jpg',
     ],
-
-
     [
         'name' => 'Tiramisun',
         'category_id' => '3',
@@ -283,10 +166,8 @@ return [
         'price' => '7.50',
         'is_visible' => 1,
         'vegan' => 1,
-        'image' => 'food_22.jpg',
+        'image' => 'food_21.jpg',
     ],
-
-
     [
         'name' => 'Salame di Cioccolato',
         'category_id' => '3',
@@ -297,10 +178,6 @@ return [
         'vegan' => 1,
         'image' => 'food_22.jpg',
     ],
-
-
-
-
     [
         'name' => 'Tortellini in Brodo',
         'category_id' => '5',
@@ -311,9 +188,6 @@ return [
         'vegan' => 0,
         'image' => 'food_23.webp',
     ],
-
-
-
     [
         'name' => 'Spaghetto Eataly',
         'category_id' => '5',
@@ -324,8 +198,6 @@ return [
         'vegan' => 1,
         'image' => 'food_24.webp',
     ],
-
-
     [
         'name' => 'Pilsner Urquell',
         'category_id' => '2',
@@ -337,8 +209,6 @@ return [
         'vegan' => 1,
         'image' => 'food_01.webp',
     ],
-
-
     [
         'name' => 'Grolsch Weizen',
         'category_id' => '2',
@@ -351,9 +221,6 @@ return [
         'vegan' => 1,
         'image' => 'food_04.jpg',
     ],
-
-
-
     [
         'name' => 'La Solare',
         'category_id' => '7',
@@ -364,9 +231,6 @@ return [
         'vegan' => 0,
         'image' => 'food_25.png',
     ],
-
-
-
     [
         'name' => 'La Regina Pistacchio',
         'category_id' => '7',
@@ -413,7 +277,7 @@ return [
         'price' => '14.50',
         'is_visible' => 1,
         'vegan' => 0,
-        'image' => 'food_29.png',
+        'image' => 'food_29.jpg',
     ],
 
 
@@ -426,7 +290,7 @@ return [
         'price' => '19.50',
         'is_visible' => 1,
         'vegan' => 0,
-        'image' => 'food_30.png',
+        'image' => 'food_30.jpg',
     ],
 
 
@@ -438,7 +302,7 @@ return [
         'price' => '5.50',
         'is_visible' => 1,
         'vegan' => 1,
-        'image' => 'food_31.png',
+        'image' => 'food_31.jpg',
     ],
 
 
@@ -452,60 +316,6 @@ return [
         'vegan' => 1,
         'image' => 'food_32.webp',
     ],
-
-
-
-
-
-    [
-        'name' => 'Steak Tartare',
-        'category_id' => '6',
-        'user_id' => '9',
-        'description' => 'Ca. 210 g. Raffinato crudo di manzo condito con una salsa esclusiva Roadhouse',
-        'price' => '14.50',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_29.png',
-    ],
-
-
-
-    [
-        'name' => 'Costata',
-        'category_id' => '6',
-        'user_id' => '9',
-        'description' => 'Ca. 400 g. Lasciati stupire dalla maestosità',
-        'price' => '19.50',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_30.png',
-    ],
-
-
-    [
-        'name' => 'Apple Pie ',
-        'category_id' => '3',
-        'user_id' => '9',
-        'description' => 'Torta di mele con gelato alla vaniglia, ingredienti di qualità e lavorazione artigianale.',
-        'price' => '5.50',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_31.png',
-    ],
-
-
-    [
-        'name' => 'Fabulous cake',
-        'category_id' => '6',
-        'user_id' => '9',
-        'description' => 'Goloso gioco di consistenze: soffice pan di spagna, delicata mousse e scaglie di cioccolato.',
-        'price' => '5.50',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_32.webp',
-    ],
-
-
 
 
     [
@@ -792,7 +602,7 @@ return [
         'price' => '15.00',
         'is_visible' => 1,
         'vegan' => 0,
-        'image' => 'food_54.webp',
+        'image' => 'food_54.jpg',
     ],
 
     [
@@ -823,7 +633,7 @@ return [
     [
         'name' => 'Fish Baguette',
         'category_id' => '7',
-        'user_id' => '16',
+        'user_id' => '15',
         'description' => 'Baguette con pesce',
         'price' => '9.50',
         'is_visible' => 1,
@@ -835,7 +645,7 @@ return [
     [
         'name' => 'Bagel Salmone',
         'category_id' => '7',
-        'user_id' => '16',
+        'user_id' => '15',
         'description' => 'Bagel con salmone affumicato',
         'price' => '12.00',
         'is_visible' => 1,
@@ -846,7 +656,7 @@ return [
     [
         'name' => 'Budino Cioccolato',
         'category_id' => '3',
-        'user_id' => '16',
+        'user_id' => '15',
         'description' => 'Budino al cioccolato con salsa alla vaniglia ',
         'price' => '5.00',
         'is_visible' => 1,
@@ -857,7 +667,7 @@ return [
     [
         'name' => 'Budino Frutti Rossi ',
         'category_id' => '3',
-        'user_id' => '16',
+        'user_id' => '15',
         'description' => 'Budino al cioccolato con composta di bacche rosse e vaniglia',
         'price' => '5.00',
         'is_visible' => 1,
@@ -913,12 +723,63 @@ return [
     ],
 
 
+    [
+        'name' => 'Japanese Udon Noodles',
+        'category_id' => '5',
+        'user_id' => '17',
+        'description' => 'Noodles saltati in padella vengono cucinati con una salsa saporita e una miscela nutriente di carote',
+        'price' => '8.00',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_13.png',
+    ],
+
+
+
+    [
+        'name' => 'Riso Bianco',
+        'category_id' => '5',
+        'user_id' => '17',
+        'description' => 'Riso bianco al vapore',
+        'price' => '5.00',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_14.png',
+    ],
+
+
+    [
+        'name' => 'Cheesecake',
+        'category_id' => '3',
+        'user_id' => '17',
+        'description' => 'Cheesecake dolce e cremosa in stile newyorkese, cotta su una crosta burrosa di cracker graham',
+        'price' => '5.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_15.png',
+    ],
+
+
+
+    [
+        'name' => 'Chocolate Chip Cookie',
+        'category_id' => '3',
+        'user_id' => '17',
+        'description' => 'Biscotti ripieni di grossi pezzi di gocce di cioccolato.',
+        'price' => '4.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_16.png',
+    ],
+
+
+
 
 
     [
         'name' => 'Filet Mignon',
         'category_id' => '6',
-        'user_id' => '18',
+        'user_id' => '38',
         'description' => 'Preferito da molti per la sua consistenza che si scioglie in bocca',
         'price' => '25.00',
         'is_visible' => 1,
@@ -930,7 +791,7 @@ return [
     [
         'name' => 'Cowboy Ribeye (Bistecca) ',
         'category_id' => '6',
-        'user_id' => '18',
+        'user_id' => '38',
         'description' => 'Il nostro Cowboy Ribeye è una bistecca di costolette perfettamente marmorizzata',
         'price' => '22.00',
         'is_visible' => 1,
@@ -941,7 +802,7 @@ return [
     [
         'name' => 'Purè di patate',
         'category_id' => '4',
-        'user_id' => '18',
+        'user_id' => '38',
         'description' => 'Gelato al tè verdè servito con pezzi di cioccolato',
         'price' => '5.00',
         'is_visible' => 1,
@@ -952,7 +813,7 @@ return [
     [
         'name' => 'Patate Fresche',
         'category_id' => '4',
-        'user_id' => '18',
+        'user_id' => '38',
         'description' => 'Prova il nostro gelato artiginale',
         'price' => '5.00',
         'is_visible' => 1,
@@ -966,7 +827,7 @@ return [
     [
         'name' => 'Udon con Pollo e Verdure',
         'category_id' => '6',
-        'user_id' => '19',
+        'user_id' => '12',
         'description' => 'Udon con Pollo e Verdure.',
         'price' => '7.00',
         'is_visible' => 1,
@@ -978,7 +839,7 @@ return [
     [
         'name' => 'Ramen con Manzo',
         'category_id' => '6',
-        'user_id' => '19',
+        'user_id' => '12',
         'description' => 'Ramen con Manzo, Verdure e Uova in brodo',
         'price' => '8.00',
         'is_visible' => 1,
@@ -989,7 +850,7 @@ return [
     [
         'name' => 'Contadi Castaldi FranciaCorta Brut DOCG',
         'category_id' => '2',
-        'user_id' => '19',
+        'user_id' => '12',
         'description' => 'Bottiglia FranciaCorta Brut',
         'price' => '30.00',
         'is_visible' => 1,
@@ -1000,7 +861,7 @@ return [
     [
         'name' => 'Contadi Castaldi FranciaCorta Rosè DOCG',
         'category_id' => '2',
-        'user_id' => '19',
+        'user_id' => '12',
         'description' => 'Bottiglia FranciaCorta Rosè',
         'price' => '5.00',
         'is_visible' => 1,
@@ -1202,7 +1063,7 @@ return [
     [
         'name' => 'Carbonara',
         'category_id' => '5',
-        'user_id' => '24',
+        'user_id' => '31',
         'description' => 'Spaghetti alla Carbonara: Guanciale, Pecorino Romano, Pepe Nero, Tuorlo',
         'price' => '9.50',
         'is_visible' => 1,
@@ -1214,7 +1075,7 @@ return [
     [
         'name' => 'Bolognese',
         'category_id' => '5',
-        'user_id' => '24',
+        'user_id' => '31',
         'description' => 'Spaghetti con ragù alla Bolognese: Carne trita di manzo, Pancetta e Passata di Pomodoro',
         'price' => '8.00',
         'is_visible' => 1,
@@ -1225,7 +1086,7 @@ return [
     [
         'name' => 'Caprese',
         'category_id' => '4',
-        'user_id' => '24',
+        'user_id' => '31',
         'description' => 'Pomodoro, mozzarella di bufala, basilico, rucola, olio extravergine di oliva e aceto balsamico',
         'price' => '5.50',
         'is_visible' => 1,
@@ -1236,7 +1097,7 @@ return [
     [
         'name' => 'Insalata Mista della Casa',
         'category_id' => '4',
-        'user_id' => '24',
+        'user_id' => '31',
         'description' => 'Insalata mista, pomodorini, carote grattugiate, cetrioli, zucchine, peperoni, ravanello, funghi',
         'price' => '4.50',
         'is_visible' => 1,
@@ -1576,36 +1437,10 @@ return [
     ],
 
 
-
-    [
-        'name' => 'Teglia Funghi Rossa Senza Lattosio',
-        'category_id' => 1,
-        'user_id' => '32',
-        'description' => 'Ingredienti: Funghi, Pomodoro',
-        'price' => '6.00',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_117.jpg',
-    ],
-
-
-    [
-        'name' => 'Teglia Patate e Rosmarino Senza Lattosio',
-        'category_id' => 1,
-        'user_id' => '32',
-        'description' => 'Ingredienti: Patate, Rosmarino',
-        'price' => '7.00',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_118.jpg',
-    ],
-
-
-
     [
         'name' => 'Coca Cola',
         'category_id' => '2',
-        'user_id' => '32',
+        'user_id' => '21',
         'description' => 'Un gusto unico, come te: prova il gusto originale di Coca-Cola',
         'price' => '2.50',
         'is_visible' => 1,
@@ -1616,7 +1451,7 @@ return [
     [
         'name' => 'Coca Cola Zero',
         'category_id' => '2',
-        'user_id' => '32',
+        'user_id' => '21',
         'description' => 'Coca-Cola Zero Zuccheri è la bevanda senza zuccheri dall’inconfondibile gusto Coca-Cola',
         'price' => '2.50',
         'is_visible' => 1,
@@ -1726,7 +1561,7 @@ return [
     [
         'name' => 'Del Taco (Crunchy)',
         'category_id' => '7',
-        'user_id' => '35',
+        'user_id' => '23',
         'description' => 'Il Del Taco è ispirato all\'originale e ricco di tutto ciò che ami',
         'price' => '12.00',
         'is_visible' => 1,
@@ -1738,7 +1573,7 @@ return [
     [
         'name' => 'CrunchTada Tostada',
         'category_id' => '7',
-        'user_id' => '35',
+        'user_id' => '23',
         'description' => 'L\'originale Crunchtada Un guscio di mais denso',
         'price' => '14.00',
         'is_visible' => 1,
@@ -1747,22 +1582,10 @@ return [
     ],
 
 
-
-    [
-        'name' => 'Donut Bites (4 Pz.)',
-        'category_id' => '3',
-        'user_id' => '35',
-        'description' => 'Bocconcini di ciambella croccanti cosparsi di zucchero alla cannella.',
-        'price' => '5.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_127.png',
-    ],
-
     [
         'name' => 'Frullato di piñata alla fragola realizzato con caramelle M&M\'s',
         'category_id' => '3',
-        'user_id' => '35',
+        'user_id' => '23',
         'description' => 'Regalati un frullato ricco e cremoso frullato a mano a base di caramelle M&M\'S® e vera fragola.',
         'price' => '4.00',
         'is_visible' => 1,

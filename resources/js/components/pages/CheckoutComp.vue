@@ -112,7 +112,7 @@
         itemTotals(){
                 this.newOrder.total_price = 0;
                 for (let i = 0; i < this.items.length; i++) {
-                     this.newOrder.total_price += parseFloat(this.items[i].price);
+                     this.newOrder.total_price += parseFloat(this.items[i].price)*this.items[i].quantity;
                 }
             },
 

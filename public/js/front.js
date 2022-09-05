@@ -2064,7 +2064,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.newOrder.total_price = 0;
 
       for (var i = 0; i < this.items.length; i++) {
-        this.newOrder.total_price += parseFloat(this.items[i].price);
+        this.newOrder.total_price += parseFloat(this.items[i].price) * this.items[i].quantity;
       }
     },
     setLoaded: function setLoaded() {
@@ -2477,7 +2477,9 @@ var render = function render() {
         name: "checkout"
       }
     }
-  }, [_vm._v("Checkout")])], 1)])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Checkout "), _c("i", {
+    staticClass: "fa-regular fa-credit-card"
+  })])], 1)])]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-8"
@@ -2530,9 +2532,15 @@ var render = function render() {
     staticClass: "col-3 offset-1 checkout"
   }, [_c("div", {
     staticClass: "text-center mb-5"
-  }, [_c("h2", [_vm._v("Totale: € " + _vm._s(_vm.total))]), _vm._v(" "), _c("button", {
+  }, [_c("h2", [_vm._v("Totale: € " + _vm._s(_vm.total))]), _vm._v(" "), _c("router-link", {
+    attrs: {
+      to: {
+        name: "checkout"
+      }
+    }
+  }, [_c("button", {
     staticClass: "btn btn-danger w-100 my-3 d-block"
-  }, [_vm._v("Checkout")])])])])])]);
+  }, [_vm._v("Checkout")])])], 1)])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -55406,9 +55414,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Boolean\deliveboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })

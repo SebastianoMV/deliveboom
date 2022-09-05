@@ -6,7 +6,7 @@
             <h4>Carrello <i class="fa-solid fa-cart-arrow-down"></i> </h4>
           </div>
           <div class="col-6  p-4  text-center">
-            <h4><router-link :to="{name: 'checkout'}">Checkout</router-link></h4>
+            <h4><router-link :to="{name: 'checkout'}">Checkout <i class="fa-regular fa-credit-card"></i></router-link></h4>
           </div>
         </div>
         <div class="row">
@@ -38,7 +38,10 @@
 
             <div class="text-center mb-5">
                 <h2>Totale: € {{total}}</h2>
-                <button class="btn btn-danger w-100 my-3 d-block">Checkout</button>
+                <router-link :to="{name: 'checkout'}">
+                    <button class="btn btn-danger w-100 my-3 d-block">Checkout</button>
+                </router-link>
+
 
             </div>
 
