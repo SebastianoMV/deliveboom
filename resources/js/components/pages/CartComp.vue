@@ -28,7 +28,7 @@
                     </div>
 
 
-                    <div class="remove text-danger" @click="removeAll(item , index)">Remove <i class="fa-solid fa-trash-can"></i></div>
+                    <div class="remove text-danger" @click="removeAll(index)">Remove <i class="fa-solid fa-trash-can"></i></div>
                 </div>
             </div>
 
@@ -88,7 +88,7 @@
                 this.itemTotals()
             },
 
-            removeAll(item , index) {
+            removeAll(index) {
               this.items.splice(index, 1);
               console.log(index);
               this.saveCart();

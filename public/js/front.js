@@ -1983,7 +1983,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.itemTotals();
     },
-    removeAll: function removeAll(item, index) {
+    removeAll: function removeAll(index) {
       this.items.splice(index, 1);
       console.log(index);
       this.saveCart();
@@ -2522,7 +2522,7 @@ var render = function render() {
       staticClass: "remove text-danger",
       on: {
         click: function click($event) {
-          return _vm.removeAll(item, index);
+          return _vm.removeAll(index);
         }
       }
     }, [_vm._v("Remove "), _c("i", {
