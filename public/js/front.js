@@ -2189,11 +2189,15 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      this.cart.push(food);
-      this.newItem = '';
-      this.saveCart();
+      try {
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+        this.cart.push(food);
+        this.saveCart();
+      } catch (e) {
+        localStorage.removeItem('cart');
+      }
     },
-    removeCat: function removeCat(x) {
+    removeItem: function removeItem(x) {
       this.cart.splice(x, 1);
       this.saveCart();
     },
@@ -2225,6 +2229,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       categories: [],
+      currentCategory: 0,
       user: [],
       foods: [],
       foodsFiltered: [],
@@ -2238,9 +2243,9 @@ __webpack_require__.r(__webpack_exports__);
     getUser: function getUser(slug) {
       var _this = this;
 
+      this.currentCategory = 0;
       axios.get(this.userApiUrl + '/menu/' + slug).then(function (r) {
-        _this.user = r.data;
-        console.log(_this.user);
+        _this.user = r.data; // console.log(this.user);
 
         _this.getFoodsApi(_this.user.id);
       });
@@ -2251,28 +2256,26 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(this.userApiUrl + '/food-category/' + id).then(function (r) {
         _this2.foods = r.data.foods;
         _this2.foodsFiltered = r.data.foods;
-        _this2.categories = r.data.categories;
-        console.log(id);
-        console.log(_this2.categories);
+        _this2.categories = r.data.categories; // console.log(id);
+        // console.log(this.categories);
       });
     },
-    filteredFoods: function filteredFoods(category) {
+    filteredFoods: function filteredFoods(categoryId) {
       this.foodsFiltered = [];
+      this.currentCategory = categoryId;
 
-      for (var index = 0; index < this.foods.length; index++) {
-        if (this.foods[index].category_id == category) {
-          this.foodsFiltered.push(this.foods[index]);
+      for (var i = 0; i < this.foods.length; i++) {
+        if (this.foods[i].category_id == categoryId) {
+          this.foodsFiltered.push(this.foods[i]);
         }
-      }
+      } // console.log(this.foodsFiltered);
 
-      console.log(this.foodsFiltered);
-      return;
     },
-    foodHasCategory: function foodHasCategory(category) {
+    foodHasCategory: function foodHasCategory(categoryId) {
       var flag = false;
 
-      for (var index = 0; index < this.foods.length; index++) {
-        if (this.foods[index].category_id == category) {
+      for (var i = 0; i < this.foods.length; i++) {
+        if (this.foods[i].category_id == categoryId) {
           flag = true;
         }
       }
@@ -2630,7 +2633,7 @@ var render = function render() {
     staticClass: "lower-btns"
   }, [_c("span", {
     staticClass: "price"
-  }, [_vm._v(_vm._s(_vm.food.price))]), _vm._v(" "), _c("a", {
+  }, [_vm._v(_vm._s(_vm.food.price))]), _vm._v(" "), _c("div", {
     staticClass: "btn-cart",
     on: {
       click: function click($event) {
@@ -2690,12 +2693,13 @@ var render = function render() {
         expression: "foodHasCategory(category.id)"
       }],
       key: category.id,
+      "class": category.id == _vm.currentCategory ? "active" : "",
       on: {
         click: function click($event) {
           return _vm.filteredFoods(category.id);
         }
       }
-    }, [_c("a", [_vm._v("\n                            " + _vm._s(category.name) + "\n                        ")])]);
+    }, [_vm._v("\n                        " + _vm._s(category.name) + "\n                    ")]);
   }), 0)])])]), _vm._v(" "), _c("div", {
     staticClass: "foods-container container"
   }, [_c("h1", [_vm._v(_vm._s(_vm.user.name))]), _vm._v(" "), _c("div", {
@@ -7555,7 +7559,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  width: 260px;\n  min-height: 380px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.food-item img[data-v-ed5020b2] {\n  height: 200px;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.food-item .food-item-text[data-v-ed5020b2] {\n  text-align: center;\n}\n.food-item .food-item-text h5[data-v-ed5020b2] {\n  font-weight: bolder;\n  margin-bottom: 20px;\n}\n.food-item .food-item-text p[data-v-ed5020b2] {\n  font-size: 14px;\n  color: gray;\n}\n.food-item .lower-btns[data-v-ed5020b2] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0 20px;\n  margin-bottom: 15px;\n}\n.food-item .lower-btns .price[data-v-ed5020b2] {\n  font-size: 25px;\n  color: #4E54C8;\n  font-weight: bold;\n}\n.food-item .lower-btns .btn-cart[data-v-ed5020b2] {\n  font-size: 20px;\n  background-color: #FE3638;\n  padding: 0 10px;\n  border-radius: 5px;\n  transition: 0.2s background-color;\n}\n.food-item .lower-btns .btn-cart .fa-cart-plus[data-v-ed5020b2] {\n  color: white;\n}\n.food-item .lower-btns .btn-cart[data-v-ed5020b2]:hover {\n  background-color: #C5272A;\n}", ""]);
+exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  width: 260px;\n  min-height: 380px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.food-item img[data-v-ed5020b2] {\n  height: 200px;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.food-item .food-item-text[data-v-ed5020b2] {\n  text-align: center;\n}\n.food-item .food-item-text h5[data-v-ed5020b2] {\n  font-weight: bolder;\n  margin-bottom: 20px;\n}\n.food-item .food-item-text p[data-v-ed5020b2] {\n  font-size: 14px;\n  color: gray;\n}\n.food-item .lower-btns[data-v-ed5020b2] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0 20px;\n  margin-bottom: 15px;\n}\n.food-item .lower-btns .price[data-v-ed5020b2] {\n  font-size: 25px;\n  color: #4E54C8;\n  font-weight: bold;\n}\n.food-item .lower-btns .btn-cart[data-v-ed5020b2] {\n  font-size: 20px;\n  background-color: #FE3638;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n  color: white;\n  border-radius: 5px;\n  padding: 0px 8px;\n  cursor: pointer;\n  transition: 0.2s all;\n}\n.food-item .lower-btns .btn-cart[data-v-ed5020b2]:hover {\n  background-color: #C5272A;\n}\n.food-item .lower-btns .btn-cart[data-v-ed5020b2]:active {\n  background-color: white;\n  color: #FE3638;\n  outline-color: #FE3638;\n}", ""]);
 
 // exports
 
@@ -7574,7 +7578,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".foods .jumbotron[data-v-27464fde] {\n  padding: 150px 0 0 0;\n  margin: 0 0 100px 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\n.foods .jumbotron h1[data-v-27464fde] {\n  font-weight: bolder;\n}\n.foods .jumbotron .container[data-v-27464fde] {\n  position: relative;\n  height: 100%;\n}\n.foods .jumbotron .container .jumbo-nav[data-v-27464fde] {\n  position: absolute;\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  bottom: 0;\n  left: 50%;\n  transform: translate(-50%, 50%);\n  width: calc(100% - 30px);\n  min-height: 80px;\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde] {\n  height: 60px;\n  margin: 0 20px 0 30px;\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav ul[data-v-27464fde] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  list-style: none;\n  padding-left: 30px;\n  flex-grow: 1;\n  flex-wrap: wrap;\n  margin: 0;\n}\n.foods .jumbotron .container .jumbo-nav ul a[data-v-27464fde] {\n  color: inherit;\n  text-decoration: none;\n}\n.foods .jumbotron .container .jumbo-nav ul a[data-v-27464fde]:hover {\n  color: darkred;\n}\n.foods .foods-container h1[data-v-27464fde] {\n  font-weight: bolder;\n  text-align: center;\n  margin-bottom: 40px;\n}\n.foods .foods-container .wrapper[data-v-27464fde] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 23px;\n  margin-bottom: 50px;\n}", ""]);
+exports.push([module.i, ".foods .jumbotron[data-v-27464fde] {\n  padding: 150px 0 0 0;\n  margin: 0 0 100px 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\n.foods .jumbotron h1[data-v-27464fde] {\n  font-weight: bolder;\n}\n.foods .jumbotron .container[data-v-27464fde] {\n  position: relative;\n  height: 100%;\n}\n.foods .jumbotron .container .jumbo-nav[data-v-27464fde] {\n  position: absolute;\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  bottom: 0;\n  left: 50%;\n  transform: translate(-50%, 50%);\n  width: calc(100% - 30px);\n  min-height: 80px;\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde],\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  cursor: pointer;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde] {\n  height: 60px;\n  margin: 0 20px 0 30px;\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav ul[data-v-27464fde] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  list-style: none;\n  padding-left: 30px;\n  flex-grow: 1;\n  flex-wrap: wrap;\n  margin: 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde]:hover,\n.foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  color: darkred;\n}\n.foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  font-weight: bold;\n}\n.foods .foods-container h1[data-v-27464fde] {\n  font-weight: bolder;\n  text-align: center;\n  margin-bottom: 40px;\n}\n.foods .foods-container .wrapper[data-v-27464fde] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 23px;\n  margin-bottom: 50px;\n}", ""]);
 
 // exports
 
@@ -7593,7 +7597,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 60px;\n  font-size: 16px;\n  font-weight: bold;\n}\nmain .sliding-menu ul li div[data-v-4b10c5b8] {\n  color: black;\n  text-align: center;\n  text-decoration: none;\n}\nmain .sliding-menu ul li div .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li div .icon img[data-v-4b10c5b8] {\n  height: 100%;\n}\nmain .sliding-menu ul li div .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\n.load-more[data-v-4b10c5b8] {\n  text-transform: uppercase;\n  font-size: 14px;\n  font-weight: 900;\n  width: 20%;\n  margin-bottom: 20px;\n  text-align: center;\n  color: #fff;\n  background-color: #3b3b3b;\n  padding: 8px 0;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.4s;\n  border: 1px solid #3b3b3b;\n}\n.load-more[data-v-4b10c5b8]:hover {\n  background-color: #fff;\n  border: 1px solid black;\n  color: black;\n}", ""]);
+exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 60px;\n  font-size: 16px;\n  font-weight: bold;\n}\nmain .sliding-menu ul li div[data-v-4b10c5b8] {\n  color: black;\n  text-align: center;\n  text-decoration: none;\n}\nmain .sliding-menu ul li div .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li div .icon img[data-v-4b10c5b8] {\n  height: 100%;\n}\nmain .sliding-menu ul li div .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nmain .load-more[data-v-4b10c5b8] {\n  text-transform: uppercase;\n  font-size: 14px;\n  font-weight: 900;\n  width: 20%;\n  margin-bottom: 20px;\n  text-align: center;\n  color: #fff;\n  background-color: #3b3b3b;\n  padding: 8px 0;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.4s;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n}\nmain .load-more[data-v-4b10c5b8]:hover {\n  background-color: #fff;\n  color: #3b3b3b;\n  outline-color: #3b3b3b;\n}", ""]);
 
 // exports
 
