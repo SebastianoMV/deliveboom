@@ -1,14 +1,16 @@
 <template>
     <div class="food-item">
-        <img :src="`/images/foods/${food.image}`" :alt="food.name">
-        <div class="food-item-text">
+        <div class="food-item-top">
+            <img :src="`/images/foods/${food.image}`" :alt="food.name">
             <h5>{{food.name}}</h5>
-            <div class="description">{{food.description}}</div>
         </div>
-        <div class="lower-btns">
-            <span class="price">{{food.price}}</span>
-            <div class="btn-cart" @click="addItem(food)">
-                <i class="fa-solid fa-cart-plus"></i>
+        <div class="food-item-bottom">
+            <div class="description">{{food.description}}</div>
+            <div class="lower-btns">
+                <span class="price">{{food.price}}</span>
+                <div class="btn-cart" @click="addItem(food)">
+                    <i class="fa-solid fa-cart-plus"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -81,6 +83,9 @@ export default {
 
 <style lang="scss" scoped>
 .food-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 260px;
     min-height: 380px;
     box-shadow: 0px 0px 15px rgb(189, 189, 189);
@@ -91,25 +96,28 @@ export default {
         width: 100%;
         margin-bottom: 10px;
     }
-    .food-item-text{
+    h5{
+        font-weight: bolder;
+        margin-bottom: 12px;
+        text-align: center;
+        overflow: hidden;
+    }
+    .food-item-bottom{
         position: relative;
         text-align: center;
-        h5{
-            font-weight: bolder;
-            margin-bottom: 12px;
-        }
         .description{
             font-size: 14px;
             color: gray;
             height: 63px;
-            overflow: scroll;
+            overflow-y: scroll;
             padding: 8px 0;
+            margin-bottom: 10px;
         }
         &::before{
             content: "";
             position: absolute;
             z-index: 1;
-            bottom: 55px;
+            top: 0;
             left: 0;
             background-image:
             linear-gradient(to top,
@@ -122,7 +130,7 @@ export default {
             content: "";
             position: absolute;
             z-index: 1;
-            bottom: 0;
+            top: 55px;
             left: 0;
             background-image:
             linear-gradient(to bottom,
@@ -131,36 +139,35 @@ export default {
             width: 100%;
             height: 8px;
         }
-
-    }
-    .lower-btns{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-        margin-bottom: 15px;
-        .price{
-            font-size: 25px;
-            color: #4E54C8;
-            font-weight: bold;
-        }
-        .btn-cart{
-            font-size: 20px;
-            background-color: #FE3638;
-            outline: 2px solid transparent;
-            outline-offset: -2px;
-            color: white;
-            border-radius: 5px;
-            padding: 0px 8px;
-            cursor: pointer;
-            transition: .2s all;
-            &:hover{
-                background-color: #C5272A;
+        .lower-btns{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin-bottom: 15px;
+            .price{
+                font-size: 25px;
+                color: #4E54C8;
+                font-weight: bold;
             }
-            &:active{
-                background-color: white;
-                color: #FE3638;
-                outline-color: #FE3638;
+            .btn-cart{
+                font-size: 20px;
+                background-color: #FE3638;
+                outline: 2px solid transparent;
+                outline-offset: -2px;
+                color: white;
+                border-radius: 5px;
+                padding: 0px 8px;
+                cursor: pointer;
+                transition: .2s all;
+                &:hover{
+                    background-color: #C5272A;
+                }
+                &:active{
+                    background-color: white;
+                    color: #FE3638;
+                    outline-color: #FE3638;
+                }
             }
         }
     }
