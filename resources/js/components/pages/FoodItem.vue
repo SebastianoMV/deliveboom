@@ -3,7 +3,7 @@
         <img :src="`/images/foods/${food.image}`" :alt="food.name">
         <div class="food-item-text">
             <h5>{{food.name}}</h5>
-            <p>Pomodoro, Mozzarella di bufala, Stracchino, Wurstel</p>
+            <p>{{food.description}}</p>
         </div>
         <div class="lower-btns">
             <span class="price">{{food.price}}</span>
@@ -40,9 +40,31 @@ export default {
                 return;
             }
             try {
+                if(localStorage.getItem('cart') == null){
+                    this.cart.push(food);
+                    this.saveCart();
+                }else{
                 this.cart = JSON.parse(localStorage.getItem('cart'));
+                // let flag= true;
+                // for(let i = 0; i < this.cart.length + 1; i++){
+                //     if(this.cart[i].id = food.id){
+                //         flag = false;
+                //     }
+                // }
+                // if(flag){
+                //     this.food.quantity = 1;
+                // }
+                // for(let i = 0; i < this.cart.length + 1; i++){
+                //     if(this.cart[i].id = food.id){
+                //         this.food.quantity = this.food.quantity +1;
+                //     }
+                // }
+
+
                 this.cart.push(food);
+
                 this.saveCart();
+                }
             } catch(e) {
                 localStorage.removeItem('cart');
             }

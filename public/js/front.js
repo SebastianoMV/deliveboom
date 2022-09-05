@@ -2190,9 +2190,28 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       try {
-        this.cart = JSON.parse(localStorage.getItem('cart'));
-        this.cart.push(food);
-        this.saveCart();
+        if (localStorage.getItem('cart') == null) {
+          this.cart.push(food);
+          this.saveCart();
+        } else {
+          this.cart = JSON.parse(localStorage.getItem('cart')); // let flag= true;
+          // for(let i = 0; i < this.cart.length + 1; i++){
+          //     if(this.cart[i].id = food.id){
+          //         flag = false;
+          //     }
+          // }
+          // if(flag){
+          //     this.food.quantity = 1;
+          // }
+          // for(let i = 0; i < this.cart.length + 1; i++){
+          //     if(this.cart[i].id = food.id){
+          //         this.food.quantity = this.food.quantity +1;
+          //     }
+          // }
+
+          this.cart.push(food);
+          this.saveCart();
+        }
       } catch (e) {
         localStorage.removeItem('cart');
       }
@@ -2629,7 +2648,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "food-item-text"
-  }, [_c("h5", [_vm._v(_vm._s(_vm.food.name))]), _vm._v(" "), _c("p", [_vm._v("Pomodoro, Mozzarella di bufala, Stracchino, Wurstel")])]), _vm._v(" "), _c("div", {
+  }, [_c("h5", [_vm._v(_vm._s(_vm.food.name))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.food.description))])]), _vm._v(" "), _c("div", {
     staticClass: "lower-btns"
   }, [_c("span", {
     staticClass: "price"
