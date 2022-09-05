@@ -2624,8 +2624,8 @@ var render = function render() {
     staticClass: "food-item"
   }, [_c("img", {
     attrs: {
-      src: __webpack_require__(/*! ../../../../public/image/typologies/tipology_07.jpg */ "./public/image/typologies/tipology_07.jpg"),
-      alt: ""
+      src: "/images/foods/".concat(_vm.food.image),
+      alt: _vm.food.name
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "food-item-text"
@@ -54326,17 +54326,6 @@ module.exports = "../images/pizza-margherita.jpg?eab54fdf55e37b9e82ee457874eecf5
 
 /***/ }),
 
-/***/ "./public/image/typologies/tipology_07.jpg":
-/*!*************************************************!*\
-  !*** ./public/image/typologies/tipology_07.jpg ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "../images/tipology_07.jpg?9a2cb7a6ad8dfae59014d40ca2354463";
-
-/***/ }),
-
 /***/ "./resources/js/App.vue":
 /*!******************************!*\
   !*** ./resources/js/App.vue ***!
@@ -55273,9 +55262,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Boolean\deliveboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })

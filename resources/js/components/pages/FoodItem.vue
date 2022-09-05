@@ -1,6 +1,6 @@
 <template>
     <div class="food-item">
-        <img src="../../../../public/image/typologies/tipology_07.jpg" alt="">
+        <img :src="`/images/foods/${food.image}`" :alt="food.name">
         <div class="food-item-text">
             <h5>{{food.name}}</h5>
             <p>Pomodoro, Mozzarella di bufala, Stracchino, Wurstel</p>
