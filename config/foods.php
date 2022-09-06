@@ -13,6 +13,7 @@ return [
         'vegan' => 1,
         'image' => 'food_01.jpg',
     ],
+
     [
         'name' => 'Margherita',
         'category_id' => 1,
@@ -23,6 +24,8 @@ return [
         'vegan' => 0,
         'image' => 'food_02.jpg',
     ],
+
+
     [
         'name' => 'Pilsner Urquell',
         'category_id' => '2',
@@ -34,6 +37,8 @@ return [
         'vegan' => 1,
         'image' => 'food_01.webp',
     ],
+
+
     [
         'name' => 'Grolsch Weizen',
         'category_id' => '2',
@@ -46,6 +51,8 @@ return [
         'vegan' => 1,
         'image' => 'food_04.jpg',
     ],
+
+
     [
         'name' => 'Coca Cola',
         'category_id' => '2',
@@ -56,6 +63,19 @@ return [
         'vegan' => 1,
         'image' => 'food_07.jpg',
     ],
+
+    [
+        'name' => 'Coca Cola Zero',
+        'category_id' => '2',
+        'user_id' => '6',
+        'description' => 'Coca-Cola Zero Zuccheri è la bevanda senza zuccheri dall’inconfondibile gusto Coca-Cola;',
+        'price' => '2.50',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_08.png',
+    ],
+
+
     [
         'name' => 'Ramen',
         'category_id' => '5',
@@ -66,6 +86,9 @@ return [
         'vegan' => 0,
         'image' => 'food_09.jpg',
     ],
+
+
+
     [
         'name' => 'Spaghetti di Riso con Gamberi',
         'category_id' => '5',
@@ -76,6 +99,8 @@ return [
         'vegan' => 0,
         'image' => 'food_10.jpg',
     ],
+
+
     [
         'name' => 'Tiramisù',
         'category_id' => '3',
@@ -86,8 +111,11 @@ return [
         'vegan' => 0,
         'image' => 'food_11.webp',
     ],
+
+
+
     [
-        'name' => 'Torta al Cioccolao',
+        'name' => 'Torta al Cioccolato',
         'category_id' => '3',
         'user_id' => 1,
         'description' => 'La nostra torta contiene Cioccolato, riso, thè verde e nocciola',
@@ -96,6 +124,8 @@ return [
         'vegan' => 0,
         'image' => 'food_12.jpg',
     ],
+
+
     [
         'name' => 'Margherita',
         'category_id' => '1',
@@ -107,6 +137,9 @@ return [
         'vegan' => 0,
         'image' => 'food_17.jpg',
     ],
+
+
+
     [
         'name' => 'Margherita Doppia Mozzarella',
         'category_id' => '1',
@@ -118,6 +151,8 @@ return [
         'vegan' => 0,
         'image' => 'food_18.jpg',
     ],
+
+
     [
         'name' => 'Coca Cola',
         'category_id' => '2',
@@ -128,6 +163,7 @@ return [
         'vegan' => 1,
         'image' => 'food_07.jpg',
     ],
+
     [
         'name' => 'Coca Cola Zero',
         'category_id' => '2',
@@ -138,6 +174,9 @@ return [
         'vegan' => 1,
         'image' => 'food_08.png',
     ],
+
+
+
     [
         'name' => 'Jungle BBQ',
         'category_id' => '7',
@@ -148,6 +187,9 @@ return [
         'vegan' => 1,
         'image' => 'food_19.jpg',
     ],
+
+
+
     [
         'name' => 'Coccinella Burger',
         'category_id' => '7',
@@ -158,6 +200,8 @@ return [
         'vegan' => 1,
         'image' => 'food_20.jpg',
     ],
+
+
     [
         'name' => 'Tiramisun',
         'category_id' => '3',
@@ -168,6 +212,8 @@ return [
         'vegan' => 1,
         'image' => 'food_21.jpg',
     ],
+
+
     [
         'name' => 'Salame di Cioccolato',
         'category_id' => '3',
@@ -178,6 +224,10 @@ return [
         'vegan' => 1,
         'image' => 'food_22.jpg',
     ],
+
+
+
+
     [
         'name' => 'Tortellini in Brodo',
         'category_id' => '5',
@@ -188,6 +238,9 @@ return [
         'vegan' => 0,
         'image' => 'food_23.webp',
     ],
+
+
+
     [
         'name' => 'Spaghetto Eataly',
         'category_id' => '5',
@@ -198,6 +251,8 @@ return [
         'vegan' => 1,
         'image' => 'food_24.webp',
     ],
+
+
     [
         'name' => 'Pilsner Urquell',
         'category_id' => '2',
@@ -209,6 +264,8 @@ return [
         'vegan' => 1,
         'image' => 'food_01.webp',
     ],
+
+
     [
         'name' => 'Grolsch Weizen',
         'category_id' => '2',
@@ -221,6 +278,9 @@ return [
         'vegan' => 1,
         'image' => 'food_04.jpg',
     ],
+
+
+
     [
         'name' => 'La Solare',
         'category_id' => '7',
@@ -231,6 +291,9 @@ return [
         'vegan' => 0,
         'image' => 'food_25.png',
     ],
+
+
+
     [
         'name' => 'La Regina Pistacchio',
         'category_id' => '7',
@@ -633,7 +696,7 @@ return [
     [
         'name' => 'Fish Baguette',
         'category_id' => '7',
-        'user_id' => '15',
+        'user_id' => '16',
         'description' => 'Baguette con pesce',
         'price' => '9.50',
         'is_visible' => 1,
@@ -645,7 +708,7 @@ return [
     [
         'name' => 'Bagel Salmone',
         'category_id' => '7',
-        'user_id' => '15',
+        'user_id' => '16',
         'description' => 'Bagel con salmone affumicato',
         'price' => '12.00',
         'is_visible' => 1,
@@ -656,7 +719,7 @@ return [
     [
         'name' => 'Budino Cioccolato',
         'category_id' => '3',
-        'user_id' => '15',
+        'user_id' => '16',
         'description' => 'Budino al cioccolato con salsa alla vaniglia ',
         'price' => '5.00',
         'is_visible' => 1,
@@ -667,7 +730,7 @@ return [
     [
         'name' => 'Budino Frutti Rossi ',
         'category_id' => '3',
-        'user_id' => '15',
+        'user_id' => '16',
         'description' => 'Budino al cioccolato con composta di bacche rosse e vaniglia',
         'price' => '5.00',
         'is_visible' => 1,
@@ -726,7 +789,7 @@ return [
     [
         'name' => 'Japanese Udon Noodles',
         'category_id' => '5',
-        'user_id' => '17',
+        'user_id' => '2',
         'description' => 'Noodles saltati in padella vengono cucinati con una salsa saporita e una miscela nutriente di carote',
         'price' => '8.00',
         'is_visible' => 1,
@@ -739,7 +802,7 @@ return [
     [
         'name' => 'Riso Bianco',
         'category_id' => '5',
-        'user_id' => '17',
+        'user_id' => '2',
         'description' => 'Riso bianco al vapore',
         'price' => '5.00',
         'is_visible' => 1,
@@ -751,7 +814,7 @@ return [
     [
         'name' => 'Cheesecake',
         'category_id' => '3',
-        'user_id' => '17',
+        'user_id' => '2',
         'description' => 'Cheesecake dolce e cremosa in stile newyorkese, cotta su una crosta burrosa di cracker graham',
         'price' => '5.00',
         'is_visible' => 1,
@@ -764,7 +827,7 @@ return [
     [
         'name' => 'Chocolate Chip Cookie',
         'category_id' => '3',
-        'user_id' => '17',
+        'user_id' => '2',
         'description' => 'Biscotti ripieni di grossi pezzi di gocce di cioccolato.',
         'price' => '4.00',
         'is_visible' => 1,
@@ -779,7 +842,7 @@ return [
     [
         'name' => 'Filet Mignon',
         'category_id' => '6',
-        'user_id' => '38',
+        'user_id' => '18',
         'description' => 'Preferito da molti per la sua consistenza che si scioglie in bocca',
         'price' => '25.00',
         'is_visible' => 1,
@@ -791,7 +854,7 @@ return [
     [
         'name' => 'Cowboy Ribeye (Bistecca) ',
         'category_id' => '6',
-        'user_id' => '38',
+        'user_id' => '18',
         'description' => 'Il nostro Cowboy Ribeye è una bistecca di costolette perfettamente marmorizzata',
         'price' => '22.00',
         'is_visible' => 1,
@@ -802,7 +865,7 @@ return [
     [
         'name' => 'Purè di patate',
         'category_id' => '4',
-        'user_id' => '38',
+        'user_id' => '18',
         'description' => 'Gelato al tè verdè servito con pezzi di cioccolato',
         'price' => '5.00',
         'is_visible' => 1,
@@ -813,7 +876,7 @@ return [
     [
         'name' => 'Patate Fresche',
         'category_id' => '4',
-        'user_id' => '38',
+        'user_id' => '18',
         'description' => 'Prova il nostro gelato artiginale',
         'price' => '5.00',
         'is_visible' => 1,
@@ -827,7 +890,7 @@ return [
     [
         'name' => 'Udon con Pollo e Verdure',
         'category_id' => '6',
-        'user_id' => '12',
+        'user_id' => '19',
         'description' => 'Udon con Pollo e Verdure.',
         'price' => '7.00',
         'is_visible' => 1,
@@ -839,7 +902,7 @@ return [
     [
         'name' => 'Ramen con Manzo',
         'category_id' => '6',
-        'user_id' => '12',
+        'user_id' => '19',
         'description' => 'Ramen con Manzo, Verdure e Uova in brodo',
         'price' => '8.00',
         'is_visible' => 1,
@@ -850,7 +913,7 @@ return [
     [
         'name' => 'Contadi Castaldi FranciaCorta Brut DOCG',
         'category_id' => '2',
-        'user_id' => '12',
+        'user_id' => '19',
         'description' => 'Bottiglia FranciaCorta Brut',
         'price' => '30.00',
         'is_visible' => 1,
@@ -861,7 +924,7 @@ return [
     [
         'name' => 'Contadi Castaldi FranciaCorta Rosè DOCG',
         'category_id' => '2',
-        'user_id' => '12',
+        'user_id' => '19',
         'description' => 'Bottiglia FranciaCorta Rosè',
         'price' => '5.00',
         'is_visible' => 1,
@@ -890,7 +953,7 @@ return [
         'category_id' => '7',
         'user_id' => '20',
         'description' => 'Il re degli hamburger è qui.',
-        'price' => '1200',
+        'price' => '12.00',
         'is_visible' => 1,
         'vegan' => 0,
         'image' => 'food_72.jpg',
@@ -1058,52 +1121,6 @@ return [
         'image' => 'food_86.jpg',
     ],
 
-
-
-    [
-        'name' => 'Carbonara',
-        'category_id' => '5',
-        'user_id' => '31',
-        'description' => 'Spaghetti alla Carbonara: Guanciale, Pecorino Romano, Pepe Nero, Tuorlo',
-        'price' => '9.50',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_87.png',
-    ],
-
-
-    [
-        'name' => 'Bolognese',
-        'category_id' => '5',
-        'user_id' => '31',
-        'description' => 'Spaghetti con ragù alla Bolognese: Carne trita di manzo, Pancetta e Passata di Pomodoro',
-        'price' => '8.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_88.jpg',
-    ],
-
-    [
-        'name' => 'Caprese',
-        'category_id' => '4',
-        'user_id' => '31',
-        'description' => 'Pomodoro, mozzarella di bufala, basilico, rucola, olio extravergine di oliva e aceto balsamico',
-        'price' => '5.50',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_89.jpg',
-    ],
-
-    [
-        'name' => 'Insalata Mista della Casa',
-        'category_id' => '4',
-        'user_id' => '31',
-        'description' => 'Insalata mista, pomodorini, carote grattugiate, cetrioli, zucchine, peperoni, ravanello, funghi',
-        'price' => '4.50',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_90.jpg',
-    ],
 
 
 
@@ -1460,102 +1477,6 @@ return [
     ],
 
 
-    [
-        'name' => 'Nduja CHICKEN BAOBAO',
-        'category_id' => '7',
-        'user_id' => '33',
-        'description' => 'CLASSICO PANINO CINESE (BAO-ZI DA 30g) RIVISITATO IN STILE OCCIDENTALE',
-        'price' => '4.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_117.png',
-    ],
-
-
-    [
-        'name' => 'PORK BAOBAO',
-        'category_id' => '7',
-        'user_id' => '33',
-        'description' => 'CLASSICO PANINO CINESE ( BAO-ZI DA 30 Gr ) RIVISITATO IN STILE OCCIDENTALE',
-        'price' => '4.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_118.png',
-    ],
-
-
-
-    [
-        'name' => 'POLLO ALLE MANDORLE',
-        'category_id' => '6',
-        'user_id' => '33',
-        'description' => 'POLLO SALTATO CON MANDORLE , BAMBU E CAROTE',
-        'price' => '4.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_119.png',
-    ],
-
-    [
-        'name' => 'POLLO FRITTO IN SALSA AGRODOLCE',
-        'category_id' => '6',
-        'user_id' => '33',
-        'description' => 'POLLO FRITTO IN SALSA AGRODOLCE CON ANANAS, PEPERONI E PISELLI.',
-        'price' => '4.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_120.png',
-    ],
-
-
-
-    [
-        'name' => 'PIZZA BBQ CHICKEN',
-        'category_id' => 1,
-        'user_id' => '34',
-        'description' => 'Mozzarella, Cipolla, Salsa BBQ, Pollo',
-        'price' => '12.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_121.jpg',
-    ],
-
-
-    [
-        'name' => 'BACON & CHICKEN',
-        'category_id' => 1,
-        'user_id' => '34',
-        'description' => 'Salsa Greca, Mozzarella, Bacon, Pomodorini, Pollo, Funghi',
-        'price' => '14.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_122.jpg',
-    ],
-
-
-
-    [
-        'name' => 'CHOCO SFOGLIA',
-        'category_id' => '3',
-        'user_id' => '34',
-        'description' => 'CHOCO SFOGLIA CON NUTELLA',
-        'price' => '4.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_123.jpg',
-    ],
-
-    [
-        'name' => 'TORTINO AL CIOCCOLATO',
-        'category_id' => '3',
-        'user_id' => '34',
-        'description' => 'TORTINO AL CIOCCOLATO',
-        'price' => '4.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_124.jpg',
-    ],
-
 
 
     [
@@ -1594,134 +1515,105 @@ return [
     ],
 
 
+    [
+        'name' => 'Teglia Funghi Rossa Senza Lattosio',
+        'category_id' => 1,
+        'user_id' => '32',
+        'description' => 'Ingredienti: Funghi, Pomodoro',
+        'price' => '6.00',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_117.jpg',
+    ],
 
 
     [
-        'name' => 'Pasta al Pomodoro',
-        'category_id' => '5',
-        'user_id' => '36',
-        'description' => 'Semplic e classio spaghetto al pomodoro',
+        'name' => 'Teglia Patate e Rosmarino Senza Lattosio',
+        'category_id' => 1,
+        'user_id' => '32',
+        'description' => 'Ingredienti: Patate, Rosmarino',
         'price' => '7.00',
         'is_visible' => 1,
         'vegan' => 1,
-        'image' => 'food_129.jpg',
+        'image' => 'food_118.jpg',
     ],
 
-
-    [
-        'name' => 'Cacio e Pepe',
-        'category_id' => '5',
-        'user_id' => '36',
-        'description' => 'Un primo piatto top della cucina laziale.',
-        'price' => '9.00',
-        'is_visible' => 1,
-        'vegan' => 0,
-        'image' => 'food_130.jpg',
-    ],
 
 
     [
         'name' => 'Coca Cola',
         'category_id' => '2',
-        'user_id' => '36',
-        'description' => 'Coca Cola in Vetro 33cl',
-        'price' => '6.50',
+        'user_id' => '32',
+        'description' => 'Un gusto unico, come te: prova il gusto originale di Coca-Cola',
+        'price' => '2.50',
         'is_visible' => 1,
         'vegan' => 1,
-        'image' => 'food_27.png',
+        'image' => 'food_07.jpg',
     ],
 
-
     [
-        'name' => 'FuzeTea Mango e Camomilla',
+        'name' => 'Coca Cola Zero',
         'category_id' => '2',
-        'user_id' => '36',
-        'description' => 'Tè al mango e camomilla',
-        'price' => '7.00',
+        'user_id' => '32',
+        'description' => 'Coca-Cola Zero Zuccheri è la bevanda senza zuccheri dall’inconfondibile gusto Coca-Cola',
+        'price' => '2.50',
         'is_visible' => 1,
         'vegan' => 1,
-        'image' => 'food_28.png',
+        'image' => 'food_08.png',
     ],
 
-
-
     [
-        'name' => 'Tentacolo',
-        'category_id' => '7',
-        'user_id' => '37',
-        'description' => 'POLPO COTTO AL VAPORE E POI GRIGLIATO (MAROCCO/SENEGAL/GARGANO)',
-        'price' => '13.00',
+        'name' => 'PIZZA BBQ CHICKEN',
+        'category_id' => 1,
+        'user_id' => '32',
+        'description' => 'Mozzarella, Cipolla, Salsa BBQ, Pollo',
+        'price' => '12.00',
         'is_visible' => 1,
         'vegan' => 0,
-        'image' => 'food_131.png',
+        'image' => 'food_121.jpg',
     ],
 
 
     [
-        'name' => 'STRACCIONE',
-        'category_id' => '7',
-        'user_id' => '37',
-        'description' => 'GAMBERI ROSSI E GOBBETTO (MAZARA DEL VALLO) STRACCIATELLA, OLIO, SALE, PEPE',
-        'price' => '15.00',
+        'name' => 'BACON & CHICKEN',
+        'category_id' => 1,
+        'user_id' => '32',
+        'description' => 'Salsa Greca, Mozzarella, Bacon, Pomodorini, Pollo, Funghi',
+        'price' => '14.00',
         'is_visible' => 1,
         'vegan' => 0,
-        'image' => 'food_132.png',
-    ],
-
-
-    [
-        'name' => 'MUGNOLI E GAMBERI ROSSI ',
-        'category_id' => '6',
-        'user_id' => '37',
-        'description' => 'MUGNOLI, GAMBERI ROSSI E GOBBETTI (MAZARA DEL VALLO), GRANELLA DI NOCI, OLIO, SALE E PEPE',
-        'price' => '6.50',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_133.png',
-    ],
-
-
-    [
-        'name' => 'RAPE E SCAMPI',
-        'category_id' => '6',
-        'user_id' => '37',
-        'description' => 'RAPE, SCAMPI (ADRIATICO/SCOZIA/SICILIA), GRANELLA DI PISTACCHIO, OLIO, SALE E PEPE',
-        'price' => '7.00',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_134.png',
+        'image' => 'food_122.jpg',
     ],
 
 
 
-
     [
-        'name' => 'Filetto danese alla tartara',
-        'category_id' => '6',
-        'user_id' => '38',
-        'description' => 'Ottimo Filetto danese alla tartara',
-        'price' => '22.00',
+        'name' => 'CHOCO SFOGLIA',
+        'category_id' => '3',
+        'user_id' => '32',
+        'description' => 'CHOCO SFOGLIA CON NUTELLA',
+        'price' => '4.00',
         'is_visible' => 1,
         'vegan' => 0,
-        'image' => 'food_135.jpg',
+        'image' => 'food_123.jpg',
     ],
-
 
     [
-        'name' => 'Grigliata mista (minimo 2 persone',
-        'category_id' => '6',
-        'user_id' => '38',
-        'description' => 'Grigliata mista Consigliata per minimo 2 persone',
-        'price' => '36.00',
+        'name' => 'TORTINO AL CIOCCOLATO',
+        'category_id' => '3',
+        'user_id' => '32',
+        'description' => 'TORTINO AL CIOCCOLATO',
+        'price' => '4.00',
         'is_visible' => 1,
         'vegan' => 0,
-        'image' => 'food_136.jpg',
+        'image' => 'food_124.jpg',
     ],
+
 
     [
         'name' => 'Carbonara',
         'category_id' => '5',
-        'user_id' => '38',
+        'user_id' => '24',
         'description' => 'Spaghetti alla Carbonara: Guanciale, Pecorino Romano, Pepe Nero, Tuorlo',
         'price' => '9.50',
         'is_visible' => 1,
@@ -1733,7 +1625,7 @@ return [
     [
         'name' => 'Bolognese',
         'category_id' => '5',
-        'user_id' => '38',
+        'user_id' => '24',
         'description' => 'Spaghetti con ragù alla Bolognese: Carne trita di manzo, Pancetta e Passata di Pomodoro',
         'price' => '8.00',
         'is_visible' => 1,
@@ -1741,58 +1633,80 @@ return [
         'image' => 'food_88.jpg',
     ],
 
-
-
     [
-        'name' => 'Spaghetti di Soia con Gamberi',
-        'category_id' => '5',
-        'user_id' => '39',
-        'description' => 'Spaghetti di Soia con Gamberi',
-        'price' => '22.00',
+        'name' => 'Caprese',
+        'category_id' => '4',
+        'user_id' => '24',
+        'description' => 'Pomodoro, mozzarella di bufala, basilico, rucola, olio extravergine di oliva e aceto balsamico',
+        'price' => '5.50',
         'is_visible' => 1,
         'vegan' => 0,
-        'image' => 'food_137.jpg',
+        'image' => 'food_89.jpg',
+    ],
+
+    [
+        'name' => 'Insalata Mista della Casa',
+        'category_id' => '4',
+        'user_id' => '24',
+        'description' => 'Insalata mista, pomodorini, carote grattugiate, cetrioli, zucchine, peperoni, ravanello, funghi',
+        'price' => '4.50',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_90.jpg',
+    ],
+
+    [
+        'name' => 'Pasta al Pomodoro',
+        'category_id' => '5',
+        'user_id' => '31',
+        'description' => 'Semplic e classio spaghetto al pomodoro',
+        'price' => '7.00',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_129.jpg',
     ],
 
 
     [
-        'name' => 'Spaghetti di Soia con carne',
+        'name' => 'Cacio e Pepe',
         'category_id' => '5',
-        'user_id' => '39',
-        'description' => 'Spaghetti piccanti di soia con carne di manzo',
-        'price' => '36.00',
+        'user_id' => '31',
+        'description' => 'Un primo piatto top della cucina laziale.',
+        'price' => '9.00',
         'is_visible' => 1,
         'vegan' => 0,
-        'image' => 'food_138.jpg',
+        'image' => 'food_130.jpg',
     ],
+
 
     [
         'name' => 'Coca Cola',
         'category_id' => '2',
-        'user_id' => '39',
-        'description' => 'Un gusto unico, come te: prova il gusto originale di Coca-Cola 30 cl',
-        'price' => '2.50',
+        'user_id' => '31',
+        'description' => 'Coca Cola in Vetro 33cl',
+        'price' => '6.50',
         'is_visible' => 1,
         'vegan' => 1,
-        'image' => 'food_07.jpg',
+        'image' => 'food_27.png',
     ],
 
+
     [
-        'name' => 'Coca Cola Zero',
+        'name' => 'FuzeTea Mango e Camomilla',
         'category_id' => '2',
-        'user_id' => '39',
-        'description' => 'Coca-Cola Zero Zuccheri è la bevanda senza zuccheri dall’inconfondibile gusto Coca-Cola;',
-        'price' => '2.50',
+        'user_id' => '31',
+        'description' => 'Tè al mango e camomilla',
+        'price' => '7.00',
         'is_visible' => 1,
         'vegan' => 1,
-        'image' => 'food_08.png',
+        'image' => 'food_28.png',
     ],
 
 
     [
         'name' => 'Tacos Al Carbon',
         'category_id' => '7',
-        'user_id' => '40',
+        'user_id' => '14',
         'description' => 'Fajita di manzo o pollo con cipolle e peperoni grigliati in tortillas di farina.',
         'price' => '5.00',
         'is_visible' => 1,
@@ -1804,7 +1718,7 @@ return [
     [
         'name' => 'Crispy Tacos',
         'category_id' => '7',
-        'user_id' => '40',
+        'user_id' => '14',
         'description' => 'Carne macinata condita, lattuga, formaggio e pomodori.',
         'price' => '6.00',
         'is_visible' => 1,
@@ -1815,7 +1729,7 @@ return [
     [
         'name' => 'San Miguel',
         'category_id' => '2',
-        'user_id' => '40',
+        'user_id' => '14',
         'description' => 'Birra Spagnola',
         'price' => '3.50',
         'is_visible' => 1,
@@ -1826,7 +1740,7 @@ return [
     [
         'name' => 'Corona',
         'category_id' => '2',
-        'user_id' => '40',
+        'user_id' => '14',
         'description' => 'Birra Messicana',
         'price' => '4.00',
         'is_visible' => 1,
@@ -1834,6 +1748,222 @@ return [
         'image' => 'food_86.jpg',
     ],
 
+    [
+        'name' => 'Spaghetti di Soia con Gamberi',
+        'category_id' => '5',
+        'user_id' => '28',
+        'description' => 'Spaghetti di Soia con Gamberi',
+        'price' => '22.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_137.jpg',
+    ],
 
+
+    [
+        'name' => 'Spaghetti di Soia con carne',
+        'category_id' => '5',
+        'user_id' => '28',
+        'description' => 'Spaghetti piccanti di soia con carne di manzo',
+        'price' => '36.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_138.jpg',
+    ],
+
+    [
+        'name' => 'Coca Cola',
+        'category_id' => '2',
+        'user_id' => '28',
+        'description' => 'Un gusto unico, come te: prova il gusto originale di Coca-Cola 30 cl',
+        'price' => '2.50',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_07.jpg',
+    ],
+
+    [
+        'name' => 'Coca Cola Zero',
+        'category_id' => '2',
+        'user_id' => '28',
+        'description' => 'Coca-Cola Zero Zuccheri è la bevanda senza zuccheri dall’inconfondibile gusto Coca-Cola;',
+        'price' => '2.50',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_08.png',
+    ],
+
+
+
+    [
+        'name' => 'Filetto danese alla tartara',
+        'category_id' => '6',
+        'user_id' => '27',
+        'description' => 'Ottimo Filetto danese alla tartara',
+        'price' => '22.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_135.jpg',
+    ],
+
+
+    [
+        'name' => 'Grigliata mista (minimo 2 persone',
+        'category_id' => '6',
+        'user_id' => '27',
+        'description' => 'Grigliata mista Consigliata per minimo 2 persone',
+        'price' => '36.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_136.jpg',
+    ],
+
+    [
+        'name' => 'Carbonara',
+        'category_id' => '5',
+        'user_id' => '27',
+        'description' => 'Spaghetti alla Carbonara: Guanciale, Pecorino Romano, Pepe Nero, Tuorlo',
+        'price' => '9.50',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_87.png',
+    ],
+
+
+    [
+        'name' => 'Bolognese',
+        'category_id' => '5',
+        'user_id' => '27',
+        'description' => 'Spaghetti con ragù alla Bolognese: Carne trita di manzo, Pancetta e Passata di Pomodoro',
+        'price' => '8.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_88.jpg',
+    ],
+
+    [
+        'name' => 'Tentacolo',
+        'category_id' => '7',
+        'user_id' => '22',
+        'description' => 'POLPO COTTO AL VAPORE E POI GRIGLIATO (MAROCCO/SENEGAL/GARGANO)',
+        'price' => '13.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_131.png',
+    ],
+
+
+    [
+        'name' => 'STRACCIONE',
+        'category_id' => '7',
+        'user_id' => '22',
+        'description' => 'GAMBERI ROSSI E GOBBETTO (MAZARA DEL VALLO) STRACCIATELLA, OLIO, SALE, PEPE',
+        'price' => '15.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_132.png',
+    ],
+
+
+    [
+        'name' => 'MUGNOLI E GAMBERI ROSSI ',
+        'category_id' => '6',
+        'user_id' => '22',
+        'description' => 'MUGNOLI, GAMBERI ROSSI E GOBBETTI (MAZARA DEL VALLO), GRANELLA DI NOCI, OLIO, SALE E PEPE',
+        'price' => '6.50',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_133.png',
+    ],
+
+
+    [
+        'name' => 'RAPE E SCAMPI',
+        'category_id' => '6',
+        'user_id' => '22',
+        'description' => 'RAPE, SCAMPI (ADRIATICO/SCOZIA/SICILIA), GRANELLA DI PISTACCHIO, OLIO, SALE E PEPE',
+        'price' => '7.00',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_134.png',
+    ],
+
+    [
+        'name' => 'Nduja CHICKEN BAOBAO',
+        'category_id' => '7',
+        'user_id' => '30',
+        'description' => 'CLASSICO PANINO CINESE (BAO-ZI DA 30g) RIVISITATO IN STILE OCCIDENTALE',
+        'price' => '4.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_117.png',
+    ],
+
+
+    [
+        'name' => 'PORK BAOBAO',
+        'category_id' => '7',
+        'user_id' => '30',
+        'description' => 'CLASSICO PANINO CINESE ( BAO-ZI DA 30 Gr ) RIVISITATO IN STILE OCCIDENTALE',
+        'price' => '4.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_118.png',
+    ],
+
+
+
+    [
+        'name' => 'POLLO ALLE MANDORLE',
+        'category_id' => '6',
+        'user_id' => '30',
+        'description' => 'POLLO SALTATO CON MANDORLE , BAMBU E CAROTE',
+        'price' => '4.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_119.png',
+    ],
+
+    [
+        'name' => 'POLLO FRITTO IN SALSA AGRODOLCE',
+        'category_id' => '6',
+        'user_id' => '30',
+        'description' => 'POLLO FRITTO IN SALSA AGRODOLCE CON ANANAS, PEPERONI E PISELLI.',
+        'price' => '4.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_120.png',
+    ],
+    [
+        'name' => 'Bacon Cheeseburger',
+        'category_id' => '7',
+        'user_id' => '6',
+        'description' => 'Hamburger di carne cotti alla griglia sul momento, con formaggio americano.
+        50 cl',
+        'price' => '13.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_05.jpg',
+    ],
+    [
+        'name' => 'Cheeseburger',
+        'category_id' => '7',
+        'user_id' => '6',
+        'description' => 'Formaggio americano fuso tra hamburger di carne fresca appena grigliati',
+        'price' => '12.00',
+        'is_visible' => 1,
+        'vegan' => 0,
+        'image' => 'food_06.jpg',
+    ],
+    [
+        'name' => 'Coca Cola',
+        'category_id' => '2',
+        'user_id' => '6',
+        'description' => 'Un gusto unico, come te: prova il gusto originale di Coca-Cola',
+        'price' => '2.50',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_07.jpg',
+    ],
 
 ];
