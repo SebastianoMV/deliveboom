@@ -57,6 +57,7 @@ class PageController extends Controller
         $new_order = new Order();
         $new_order->fill($data);
         $new_order->save();
+        // dd($new_order);
 
         return response()->json($new_order);
     }

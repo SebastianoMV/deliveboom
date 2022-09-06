@@ -9,19 +9,18 @@ class CreateFoodOrderTable extends Migration
     public function up()
     {
         Schema::create('food_order', function (Blueprint $table) {
-            $table->id();
 
             $table->unsignedBigInteger('food_id');
             $table->foreign('food_id')
-                                    ->references('id')
-                                    ->on('food')
-                                    ->onDelete('cascade');
+                ->references('id')
+                ->on('food')
+                ->onDelete('cascade');
 
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')
-                                    ->references('id')
-                                    ->on('orders')
-                                    ->onDelete('cascade');
+                ->references('id')
+                ->on('orders')
+                ->onDelete('cascade');
 
             $table->unsignedSmallInteger('quantity')->default(0);
 

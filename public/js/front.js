@@ -2037,7 +2037,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       loaded: false,
       paidFor: false,
-      orderApi: '/api/orders',
+      orderApi: 'http://127.0.0.1:8000/api/orders',
       newOrder: {
         name: '',
         email: '',
