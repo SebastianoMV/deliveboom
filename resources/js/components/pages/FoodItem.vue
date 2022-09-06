@@ -49,13 +49,12 @@ export default {
                 else{
                     this.cart = JSON.parse(localStorage.getItem('cart'));
                     if(this.cart[0].user_id !== food.user_id){
-                        console.log("Errore! zzz");
-                        this.cart = [];
-                        food.quantity = 1;
-                        this.cart.push(food);
-                        console.log("bella bro");
-                        this.saveCart();
-                        console.log("bella bro parte 2");
+                        if(confirm('Vuoi cambiare ristorante?')){
+                            this.cart = [];
+                            food.quantity = 1;
+                            this.cart.push(food);
+                            this.saveCart();
+                        };
                     }
                     else{
                         let chek = this.cart.find(({ id }) => id == food.id);

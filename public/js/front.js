@@ -2159,13 +2159,14 @@ __webpack_require__.r(__webpack_exports__);
           this.cart = JSON.parse(localStorage.getItem('cart'));
 
           if (this.cart[0].user_id !== food.user_id) {
-            console.log("Errore! zzz");
-            this.cart = [];
-            food.quantity = 1;
-            this.cart.push(food);
-            console.log("bella bro");
-            this.saveCart();
-            console.log("bella bro parte 2");
+            if (confirm('Vuoi cambiare ristorante?')) {
+              this.cart = [];
+              food.quantity = 1;
+              this.cart.push(food);
+              this.saveCart();
+            }
+
+            ;
           } else {
             var chek = this.cart.find(function (_ref) {
               var id = _ref.id;
@@ -55431,9 +55432,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })
