@@ -233,6 +233,7 @@ export default {
                 h2{
                     font-weight: bolder;
                     .price{
+                        display: inline-block;
                         font-weight: bold;
                         color: #4E54C8;
                     }

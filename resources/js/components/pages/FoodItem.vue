@@ -37,40 +37,50 @@ export default {
     },
     methods: {
         addItem(food) {
-            if (!food) {
+            if (!food){
                 return;
             }
-            try {
-                if(localStorage.getItem('cart') == null){
+            try{
+                if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
                     food.quantity = 1;
                     this.cart.push(food);
                     this.saveCart();
                 }
                 else{
-
                     this.cart = JSON.parse(localStorage.getItem('cart'));
-
-                    let chek = this.cart.find(({ id }) => id == food.id);
-                    console.log('check' + chek);
-                    if(!chek){
+                    if(this.cart[0].user_id !== food.user_id){
+                        console.log("Errore! zzz");
+                        this.cart = [];
                         food.quantity = 1;
-                        console.log('checkedcart'+  this.cart)
-                    }else{
-                        for(let i = 0; i < this.cart.length + 1; i++){
-                            if(this.cart[i].id == food.id){
-                                this.cart[i].quantity = this.cart[i].quantity + 1
-                                console.log('quantita ' + this.cart[i].quantity);
-                                console.log('cart' + this.cart);
-                                this.saveCart();
-                                return
+                        this.cart.push(food);
+                        console.log("bella bro");
+                        this.saveCart();
+                        console.log("bella bro parte 2");
+                    }
+                    else{
+                        let chek = this.cart.find(({ id }) => id == food.id);
+                        console.log('check' + chek);
+                        if(!chek){
+                            food.quantity = 1;
+                            console.log('checkedcart'+  this.cart)
+                        }
+                        else{
+                            for(let i = 0; i < this.cart.length + 1; i++){
+                                if(this.cart[i].id == food.id){
+                                    this.cart[i].quantity = this.cart[i].quantity + 1
+                                    console.log('quantita ' + this.cart[i].quantity);
+                                    console.log('cart' + this.cart);
+                                    this.saveCart();
+                                    return
+                                }
                             }
                         }
-
+                        this.cart.push(food);
+                        this.saveCart();
                     }
-                    this.cart.push(food);
-                    this.saveCart();
                 }
-            } catch(e) {
+            }
+            catch(e){
                 localStorage.removeItem('cart');
             }
         },
