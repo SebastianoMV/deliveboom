@@ -2,33 +2,33 @@
     <main>
         <div class="jumbotron">
             <div class="container">
-                <h1>Burgers & Fries</h1>
+                <h1>{{currentTypologyName}}</h1>
             </div>
         </div>
         <div class="sliding-menu">
             <div class="container">
                 <ul>
                     <li
-                        @click="getUserApi()">
-                        <div>
-                            <div class="icon">
-                                <!-- <img :src="`/image/typologies/${typology.image}`" :alt="typology.name"> -->
-                            </div>
-                            <div class="typology-title">Tutti i ristoranti</div>
+                        @click="getUserApi();
+                                currentTypology = 0">
+                        <div class="icon">
+                            <img src="/image/typologies/typology_00.png" alt="all-restaurants">
                         </div>
+                        <div class="typology-title">Tutti i ristoranti</div>
                     </li>
+                    <!-- :class="category.id == currentCategory ? 'active' : ''" -->
                     <li
                         v-for="typology in typologies"
                         :key="typology.id"
-                        @click="getUserByTypology(typology.id)">
-                        <div>
-                            <div class="icon">
-                                <img
-                                    :src="`/image/typologies/${typology.image}`"
-                                    :alt="typology.name">
-                            </div>
-                            <div class="typology-title">{{typology.name}}</div>
+                        @click="getUserByTypology(typology.id);
+                                currentTypology = typology.id"
+                        :class="typology.id === currentTypology ? 'active' : ''">
+                        <div class="icon">
+                            <img
+                                :src="`/image/typologies/${typology.image}`"
+                                :alt="typology.name">
                         </div>
+                        <div class="typology-title">{{typology.name}}</div>
                     </li>
                 </ul>
             </div>
@@ -57,6 +57,7 @@ export default {
             userApiUrl: 'http://127.0.0.1:8000/api/foods',
             users: [],
             typologies: [],
+            currentTypology: 0,
             length: 6
         }
     },
@@ -98,6 +99,11 @@ export default {
     computed: {
         usersLoaded() {
             return this.users.slice(0, this.length);
+        },
+        currentTypologyName(){
+            if(this.currentTypology === 0)
+                return "Tutti i ristoranti";
+            return this.typologies.find(element => element.id === this.currentTypology).name;
         }
     },
 }
@@ -132,25 +138,24 @@ main{
                 margin-right: 60px;
                 font-size: 16px;
                 font-weight: bold;
-                div{
-                    color: black;
+                color: black;
+                text-align: center;
+                cursor: pointer;
+                .icon{
+                    width: 110px;
+                    height: 82.5px;
+                    border-radius: 20px;
+                    overflow: hidden;
                     text-align: center;
-                    text-decoration: none;
-                    .icon{
-                        width: 110px;
-                        height: 82.5px;
-                        border-radius: 20px;
-                        overflow: hidden;
-                        text-align: center;
-                        transition: .2s box-shadow;
-                        img{
-                            height: 100%;
-                        }
+                    transition: .2s box-shadow;
+                    img{
+                        height: 100%;
+                        width: 100%;
                     }
-                    .typology-title{
-                        padding-top: 10px;
-                        transition: .2s text-shadow;
-                    }
+                }
+                .typology-title{
+                    padding-top: 10px;
+                    transition: .2s text-shadow;
                 }
                 &:hover{
                     .icon{
@@ -158,6 +163,15 @@ main{
                     }
                     .typology-title{
                         text-shadow: 4px 4px 10px gray;
+                    }
+                    // transform: scale(1.1);
+                }
+                &.active{
+                    .icon{
+                        box-shadow: 4px 4px 15px #FE3638;
+                    }
+                    .typology-title{
+                        text-shadow: none;
                     }
                 }
             }

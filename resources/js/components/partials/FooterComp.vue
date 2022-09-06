@@ -98,8 +98,9 @@ export default {
                 list-style: none;
                 padding: 0;
                 li{
-                    margin-bottom: 6px;
+                    margin-bottom: 10px;
                     font-size: 14px;
+                    line-height: 14px;
                     font-weight: bold;
                 }
             }
@@ -125,6 +126,10 @@ export default {
                 .small-text{
                     font-size: 12px;
                     color: #aaadb4;
+                }
+                b{
+                    display: inline-block;
+                    margin-bottom: 3px;
                 }
                 &:hover{
                     background-color: rgba(0, 0, 0, .3);

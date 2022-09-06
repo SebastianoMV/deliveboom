@@ -1,28 +1,19 @@
 <template>
     <div>
-
-      <header-comp />
-
-      <router-view></router-view>
-
-      <footer-comp />
-
+        <header-comp />
+        <router-view></router-view>
+        <footer-comp />
     </div>
-  </template>
+</template>
+<script>
+import HeaderComp from './components/partials/HeaderComp.vue'
+import FooterComp from './components/partials/FooterComp.vue'
 
-  <script>
-
-  import HeaderComp from './components/partials/HeaderComp.vue'
-  import FooterComp from './components/partials/FooterComp.vue'
-
-
-  export default {
-      components: { HeaderComp, FooterComp},
-      name: 'App'
-  }
-  </script>
-
-  <style lang="scss">
-      @import'~bootstrap/dist/css/bootstrap.css';
-
-  </style>
+export default {
+    components: { HeaderComp, FooterComp},
+    name: 'App'
+}
+</script>
+<style lang="scss">
+@import'~bootstrap/dist/css/bootstrap.css';
+</style>
