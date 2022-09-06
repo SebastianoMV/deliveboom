@@ -114,8 +114,15 @@ export default {
             color: gray;
             height: 63px;
             overflow-y: scroll;
-            padding: 8px 0;
+            padding: 8px;
             margin-bottom: 10px;
+            /* Nasconde scrollbar su IE, Edge e Firefox */
+            -ms-overflow-style: none;  /* IE & Edge */
+            scrollbar-width: none;  /* Firefox */
+            /* Nasconde scrollbar su Chrome, Safari e Opera */
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
         &::before{
             content: "";

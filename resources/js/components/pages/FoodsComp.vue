@@ -2,7 +2,7 @@
     <section class="foods">
         <div class="jumbotron">
             <div class="container">
-                <h1>Burgers & Fries</h1>
+                <h1>{{user.name}}</h1>
                 <nav class="jumbo-nav">
                     <img :src="`/image/users/${user.image}`" alt="" @click="getUser($route.params.slug)">
                     <ul>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="foods-container container">
-            <h1>{{user.name}}</h1>
+            <h1>Menù<span v-if="currentCategoryName!==''">: </span><span class="category-name">{{currentCategoryName}}</span></h1>
             <div class="wrapper">
                 <FoodItem v-for="food in foodsFiltered" :key="food.id"  :food="food"/>
             </div>
@@ -84,6 +84,13 @@ export default {
                 }
             }
             return flag;
+        }
+    },
+    computed: {
+        currentCategoryName(){
+            if(this.currentCategory === 0)
+                return "";
+            return this.categories.find(element => element.id === this.currentCategory).name;
         }
     }
 }
@@ -153,6 +160,9 @@ export default {
             font-weight: bolder;
             text-align: center;
             margin-bottom: 40px;
+            .category-name{
+                color: #FE3638;
+            }
         }
         .wrapper{
             display: flex;

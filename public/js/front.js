@@ -1975,15 +1975,10 @@ __webpack_require__.r(__webpack_exports__);
       this.itemTotals();
     },
     removeItem: function removeItem(item, index) {
-      if (item.quantity > 1) {
-        item.quantity--;
-      } else {
-        this.removeAll(index);
-      }
-
+      if (item.quantity > 1) item.quantity--;else this.deleteItem(index);
       this.itemTotals();
     },
-    removeAll: function removeAll(index) {
+    deleteItem: function deleteItem(index) {
       this.items.splice(index, 1);
       console.log(index);
       this.saveCart();
@@ -2275,6 +2270,16 @@ __webpack_require__.r(__webpack_exports__);
 
       return flag;
     }
+  },
+  computed: {
+    currentCategoryName: function currentCategoryName() {
+      var _this3 = this;
+
+      if (this.currentCategory === 0) return "";
+      return this.categories.find(function (element) {
+        return element.id === _this3.currentCategory;
+      }).name;
+    }
   }
 });
 
@@ -2301,6 +2306,7 @@ __webpack_require__.r(__webpack_exports__);
       userApiUrl: 'http://127.0.0.1:8000/api/foods',
       users: [],
       typologies: [],
+      currentTypology: 0,
       length: 6
     };
   },
@@ -2342,6 +2348,14 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     usersLoaded: function usersLoaded() {
       return this.users.slice(0, this.length);
+    },
+    currentTypologyName: function currentTypologyName() {
+      var _this3 = this;
+
+      if (this.currentTypology === 0) return "Tutti i ristoranti";
+      return this.typologies.find(function (element) {
+        return element.id === _this3.currentTypology;
+      }).name;
     }
   }
 });
@@ -2465,13 +2479,14 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("div", {
-    staticClass: "container top my-5"
+  return _c("section", {
+    staticClass: "cart-comp container"
   }, [_c("div", {
-    staticClass: "row my-5"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "col-6 p-4 text-center"
-  }, [_c("h4", [_c("router-link", {
+    staticClass: "cart-container"
+  }, [_c("div", {
+    staticClass: "top-links"
+  }, [_vm._m(0), _vm._v(" "), _vm.total > 0 ? _c("h4", [_c("router-link", {
+    staticClass: "link",
     attrs: {
       to: {
         name: "checkout"
@@ -2479,79 +2494,80 @@ var render = function render() {
     }
   }, [_vm._v("Checkout "), _c("i", {
     staticClass: "fa-regular fa-credit-card"
-  })])], 1)])]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-8"
+  })])], 1) : _vm._e()]), _vm._v(" "), _vm.total > 0 ? _c("div", {
+    staticClass: "cart-container-content row"
+  }, [_c("ul", {
+    staticClass: "products-container col-sm-7 col-12"
   }, _vm._l(_vm.items, function (item, index) {
-    return _c("div", {
-      key: index,
-      staticClass: "divider-solid line-divider-solid py-2 d-flex justify-content-between align-items-center"
+    return _c("li", {
+      key: index
     }, [_c("img", {
       attrs: {
-        src: __webpack_require__(/*! ../../../../public/image/categories/hamburgerjpg.jpg */ "./public/image/categories/hamburgerjpg.jpg"),
-        alt: ""
+        src: "/images/foods/".concat(item.image),
+        alt: item.name
       }
     }), _vm._v(" "), _c("div", {
-      staticClass: "prodotto"
-    }, [_c("h5", [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("div", {
-      staticClass: "descrizione"
-    }, [_vm._v("Size:Medium")]), _vm._v(" "), _c("div", {
-      staticClass: "prezzo"
-    }, [_vm._v(_vm._s(item.price))])]), _vm._v(" "), _c("div", {
-      staticClass: "quantity"
+      staticClass: "right-side row"
     }, [_c("div", {
-      staticClass: "commands"
-    }, [_c("div", {
-      staticClass: "command remove-item",
+      staticClass: "info col-lg-8 col-12"
+    }, [_c("h5", [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("p", {
+      staticClass: "description"
+    }, [_c("span", [_vm._v(_vm._s(item.description))])]), _vm._v(" "), _c("span", {
+      staticClass: "price"
+    }, [_vm._v("€ " + _vm._s(item.price))])]), _vm._v(" "), _c("div", {
+      staticClass: "quantity-inputs col-lg-4 col-12"
+    }, [_c("i", {
+      staticClass: "qt-btn fa-solid fa-square-minus",
       on: {
         click: function click($event) {
           return _vm.removeItem(item, index);
         }
       }
-    }, [_c("b", [_vm._v("-")])]), _vm._v(" "), _c("div", {
-      staticClass: "command amount"
-    }, [_vm._v(_vm._s(item.quantity))]), _vm._v(" "), _c("div", {
-      staticClass: "command add-item",
+    }), _vm._v(" "), _c("div", {
+      staticClass: "quantity"
+    }, [_vm._v(_vm._s(item.quantity))]), _vm._v(" "), _c("i", {
+      staticClass: "qt-btn fa-solid fa-square-plus",
       on: {
         click: function click($event) {
           return _vm.addItem(item);
         }
       }
-    }, [_c("b", [_vm._v("+")])])]), _vm._v(" "), _c("div", {
-      staticClass: "remove text-danger",
+    }), _vm._v(" "), _c("i", {
+      staticClass: "del-btn fa-solid fa-trash-can",
       on: {
         click: function click($event) {
-          return _vm.removeAll(index);
+          return _vm.deleteItem(index);
         }
       }
-    }, [_vm._v("Remove "), _c("i", {
-      staticClass: "fa-solid fa-trash-can"
     })])])]);
   }), 0), _vm._v(" "), _c("div", {
-    staticClass: "col-3 offset-1 checkout"
+    staticClass: "checkout col-sm-5 col-12"
   }, [_c("div", {
-    staticClass: "text-center mb-5"
-  }, [_c("h2", [_vm._v("Totale: € " + _vm._s(_vm.total))]), _vm._v(" "), _c("router-link", {
+    staticClass: "ckt-container"
+  }, [_c("h2", [_vm._v("Totale: "), _c("span", {
+    staticClass: "price"
+  }, [_vm._v("€ " + _vm._s(_vm.total))])]), _vm._v(" "), _c("router-link", {
     attrs: {
       to: {
         name: "checkout"
       }
     }
   }, [_c("button", {
-    staticClass: "btn btn-danger w-100 my-3 d-block"
-  }, [_vm._v("Checkout")])])], 1)])])])]);
+    staticClass: "btn btn-danger w-100 my-3"
+  }, [_vm._v("Checkout")])])], 1)])]) : _c("h1", [_c("i", {
+    staticClass: "fa-solid fa-triangle-exclamation"
+  }), _vm._v(" Il carrello è vuoto.")])])]);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "col-6 active p-4 text-center"
-  }, [_c("h4", [_vm._v("Carrello "), _c("i", {
+  return _c("h4", {
+    staticClass: "static active"
+  }, [_vm._v("Carrello "), _c("i", {
     staticClass: "fa-solid fa-cart-arrow-down"
-  })])]);
+  })]);
 }];
 render._withStripped = true;
 
@@ -2573,13 +2589,14 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("div", {
-    staticClass: "container my-5"
+  return _c("section", {
+    staticClass: "checkout-comp container"
   }, [_c("div", {
-    staticClass: "row"
+    staticClass: "checkout-container"
   }, [_c("div", {
-    staticClass: "col-6 p-4 text-center"
+    staticClass: "top-links"
   }, [_c("h4", [_c("router-link", {
+    staticClass: "link",
     attrs: {
       to: {
         name: "cart"
@@ -2587,15 +2604,14 @@ var render = function render() {
     }
   }, [_vm._v("Carrello "), _c("i", {
     staticClass: "fa-solid fa-cart-arrow-down"
-  })])], 1)]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
-    staticClass: "row mt-4"
-  }, [_c("div", {
-    staticClass: "col-6"
-  }, [_c("form", [_c("h4", {
-    staticClass: "mb-3"
-  }, [_vm._v("Dettagli dell’ordine")]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("input", {
+  })])], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
+    staticClass: "checkout-body row"
+  }, [_c("form", {
+    staticClass: "col-sm-6 col-12",
+    attrs: {
+      action: ""
+    }
+  }, [_c("h2", [_vm._v("Dettagli dell'ordine")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -2605,7 +2621,6 @@ var render = function render() {
         trim: true
       }
     }],
-    staticClass: "form-control",
     attrs: {
       type: "text",
       id: "name",
@@ -2624,9 +2639,7 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("input", {
+  }), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -2636,7 +2649,6 @@ var render = function render() {
         trim: true
       }
     }],
-    staticClass: "form-control",
     attrs: {
       type: "text",
       id: "email",
@@ -2655,9 +2667,7 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("input", {
+  }), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -2667,7 +2677,6 @@ var render = function render() {
         trim: true
       }
     }],
-    staticClass: "form-control",
     attrs: {
       type: "text",
       id: "address",
@@ -2686,9 +2695,7 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("input", {
+  }), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -2698,7 +2705,6 @@ var render = function render() {
         trim: true
       }
     }],
-    staticClass: "form-control",
     attrs: {
       type: "text",
       id: "phone",
@@ -2717,8 +2723,8 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  })]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary mt-3 w-100",
+  }), _vm._v(" "), _c("button", {
+    staticClass: "send-btn btn btn-danger mt-4",
     attrs: {
       type: "submit"
     },
@@ -2727,26 +2733,30 @@ var render = function render() {
         return _vm.sendOrder();
       }
     }
-  }, [_vm._v("Invia")])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-4 offset-1"
-  }, [!_vm.paidFor ? _c("div", [_c("h5", {
-    staticClass: "text-right p-3 text-muted"
-  }, [_vm._v("Totale ordine: "), _c("strong", [_vm._v(_vm._s(_vm.newOrder.total_price) + " €")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Invia")])]), _vm._v(" "), _c("section", {
+    staticClass: "paypal-btns col-sm-6 col-12"
+  }, [!_vm.paidFor ? _c("div", {
+    staticClass: "paypal-side"
+  }, [_c("h2", [_vm._v("Totale ordine: "), _c("span", {
+    staticClass: "price"
+  }, [_vm._v("€ " + _vm._s(_vm.newOrder.total_price))])]), _vm._v(" "), _c("div", {
     ref: "paypal"
-  })]) : _vm._e(), _vm._v(" "), _vm.paidFor ? _c("div", [_c("h4", {
-    staticClass: "alert alert-warning"
-  }, [_vm._v("Complimenti, il pagamento è andato a buon fine!")])]) : _vm._e()])])])]);
+  })]) : _c("div", {
+    staticClass: "paypal-side"
+  }, [_c("h2", {
+    staticClass: "alert alert-success"
+  }, [_vm._v("Complimenti, il pagamento è andato a buon fine!")])])])])])]);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "col-6 active p-4 text-center"
-  }, [_c("h4", [_vm._v("Checkout "), _c("i", {
+  return _c("h4", {
+    staticClass: "static active"
+  }, [_vm._v("Checkout "), _c("i", {
     staticClass: "fa-regular fa-credit-card"
-  })])]);
+  })]);
 }];
 render._withStripped = true;
 
@@ -2824,7 +2834,7 @@ var render = function render() {
     staticClass: "jumbotron"
   }, [_c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v("Burgers & Fries")]), _vm._v(" "), _c("nav", {
+  }, [_c("h1", [_vm._v(_vm._s(_vm.user.name))]), _vm._v(" "), _c("nav", {
     staticClass: "jumbo-nav"
   }, [_c("img", {
     attrs: {
@@ -2854,7 +2864,9 @@ var render = function render() {
     }, [_vm._v("\n                        " + _vm._s(category.name) + "\n                    ")]);
   }), 0)])])]), _vm._v(" "), _c("div", {
     staticClass: "foods-container container"
-  }, [_c("h1", [_vm._v(_vm._s(_vm.user.name))]), _vm._v(" "), _c("div", {
+  }, [_c("h1", [_vm._v("Menù"), _vm.currentCategoryName !== "" ? _c("span", [_vm._v(": ")]) : _vm._e(), _c("span", {
+    staticClass: "category-name"
+  }, [_vm._v(_vm._s(_vm.currentCategoryName))])]), _vm._v(" "), _c("div", {
     staticClass: "wrapper"
   }, _vm._l(_vm.foodsFiltered, function (food) {
     return _c("FoodItem", {
@@ -2887,25 +2899,36 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("main", [_vm._m(0), _vm._v(" "), _c("div", {
+  return _c("main", [_c("div", {
+    staticClass: "jumbotron"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("h1", [_vm._v(_vm._s(_vm.currentTypologyName))])])]), _vm._v(" "), _c("div", {
     staticClass: "sliding-menu"
   }, [_c("div", {
     staticClass: "container"
   }, [_c("ul", [_c("li", {
     on: {
       click: function click($event) {
-        return _vm.getUserApi();
+        _vm.getUserApi();
+
+        _vm.currentTypology = 0;
       }
     }
-  }, [_vm._m(1)]), _vm._v(" "), _vm._l(_vm.typologies, function (typology) {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "typology-title"
+  }, [_vm._v("Tutti i ristoranti")])]), _vm._v(" "), _vm._l(_vm.typologies, function (typology) {
     return _c("li", {
       key: typology.id,
+      "class": typology.id === _vm.currentTypology ? "active" : "",
       on: {
         click: function click($event) {
-          return _vm.getUserByTypology(typology.id);
+          _vm.getUserByTypology(typology.id);
+
+          _vm.currentTypology = typology.id;
         }
       }
-    }, [_c("div", [_c("div", {
+    }, [_c("div", {
       staticClass: "icon"
     }, [_c("img", {
       attrs: {
@@ -2914,7 +2937,7 @@ var render = function render() {
       }
     })]), _vm._v(" "), _c("div", {
       staticClass: "typology-title"
-    }, [_vm._v(_vm._s(typology.name))])])]);
+    }, [_vm._v(_vm._s(typology.name))])]);
   })], 2)])]), _vm._v(" "), _c("section", {
     staticClass: "restaurants"
   }, [_c("div", {
@@ -2941,19 +2964,13 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "jumbotron"
-  }, [_c("div", {
-    staticClass: "container"
-  }, [_c("h1", [_vm._v("Burgers & Fries")])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", [_c("div", {
     staticClass: "icon"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "typology-title"
-  }, [_vm._v("Tutti i ristoranti")])]);
+  }, [_c("img", {
+    attrs: {
+      src: "/image/typologies/typology_00.png",
+      alt: "all-restaurants"
+    }
+  })]);
 }];
 render._withStripped = true;
 
@@ -7673,7 +7690,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".commands[data-v-04ef5265] {\n  width: 100%;\n  display: flex;\n  justify-content: space-evenly;\n  align-items: center;\n}\n.commands .amount[data-v-04ef5265] {\n  width: 40px;\n  height: 32px;\n  font-size: 14px;\n  border: 1px solid rgb(230, 230, 230);\n  cursor: default;\n}\n.command[data-v-04ef5265] {\n  background-color: #fff;\n  width: 35px;\n  height: 32px;\n  border-radius: 50%;\n  border: 1px solid lightgray;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n}\n.debug[data-v-04ef5265] {\n  border: 1px solid black;\n  background-color: rgba(255, 0, 0, 0.3);\n}\na[data-v-04ef5265] {\n  color: #FF6666;\n  text-decoration: none;\n}\nh4[data-v-04ef5265] {\n  color: #FF6666;\n}\nh4[data-v-04ef5265]:hover {\n  color: red;\n}\n.active[data-v-04ef5265] {\n  color: red;\n  border-bottom: 1px solid red;\n}\n.top[data-v-04ef5265] {\n  background-color: #fff;\n  box-shadow: 0px 0px 15px 10px #DEDEDE;\n}\n.divider-solid[data-v-04ef5265] {\n  border-bottom: 1px solid lightgrey;\n}\n.divider-solid img[data-v-04ef5265] {\n  width: 20%;\n}\n.checkout[data-v-04ef5265] {\n  background-color: rgb(246, 249, 252);\n}", ""]);
+exports.push([module.i, ".cart-comp .cart-container[data-v-04ef5265] {\n  margin: 50px 0;\n  min-height: calc(100vh - 590px);\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 20px;\n  overflow: hidden;\n}\n.cart-comp .cart-container .top-links[data-v-04ef5265] {\n  display: flex;\n  width: 100%;\n  height: 50px;\n  color: #FE3638;\n}\n.cart-comp .cart-container .top-links h4[data-v-04ef5265] {\n  width: 50%;\n  text-align: center;\n  margin: 0 auto;\n}\n.cart-comp .cart-container .top-links h4.active[data-v-04ef5265],\n.cart-comp .cart-container .top-links h4 .active[data-v-04ef5265] {\n  border-bottom: 3px solid #FE3638;\n  font-weight: bolder;\n}\n.cart-comp .cart-container .top-links h4.static[data-v-04ef5265],\n.cart-comp .cart-container .top-links h4 .link[data-v-04ef5265] {\n  padding-top: 10px;\n}\n.cart-comp .cart-container .top-links h4 .link[data-v-04ef5265] {\n  cursor: pointer;\n  display: block;\n  width: 100%;\n  height: 100%;\n  color: #FE3638;\n  text-decoration: none;\n  transition: 0.2s all;\n}\n.cart-comp .cart-container .top-links h4 .link[data-v-04ef5265]:hover {\n  background-color: rgb(240, 240, 240);\n}\n.cart-comp .cart-container .cart-container-content .products-container[data-v-04ef5265] {\n  margin: 0;\n  list-style: none;\n}\n.cart-comp .cart-container .cart-container-content .products-container li[data-v-04ef5265] {\n  display: flex;\n  align-items: center;\n  margin: 30px 15px 0 15px;\n  padding-bottom: 15px;\n  border-bottom: 2px solid lightgray;\n}\n.cart-comp .cart-container .cart-container-content .products-container li img[data-v-04ef5265] {\n  width: 100px;\n  border-radius: 10px;\n  margin-right: 15px;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side[data-v-04ef5265] {\n  display: flex;\n  flex-grow: 1;\n  align-items: center;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .info[data-v-04ef5265] {\n  margin: 10px 0;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .info h5[data-v-04ef5265] {\n  font-weight: bolder;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .info .description[data-v-04ef5265] {\n  display: table;\n  table-layout: fixed;\n  max-width: 250px;\n  width: 100%;\n  font-size: 14px;\n  color: gray;\n  white-space: nowrap;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .info .description > *[data-v-04ef5265] {\n  display: table-cell;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .info .price[data-v-04ef5265] {\n  font-weight: bold;\n  color: #4E54C8;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs[data-v-04ef5265] {\n  display: flex;\n  align-items: center;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .qt-btn[data-v-04ef5265],\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .del-btn[data-v-04ef5265] {\n  cursor: pointer;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .qt-btn[data-v-04ef5265] {\n  font-size: 20px;\n  color: gray;\n  transition: 0.2s all;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .qt-btn[data-v-04ef5265]:hover {\n  color: rgb(95, 95, 95);\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .qt-btn[data-v-04ef5265]:active {\n  color: #FE3638;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .quantity[data-v-04ef5265] {\n  margin: 0 8px;\n  font-weight: bold;\n  color: #FE3638;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .del-btn[data-v-04ef5265] {\n  margin-left: 30px;\n  color: red;\n  transition: 0.2s all;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .del-btn[data-v-04ef5265]:hover {\n  color: darkred;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .del-btn[data-v-04ef5265]:active {\n  color: black;\n}\n.cart-comp .cart-container .cart-container-content .products-container li[data-v-04ef5265]:last-of-type {\n  border-bottom: none;\n}\n.cart-comp .cart-container .cart-container-content .checkout .ckt-container[data-v-04ef5265] {\n  text-align: center;\n  padding-top: 60px;\n  margin: 0 auto;\n  width: 50%;\n}\n.cart-comp .cart-container .cart-container-content .checkout .ckt-container h2[data-v-04ef5265] {\n  font-weight: bolder;\n}\n.cart-comp .cart-container .cart-container-content .checkout .ckt-container h2 .price[data-v-04ef5265] {\n  font-weight: bold;\n  color: #4E54C8;\n}\n.cart-comp .cart-container h1[data-v-04ef5265] {\n  text-align: center;\n  font-weight: bolder;\n  margin-top: 70px;\n}", ""]);
 
 // exports
 
@@ -7692,7 +7709,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".debug[data-v-5c3420ea] {\n  border: 1px solid black;\n}\na[data-v-5c3420ea] {\n  color: #FF6666;\n  text-decoration: none;\n}\n.active[data-v-5c3420ea] {\n  color: red;\n  border-bottom: 1px solid red;\n}", ""]);
+exports.push([module.i, ".checkout-comp .checkout-container[data-v-5c3420ea] {\n  margin: 50px 0;\n  min-height: calc(100vh - 590px);\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 20px;\n  overflow: hidden;\n}\n.checkout-comp .checkout-container .top-links[data-v-5c3420ea] {\n  display: flex;\n  width: 100%;\n  height: 50px;\n  color: #FE3638;\n}\n.checkout-comp .checkout-container .top-links h4[data-v-5c3420ea] {\n  width: 50%;\n  text-align: center;\n  margin: 0 auto;\n}\n.checkout-comp .checkout-container .top-links h4.active[data-v-5c3420ea],\n.checkout-comp .checkout-container .top-links h4 .active[data-v-5c3420ea] {\n  border-bottom: 3px solid #FE3638;\n  font-weight: bolder;\n}\n.checkout-comp .checkout-container .top-links h4.static[data-v-5c3420ea],\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea] {\n  padding-top: 10px;\n}\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea] {\n  cursor: pointer;\n  display: block;\n  width: 100%;\n  height: 100%;\n  color: #FE3638;\n  text-decoration: none;\n  transition: 0.2s all;\n}\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea]:hover {\n  background-color: rgb(240, 240, 240);\n}\n.checkout-comp .checkout-container .checkout-body[data-v-5c3420ea] {\n  margin-top: 30px;\n}\n.checkout-comp .checkout-container .checkout-body h2[data-v-5c3420ea] {\n  font-weight: bolder;\n  margin-bottom: 30px;\n}\n.checkout-comp .checkout-container .checkout-body h2 .price[data-v-5c3420ea] {\n  font-weight: bold;\n  color: #4E54C8;\n}\n.checkout-comp .checkout-container .checkout-body form[data-v-5c3420ea] {\n  text-align: center;\n}\n.checkout-comp .checkout-container .checkout-body form input[data-v-5c3420ea] {\n  width: 70%;\n  margin: 0 auto;\n  margin-top: 10px;\n  font-size: 14px;\n  display: block;\n  border-radius: 5px;\n  border: 2px solid gray;\n}\n.checkout-comp .checkout-container .checkout-body form .send-btn[data-v-5c3420ea] {\n  width: 40%;\n  margin-bottom: 30px;\n}\n.checkout-comp .checkout-container .checkout-body .paypal-side[data-v-5c3420ea] {\n  text-align: center;\n  width: 70%;\n  margin: 0 auto;\n}", ""]);
 
 // exports
 
@@ -7711,7 +7728,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 260px;\n  min-height: 380px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.food-item img[data-v-ed5020b2] {\n  height: 200px;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.food-item h5[data-v-ed5020b2] {\n  font-weight: bolder;\n  margin-bottom: 12px;\n  text-align: center;\n  overflow: hidden;\n}\n.food-item .food-item-bottom[data-v-ed5020b2] {\n  position: relative;\n  text-align: center;\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2] {\n  font-size: 14px;\n  color: gray;\n  height: 63px;\n  overflow-y: scroll;\n  padding: 8px 0;\n  margin-bottom: 10px;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::before {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 55px;\n  left: 0;\n  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom .lower-btns[data-v-ed5020b2] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0 20px;\n  margin-bottom: 15px;\n}\n.food-item .food-item-bottom .lower-btns .price[data-v-ed5020b2] {\n  font-size: 25px;\n  color: #4E54C8;\n  font-weight: bold;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2] {\n  font-size: 20px;\n  background-color: #FE3638;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n  color: white;\n  border-radius: 5px;\n  padding: 0px 8px;\n  cursor: pointer;\n  transition: 0.2s all;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:hover {\n  background-color: #C5272A;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:active {\n  background-color: white;\n  color: #FE3638;\n  outline-color: #FE3638;\n}", ""]);
+exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 260px;\n  min-height: 380px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.food-item img[data-v-ed5020b2] {\n  height: 200px;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.food-item h5[data-v-ed5020b2] {\n  font-weight: bolder;\n  margin-bottom: 12px;\n  text-align: center;\n  overflow: hidden;\n}\n.food-item .food-item-bottom[data-v-ed5020b2] {\n  position: relative;\n  text-align: center;\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2] {\n  font-size: 14px;\n  color: gray;\n  height: 63px;\n  overflow-y: scroll;\n  padding: 8px;\n  margin-bottom: 10px;\n  /* Nasconde scrollbar su IE, Edge e Firefox */\n  -ms-overflow-style: none; /* IE & Edge */\n  scrollbar-width: none; /* Firefox */\n  /* Nasconde scrollbar su Chrome, Safari e Opera */\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2]::-webkit-scrollbar {\n  display: none;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::before {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 55px;\n  left: 0;\n  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom .lower-btns[data-v-ed5020b2] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0 20px;\n  margin-bottom: 15px;\n}\n.food-item .food-item-bottom .lower-btns .price[data-v-ed5020b2] {\n  font-size: 25px;\n  color: #4E54C8;\n  font-weight: bold;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2] {\n  font-size: 20px;\n  background-color: #FE3638;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n  color: white;\n  border-radius: 5px;\n  padding: 0px 8px;\n  cursor: pointer;\n  transition: 0.2s all;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:hover {\n  background-color: #C5272A;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:active {\n  background-color: white;\n  color: #FE3638;\n  outline-color: #FE3638;\n}", ""]);
 
 // exports
 
@@ -7730,7 +7747,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".foods .jumbotron[data-v-27464fde] {\n  padding: 150px 0 0 0;\n  margin: 0 0 100px 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\n.foods .jumbotron h1[data-v-27464fde] {\n  font-weight: bolder;\n}\n.foods .jumbotron .container[data-v-27464fde] {\n  position: relative;\n  height: 100%;\n}\n.foods .jumbotron .container .jumbo-nav[data-v-27464fde] {\n  position: absolute;\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  bottom: 0;\n  left: 50%;\n  transform: translate(-50%, 50%);\n  width: calc(100% - 30px);\n  min-height: 80px;\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde],\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  cursor: pointer;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde] {\n  height: 60px;\n  margin: 0 20px 0 30px;\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav ul[data-v-27464fde] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  list-style: none;\n  padding-left: 30px;\n  flex-grow: 1;\n  flex-wrap: wrap;\n  margin: 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde]:hover,\n.foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  color: darkred;\n}\n.foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  font-weight: bold;\n}\n.foods .foods-container h1[data-v-27464fde] {\n  font-weight: bolder;\n  text-align: center;\n  margin-bottom: 40px;\n}\n.foods .foods-container .wrapper[data-v-27464fde] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 23px;\n  margin-bottom: 50px;\n}", ""]);
+exports.push([module.i, ".foods .jumbotron[data-v-27464fde] {\n  padding: 150px 0 0 0;\n  margin: 0 0 100px 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\n.foods .jumbotron h1[data-v-27464fde] {\n  font-weight: bolder;\n}\n.foods .jumbotron .container[data-v-27464fde] {\n  position: relative;\n  height: 100%;\n}\n.foods .jumbotron .container .jumbo-nav[data-v-27464fde] {\n  position: absolute;\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  bottom: 0;\n  left: 50%;\n  transform: translate(-50%, 50%);\n  width: calc(100% - 30px);\n  min-height: 80px;\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde],\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  cursor: pointer;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde] {\n  height: 60px;\n  margin: 0 20px 0 30px;\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav ul[data-v-27464fde] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  list-style: none;\n  padding-left: 30px;\n  flex-grow: 1;\n  flex-wrap: wrap;\n  margin: 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde]:hover,\n.foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  color: darkred;\n}\n.foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  font-weight: bold;\n}\n.foods .foods-container h1[data-v-27464fde] {\n  font-weight: bolder;\n  text-align: center;\n  margin-bottom: 40px;\n}\n.foods .foods-container h1 .category-name[data-v-27464fde] {\n  color: #FE3638;\n}\n.foods .foods-container .wrapper[data-v-27464fde] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 23px;\n  margin-bottom: 50px;\n}", ""]);
 
 // exports
 
@@ -7749,7 +7766,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 60px;\n  font-size: 16px;\n  font-weight: bold;\n}\nmain .sliding-menu ul li div[data-v-4b10c5b8] {\n  color: black;\n  text-align: center;\n  text-decoration: none;\n}\nmain .sliding-menu ul li div .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li div .icon img[data-v-4b10c5b8] {\n  height: 100%;\n}\nmain .sliding-menu ul li div .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nmain .load-more[data-v-4b10c5b8] {\n  text-transform: uppercase;\n  font-size: 14px;\n  font-weight: 900;\n  width: 20%;\n  margin-bottom: 20px;\n  text-align: center;\n  color: #fff;\n  background-color: #3B3B3B;\n  padding: 8px 0;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.4s;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n}\nmain .load-more[data-v-4b10c5b8]:hover {\n  background-color: #fff;\n  color: #3B3B3B;\n  outline-color: #3B3B3B;\n}", ""]);
+exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 60px;\n  font-size: 16px;\n  font-weight: bold;\n  color: black;\n  text-align: center;\n  cursor: pointer;\n}\nmain .sliding-menu ul li .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li .icon img[data-v-4b10c5b8] {\n  height: 100%;\n  width: 100%;\n}\nmain .sliding-menu ul li .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li.active .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 15px #FE3638;\n}\nmain .sliding-menu ul li.active .typology-title[data-v-4b10c5b8] {\n  text-shadow: none;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nmain .load-more[data-v-4b10c5b8] {\n  text-transform: uppercase;\n  font-size: 14px;\n  font-weight: 900;\n  width: 20%;\n  margin-bottom: 20px;\n  text-align: center;\n  color: #fff;\n  background-color: #3B3B3B;\n  padding: 8px 0;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.4s;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n}\nmain .load-more[data-v-4b10c5b8]:hover {\n  background-color: #fff;\n  color: #3B3B3B;\n  outline-color: #3B3B3B;\n}", ""]);
 
 // exports
 
@@ -7768,7 +7785,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "footer[data-v-de99f5e8] {\n  background-color: #2b3445;\n  color: white;\n  padding-top: 40px;\n}\nfooter a[data-v-de99f5e8] {\n  color: #9ea6b6;\n  text-decoration: none;\n}\nfooter a[data-v-de99f5e8]:hover {\n  color: wheat;\n}\nfooter .footer-top[data-v-de99f5e8] {\n  min-height: 250px;\n  border-bottom: 1px solid #696f7b;\n}\nfooter .footer-top h3[data-v-de99f5e8],\nfooter .footer-top h5[data-v-de99f5e8] {\n  font-weight: bolder;\n  margin-bottom: 25px;\n}\nfooter .footer-top ul[data-v-de99f5e8] {\n  list-style: none;\n  padding: 0;\n}\nfooter .footer-top ul li[data-v-de99f5e8] {\n  margin-bottom: 6px;\n  font-size: 14px;\n  font-weight: bold;\n}\nfooter .footer-top .social-btn[data-v-de99f5e8] {\n  color: inherit;\n  text-decoration: none;\n  border: 1px solid #696f7b;\n  border-radius: 10px;\n  margin-bottom: 10px;\n  display: flex;\n  width: 160px;\n  transition: 0.2s background-color;\n}\nfooter .footer-top .social-btn .logo[data-v-de99f5e8] {\n  display: flex;\n  align-items: center;\n  width: 50px;\n  text-align: center;\n  font-size: 30px;\n}\nfooter .footer-top .social-btn .logo i[data-v-de99f5e8] {\n  margin: auto;\n}\nfooter .footer-top .social-btn .small-text[data-v-de99f5e8] {\n  font-size: 12px;\n  color: #aaadb4;\n}\nfooter .footer-top .social-btn[data-v-de99f5e8]:hover {\n  background-color: rgba(0, 0, 0, 0.3);\n}\nfooter .footer-top .fix-bomb[data-v-de99f5e8] {\n  margin-left: 1px;\n  margin-right: -4px;\n}\nfooter .footer-bottom-left[data-v-de99f5e8] {\n  padding-right: 30px;\n}\nfooter .footer-bottom[data-v-de99f5e8] {\n  height: 100px;\n}\nfooter .footer-bottom .footer-text[data-v-de99f5e8] {\n  font-size: 11px;\n  color: #9ea6b6;\n}\nfooter .footer-bottom .footer-bottom-right[data-v-de99f5e8] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nfooter .footer-bottom small[data-v-de99f5e8] {\n  margin-left: 20px;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, "footer[data-v-de99f5e8] {\n  background-color: #2b3445;\n  color: white;\n  padding-top: 40px;\n}\nfooter a[data-v-de99f5e8] {\n  color: #9ea6b6;\n  text-decoration: none;\n}\nfooter a[data-v-de99f5e8]:hover {\n  color: wheat;\n}\nfooter .footer-top[data-v-de99f5e8] {\n  min-height: 250px;\n  border-bottom: 1px solid #696f7b;\n}\nfooter .footer-top h3[data-v-de99f5e8],\nfooter .footer-top h5[data-v-de99f5e8] {\n  font-weight: bolder;\n  margin-bottom: 25px;\n}\nfooter .footer-top ul[data-v-de99f5e8] {\n  list-style: none;\n  padding: 0;\n}\nfooter .footer-top ul li[data-v-de99f5e8] {\n  margin-bottom: 10px;\n  font-size: 14px;\n  line-height: 14px;\n  font-weight: bold;\n}\nfooter .footer-top .social-btn[data-v-de99f5e8] {\n  color: inherit;\n  text-decoration: none;\n  border: 1px solid #696f7b;\n  border-radius: 10px;\n  margin-bottom: 10px;\n  display: flex;\n  width: 160px;\n  transition: 0.2s background-color;\n}\nfooter .footer-top .social-btn .logo[data-v-de99f5e8] {\n  display: flex;\n  align-items: center;\n  width: 50px;\n  text-align: center;\n  font-size: 30px;\n}\nfooter .footer-top .social-btn .logo i[data-v-de99f5e8] {\n  margin: auto;\n}\nfooter .footer-top .social-btn .small-text[data-v-de99f5e8] {\n  font-size: 12px;\n  color: #aaadb4;\n}\nfooter .footer-top .social-btn b[data-v-de99f5e8] {\n  display: inline-block;\n  margin-bottom: 3px;\n}\nfooter .footer-top .social-btn[data-v-de99f5e8]:hover {\n  background-color: rgba(0, 0, 0, 0.3);\n}\nfooter .footer-top .fix-bomb[data-v-de99f5e8] {\n  margin-left: 1px;\n  margin-right: -4px;\n}\nfooter .footer-bottom-left[data-v-de99f5e8] {\n  padding-right: 30px;\n}\nfooter .footer-bottom[data-v-de99f5e8] {\n  height: 100px;\n}\nfooter .footer-bottom .footer-text[data-v-de99f5e8] {\n  font-size: 11px;\n  color: #9ea6b6;\n}\nfooter .footer-bottom .footer-bottom-right[data-v-de99f5e8] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nfooter .footer-bottom small[data-v-de99f5e8] {\n  margin-left: 20px;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -54456,17 +54473,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./public/image/categories/hamburgerjpg.jpg":
-/*!**************************************************!*\
-  !*** ./public/image/categories/hamburgerjpg.jpg ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "../images/hamburgerjpg.jpg?d75e51cfc5d87bee434ebece24af5751";
-
-/***/ }),
-
 /***/ "./public/image/categories/pizza-margherita.jpg":
 /*!******************************************************!*\
   !*** ./public/image/categories/pizza-margherita.jpg ***!
@@ -55414,9 +55420,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })
