@@ -1971,11 +1971,24 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addItem: function addItem(item) {
-      item.quantity++;
-      this.itemTotals();
+      for (var i = 0; i < this.items.length; i++) {
+        console.log(this.items[i]);
+
+        if (this.items[i].id == item.id) {
+          this.items[i].quantity = this.items[i].quantity + 1;
+          this.saveCart();
+          this.itemTotals();
+        }
+      }
     },
     removeItem: function removeItem(item, index) {
-      if (item.quantity > 1) item.quantity--;else this.deleteItem(index);
+      if (item.quantity > 1) for (var i = 0; i < this.items.length; i++) {
+        if (this.items[i].id == item.id) {
+          this.items[i].quantity = this.items[i].quantity - 1;
+          this.saveCart();
+          this.itemTotals();
+        }
+      } else this.deleteItem(index);
       this.itemTotals();
     },
     deleteItem: function deleteItem(index) {
@@ -1987,6 +2000,7 @@ __webpack_require__.r(__webpack_exports__);
     saveCart: function saveCart() {
       var parsed = JSON.stringify(this.items);
       localStorage.setItem('cart', parsed);
+      this.items = JSON.parse(localStorage.cart);
     },
     itemTotals: function itemTotals() {
       this.total = 0;
@@ -2745,7 +2759,7 @@ var render = function render() {
         return _vm.sendOrder();
       }
     }
-  }, [_vm._v("Invia")])]), _vm._v(" "), _c("section", {
+  }, [_vm._v("Paga ora")])]), _vm._v(" "), _c("section", {
     staticClass: "paypal-btns col-sm-6 col-12"
   }, [!_vm.paidFor ? _c("div", {
     staticClass: "paypal-side"

@@ -14,7 +14,7 @@
                     <input type="text" v-model.trim="newOrder.email" id="email" placeholder="E-mail">
                     <input type="text" v-model.trim="newOrder.address" id="address" placeholder="Indirizzo">
                     <input type="text" v-model.trim="newOrder.phone" id="phone" placeholder="Telefono">
-                    <button @click="sendOrder()" type="submit" class="send-btn btn btn-danger mt-4">Invia</button>
+                    <button @click="sendOrder()" type="submit" class="send-btn btn btn-danger mt-4">Paga ora</button>
                 </form>
                 <section class="paypal-btns col-sm-6 col-12">
                     <div

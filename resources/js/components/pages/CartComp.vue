@@ -69,12 +69,25 @@ export default {
     },
     methods: {
         addItem(item) {
-            item.quantity++;
-            this.itemTotals();
+
+            for(let i = 0; i < this.items.length; i++){
+                console.log(this.items[i]);
+                if(this.items[i].id == item.id){
+                    this.items[i].quantity = this.items[i].quantity + 1;
+                    this.saveCart();
+                    this.itemTotals();
+                }
+            }
         },
         removeItem(item , index){
             if(item.quantity > 1)
-                item.quantity--;
+            for(let i = 0; i < this.items.length; i++){
+                if(this.items[i].id == item.id){
+                    this.items[i].quantity = this.items[i].quantity - 1;
+                    this.saveCart();
+                    this.itemTotals();
+                }
+            }
             else
                 this.deleteItem(index);
             this.itemTotals();
@@ -88,6 +101,7 @@ export default {
         saveCart(){
           const parsed = JSON.stringify(this.items);
           localStorage.setItem('cart', parsed);
+          this.items = JSON.parse(localStorage.cart);
         },
         itemTotals(){
             this.total = 0;
