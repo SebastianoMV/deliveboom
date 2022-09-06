@@ -187,6 +187,7 @@ main{
         text-transform: uppercase;
         font-size: 14px;
         font-weight: 900;
+        min-width: 200px;
         width: 20%;
         margin-bottom: 20px;
         text-align: center;

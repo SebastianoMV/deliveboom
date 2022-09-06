@@ -108,7 +108,7 @@ export default {
 .foods{
     .jumbotron{
         padding: 150px 0 0 0;
-        margin: 0 0 100px 0;
+        margin: 0 0 110px 0;
         border-radius: 0;
         background-color: rgb(170, 0, 0);
         color: white;
@@ -129,7 +129,7 @@ export default {
                 flex-wrap: wrap;
                 bottom: 0;
                 left: 50%;
-                transform: translate(-50%, 50%);
+                transform: translate(-50%, calc(100% - 40px));
                 width: calc(100% - 30px);
                 min-height: 80px;
                 background-color: white;
@@ -142,23 +142,26 @@ export default {
                 }
                 img{
                     height: 60px;
-                    margin: 0 20px 0 30px;
+                    margin: 10px 50px 10px 30px;
                     border-radius: 10px;
                 }
                 ul{
                     display: flex;
                     column-gap: 30px;
                     list-style: none;
-                    padding-left: 30px;
+                    padding: 0;
                     flex-grow: 1;
                     flex-wrap: wrap;
                     margin: 0;
-                    li:hover,
-                    li.active{
-                        color: darkred;
-                    }
-                    li.active{
-                        font-weight: bold;
+                    li{
+                        margin: 20px 0;
+                        &:hover,
+                        &.active{
+                            color: darkred;
+                        }
+                        &.active{
+                            font-weight: bold;
+                        }
                     }
                 }
             }

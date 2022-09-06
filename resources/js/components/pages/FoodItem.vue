@@ -1,7 +1,15 @@
 <template>
     <div class="food-item">
         <div class="food-item-top">
-            <img :src="`/images/foods/${food.image}`" :alt="food.name">
+            <img
+                :src="`/images/foods/${food.image}`"
+                :alt="food.name"
+                v-if="!placeHolder"
+                @error="placeHolder = true">
+            <img
+                src="/images/foods/dishFoodPlaceholder.jpg"
+                :alt="`placeholder-${food.id}`"
+                v-else>
             <h5>{{food.name}}</h5>
         </div>
         <div class="food-item-bottom">
@@ -24,6 +32,7 @@ export default {
     data(){
         return{
             cart: [],
+            placeHolder: false
         }
     },
     mounted() {
@@ -49,7 +58,7 @@ export default {
                 else{
                     this.cart = JSON.parse(localStorage.getItem('cart'));
                     if(this.cart[0].user_id !== food.user_id){
-                        if(confirm('Vuoi cambiare ristorante?')){
+                        if(confirm('Hai già dei prodotti di un altro ristorante nel carrello. Vuoi cambiare ristorante?')){
                             this.cart = [];
                             food.quantity = 1;
                             this.cart.push(food);

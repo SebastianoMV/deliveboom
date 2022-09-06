@@ -165,6 +165,7 @@ export default {
                 font-weight: bolder;
                 margin-bottom: 30px;
                 .price{
+                    display: inline-block;
                     font-weight: bold;
                     color: #4E54C8;
                 }
