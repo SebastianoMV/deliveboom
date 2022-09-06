@@ -1,11 +1,11 @@
 <template>
     <router-link :to="{name: 'foods', params: { slug: user.slug }}" class="card-item">
         <div class="card-images">
-            <img src="../../../../public/image/categories/pizza-margherita.jpg" alt="" class="thumbnail">
+            <img :src="`/images/foods/${foodImage}`" alt="" class="thumbnail">
             <img :src="`/image/users/${user.image}`" alt="" class="restaurant-logo">
         </div>
         <h3>{{user.name}}</h3>
-        <p>Viva la pizza! La pizza è buona!</p>
+        <p>{{user.address}}, {{user.city}}</p>
     </router-link>
 </template>
 
@@ -18,7 +18,22 @@ export default {
     },
     data(){
         return{
-
+            foodImage: "",
+            userApiUrl: 'http://127.0.0.1:8000/api/foods',
+        }
+    },
+    mounted(){
+        this.getApiFirstFood();
+    },
+    methods: {
+        getApiFirstFood(){
+            axios.get(this.userApiUrl+"/food-category/"+this.user.id)
+                .then(r => {
+                    this.foodImage = r.data.foods[0].image;
+                })
+                .catch(err => {
+                    console.log(err);
+                });
         }
     }
 }

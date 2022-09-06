@@ -7,6 +7,9 @@
                     <router-link :to="{name: 'checkout'}" class="link">Checkout <i class="fa-regular fa-credit-card"></i></router-link>
                 </h4>
             </div>
+            <div class="mid-bar">
+                <go-back-btn/>
+            </div>
             <div
                 v-if="total > 0"
                 class="cart-container-content row">
@@ -51,7 +54,9 @@
     </section>
 </template>
 <script>
+import GoBackBtn from '../partials/GoBackBtn.vue';
 export default {
+    components: { GoBackBtn },
     name: 'CartComp',
     data() {
         return{
@@ -69,7 +74,6 @@ export default {
     },
     methods: {
         addItem(item) {
-
             for(let i = 0; i < this.items.length; i++){
                 console.log(this.items[i]);
                 if(this.items[i].id == item.id){
@@ -99,9 +103,9 @@ export default {
             this.itemTotals();
         },
         saveCart(){
-          const parsed = JSON.stringify(this.items);
-          localStorage.setItem('cart', parsed);
-          this.items = JSON.parse(localStorage.cart);
+            const parsed = JSON.stringify(this.items);
+            localStorage.setItem('cart', parsed);
+            this.items = JSON.parse(localStorage.cart);
         },
         itemTotals(){
             this.total = 0;
@@ -154,6 +158,10 @@ export default {
                     }
                 }
             }
+        }
+        .mid-bar{
+            width: 100%;
+            padding: 15px 15px 0;
         }
         .cart-container-content{
             .products-container{
@@ -257,9 +265,11 @@ export default {
         h1{
             text-align: center;
             font-weight: bolder;
-            margin-top: 70px;
+            margin: 70px 0;
+            i{
+                color: #FE3638;
+            }
         }
     }
-
 }
 </style>

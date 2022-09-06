@@ -6,7 +6,7 @@
                     <div class="col-xl-3 ">
                         <h3>Deliveb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h3>
                     </div>
-                    <div class="col-2">
+                    <div class="col-md-2 col-6">
                         <ul>
                             <h5>Join us</h5>
                             <li><a href="#">Careers</a></li>
@@ -15,7 +15,7 @@
                             <li><a href="#">About</a></li>
                         </ul>
                     </div>
-                    <div class="col-xl-2 col-3">
+                    <div class="col-xl-2 col-md-3 col-6">
                         <ul>
                             <h5>Let us help you</h5>
                             <li><a href="#">Help Center</a></li>
@@ -23,7 +23,7 @@
                             <li><a href="#">Contacts</a></li>
                         </ul>
                     </div>
-                    <div class="col-2">
+                    <div class="col-md-2 col-6">
                         <ul>
                             <h5>Follow us</h5>
                             <li><a href="#">Facebook</a></li>
