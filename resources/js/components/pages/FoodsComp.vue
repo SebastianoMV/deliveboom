@@ -4,6 +4,7 @@
             <div class="container">
                 <h1>{{user.name}}</h1>
                 <nav class="jumbo-nav">
+                    <go-back-btn/>
                     <img :src="`/image/users/${user.image}`" alt="" @click="getUser($route.params.slug)">
                     <ul>
                         <li
@@ -29,10 +30,11 @@
 
 <!-- SCRIPT -->
 <script>
+import GoBackBtn from '../partials/GoBackBtn.vue';
 import FoodItem from './FoodItem.vue';
 export default {
     name: "FoodsComp",
-    components: { FoodItem },
+    components: { FoodItem, GoBackBtn },
     data() {
         return{
             categories:[],
@@ -50,21 +52,27 @@ export default {
         getUser(slug){
             this.currentCategory = 0;
             axios.get(this.userApiUrl+'/menu/'+slug)
-            .then(r=> {
-                this.user = r.data;
-                // console.log(this.user);
-                this.getFoodsApi(this.user.id);
-            })
+                .then(r=> {
+                    this.user = r.data;
+                    // console.log(this.user);
+                    this.getFoodsApi(this.user.id);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
         },
         getFoodsApi(id){
             axios.get(this.userApiUrl+'/food-category/'+id)
-            .then(r => {
-                this.foods = r.data.foods;
-                this.foodsFiltered = r.data.foods;
-                this.categories = r.data.categories;
-                // console.log(id);
-                // console.log(this.categories);
-            })
+                .then(r => {
+                    this.foods = r.data.foods;
+                    this.foodsFiltered = r.data.foods;
+                    this.categories = r.data.categories;
+                    // console.log(id);
+                    // console.log(this.categories);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
         },
         filteredFoods(categoryId){
             this.foodsFiltered = [];
@@ -115,8 +123,9 @@ export default {
             height: 100%;
             .jumbo-nav{
                 position: absolute;
-                align-items: center;
                 display: flex;
+                align-items: center;
+                padding-left: 20px;
                 flex-wrap: wrap;
                 bottom: 0;
                 left: 50%;

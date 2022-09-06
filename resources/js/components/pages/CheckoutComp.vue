@@ -7,6 +7,9 @@
                 </h4>
                 <h4 class="static active">Checkout <i class="fa-regular fa-credit-card"></i></h4>
             </div>
+            <div class="mid-bar">
+                <go-back-btn/>
+            </div>
             <div class="checkout-body row">
                 <form action="" class="col-sm-6 col-12">
                     <h2>Dettagli dell'ordine</h2>
@@ -34,8 +37,10 @@
     </section>
 </template>
 <script>
+import GoBackBtn from '../partials/GoBackBtn.vue';
 export default {
     name: "CheckoutComp",
+    components: { GoBackBtn },
     data() {
         return {
             loaded: false,
@@ -149,6 +154,10 @@ export default {
                     }
                 }
             }
+        }
+        .mid-bar{
+            width: 100%;
+            padding: 15px 15px 0;
         }
         .checkout-body{
             margin-top: 30px;
