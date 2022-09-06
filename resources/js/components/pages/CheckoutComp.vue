@@ -184,6 +184,7 @@ export default {
                 .send-btn{
                     width: 40%;
                     margin-bottom: 30px;
+                    font-weight: bold;
                 }
             }
             .paypal-side{

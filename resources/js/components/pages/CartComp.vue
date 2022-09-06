@@ -44,7 +44,7 @@
                     <div class="ckt-container">
                         <h2>Totale: <span class="price">€ {{total}}</span></h2>
                         <router-link :to="{name: 'checkout'}">
-                            <button class="btn btn-danger w-100 my-3">Checkout</button>
+                            <button class="btn btn-danger w-100 my-3"><i class="fa-solid fa-credit-card"></i> Vai al Checkout</button>
                         </router-link>
                     </div>
                 </div>
@@ -258,6 +258,12 @@ export default {
                         display: inline-block;
                         font-weight: bold;
                         color: #4E54C8;
+                    }
+                }
+                button{
+                    font-weight: bold;
+                    i{
+                        margin-right: 5px;
                     }
                 }
             }
