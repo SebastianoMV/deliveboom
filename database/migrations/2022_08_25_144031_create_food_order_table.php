@@ -24,7 +24,7 @@ class CreateFoodOrderTable extends Migration
 
             $table->unsignedSmallInteger('quantity')->default(0);
 
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

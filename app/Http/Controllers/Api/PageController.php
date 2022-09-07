@@ -57,7 +57,10 @@ class PageController extends Controller
         $new_order = new Order();
         $new_order->fill($data);
         $new_order->save();
-        // dd($new_order);
+
+        for ($i = 0; $i < count($data['foods']); $i++) {
+            $new_order->foods()->attach([$data['foods'][$i] => ['quantity' => $data['quantity'][$i]]]);
+        }
 
         return response()->json($new_order);
     }

@@ -2071,7 +2071,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         phone: '',
         address: '',
         total_price: 0,
-        status_payment: 1
+        status_payment: 1,
+        foods: [],
+        quantity: []
       },
       items: null
     };
@@ -2101,7 +2103,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       for (var i = 0; i < this.items.length; i++) {
         this.newOrder.total_price += parseFloat(this.items[i].price) * this.items[i].quantity;
+        this.newOrder.foods.push(this.items[i].id);
+        this.newOrder.quantity.push(this.items[i].quantity);
       }
+
+      console.log('FOOOOOOOOOOOD' + ' ' + this.newOrder.quantity);
     },
     setLoaded: function setLoaded() {
       var _this = this;
