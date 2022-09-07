@@ -2468,7 +2468,25 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'HeaderComp'
+  name: 'HeaderComp',
+  data: function data() {
+    return {
+      activeMenu: false,
+      headerWidth: document.documentElement.clientWidth
+    };
+  },
+  created: function created() {
+    window.addEventListener("resize", this.headerWidthHandler);
+  },
+  destroyed: function destroyed() {
+    window.removeEventListener("resize", this.headerWidthHandler);
+  },
+  methods: {
+    headerWidthHandler: function headerWidthHandler() {
+      this.headerWidth = document.documentElement.clientWidth;
+      if (this.headerWidth <= 768) this.activeMenu = false;
+    }
+  }
 });
 
 /***/ }),
@@ -3000,7 +3018,7 @@ var render = function render() {
     staticClass: "jumbotron"
   }, [_c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v(_vm._s(_vm.currentTypologyName))])])]), _vm._v(" "), _c("div", {
+  }, [_c("h2", [_vm._v(_vm._s(_vm.currentTypologyName))])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
     staticClass: "sliding-menu"
   }, [_c("div", {
     staticClass: "container"
@@ -3012,7 +3030,7 @@ var render = function render() {
         _vm.currentTypology = 0;
       }
     }
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "typology-title"
   }, [_vm._v("Tutti i ristoranti")])]), _vm._v(" "), _vm._l(_vm.typologies, function (typology) {
     return _c("li", {
@@ -3057,6 +3075,18 @@ var render = function render() {
 };
 
 var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "jumbo-wallpaper"
+  }, [_c("img", {
+    attrs: {
+      src: "https://wallpaper.dog/large/20461782.jpg",
+      alt: ""
+    }
+  })]);
+}, function () {
   var _vm = this,
       _c = _vm._self._c;
 
@@ -3264,20 +3294,12 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("header", {}, [_c("nav", {
-    staticClass: "container navbar navbar-expand-lg navbar-light"
-  }, [_c("a", {
-    staticClass: "navbar-brand",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("LOGO")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "collapse navbar-collapse",
-    attrs: {
-      id: "navbarSupportedContent"
-    }
-  }, [_vm._m(1), _vm._v(" "), _c("ul", {
-    staticClass: "d-flex list-unstyled mb-0"
+  return _c("header", [_c("div", {
+    staticClass: "container header-container"
+  }, [_c("div", {
+    staticClass: "top-header"
+  }, [_vm._m(0), _vm._v(" "), _c("ul", {
+    staticClass: "header-btns d-md-flex d-none"
   }, [_c("li", [_c("router-link", {
     staticClass: "navigation-list-element",
     attrs: {
@@ -3296,6 +3318,36 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-cart-shopping"
+  })])], 1), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("i", {
+    staticClass: "hamburger-menu fa-solid fa-bars d-md-none d-block",
+    on: {
+      click: function click($event) {
+        _vm.activeMenu = !_vm.activeMenu;
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "header-dropdown-menu d-md-none d-block",
+    "class": _vm.activeMenu ? "active" : ""
+  }, [_c("ul", {
+    staticClass: "dropdown-btns"
+  }, [_c("li", [_c("router-link", {
+    staticClass: "dropdown-list-element",
+    attrs: {
+      to: {
+        name: "home"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-house"
+  })])], 1), _vm._v(" "), _c("li", [_c("router-link", {
+    staticClass: "dropdown-list-element",
+    attrs: {
+      to: {
+        name: "cart"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-cart-shopping"
   })])], 1), _vm._v(" "), _vm._m(2)])])])]);
 };
 
@@ -3303,75 +3355,31 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("button", {
-    staticClass: "navbar-toggler",
-    attrs: {
-      type: "button",
-      "data-toggle": "collapse",
-      "data-target": "#navbarSupportedContent",
-      "aria-controls": "navbarSupportedContent",
-      "aria-expanded": "false",
-      "aria-label": "Toggle navigation"
-    }
-  }, [_c("span", {
-    staticClass: "navbar-toggler-icon"
-  })]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("ul", {
-    staticClass: "navbar-nav mr-auto"
-  }, [_c("li", {
-    staticClass: "nav-item active"
-  }, [_c("a", {
-    staticClass: "nav-link",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Cucina "), _c("span", {
-    staticClass: "sr-only"
-  }, [_vm._v("(current)")])])]), _vm._v(" "), _c("li", {
-    staticClass: "nav-item dropdown"
-  }, [_c("a", {
-    staticClass: "nav-link dropdown-toggle",
-    attrs: {
-      href: "#",
-      id: "navbarDropdown",
-      role: "button",
-      "data-toggle": "dropdown",
-      "aria-haspopup": "true",
-      "aria-expanded": "false"
-    }
-  }, [_vm._v("\n                    Dropdown\n                    ")]), _vm._v(" "), _c("div", {
-    staticClass: "dropdown-menu",
-    attrs: {
-      "aria-labelledby": "navbarDropdown"
-    }
-  }, [_c("a", {
-    staticClass: "dropdown-item",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Action")]), _vm._v(" "), _c("a", {
-    staticClass: "dropdown-item",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Another action")]), _vm._v(" "), _c("div", {
-    staticClass: "dropdown-divider"
-  }), _vm._v(" "), _c("a", {
-    staticClass: "dropdown-item",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Something else here")])])])]);
+  return _c("h1", {
+    staticClass: "logo"
+  }, [_vm._v("Deliveb"), _c("i", {
+    staticClass: "fa-solid fa-bomb fix-bomb"
+  }), _c("i", {
+    staticClass: "fa-solid fa-bomb fix-bomb"
+  }), _vm._v("m")]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
 
   return _c("li", [_c("a", {
     staticClass: "navigation-list-element",
+    attrs: {
+      href: "/admin"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-right-to-bracket"
+  })])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("li", [_c("a", {
+    staticClass: "dropdown-list-element",
     attrs: {
       href: "/admin"
     }
@@ -7876,7 +7884,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".foods .jumbotron[data-v-27464fde] {\n  padding: 150px 0 0 0;\n  margin: 0 0 110px 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\n.foods .jumbotron h1[data-v-27464fde] {\n  font-weight: bolder;\n}\n.foods .jumbotron .container[data-v-27464fde] {\n  position: relative;\n  height: 100%;\n}\n.foods .jumbotron .container .jumbo-nav[data-v-27464fde] {\n  position: absolute;\n  display: flex;\n  align-items: center;\n  padding-left: 20px;\n  flex-wrap: wrap;\n  bottom: 0;\n  left: 50%;\n  transform: translate(-50%, calc(100% - 40px));\n  width: calc(100% - 30px);\n  min-height: 80px;\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde],\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  cursor: pointer;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde] {\n  height: 60px;\n  margin: 10px 50px 10px 30px;\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav ul[data-v-27464fde] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  list-style: none;\n  padding: 0;\n  flex-grow: 1;\n  flex-wrap: wrap;\n  margin: 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  margin: 20px 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde]:hover, .foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  color: darkred;\n}\n.foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  font-weight: bold;\n}\n.foods .foods-container h1[data-v-27464fde] {\n  font-weight: bolder;\n  text-align: center;\n  margin-bottom: 40px;\n}\n.foods .foods-container h1 .category-name[data-v-27464fde] {\n  color: #FE3638;\n}\n.foods .foods-container .wrapper[data-v-27464fde] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 23px;\n  margin-bottom: 50px;\n}", ""]);
+exports.push([module.i, ".foods .jumbotron[data-v-27464fde] {\n  padding: 88.5px 0 0 0;\n  margin: 0 0 110px 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 188.5px;\n  background-image: url();\n  background-size: cover;\n}\n.foods .jumbotron h1[data-v-27464fde] {\n  font-weight: bolder;\n}\n.foods .jumbotron .container[data-v-27464fde] {\n  position: relative;\n  height: 100%;\n}\n.foods .jumbotron .container .jumbo-nav[data-v-27464fde] {\n  position: absolute;\n  display: flex;\n  align-items: center;\n  padding-left: 20px;\n  flex-wrap: wrap;\n  bottom: 0;\n  left: 50%;\n  transform: translate(-50%, calc(100% - 40px));\n  width: calc(100% - 30px);\n  min-height: 80px;\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde],\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  cursor: pointer;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde] {\n  height: 60px;\n  margin: 10px 50px 10px 30px;\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav ul[data-v-27464fde] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  list-style: none;\n  padding: 0;\n  flex-grow: 1;\n  flex-wrap: wrap;\n  margin: 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  margin: 20px 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde]:hover, .foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  color: darkred;\n}\n.foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  font-weight: bold;\n}\n.foods .foods-container h1[data-v-27464fde] {\n  font-weight: bolder;\n  text-align: center;\n  margin-bottom: 40px;\n}\n.foods .foods-container h1 .category-name[data-v-27464fde] {\n  color: #FE3638;\n}\n.foods .foods-container .wrapper[data-v-27464fde] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 23px;\n  margin-bottom: 50px;\n}\n@media screen and (min-width: 768px) {\n.foods .jumbotron[data-v-27464fde] {\n    height: 250px;\n    padding: 150px 0 0 0;\n}\n}", ""]);
 
 // exports
 
@@ -7895,7 +7903,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  padding: 150px 0 0 0;\n  margin: 0;\n  border-radius: 0;\n  background-color: rgb(170, 0, 0);\n  color: white;\n  height: 250px;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h1[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 60px;\n  font-size: 16px;\n  font-weight: bold;\n  color: black;\n  text-align: center;\n  cursor: pointer;\n}\nmain .sliding-menu ul li .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li .icon img[data-v-4b10c5b8] {\n  height: 100%;\n  width: 100%;\n}\nmain .sliding-menu ul li .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li.active .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 15px #FE3638;\n}\nmain .sliding-menu ul li.active .typology-title[data-v-4b10c5b8] {\n  text-shadow: none;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nmain .load-more[data-v-4b10c5b8] {\n  text-transform: uppercase;\n  font-size: 14px;\n  font-weight: 900;\n  min-width: 200px;\n  width: 20%;\n  margin-bottom: 20px;\n  text-align: center;\n  color: #fff;\n  background-color: #3B3B3B;\n  padding: 8px 0;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.4s;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n}\nmain .load-more[data-v-4b10c5b8]:hover {\n  background-color: #fff;\n  color: #3B3B3B;\n  outline-color: #3B3B3B;\n}", ""]);
+exports.push([module.i, "main .jumbotron[data-v-4b10c5b8] {\n  position: relative;\n  margin: 0;\n  border-radius: 0;\n  background-color: transparent;\n  color: white;\n  width: 100%;\n  height: 250px;\n  padding: 150px 0 0 0;\n  background-image: url();\n  background-size: cover;\n}\nmain .jumbotron h2[data-v-4b10c5b8] {\n  font-weight: bolder;\n}\nmain .jumbotron .jumbo-wallpaper[data-v-4b10c5b8] {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transform: translateX(-50%);\n  z-index: -1;\n  overflow: hidden;\n}\nmain .jumbotron .jumbo-wallpaper img[data-v-4b10c5b8] {\n  -o-object-fit: cover;\n     object-fit: cover;\n}\nmain .sliding-menu[data-v-4b10c5b8] {\n  background-color: aliceblue;\n  margin-bottom: 45px;\n}\nmain .sliding-menu ul[data-v-4b10c5b8] {\n  overflow-x: auto;\n  white-space: nowrap;\n  padding: 45px 0 20px 0;\n  margin-bottom: 0;\n  list-style: none;\n}\nmain .sliding-menu ul li[data-v-4b10c5b8] {\n  display: inline-block;\n  margin-right: 60px;\n  font-size: 16px;\n  font-weight: bold;\n  color: black;\n  text-align: center;\n  cursor: pointer;\n}\nmain .sliding-menu ul li .icon[data-v-4b10c5b8] {\n  width: 110px;\n  height: 82.5px;\n  border-radius: 20px;\n  overflow: hidden;\n  text-align: center;\n  transition: 0.2s box-shadow;\n}\nmain .sliding-menu ul li .icon img[data-v-4b10c5b8] {\n  height: 100%;\n  width: 100%;\n}\nmain .sliding-menu ul li .typology-title[data-v-4b10c5b8] {\n  padding-top: 10px;\n  transition: 0.2s text-shadow;\n}\nmain .sliding-menu ul li:hover .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li:hover .typology-title[data-v-4b10c5b8] {\n  text-shadow: 4px 4px 10px gray;\n}\nmain .sliding-menu ul li.active .icon[data-v-4b10c5b8] {\n  box-shadow: 4px 4px 15px #FE3638;\n}\nmain .sliding-menu ul li.active .typology-title[data-v-4b10c5b8] {\n  text-shadow: none;\n}\nmain .cards-container[data-v-4b10c5b8] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nmain .load-more[data-v-4b10c5b8] {\n  text-transform: uppercase;\n  font-size: 14px;\n  font-weight: 900;\n  min-width: 200px;\n  width: 20%;\n  margin-bottom: 20px;\n  text-align: center;\n  color: #fff;\n  background-color: #3B3B3B;\n  padding: 8px 0;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.4s;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n}\nmain .load-more[data-v-4b10c5b8]:hover {\n  background-color: #fff;\n  color: #3B3B3B;\n  outline-color: #3B3B3B;\n}\n@media screen and (min-width: 768px) {\nmain .jumbotron[data-v-4b10c5b8] {\n    height: 250px;\n    padding: 150px 0 0 0;\n}\n}", ""]);
 
 // exports
 
@@ -7952,7 +7960,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "header[data-v-494e1ffe] {\n  background-color: bisque;\n}\nheader .navbar[data-v-494e1ffe] {\n  min-height: 100px;\n}\nheader ul[data-v-494e1ffe] {\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nheader ul .navigation-list-element[data-v-494e1ffe] {\n  color: black;\n  text-decoration: none;\n  font-size: 25px;\n}\nheader ul .navigation-list-element[data-v-494e1ffe]:hover {\n  color: darkred;\n}", ""]);
+exports.push([module.i, "header[data-v-494e1ffe] {\n  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));\n}\nheader .header-container[data-v-494e1ffe] {\n  width: 100%;\n  min-height: 100px;\n  color: white;\n  transition: 0.2s all;\n}\nheader .header-container .top-header[data-v-494e1ffe] {\n  display: flex;\n  justify-content: space-between;\n}\nheader .header-container .top-header .logo[data-v-494e1ffe] {\n  font-weight: bolder;\n  font-size: 37px;\n  margin: 25px 0 35px;\n}\nheader .header-container .top-header .logo .fix-bomb[data-v-494e1ffe] {\n  margin-left: 1px;\n  margin-right: -8px;\n}\nheader .header-container .top-header .header-btns[data-v-494e1ffe] {\n  display: flex;\n  margin: auto 0;\n  list-style: none;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nheader .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe] {\n  color: white;\n  text-decoration: none;\n  font-size: 35px;\n  transition: 0.2s color;\n}\nheader .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe]:hover {\n  color: rgb(200, 200, 200);\n}\nheader .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe]:active {\n  color: #FE3638;\n}\nheader .header-container .top-header .hamburger-menu[data-v-494e1ffe] {\n  cursor: pointer;\n  margin: auto 0;\n  font-size: 45px;\n}\nheader .header-container .header-dropdown-menu[data-v-494e1ffe] {\n  transition: max-height 1s;\n  overflow: hidden;\n  max-height: 0;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns[data-v-494e1ffe] {\n  list-style: none;\n  padding: 0;\n  margin-bottom: 0;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element[data-v-494e1ffe] {\n  display: block;\n  opacity: inherit;\n  color: white;\n  text-decoration: none;\n  font-size: 35px;\n  transition: 0.2s all;\n  margin-bottom: 30px;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element[data-v-494e1ffe]:hover {\n  color: rgb(200, 200, 200);\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element[data-v-494e1ffe]:active {\n  color: #FE3638;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li:last-of-type .dropdown-list-element[data-v-494e1ffe] {\n  margin-bottom: 0;\n}\nheader .header-container .header-dropdown-menu.active[data-v-494e1ffe] {\n  max-height: 500px;\n}\n@media screen and (min-width: 450px) {\nheader .header-container .top-header .logo[data-v-494e1ffe] {\n    font-size: 45px;\n    margin: 20px 0 30px;\n}\n}", ""]);
 
 // exports
 

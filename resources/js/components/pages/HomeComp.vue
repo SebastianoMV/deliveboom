@@ -2,7 +2,10 @@
     <main>
         <div class="jumbotron">
             <div class="container">
-                <h1>{{currentTypologyName}}</h1>
+                <h2>{{currentTypologyName}}</h2>
+            </div>
+            <div class="jumbo-wallpaper">
+                <img src="https://wallpaper.dog/large/20461782.jpg" alt="">
             </div>
         </div>
         <div class="sliding-menu">
@@ -112,19 +115,35 @@ export default {
 main{
     .jumbotron{
         position: relative;
-        padding: 150px 0 0 0;
         margin: 0;
         border-radius: 0;
-        background-color: rgb(170, 0, 0);
+        background-color: transparent;
         color: white;
+        width: 100%;
         height: 250px;
+        padding: 150px 0 0 0;
         background-image: url(/* INSERIRE IMMAGINE DI SFONDO QUI!!! */);
         background-size: cover;
-        h1{
+        h2{
             font-weight: bolder;
         }
+        .jumbo-wallpaper{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-50%);
+            z-index: -1;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+            }
+        }
     }
-     .sliding-menu{
+    .sliding-menu{
         background-color: aliceblue;
         margin-bottom: 45px;
         ul{
@@ -203,6 +222,12 @@ main{
             background-color: #fff;
             color: #3B3B3B;
             outline-color: #3B3B3B;
+        }
+    }
+    @media screen and (min-width: 768px) {
+        .jumbotron{
+            height: 250px;
+            padding: 150px 0 0 0;
         }
     }
 }
