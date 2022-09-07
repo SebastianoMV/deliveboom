@@ -2112,6 +2112,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } // console.log('quantity' + this.newOrder.quantity);
 
     },
+    checkForm: function checkForm(e) {
+      if (this.newOrder.name && this.newOrder.address && this.newOrder.email && this.newOrder.phone) {
+        this.showPayment = true;
+        return true;
+      }
+
+      e.preventDefault();
+    },
     setLoaded: function setLoaded() {
       var _this = this;
 
@@ -2711,9 +2719,18 @@ var render = function render() {
     }],
     staticClass: "m-auto w-75",
     attrs: {
-      action: ""
+      action: "",
+      id: "formPayment"
+    },
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.checkForm.apply(null, arguments);
+      }
     }
-  }, [_c("h2", [_vm._v("Dettagli dell'ordine")]), _vm._v(" "), _c("input", {
+  }, [_c("h2", [_vm._v("Dettagli dell'ordine")]), _vm._v(" "), !_vm.newOrder.name ? _c("p", {
+    staticClass: "text-danger"
+  }, [_vm._v("Nome obbligatorio")]) : _vm._e(), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -2741,7 +2758,9 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  }), _vm._v(" "), _c("input", {
+  }), _vm._v(" "), !_vm.newOrder.email ? _c("p", {
+    staticClass: "text-danger"
+  }, [_vm._v("Email obbligatoria")]) : _vm._e(), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -2752,7 +2771,7 @@ var render = function render() {
       }
     }],
     attrs: {
-      type: "text",
+      type: "email",
       id: "email",
       placeholder: "E-mail"
     },
@@ -2769,7 +2788,9 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  }), _vm._v(" "), _c("input", {
+  }), _vm._v(" "), !_vm.newOrder.address ? _c("p", {
+    staticClass: "text-danger"
+  }, [_vm._v("Indirizzo obbligatorio")]) : _vm._e(), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -2797,7 +2818,9 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  }), _vm._v(" "), _c("input", {
+  }), _vm._v(" "), !_vm.newOrder.phone ? _c("p", {
+    staticClass: "text-danger"
+  }, [_vm._v("Telefono obbligatorio")]) : _vm._e(), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -2825,14 +2848,13 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  }), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("input", {
     staticClass: "send-btn btn btn-danger mt-4",
-    on: {
-      click: function click($event) {
-        _vm.showPayment = true;
-      }
+    attrs: {
+      type: "submit",
+      value: "Vai al pagamento"
     }
-  }, [_vm._v("Paga ora")])]), _vm._v(" "), _c("section", {
+  })]), _vm._v(" "), _c("section", {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -7862,7 +7884,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".checkout-comp .checkout-container[data-v-5c3420ea] {\n  margin: 50px 0;\n  min-height: calc(100vh - 590px);\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 20px;\n  overflow: hidden;\n}\n.checkout-comp .checkout-container .top-links[data-v-5c3420ea] {\n  display: flex;\n  width: 100%;\n  height: 50px;\n  color: #FE3638;\n}\n.checkout-comp .checkout-container .top-links h4[data-v-5c3420ea] {\n  width: 50%;\n  text-align: center;\n  margin: 0 auto;\n}\n.checkout-comp .checkout-container .top-links h4.active[data-v-5c3420ea],\n.checkout-comp .checkout-container .top-links h4 .active[data-v-5c3420ea] {\n  border-bottom: 3px solid #FE3638;\n  font-weight: bolder;\n}\n.checkout-comp .checkout-container .top-links h4.static[data-v-5c3420ea],\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea] {\n  padding-top: 10px;\n}\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea] {\n  cursor: pointer;\n  display: block;\n  width: 100%;\n  height: 100%;\n  color: #FE3638;\n  text-decoration: none;\n  transition: 0.2s all;\n}\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea]:hover {\n  background-color: rgb(240, 240, 240);\n}\n.checkout-comp .checkout-container .mid-bar[data-v-5c3420ea] {\n  width: 100%;\n  padding: 15px 15px 0;\n}\n.checkout-comp .checkout-container .checkout-body[data-v-5c3420ea] {\n  margin-top: 30px;\n}\n.checkout-comp .checkout-container .checkout-body h2[data-v-5c3420ea] {\n  font-weight: bolder;\n  margin-bottom: 30px;\n}\n.checkout-comp .checkout-container .checkout-body h2 .price[data-v-5c3420ea] {\n  display: inline-block;\n  font-weight: bold;\n  color: #4E54C8;\n}\n.checkout-comp .checkout-container .checkout-body form[data-v-5c3420ea] {\n  text-align: center;\n}\n.checkout-comp .checkout-container .checkout-body form input[data-v-5c3420ea] {\n  width: 70%;\n  margin: 0 auto;\n  margin-top: 10px;\n  font-size: 14px;\n  display: block;\n  border-radius: 5px;\n  border: 2px solid gray;\n}\n.checkout-comp .checkout-container .checkout-body form .send-btn[data-v-5c3420ea] {\n  width: 40%;\n  margin-bottom: 30px;\n  font-weight: bold;\n}\n.checkout-comp .checkout-container .checkout-body .paypal-side[data-v-5c3420ea] {\n  text-align: center;\n  width: 70%;\n  margin: 0 auto;\n}", ""]);
+exports.push([module.i, ".checkout-comp .checkout-container[data-v-5c3420ea] {\n  margin: 50px 0;\n  min-height: calc(100vh - 590px);\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 20px;\n  overflow: hidden;\n}\n.checkout-comp .checkout-container .top-links[data-v-5c3420ea] {\n  display: flex;\n  width: 100%;\n  height: 50px;\n  color: #FE3638;\n}\n.checkout-comp .checkout-container .top-links h4[data-v-5c3420ea] {\n  width: 50%;\n  text-align: center;\n  margin: 0 auto;\n}\n.checkout-comp .checkout-container .top-links h4.active[data-v-5c3420ea],\n.checkout-comp .checkout-container .top-links h4 .active[data-v-5c3420ea] {\n  border-bottom: 3px solid #FE3638;\n  font-weight: bolder;\n}\n.checkout-comp .checkout-container .top-links h4.static[data-v-5c3420ea],\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea] {\n  padding-top: 10px;\n}\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea] {\n  cursor: pointer;\n  display: block;\n  width: 100%;\n  height: 100%;\n  color: #FE3638;\n  text-decoration: none;\n  transition: 0.2s all;\n}\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea]:hover {\n  background-color: rgb(240, 240, 240);\n}\n.checkout-comp .checkout-container .mid-bar[data-v-5c3420ea] {\n  width: 100%;\n  padding: 15px 15px 0;\n}\n.checkout-comp .checkout-container .checkout-body[data-v-5c3420ea] {\n  margin-top: 30px;\n}\n.checkout-comp .checkout-container .checkout-body h2[data-v-5c3420ea] {\n  font-weight: bolder;\n  margin-bottom: 30px;\n}\n.checkout-comp .checkout-container .checkout-body h2 .price[data-v-5c3420ea] {\n  display: inline-block;\n  font-weight: bold;\n  color: #4E54C8;\n}\n.checkout-comp .checkout-container .checkout-body form[data-v-5c3420ea] {\n  text-align: center;\n}\n.checkout-comp .checkout-container .checkout-body form p[data-v-5c3420ea] {\n  margin-bottom: 0;\n}\n.checkout-comp .checkout-container .checkout-body form input[data-v-5c3420ea] {\n  width: 70%;\n  margin: 0 auto;\n  margin-bottom: 10px;\n  font-size: 14px;\n  display: block;\n  border-radius: 5px;\n  border: 2px solid gray;\n}\n.checkout-comp .checkout-container .checkout-body form .send-btn[data-v-5c3420ea] {\n  width: 40%;\n  margin-bottom: 30px;\n  font-weight: bold;\n}\n.checkout-comp .checkout-container .checkout-body .paypal-side[data-v-5c3420ea] {\n  text-align: center;\n  width: 70%;\n  margin: 0 auto;\n}", ""]);
 
 // exports
 

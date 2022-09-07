@@ -11,13 +11,18 @@
                 <go-back-btn/>
             </div>
             <div  class="checkout-body">
-                <form v-show="!showPayment" action="" class="m-auto w-75">
+                <form v-show="!showPayment" action="" class="m-auto w-75" id="formPayment" @submit.prevent="checkForm">
                     <h2>Dettagli dell'ordine</h2>
+                    <p v-if="!newOrder.name" class="text-danger">Nome obbligatorio</p>
                     <input type="text" v-model.trim="newOrder.name" id="name" placeholder="Nome">
-                    <input type="text" v-model.trim="newOrder.email" id="email" placeholder="E-mail">
+                    <p v-if="!newOrder.email" class="text-danger">Email obbligatoria</p>
+                    <input type="email" v-model.trim="newOrder.email" id="email" placeholder="E-mail">
+                    <p v-if="!newOrder.address" class="text-danger">Indirizzo obbligatorio</p>
                     <input type="text" v-model.trim="newOrder.address" id="address" placeholder="Indirizzo">
+                    <p v-if="!newOrder.phone" class="text-danger">Telefono obbligatorio</p>
                     <input type="text" v-model.trim="newOrder.phone" id="phone" placeholder="Telefono">
-                    <div  @click="showPayment = true" class="send-btn btn btn-danger mt-4">Paga ora</div>
+                    <input type="submit"  value="Vai al pagamento" class="send-btn btn btn-danger mt-4" >
+
                 </form>
                 <section v-show="showPayment" class="m-auto w-75">
                     <div
@@ -87,6 +92,7 @@ export default {
                 // console.log(r.data)
             });
         },
+
         itemTotals(){
                 this.newOrder.total_price = 0;
                 for (let i = 0; i < this.items.length; i++) {
@@ -95,7 +101,17 @@ export default {
                      this.newOrder.quantity.push(this.items[i].quantity);
                 }
                 // console.log('quantity' + this.newOrder.quantity);
-            },
+        },
+
+        checkForm: function (e){
+            if(this.newOrder.name && this.newOrder.address && this.newOrder.email && this.newOrder.phone){
+                this.showPayment = true;
+                return true;
+            }
+            e.preventDefault();
+
+
+        },
         setLoaded: function() {
             this.loaded = true;
             window.paypal
@@ -185,10 +201,13 @@ export default {
             }
             form{
                 text-align: center;
+                p{
+                    margin-bottom: 0;
+                }
                 input{
                     width: 70%;
                     margin: 0 auto;
-                    margin-top: 10px;
+                    margin-bottom: 10px;
                     font-size: 14px;
                     display: block;
                     border-radius: 5px;
