@@ -23,7 +23,7 @@
                             <li><a href="#">Contacts</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-2 col-6">
+                    <div class="col-xl-2 col-md-3 col-6">
                         <ul>
                             <h5>Follow us</h5>
                             <li><a href="#">Facebook</a></li>
@@ -82,6 +82,7 @@ export default {
         a{
             color: #9ea6b6;
             text-decoration: none;
+            transition: .2s color;
             &:hover{
                 color: wheat;
             }

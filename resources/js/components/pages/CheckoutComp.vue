@@ -165,6 +165,7 @@ export default {
                 font-weight: bolder;
                 margin-bottom: 30px;
                 .price{
+                    display: inline-block;
                     font-weight: bold;
                     color: #4E54C8;
                 }
@@ -183,6 +184,7 @@ export default {
                 .send-btn{
                     width: 40%;
                     margin-bottom: 30px;
+                    font-weight: bold;
                 }
             }
             .paypal-side{
