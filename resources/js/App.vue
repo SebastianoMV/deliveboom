@@ -1,8 +1,8 @@
 <template>
     <div>
-        <header-comp />
+        <header-comp/>
         <router-view></router-view>
-        <footer-comp />
+        <footer-comp/>
     </div>
 </template>
 <script>

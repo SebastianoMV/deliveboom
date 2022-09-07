@@ -107,12 +107,12 @@ export default {
 <style lang="scss" scoped>
 .foods{
     .jumbotron{
-        padding: 150px 0 0 0;
+        padding: 88.5px 0 0 0;
         margin: 0 0 110px 0;
         border-radius: 0;
         background-color: rgb(170, 0, 0);
         color: white;
-        height: 250px;
+        height: 188.5px;
         background-image: url(/* INSERIRE IMMAGINE DI SFONDO QUI!!! */);
         background-size: cover;
         h1{
@@ -182,6 +182,12 @@ export default {
             justify-content: center;
             gap: 23px;
             margin-bottom: 50px;
+        }
+    }
+    @media screen and (min-width:768px) {
+        .jumbotron{
+            height: 250px;
+            padding: 150px 0 0 0;
         }
     }
 }
