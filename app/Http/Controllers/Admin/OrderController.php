@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Order;
+use App\Food;
+
 
 class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::all();
+        $activeUser = Auth::id();
+
+        $orders = Food::where('user_id', $activeUser)->join('food_order', 'food.id', '=', 'food_order.food_id')
+            ->join('orders', 'food_order.order_id', '=', 'orders.id')->groupBy('orders.id')
+            ->having('orders.id', '>', 100)
+            ->get();
 
         return view('admin.orderPages.index', compact('orders'));
     }
