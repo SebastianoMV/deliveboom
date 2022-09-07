@@ -2064,6 +2064,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       loaded: false,
       paidFor: false,
+      showPayment: false,
       orderApi: 'http://127.0.0.1:8000/api/orders',
       newOrder: {
         name: '',
@@ -2090,12 +2091,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
 
     this.itemTotals();
-    console.log(this.items);
+  },
+  watch: {
+    paidFor: function paidFor() {
+      this.sendOrder();
+    }
   },
   methods: {
     sendOrder: function sendOrder() {
-      axios.post(this.orderApi, this.newOrder).then(function (r) {
-        console.log(r.data);
+      axios.post(this.orderApi, this.newOrder).then(function (r) {// console.log(r.data)
       });
     },
     itemTotals: function itemTotals() {
@@ -2105,9 +2109,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.newOrder.total_price += parseFloat(this.items[i].price) * this.items[i].quantity;
         this.newOrder.foods.push(this.items[i].id);
         this.newOrder.quantity.push(this.items[i].quantity);
-      }
+      } // console.log('quantity' + this.newOrder.quantity);
 
-      console.log('FOOOOOOOOOOOD' + ' ' + this.newOrder.quantity);
     },
     setLoaded: function setLoaded() {
       var _this = this;
@@ -2698,9 +2701,15 @@ var render = function render() {
   })])], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
     staticClass: "mid-bar"
   }, [_c("go-back-btn")], 1), _vm._v(" "), _c("div", {
-    staticClass: "checkout-body row"
+    staticClass: "checkout-body"
   }, [_c("form", {
-    staticClass: "col-sm-6 col-12",
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: !_vm.showPayment,
+      expression: "!showPayment"
+    }],
+    staticClass: "m-auto w-75",
     attrs: {
       action: ""
     }
@@ -2816,21 +2825,30 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  }), _vm._v(" "), _c("button", {
+  }), _vm._v(" "), _c("div", {
     staticClass: "send-btn btn btn-danger mt-4",
-    attrs: {
-      type: "submit"
-    },
     on: {
       click: function click($event) {
-        return _vm.sendOrder();
+        _vm.showPayment = true;
       }
     }
   }, [_vm._v("Paga ora")])]), _vm._v(" "), _c("section", {
-    staticClass: "paypal-btns col-sm-6 col-12"
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.showPayment,
+      expression: "showPayment"
+    }],
+    staticClass: "m-auto w-75"
   }, [!_vm.paidFor ? _c("div", {
     staticClass: "paypal-side"
-  }, [_c("h2", [_vm._v("Totale ordine: "), _c("span", {
+  }, [_c("span", {
+    on: {
+      click: function click($event) {
+        _vm.showPayment = false;
+      }
+    }
+  }, [_vm._v("Torna al form")]), _vm._v(" "), _c("h2", [_vm._v("Totale ordine: "), _c("span", {
     staticClass: "price"
   }, [_vm._v("€ " + _vm._s(_vm.newOrder.total_price))])]), _vm._v(" "), _c("div", {
     ref: "paypal"
@@ -55680,9 +55698,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Boolean\deliveboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })

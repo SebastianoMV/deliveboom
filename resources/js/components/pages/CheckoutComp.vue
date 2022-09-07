@@ -10,25 +10,27 @@
             <div class="mid-bar">
                 <go-back-btn/>
             </div>
-            <div class="checkout-body row">
-                <form action="" class="col-sm-6 col-12">
+            <div  class="checkout-body">
+                <form v-show="!showPayment" action="" class="m-auto w-75">
                     <h2>Dettagli dell'ordine</h2>
                     <input type="text" v-model.trim="newOrder.name" id="name" placeholder="Nome">
                     <input type="text" v-model.trim="newOrder.email" id="email" placeholder="E-mail">
                     <input type="text" v-model.trim="newOrder.address" id="address" placeholder="Indirizzo">
                     <input type="text" v-model.trim="newOrder.phone" id="phone" placeholder="Telefono">
-                    <button @click="sendOrder()" type="submit" class="send-btn btn btn-danger mt-4">Paga ora</button>
+                    <div  @click="showPayment = true" class="send-btn btn btn-danger mt-4">Paga ora</div>
                 </form>
-                <section class="paypal-btns col-sm-6 col-12">
+                <section v-show="showPayment" class="m-auto w-75">
                     <div
                         v-if="!paidFor"
                         class="paypal-side">
+                        <span @click="showPayment = false">Torna al form</span>
                         <h2>Totale ordine: <span class="price">€ {{newOrder.total_price}}</span></h2>
                         <div ref="paypal"></div>
                     </div>
                     <div
                         v-else
                         class="paypal-side">
+
                         <h2 class="alert alert-success">Complimenti, il pagamento è andato a buon fine!</h2>
                     </div>
                 </section>
@@ -45,6 +47,7 @@ export default {
         return {
             loaded: false,
             paidFor: false,
+            showPayment: false,
             orderApi: 'http://127.0.0.1:8000/api/orders',
             newOrder: {
                 name: '',
@@ -70,13 +73,18 @@ export default {
             this.items = JSON.parse(localStorage.cart);
         }
         this.itemTotals();
-        console.log(this.items);
+
+    },
+    watch: {
+        paidFor() {
+            this.sendOrder();
+        }
     },
     methods: {
         sendOrder(){
             axios.post(this.orderApi, this.newOrder)
             .then((r) => {
-                console.log(r.data)
+                // console.log(r.data)
             });
         },
         itemTotals(){
@@ -86,7 +94,7 @@ export default {
                      this.newOrder.foods.push(this.items[i].id);
                      this.newOrder.quantity.push(this.items[i].quantity);
                 }
-                console.log('FOOOOOOOOOOOD' + ' ' + this.newOrder.quantity);
+                // console.log('quantity' + this.newOrder.quantity);
             },
         setLoaded: function() {
             this.loaded = true;
