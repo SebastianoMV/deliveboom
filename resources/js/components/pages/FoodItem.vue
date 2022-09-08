@@ -16,7 +16,8 @@
             <div class="description">{{food.description}}</div>
             <div class="lower-btns">
                 <span class="price">&euro; {{food.price}}</span>
-                <div class="btn-cart" @click="addItem(food)">
+                <span v-if="fade" class="animate__animated animate__fadeIn"> Aggiunto al carrello</span>
+                <div id="add_button" class="btn-cart" @click="addItem(food), fade = !fade , setTimeout()">
                     <i class="fa-solid fa-cart-plus"></i>
                 </div>
             </div>
@@ -26,6 +27,7 @@
 
 <script>
 export default {
+
     name: "FoodItem",
     props: {
         food: Object,
@@ -33,7 +35,8 @@ export default {
     data(){
         return{
             cart: [],
-            placeHolder: false
+            placeHolder: false,
+            fade: false,
         }
     },
     mounted() {
@@ -46,15 +49,26 @@ export default {
         }
     },
     methods: {
+        setTimeout(){
+            setTimeout(this.fadetimer, 1500)
+        },
+        fadetimer(){
+            this.fade = false
+        },
+
         addItem(food) {
             if (!food){
                 return;
             }
             try{
                 if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
-                    food.quantity = 1;
-                    this.cart.push(food);
-                    this.saveCart();
+
+                    if(confirm('Vuoi aggiungere al carrello?')){
+                        food.quantity = 1;
+                        this.cart.push(food);
+                        this.saveCart();
+                    }
+
                 }
                 else{
                     this.cart = JSON.parse(localStorage.getItem('cart'));
