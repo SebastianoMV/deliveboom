@@ -26,15 +26,12 @@ class OrderController extends Controller
 
     public function show($id)
     {
+
+        $culo = $id;
         $order = Order::find($id);
 
-        /*  $foods = Food::whereHas('orders', function ($query) {
-            $query->whereIn('user_id', $order_id);
-        })
-            ->with('orders')
-            ->orderby('id', 'desc')
-            ->get(); */
+        $foods = Food::join('food_order','food.id', '=', 'food_order.food_id')->where('order_id', $id)->get();
 
-        return view('admin.orderPages.show', compact('order'));
+        return view('admin.orderPages.show', compact('order', 'foods'));
     }
 }

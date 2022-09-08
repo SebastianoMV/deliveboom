@@ -3,23 +3,60 @@
 @section('content')
     <div class="container">
 
-        <div class="card m-auto" style="width: 20rem;">
+        <div class="card m-auto">
 
-            <div class="card-body">
-                <h5 class="card-title">Ordine Numero: {{ $order->id }}</h5>
-                <h6 class="card-title">Totale Ordine {{ $order->total_price }} €</h6>
-                <p class="card-text">{{ $order->name }}</p>
-                <p class="card-text">
-                    @if ($order->status_payment)
-                        Pagato
-                    @else
-                        Non Pagato
-                    @endif
-                </p>
+            <div class="">
+                <table class="table">
 
-                <a href="{{ route('admin.orders.index') }}" class="btn btn-primary">Torna indietro</a>
+                    <thead>
+                        <tr>
+                            <th scope="col">N Ordine</th>
+                            <th scope="col">Totale</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Data Dell'ordine</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
+                            <tr>
+                                <th scope="row">{{ $order->id }}</th>
+                                <td>{{ $order->total_price }}</td>
+                                <td>{{ $order->name }}</td>
+                                <td>{{ $order->email }}</td>
+                                <td>{{ $order->created_at }}</td>
+
+
+                                <td class="w-25">
+                                    <a href="{{ route('admin.orders.index') }}" class="btn btn-primary">Torna indietro</a>
+                                </td>
+                            </tr>
+
+                    </tbody>
+                </table>
+
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th scope="col">N Ordine</th>
+                            <th scope="col">Totale</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach ( $foods as $food)
+                        <tr>
+                            <th scope="row">{{ $food->name }}</th>
+                            <td>{{ $food->price }}</td>
+                        </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
             </div>
+
         </div>
 
     </div>

@@ -14,21 +14,21 @@
                             <thead>
                                 <tr>
                                     <th scope="col">N Ordine</th>
-                                    <th scope="col">Prezzo Piatto</th>
-                                    <th scope="col">Piatto</th>
                                     <th scope="col">Totale</th>
+                                    <th scope="col">Cliente</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">Data Dell'ordine</th>
                                 </tr>
                             </thead>
                             {{-- @dd($orders) --}}
                             <tbody>
                                 @foreach ($orders as $order)
                                     <tr>
-                                        <th scope="row">{{ $order->order_id }}</th>
-                                        <td><strong>{{ $order->price }}</strong></td>
-                                        <td>{{ $order->name }}</td>
+                                        <th scope="row">{{ $order->id }}</th>
                                         <td>{{ $order->total_price }}</td>
+                                        <td>{{ $order->name }}</td>
                                         <td>{{ $order->email }}</td>
+                                        <td>{{ $order->created_at }}</td>
 
 
                                         <td class="w-25">
