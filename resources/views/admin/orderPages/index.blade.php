@@ -20,19 +20,20 @@
                                     <th scope="col">Email</th>
                                 </tr>
                             </thead>
-                            @dd($orders)
+                            {{-- @dd($orders) --}}
                             <tbody>
                                 @foreach ($orders as $order)
                                     <tr>
                                         <th scope="row">{{ $order->order_id }}</th>
                                         <td><strong>{{ $order->price }}</strong></td>
-                                        <td>{{$order->name}}</td>
-                                        <td>{{$order->total_price}}</td>
+                                        <td>{{ $order->name }}</td>
+                                        <td>{{ $order->total_price }}</td>
                                         <td>{{ $order->email }}</td>
 
 
                                         <td class="w-25">
-                                            <a class="btn btn-primary" href="{{ route('admin.orders.show', $order) }}">Show</a>
+                                            <a class="btn btn-primary"
+                                                href="{{ route('admin.orders.show', $order) }}">Show</a>
                                         </td>
                                     </tr>
                                 @endforeach
