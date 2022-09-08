@@ -15,8 +15,11 @@ class OrderController extends Controller
     {
         $activeUser = Auth::id();
 
-        $orders = Food::where('user_id', $activeUser)->join('food_order', 'food.id', '=', 'food_order.food_id')
-            ->join('orders', 'food_order.order_id', '=', 'orders.id')
+        $orders = Order::join('food_order', 'food_order.order_id', '=', 'orders.id')
+            ->join('food', 'food.id', '=', 'food_order.food_id')
+            ->where('user_id', $activeUser)
+            ->select('orders.*')
+            ->orderBy('order_id')
             ->get();
 
         return view('admin.orderPages.index', compact('orders'));

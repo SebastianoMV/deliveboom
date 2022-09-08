@@ -13,24 +13,21 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Id</th>
+                                    <th scope="col">N Ordine</th>
+                                    <th scope="col">Prezzo Piatto</th>
+                                    <th scope="col">Piatto</th>
                                     <th scope="col">Totale</th>
-                                    <th scope="col">Stato Pagamento</th>
                                     <th scope="col">Email</th>
                                 </tr>
                             </thead>
+                            @dd($orders)
                             <tbody>
                                 @foreach ($orders as $order)
                                     <tr>
-                                        <th scope="row">{{ $order->id }}</th>
-                                        <td><strong>{{ $order->total_price }}</strong></td>
-                                        <td>
-                                            @if($order->status_payment)
-                                                <i class="fa-solid fa-check"></i>
-                                            @else
-                                                <i class="fa-solid fa-xmark"></i>
-                                            @endif
-                                        </td>
+                                        <th scope="row">{{ $order->order_id }}</th>
+                                        <td><strong>{{ $order->price }}</strong></td>
+                                        <td>{{$order->name}}</td>
+                                        <td>{{$order->total_price}}</td>
                                         <td>{{ $order->email }}</td>
 
 
