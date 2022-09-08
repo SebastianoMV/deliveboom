@@ -22,7 +22,7 @@
                     <li
                         v-for="typology in typologies"
                         :key="typology.id"
-                        @click="pushOrRemoveTypology(typology)"
+                        @click="pushOrRemoveTypology(typology.id)"
                         :class="currentTypologiesIDs.includes(typology.id) ? 'active' : ''">
                         <div class="icon">
                             <img
@@ -69,7 +69,6 @@ export default {
             users: [],
             filteredUsers: [],
             typologies: [],
-            currentTypologies: [],
             currentTypologiesIDs: [],
             length: 6,
             isLoaded: false
@@ -84,65 +83,39 @@ export default {
             axios.get(this.userApiUrl)
             .then(r =>{
                 this.users = r.data.users;
-                this.typologies = r.data.tipologies;
-                this.filterUsers(true);
+                this.typologies = r.data.typologies;
+                this.filteredUsers = this.users;
+                this.currentTypologiesIDs = [];
                 this.isLoaded = true;
             })
             .catch(error =>{
                 console.log(error);
             })
         },
-        pushOrRemoveTypology(typology){
-            let isntPresent = true;
-            for(let i=0; i<this.currentTypologies.length; i++){
-                if(typology.id === this.currentTypologies[i].id){
-                    this.currentTypologies.splice(i,1);
-                    this.currentTypologiesIDs.splice(i,1);
-                    isntPresent = false;
-                }
-            }
-            if(isntPresent){
-                axios.get(this.userApiUrl + '/user-typology/' + typology.id)
-                .then(r => {
-                    this.currentTypologies.push(r.data);
-                    this.currentTypologiesIDs.push(r.data.id);
-                    this.filterUsers(false);
-                })
-                .catch(error =>{
-                    console.log(error);
-                })
+        pushOrRemoveTypology(typologyID){
+            if(!this.currentTypologiesIDs.includes(typologyID)){
+                this.currentTypologiesIDs.push(typologyID);
+                this.filterUsers();
             }
             else{
-                this.filterUsers(false);
+                this.currentTypologiesIDs.splice(this.currentTypologiesIDs.indexOf(typologyID),1);
+                this.currentTypologiesIDs
+                this.filterUsers();
             }
         },
-        filterUsers(reset){
-            if(reset){
-                this.currentTypologies = [];
-                this.currentTypologiesIDs = [];
+        filterUsers(){
+            this.filteredUsers = [];
+            if(this.currentTypologiesIDs.length === 0)
                 this.filteredUsers = this.users;
-            }
             else{
-                this.filteredUsers = [];
-                if(this.currentTypologies.length === 0){
-                    this.filteredUsers = this.users;
+                for(let i=0; i<this.users.length; i++){
+                    let hasAllTypologies = true;
+                    for(let j=0; j<this.currentTypologiesIDs.length; j++)
+                        if(this.users[i].typologies.filter(element => element.id === this.currentTypologiesIDs[j]).length === 0)
+                            hasAllTypologies = false;
+                    if(hasAllTypologies)
+                        this.filteredUsers.push(this.users[i]);
                 }
-                else if(this.currentTypologies.length === 1)
-                    this.filteredUsers = this.currentTypologies[0].users;
-                else
-                    for(let i=0; i<this.currentTypologies[0].users.length; i++){
-                        let isInAll = true;
-                        for(let j=1; j<this.currentTypologies.length; j++){
-                            let isInThisArray = false;
-                            for(let y=0; y<this.currentTypologies[j].users.length; y++)
-                                if(this.currentTypologies[0].users[i].id === this.currentTypologies[j].users[y].id)
-                                    isInThisArray = true;
-                            if(!isInThisArray)
-                                isInAll = false;
-                        }
-                        if(isInAll)
-                            this.filteredUsers.push(this.currentTypologies[0].users[i]);
-                    }
             }
         },
         showMenu(slug){

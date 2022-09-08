@@ -5,9 +5,14 @@
                 <h1 class="logo">Deliveb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h1>
                 <ul class="header-btns d-md-flex d-none">
                     <li><router-link :to="{name: 'home'}" class="navigation-list-element"><i class="fa-solid fa-house"></i></router-link></li>
+
+                    <li><router-link :to="{name: 'cart'}" class="navigation-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
+                    <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-user"></i></a></li>
+
                     <li><router-link :to="{name: 'cart'}" class="navigation-list-element"> <span > </span><i class="fa-solid fa-cart-shopping"></i></router-link>
                     </li>
                     <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-right-to-bracket"></i></a></li>
+
                 </ul>
                 <i
                     class="hamburger-menu fa-solid fa-bars d-md-none d-block"
@@ -20,9 +25,14 @@
                 v-if="headerWidth <= 768">
                 <ul class="dropdown-btns">
                     <li><router-link :to="{name: 'home'}" class="dropdown-list-element"><i class="fa-solid fa-house"></i></router-link></li>
+
+                    <li><router-link :to="{name: 'cart'}" class="dropdown-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
+                    <li><a href="/admin" class="dropdown-list-element"><i class="fa-solid fa-user"></i></a></li>
+
                     <li><router-link :to="{name: 'cart'}" class="dropdown-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link>
                     </li>
                     <li><a href="/admin" class="dropdown-list-element"><i class="fa-solid fa-right-to-bracket"></i></a></li>
+
                 </ul>
             </div>
         </div>

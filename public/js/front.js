@@ -2444,7 +2444,6 @@ __webpack_require__.r(__webpack_exports__);
       users: [],
       filteredUsers: [],
       typologies: [],
-      currentTypologies: [],
       currentTypologiesIDs: [],
       length: 6,
       isLoaded: false
@@ -2460,66 +2459,43 @@ __webpack_require__.r(__webpack_exports__);
       this.isLoaded = false;
       axios.get(this.userApiUrl).then(function (r) {
         _this.users = r.data.users;
-        _this.typologies = r.data.tipologies;
-
-        _this.filterUsers(true);
-
+        _this.typologies = r.data.typologies;
+        _this.filteredUsers = _this.users;
+        _this.currentTypologiesIDs = [];
         _this.isLoaded = true;
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    pushOrRemoveTypology: function pushOrRemoveTypology(typology) {
-      var _this2 = this;
-
-      var isntPresent = true;
-
-      for (var i = 0; i < this.currentTypologies.length; i++) {
-        if (typology.id === this.currentTypologies[i].id) {
-          this.currentTypologies.splice(i, 1);
-          this.currentTypologiesIDs.splice(i, 1);
-          isntPresent = false;
-        }
-      }
-
-      if (isntPresent) {
-        axios.get(this.userApiUrl + '/user-typology/' + typology.id).then(function (r) {
-          _this2.currentTypologies.push(r.data);
-
-          _this2.currentTypologiesIDs.push(r.data.id);
-
-          _this2.filterUsers(false);
-        })["catch"](function (error) {
-          console.log(error);
-        });
+    pushOrRemoveTypology: function pushOrRemoveTypology(typologyID) {
+      if (!this.currentTypologiesIDs.includes(typologyID)) {
+        this.currentTypologiesIDs.push(typologyID);
+        this.filterUsers();
       } else {
-        this.filterUsers(false);
+        this.currentTypologiesIDs.splice(this.currentTypologiesIDs.indexOf(typologyID), 1);
+        this.currentTypologiesIDs;
+        this.filterUsers();
       }
     },
-    filterUsers: function filterUsers(reset) {
-      if (reset) {
-        this.currentTypologies = [];
-        this.currentTypologiesIDs = [];
-        this.filteredUsers = this.users;
-      } else {
-        this.filteredUsers = [];
+    filterUsers: function filterUsers() {
+      var _this2 = this;
 
-        if (this.currentTypologies.length === 0) {
-          this.filteredUsers = this.users;
-        } else if (this.currentTypologies.length === 1) this.filteredUsers = this.currentTypologies[0].users;else for (var i = 0; i < this.currentTypologies[0].users.length; i++) {
-          var isInAll = true;
+      this.filteredUsers = [];
+      if (this.currentTypologiesIDs.length === 0) this.filteredUsers = this.users;else {
+        for (var i = 0; i < this.users.length; i++) {
+          var hasAllTypologies = true;
 
-          for (var j = 1; j < this.currentTypologies.length; j++) {
-            var isInThisArray = false;
+          var _loop = function _loop(j) {
+            if (_this2.users[i].typologies.filter(function (element) {
+              return element.id === _this2.currentTypologiesIDs[j];
+            }).length === 0) hasAllTypologies = false;
+          };
 
-            for (var y = 0; y < this.currentTypologies[j].users.length; y++) {
-              if (this.currentTypologies[0].users[i].id === this.currentTypologies[j].users[y].id) isInThisArray = true;
-            }
-
-            if (!isInThisArray) isInAll = false;
+          for (var j = 0; j < this.currentTypologiesIDs.length; j++) {
+            _loop(j);
           }
 
-          if (isInAll) this.filteredUsers.push(this.currentTypologies[0].users[i]);
+          if (hasAllTypologies) this.filteredUsers.push(this.users[i]);
         }
       }
     },
@@ -2543,14 +2519,14 @@ __webpack_require__.r(__webpack_exports__);
       }).name;else {
         var typologiesString = "";
 
-        var _loop = function _loop(i) {
+        var _loop2 = function _loop2(i) {
           typologiesString += _this3.typologies.find(function (element) {
             return element.id === _this3.currentTypologiesIDs[i];
           }).name + ", ";
         };
 
         for (var i = 0; i < this.currentTypologiesIDs.length; i++) {
-          _loop(i);
+          _loop2(i);
         }
 
         return typologiesString.slice(0, -2);
@@ -3253,7 +3229,7 @@ var render = function render() {
       "class": _vm.currentTypologiesIDs.includes(typology.id) ? "active" : "",
       on: {
         click: function click($event) {
-          return _vm.pushOrRemoveTypology(typology);
+          return _vm.pushOrRemoveTypology(typology.id);
         }
       }
     }, [_c("div", {
@@ -3590,7 +3566,7 @@ var staticRenderFns = [function () {
       href: "/admin"
     }
   }, [_c("i", {
-    staticClass: "fa-solid fa-right-to-bracket"
+    staticClass: "fa-solid fa-user"
   })])]);
 }, function () {
   var _vm = this,
@@ -3602,7 +3578,7 @@ var staticRenderFns = [function () {
       href: "/admin"
     }
   }, [_c("i", {
-    staticClass: "fa-solid fa-right-to-bracket"
+    staticClass: "fa-solid fa-user"
   })])]);
 }];
 render._withStripped = true;
