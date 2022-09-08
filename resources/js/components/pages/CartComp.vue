@@ -1,5 +1,5 @@
 <template>
-    <section class="cart-comp container">
+    <section class="cart-comp container fluid-container">
         <div class="cart-container">
             <div class="top-links">
                 <h4 class="static active">Carrello <i class="fa-solid fa-cart-arrow-down"></i></h4>
@@ -53,6 +53,7 @@
         </div>
     </section>
 </template>
+
 <script>
 import GoBackBtn from '../partials/GoBackBtn.vue';
 export default {
@@ -117,9 +118,11 @@ export default {
     }
 }
 </script>
+
 <style lang="scss" scoped>
 .cart-comp{
     .cart-container{
+        width: 100%;
         margin: 50px 0;
         min-height: calc(100vh - 590px);
         background-color: white;

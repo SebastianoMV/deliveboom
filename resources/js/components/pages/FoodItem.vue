@@ -23,6 +23,7 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     name: "FoodItem",
@@ -103,6 +104,7 @@ export default {
     }
 }
 </script>
+
 <style lang="scss" scoped>
 .food-item{
     display: flex;
