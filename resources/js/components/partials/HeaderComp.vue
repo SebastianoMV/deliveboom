@@ -5,8 +5,14 @@
                 <h1 class="logo">Deliveb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h1>
                 <ul class="header-btns d-md-flex d-none">
                     <li><router-link :to="{name: 'home'}" class="navigation-list-element"><i class="fa-solid fa-house"></i></router-link></li>
+
                     <li><router-link :to="{name: 'cart'}" class="navigation-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
                     <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-user"></i></a></li>
+
+                    <li><router-link :to="{name: 'cart'}" class="navigation-list-element"> <span > </span><i class="fa-solid fa-cart-shopping"></i></router-link>
+                    </li>
+                    <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-right-to-bracket"></i></a></li>
+
                 </ul>
                 <i
                     class="hamburger-menu fa-solid fa-bars d-md-none d-block"
@@ -19,8 +25,14 @@
                 v-if="headerWidth <= 768">
                 <ul class="dropdown-btns">
                     <li><router-link :to="{name: 'home'}" class="dropdown-list-element"><i class="fa-solid fa-house"></i></router-link></li>
+
                     <li><router-link :to="{name: 'cart'}" class="dropdown-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
                     <li><a href="/admin" class="dropdown-list-element"><i class="fa-solid fa-user"></i></a></li>
+
+                    <li><router-link :to="{name: 'cart'}" class="dropdown-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link>
+                    </li>
+                    <li><a href="/admin" class="dropdown-list-element"><i class="fa-solid fa-right-to-bracket"></i></a></li>
+
                 </ul>
             </div>
         </div>
@@ -34,8 +46,12 @@ export default {
         return{
             activeMenu: false,
             headerWidth: document.documentElement.clientWidth,
+            cartFlag: false,
+            counteritems: '',
+
         }
     },
+
     created() {
         window.addEventListener("resize", this.headerWidthHandler);
     },
@@ -47,8 +63,26 @@ export default {
             this.headerWidth = document.documentElement.clientWidth;
             if(this.headerWidth > 768)
                 this.activeMenu = false
-        }
-    }
+        },
+        // counter: function(){
+        //     setInterval(function () {
+        //         this.counteritems = 3
+        //     }, 1000);
+        // }
+
+    },
+    // computed:{
+    //     counter(){
+    //         return localStorage.getItem('cart') ? true : false
+    //     }
+    // },
+
+    mounted() {
+        console.log(JSON.parse(localStorage.getItem('cart')).length);
+    },
+
+
+
 }
 </script>
 
