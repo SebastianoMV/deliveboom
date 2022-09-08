@@ -41,15 +41,18 @@
                         <tr>
                             <th scope="col">N Ordine</th>
                             <th scope="col">Totale</th>
+                            <th scope="col">Quantità</th>
 
                         </tr>
                     </thead>
+                    {{-- @dd($foods) --}}
                     <tbody>
 
                         @foreach ( $foods as $food)
                         <tr>
                             <th scope="row">{{ $food->name }}</th>
                             <td>{{ $food->price }}</td>
+                            <td>{{ $food->quantity }}</td>
                         </tr>
                         @endforeach
 
