@@ -15,7 +15,7 @@ class PageController extends Controller
     public function index()
     {
         $typologies = Typology::all();
-        $users = User::with("typologies")->get();
+        $users = User::with(["typologies", "foods"])->get();
         return response()->json(compact('typologies', 'users'));
     }
 
