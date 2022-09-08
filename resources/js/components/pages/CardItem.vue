@@ -1,8 +1,16 @@
 <template>
     <router-link :to="{name: 'foods', params: { slug: user.slug }}" class="card-item">
         <div class="card-images">
-            <img :src="`/images/foods/${foodImage}`" alt="" class="thumbnail">
-            <img :src="`/image/users/${user.image}`" alt="" class="restaurant-logo">
+            <img
+                class="thumbnail"
+                :src="`/images/foods/${user.foods[0].image}`"
+                :alt="user.name"
+                :title="user.name">
+            <img
+                class="restaurant-logo"
+                :src="`/image/users/${user.image}`"
+                :alt="user.name"
+                :title="user.name">
         </div>
         <h3>{{user.name}}</h3>
         <p>{{user.address}}, {{user.city}}</p>
@@ -19,20 +27,6 @@ export default {
         return{
             foodImage: "",
             userApiUrl: 'http://127.0.0.1:8000/api/foods',
-        }
-    },
-    mounted(){
-        this.getApiFirstFood();
-    },
-    methods: {
-        getApiFirstFood(){
-            axios.get(this.userApiUrl+"/food-category/"+this.user.id)
-                .then(r => {
-                    this.foodImage = r.data.foods[0].image;
-                })
-                .catch(err => {
-                    console.log(err);
-                });
         }
     }
 }

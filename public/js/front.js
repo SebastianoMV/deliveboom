@@ -1941,20 +1941,6 @@ __webpack_require__.r(__webpack_exports__);
       foodImage: "",
       userApiUrl: 'http://127.0.0.1:8000/api/foods'
     };
-  },
-  mounted: function mounted() {
-    this.getApiFirstFood();
-  },
-  methods: {
-    getApiFirstFood: function getApiFirstFood() {
-      var _this = this;
-
-      axios.get(this.userApiUrl + "/food-category/" + this.user.id).then(function (r) {
-        _this.foodImage = r.data.foods[0].image;
-      })["catch"](function (err) {
-        console.log(err);
-      });
-    }
   }
 });
 
@@ -2625,14 +2611,16 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "thumbnail",
     attrs: {
-      src: "/images/foods/".concat(_vm.foodImage),
-      alt: ""
+      src: "/images/foods/".concat(_vm.user.foods[0].image),
+      alt: _vm.user.name,
+      title: _vm.user.name
     }
   }), _vm._v(" "), _c("img", {
     staticClass: "restaurant-logo",
     attrs: {
       src: "/image/users/".concat(_vm.user.image),
-      alt: ""
+      alt: _vm.user.name,
+      title: _vm.user.name
     }
   })]), _vm._v(" "), _c("h3", [_vm._v(_vm._s(_vm.user.name))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.user.address) + ", " + _vm._s(_vm.user.city))])]);
 };
