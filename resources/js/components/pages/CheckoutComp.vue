@@ -89,6 +89,7 @@ export default {
             .then((r) => {
                 // console.log(r.data)
             });
+            localStorage.setItem('cart', [])
         },
         itemTotals(){
                 this.newOrder.total_price = 0;
