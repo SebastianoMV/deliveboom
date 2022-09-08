@@ -1,34 +1,5 @@
 <template>
     <header>
-        <!-- <nav class="container navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">LOGO</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Cucina <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="d-flex list-unstyled mb-0">
-                    <li><router-link :to="{name: 'home'}" class="navigation-list-element"><i class="fa-solid fa-house"></i></router-link></li>
-                    <li><router-link :to="{name: 'cart'}" class="navigation-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
-                    <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-right-to-bracket"></i></a></li>
-                </ul>
-            </div>
-        </nav> -->
         <div class="container header-container">
             <div class="top-header">
                 <h1 class="logo">Deliveb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h1>
@@ -39,27 +10,19 @@
                 </ul>
                 <i
                     class="hamburger-menu fa-solid fa-bars d-md-none d-block"
+                    :class="activeMenu ? 'flipped':''"
                     @click="activeMenu = !activeMenu"></i>
             </div>
             <div
-                class="header-dropdown-menu d-md-none d-block"
-                :class="activeMenu ? 'active':''">
+                class="header-dropdown-menu"
+                :class="activeMenu ? 'active':''"
+                v-if="headerWidth <= 768">
                 <ul class="dropdown-btns">
                     <li><router-link :to="{name: 'home'}" class="dropdown-list-element"><i class="fa-solid fa-house"></i></router-link></li>
                     <li><router-link :to="{name: 'cart'}" class="dropdown-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
                     <li><a href="/admin" class="dropdown-list-element"><i class="fa-solid fa-right-to-bracket"></i></a></li>
                 </ul>
             </div>
-            <!-- <div class="row">
-                <div class="col-md-9 col-12">
-                    <h1 class="logo">Deliveb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h1>
-                </div>
-                <ul class="col-md-3 col-12 justify-content-md-end my-md-auto mb-4">
-                    <li><router-link :to="{name: 'home'}" class="navigation-list-element"><i class="fa-solid fa-house"></i></router-link></li>
-                    <li><router-link :to="{name: 'cart'}" class="navigation-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
-                    <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-right-to-bracket"></i></a></li>
-                </ul>
-            </div> -->
         </div>
     </header>
 </template>
@@ -82,7 +45,7 @@ export default {
     methods: {
         headerWidthHandler(){
             this.headerWidth = document.documentElement.clientWidth;
-            if(this.headerWidth <= 768)
+            if(this.headerWidth > 768)
                 this.activeMenu = false
         }
     }
@@ -107,6 +70,10 @@ header{
                 .fix-bomb{
                     margin-left: 1px;
                     margin-right: -8px;
+                    transition: .2s color;
+                    &:hover{
+                        color: #FE3638;
+                    }
                 }
             }
             .header-btns{
@@ -117,7 +84,7 @@ header{
                 .navigation-list-element{
                     color: white;
                     text-decoration: none;
-                    font-size: 35px;
+                    font-size: 25px;
                     transition: .2s color;
                     &:hover{
                         color: rgb(200, 200, 200);
@@ -131,16 +98,27 @@ header{
                 cursor: pointer;
                 margin: auto 0;
                 font-size: 45px;
+                transition: .2s all;
+                &:hover{
+                    color: rgb(200, 200, 200);
+                }
+                &:active{
+                    color: #FE3638;
+                }
+                &.flipped{
+                    transform: rotate(180deg);
+                }
             }
         }
         .header-dropdown-menu{
-            -webkit-transition: max-height 1s;
-            -moz-transition: max-height 1s;
-            -ms-transition: max-height 1s;
-            -o-transition: max-height 1s;
-            transition: max-height 1s;
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -ms-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s ease-in-out;
             overflow: hidden;
             max-height: 0;
+            margin-bottom: 0;
             .dropdown-btns{
                 list-style: none;
                 padding: 0;
@@ -167,6 +145,7 @@ header{
                 }
             }
             &.active{
+                margin-bottom: -100px;
                 max-height: 500px;
             }
         }

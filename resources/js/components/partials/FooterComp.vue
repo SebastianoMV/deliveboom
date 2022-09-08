@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <div class="container">
+        <div class="container fluid-container">
             <div class="footer-top">
                 <div class="row">
                     <div class="col-xl-3 ">
@@ -139,6 +139,10 @@ export default {
             .fix-bomb{
                 margin-left: 1px;
                 margin-right: -4px;
+                transition: .2s color;
+                &:hover{
+                    color: #FE3638;
+                }
             }
         }
         .footer-bottom-left{

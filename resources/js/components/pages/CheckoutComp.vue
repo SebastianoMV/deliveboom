@@ -1,5 +1,5 @@
 <template>
-    <section class="checkout-comp container">
+    <section class="checkout-comp container fluid-container">
         <div class="checkout-container">
             <div class="top-links">
                 <h4>
@@ -22,7 +22,6 @@
                     <p v-if="!newOrder.phone" class="text-danger">Telefono obbligatorio</p>
                     <input type="text" v-model.trim="newOrder.phone" id="phone" placeholder="Telefono">
                     <input type="submit"  value="Vai al pagamento" class="send-btn btn btn-danger mt-4" >
-
                 </form>
                 <section v-show="showPayment" class="m-auto w-75">
                     <div
@@ -35,7 +34,6 @@
                     <div
                         v-else
                         class="paypal-side">
-
                         <h2 class="alert alert-success">Complimenti, il pagamento è andato a buon fine!</h2>
                     </div>
                 </section>
@@ -43,6 +41,7 @@
         </div>
     </section>
 </template>
+
 <script>
 import GoBackBtn from '../partials/GoBackBtn.vue';
 export default {
@@ -78,7 +77,6 @@ export default {
             this.items = JSON.parse(localStorage.cart);
         }
         this.itemTotals();
-
     },
     watch: {
         paidFor() {
@@ -92,7 +90,6 @@ export default {
                 // console.log(r.data)
             });
         },
-
         itemTotals(){
                 this.newOrder.total_price = 0;
                 for (let i = 0; i < this.items.length; i++) {
@@ -102,15 +99,12 @@ export default {
                 }
                 // console.log('quantity' + this.newOrder.quantity);
         },
-
         checkForm: function (e){
             if(this.newOrder.name && this.newOrder.address && this.newOrder.email && this.newOrder.phone){
                 this.showPayment = true;
                 return true;
             }
             e.preventDefault();
-
-
         },
         setLoaded: function() {
             this.loaded = true;
@@ -119,22 +113,22 @@ export default {
                 createOrder: (data, actions) => {
                 return actions.order.create({
                     purchase_units: [
-                    {
-                        amount: {
-                        currency_code: "USD",
-                        value: this.newOrder.total_price
+                        {
+                            amount: {
+                            currency_code: "USD",
+                            value: this.newOrder.total_price
+                            }
                         }
-                    }
                     ]
                 });
                 },
                 onApprove: async (data, actions) => {
-                const order = await actions.order.capture();
-                this.paidFor = true;
-                console.log(order);
+                    const order = await actions.order.capture();
+                    this.paidFor = true;
+                    console.log(order);
                 },
                 onError: err => {
-                console.log(err);
+                    console.log(err);
                 }
             })
             .render(this.$refs.paypal);
@@ -142,9 +136,11 @@ export default {
     }
 }
 </script>
+
 <style lang="scss" scoped>
 .checkout-comp{
     .checkout-container{
+        width: 100%;
         margin: 50px 0;
         min-height: calc(100vh - 590px);
         background-color: white;

@@ -1,11 +1,11 @@
 <template>
     <section class="foods">
         <div class="jumbotron">
-            <div class="container">
+            <div class="container fluid-container">
                 <h1>{{user.name}}</h1>
                 <nav class="jumbo-nav">
                     <go-back-btn/>
-                    <img :src="`/image/users/${user.image}`" alt="" @click="getUser($route.params.slug)">
+                    <img :src="`/image/users/${user.image}`" alt="" @click="filteredFoods(0)">
                     <ul>
                         <li
                             v-for="category in categories"
@@ -18,23 +18,36 @@
                     </ul>
                 </nav>
             </div>
+            <div class="jumbo-wallpaper">
+                <img src="https://wallpaper.dog/large/20461782.jpg" alt="">
+            </div>
         </div>
         <div class="foods-container container">
             <h1>Menù<span v-if="currentCategoryName!==''">: </span><span class="category-name">{{currentCategoryName}}</span></h1>
-            <div class="wrapper">
-                <FoodItem v-for="food in foodsFiltered" :key="food.id"  :food="food"/>
+            <div
+                v-if="isLoaded"
+                class="wrapper">
+                <FoodItem
+                    v-for="food in foodsFiltered"
+                    :key="food.id"
+                    :food="food"/>
+            </div>
+            <div
+                v-else
+                class="wrapper">
+                <loader-comp/>
             </div>
         </div>
     </section>
 </template>
 
-<!-- SCRIPT -->
 <script>
 import GoBackBtn from '../partials/GoBackBtn.vue';
+import LoaderComp from '../partials/LoaderComp.vue';
 import FoodItem from './FoodItem.vue';
 export default {
     name: "FoodsComp",
-    components: { FoodItem, GoBackBtn },
+    components: { FoodItem, GoBackBtn, LoaderComp },
     data() {
         return{
             categories:[],
@@ -43,6 +56,7 @@ export default {
             foods:[],
             foodsFiltered:[],
             userApiUrl: 'http://127.0.0.1:8000/api/foods',
+            isLoaded: false
         }
     },
     mounted(){
@@ -67,6 +81,7 @@ export default {
                     this.foods = r.data.foods;
                     this.foodsFiltered = r.data.foods;
                     this.categories = r.data.categories;
+                    this.isLoaded = true;
                     // console.log(id);
                     // console.log(this.categories);
                 })
@@ -75,11 +90,15 @@ export default {
                 });
         },
         filteredFoods(categoryId){
-            this.foodsFiltered = [];
             this.currentCategory = categoryId;
-            for (let i=0; i<this.foods.length; i++) {
-                if (this.foods[i].category_id == categoryId) {
-                    this.foodsFiltered.push(this.foods[i]);
+            if(categoryId === 0)
+                this.foodsFiltered = this.foods;
+            else{
+                this.foodsFiltered = [];
+                for (let i=0; i<this.foods.length; i++) {
+                    if (this.foods[i].category_id == categoryId) {
+                        this.foodsFiltered.push(this.foods[i]);
+                    }
                 }
             }
             // console.log(this.foodsFiltered);
@@ -107,16 +126,31 @@ export default {
 <style lang="scss" scoped>
 .foods{
     .jumbotron{
-        padding: 88.5px 0 0 0;
+        position: relative;
         margin: 0 0 110px 0;
         border-radius: 0;
-        background-color: rgb(170, 0, 0);
+        background-color: transparent;
         color: white;
-        height: 188.5px;
-        background-image: url(/* INSERIRE IMMAGINE DI SFONDO QUI!!! */);
-        background-size: cover;
+        width: 100%;
+        height: 250px;
+        padding: 150px 0 0 0;
         h1{
             font-weight: bolder;
+        }
+        .jumbo-wallpaper{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-50%);
+            z-index: -1;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+            }
         }
         .container{
             position: relative;
@@ -182,12 +216,6 @@ export default {
             justify-content: center;
             gap: 23px;
             margin-bottom: 50px;
-        }
-    }
-    @media screen and (min-width:768px) {
-        .jumbotron{
-            height: 250px;
-            padding: 150px 0 0 0;
         }
     }
 }

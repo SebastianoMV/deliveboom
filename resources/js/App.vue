@@ -16,4 +16,7 @@ export default {
 </script>
 <style lang="scss">
 @import'~bootstrap/dist/css/bootstrap.css';
+.fluid-container{
+    transition: .2s all;
+}
 </style>
