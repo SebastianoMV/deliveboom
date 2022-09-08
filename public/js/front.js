@@ -3509,7 +3509,7 @@ var render = function render() {
         name: "cart"
       }
     }
-  }, [_c("span"), _c("i", {
+  }, [_c("i", {
     staticClass: "fa-solid fa-cart-shopping"
   })])], 1), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("i", {
     staticClass: "hamburger-menu fa-solid fa-bars d-md-none d-block",
@@ -3542,7 +3542,16 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-cart-shopping"
-  })])], 1), _vm._v(" "), _vm._m(2)])]) : _vm._e()])]);
+  })])], 1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("li", [_c("router-link", {
+    staticClass: "dropdown-list-element",
+    attrs: {
+      to: {
+        name: "cart"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-cart-shopping"
+  })])], 1), _vm._v(" "), _vm._m(3)])]) : _vm._e()])]);
 };
 
 var staticRenderFns = [function () {
@@ -3579,6 +3588,18 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-user"
+  })])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("li", [_c("a", {
+    staticClass: "dropdown-list-element",
+    attrs: {
+      href: "/admin"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-right-to-bracket"
   })])]);
 }];
 render._withStripped = true;

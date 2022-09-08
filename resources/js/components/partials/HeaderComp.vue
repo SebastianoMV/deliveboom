@@ -9,10 +9,6 @@
                     <li><router-link :to="{name: 'cart'}" class="navigation-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
                     <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-user"></i></a></li>
 
-                    <li><router-link :to="{name: 'cart'}" class="navigation-list-element"> <span > </span><i class="fa-solid fa-cart-shopping"></i></router-link>
-                    </li>
-                    <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-right-to-bracket"></i></a></li>
-
                 </ul>
                 <i
                     class="hamburger-menu fa-solid fa-bars d-md-none d-block"
