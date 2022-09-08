@@ -13,18 +13,27 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $activeUser = Auth::id();
-
-        $orders = Food::where('user_id', $activeUser)->join('food_order', 'food.id', '=', 'food_order.food_id')
-            ->join('orders', 'food_order.order_id', '=', 'orders.id')
+        $orders = Order::whereHas('foods', function ($query) {
+            $query->where('user_id', auth()->id());
+        })
+            ->with('foods')
+            ->orderby('id', 'desc')
             ->get();
 
         return view('admin.orderPages.index', compact('orders'));
     }
 
+
     public function show($id)
     {
         $order = Order::find($id);
+
+        /*  $foods = Food::whereHas('orders', function ($query) {
+            $query->whereIn('user_id', $order_id);
+        })
+            ->with('orders')
+            ->orderby('id', 'desc')
+            ->get(); */
 
         return view('admin.orderPages.show', compact('order'));
     }
