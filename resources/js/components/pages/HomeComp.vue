@@ -296,4 +296,16 @@ main{
         }
     }
 }
+
+::-webkit-scrollbar{
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: rgba($color: rgb(215, 185, 145), $alpha: 0.8);
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba($color: #dd3546, $alpha: 0.8);
+  border-radius: 20px;
+}
 </style>

@@ -33,7 +33,7 @@
                                 <td>{{ $order->created_at }}</td>
 
 
-                                <td class="w-25">
+                                <td class="">
                                     <a class="btn btn-primary" href="{{ route('admin.orders.show', $order) }}">Mostra</a>
                                 </td>
                             </tr>
