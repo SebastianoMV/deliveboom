@@ -4,7 +4,12 @@
     <div class="container">
 
         <div class="card m-auto" style="width: 20rem;">
-            <img class="card-img-top" src="{{asset('images/foods/'.$food->image)}}" alt="{{ $food->name }}" title="{{ $food->name }}">
+            @if ($food->image)
+                <img src="{{ asset('images/foods/' . $food->image) }}" alt="{{ $food->name }}">
+            @else
+                <img src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/media/3cb974c28eb00627cc0671685c79ffd9.jpg"
+                    alt="">
+            @endif
 
             <div class="card-body">
                 <h5 class="card-title">{{ $food->name }}</h5>
