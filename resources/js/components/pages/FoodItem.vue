@@ -27,7 +27,6 @@
 
 <script>
 export default {
-
     name: "FoodItem",
     props: {
         food: Object,
@@ -55,20 +54,17 @@ export default {
         fadetimer(){
             this.fade = false
         },
-
         addItem(food) {
             if (!food){
                 return;
             }
             try{
                 if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
-
                     if(confirm('Vuoi aggiungere al carrello?')){
                         food.quantity = 1;
                         this.cart.push(food);
                         this.saveCart();
                     }
-
                 }
                 else{
                     this.cart = JSON.parse(localStorage.getItem('cart'));
@@ -197,7 +193,7 @@ export default {
             }
             .btn-cart{
                 font-size: 20px;
-                background-color: #FE3638;
+                background-color: #dd3546;
                 outline: 2px solid transparent;
                 outline-offset: -2px;
                 color: white;
@@ -206,12 +202,12 @@ export default {
                 cursor: pointer;
                 transition: .2s all;
                 &:hover{
-                    background-color: #C5272A;
+                    background-color: #b42d3b;
                 }
                 &:active{
                     background-color: white;
-                    color: #FE3638;
-                    outline-color: #FE3638;
+                    color: #dd3546;
+                    outline-color: #dd3546;
                 }
             }
         }

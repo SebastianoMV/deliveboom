@@ -141,7 +141,7 @@ export default {
                 margin-right: -4px;
                 transition: .2s color;
                 &:hover{
-                    color: #FE3638;
+                    color: #dd3546;
                 }
             }
         }

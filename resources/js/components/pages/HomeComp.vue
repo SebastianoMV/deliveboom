@@ -4,14 +4,13 @@
             <div class="container fluid-container">
                 <h2>{{currentTypologiesName}}</h2>
             </div>
-            <div class="jumbo-wallpaper">
-                <img src="https://wallpaper.dog/large/20461782.jpg" alt="">
-            </div>
+            <div class="jumbo-wallpaper"/>
         </div>
         <div class="sliding-menu">
             <div class="container fluid-container">
                 <ul>
                     <li
+                        class="resetRestaurants"
                         @click="getUserApi();">
                         <div class="icon">
                             <img src="/image/typologies/typology_00.png" alt="all-restaurants">
@@ -105,6 +104,7 @@ export default {
         },
         filterUsers(){
             this.filteredUsers = [];
+            this.length = 6;
             if(this.currentTypologiesIDs.length === 0)
                 this.filteredUsers = this.users;
             else{
@@ -134,9 +134,9 @@ export default {
             if(this.currentTypologiesIDs.length === 0)
                 return "Tutti i ristoranti";
             else if(this.currentTypologiesIDs.length === 1)
-                return this.typologies.find(element => element.id === this.currentTypologiesIDs[0]).name;
+                return "Categoria: "+this.typologies.find(element => element.id === this.currentTypologiesIDs[0]).name;
             else{
-                let typologiesString = "";
+                let typologiesString = "Categorie: ";
                 for(let i=0; i<this.currentTypologiesIDs.length; i++)
                     typologiesString += this.typologies.find(element => element.id === this.currentTypologiesIDs[i]).name+", ";
                 return typologiesString.slice(0, -2);;
@@ -155,25 +155,27 @@ main{
         background-color: transparent;
         color: white;
         width: 100%;
-        height: 250px;
-        padding: 150px 0 0 0;
+        height: 150px;
+        padding: 50px 0 0 0;
         h2{
             font-weight: bolder;
+            text-shadow: 0px 0px 10px black;
         }
         .jumbo-wallpaper{
             position: absolute;
             bottom: 0;
             left: 50%;
             width: 100%;
+            height: 571.5px;
             display: flex;
             justify-content: center;
             align-items: center;
             transform: translateX(-50%);
             z-index: -1;
             overflow: hidden;
-            img{
-                object-fit: cover;
-            }
+            background-image: url("http://www.businesscoot.com/uploads/study_main_image/410.jpg");
+            background-size: cover;
+            background-position: center;
         }
     }
     .sliding-menu{
@@ -194,14 +196,23 @@ main{
                 text-align: center;
                 cursor: pointer;
                 .icon{
+                    position: relative;
                     width: 110px;
                     height: 82.5px;
                     border-radius: 20px;
                     overflow: hidden;
                     text-align: center;
-                    outline: 0px solid transparent;
-                    outline-offset: 0px;
-                    transition: .2s all;
+                    transition: .2s transform;
+                    &::after{
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: transparent;
+                        transition: .2s background-color;
+                    }
                     img{
                         height: 100%;
                         width: 100%;
@@ -215,29 +226,37 @@ main{
                     }
                 }
                 &:hover{
-                    .icon{
-                        outline: 4px solid #FE3638;
-                        outline-offset: -4px;
+                    .icon::after{
+                        background-color: rgba(255, 255, 255, 0);
                     }
-                    // .typology-title{
-                    //     text-shadow: 4px 4px 10px gray;
-                    // }
-                    // transform: scale(1.1);
                 }
                 &:active{
-                    .icon{
-                        outline-color: #4E54C8;
+                    .icon::after{
+                        background-color: rgba(0, 128, 0, .25);
+                    }
+                }
+                &.resetRestaurants:active{
+                    .icon::after{
+                        background-color: rgba($color: #4E54C8, $alpha: .35);
                     }
                 }
                 &.active{
                     .icon{
-                        outline-color: transparent;
+                        transform: scale(1.2);
+                        &::after{
+                            background-color: rgba(255, 255, 255, 0);
+                        }
                     }
                     .typology-title{
                         color: green;
                         i{
                             display: inline-block;
                         }
+                    }
+                }
+                &.active:active{
+                    .icon::after{
+                        background-color: rgba($color: #dd3546, $alpha: .35);
                     }
                 }
             }
@@ -262,7 +281,7 @@ main{
         margin-bottom: 20px;
         text-align: center;
         color: white;
-        background-color: #FE3638;
+        background-color: #dd3546;
         padding: 8px 0;
         border-radius: 5px;
         cursor: pointer;
@@ -270,8 +289,8 @@ main{
         outline: 2px solid transparent;
         outline-offset: -2px;
         &:hover{
-            background-color: #C5272A;
-            outline-color: #C5272A;
+            background-color: #b42d3b;
+            outline-color: #b42d3b;
         }
         &:active{
             background-color: white;
@@ -281,3 +300,4 @@ main{
     }
 }
 </style>
+
