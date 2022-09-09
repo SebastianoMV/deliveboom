@@ -152,8 +152,8 @@ main{
         background-color: transparent;
         color: white;
         width: 100%;
-        height: 150px;
-        padding: 50px 0 0 0;
+        min-height: 150px;
+        padding: 50px 0 10px 0;
         h2{
             font-weight: bolder;
             text-shadow: 0px 0px 10px black;
@@ -296,17 +296,4 @@ main{
         }
     }
 }
-
-::-webkit-scrollbar{
-  height: 7px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 20px;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba($color: #dd3546, $alpha: 0.8);
-  border-radius: 20px;
-}
 </style>
-
