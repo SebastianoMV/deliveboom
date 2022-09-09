@@ -16,8 +16,10 @@
             <div class="description">{{food.description}}</div>
             <div class="lower-btns">
                 <span class="price">&euro; {{food.price}}</span>
-                <span v-if="fade" class="animate__animated animate__fadeIn"> Aggiunto al carrello</span>
-                <div id="add_button" class="btn-cart" @click="addItem(food), fade = !fade , setTimeout()">
+                <div
+                    class="add-to-cart-label"
+                    :class="addedToCart ? 'added' : ''">Aggiunto al carrello</div>
+                <div class="btn-cart" @click="addItem(food)">
                     <i class="fa-solid fa-cart-plus"></i>
                 </div>
             </div>
@@ -35,7 +37,7 @@ export default {
         return{
             cart: [],
             placeHolder: false,
-            fade: false,
+            addedToCart: false,
         }
     },
     mounted() {
@@ -48,23 +50,16 @@ export default {
         }
     },
     methods: {
-        setTimeout(){
-            setTimeout(this.fadetimer, 1500)
-        },
-        fadetimer(){
-            this.fade = false
-        },
         addItem(food) {
             if (!food){
                 return;
             }
             try{
                 if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
-                    if(confirm('Vuoi aggiungere al carrello?')){
-                        food.quantity = 1;
-                        this.cart.push(food);
-                        this.saveCart();
-                    }
+                    food.quantity = 1;
+                    this.cart.push(food);
+                    this.saveCart();
+                    this.addedToCartMsg();
                 }
                 else{
                     this.cart = JSON.parse(localStorage.getItem('cart'));
@@ -74,34 +69,38 @@ export default {
                             food.quantity = 1;
                             this.cart.push(food);
                             this.saveCart();
+                            this.addedToCartMsg();
                         };
                     }
                     else{
-                        let chek = this.cart.find(({ id }) => id == food.id);
-                        console.log('check' + chek);
-                        if(!chek){
+                        let check = this.cart.find(({ id }) => id == food.id);
+                        if(!check)
                             food.quantity = 1;
-                            console.log('checkedcart'+  this.cart)
-                        }
-                        else{
+                        else
                             for(let i = 0; i < this.cart.length + 1; i++){
                                 if(this.cart[i].id == food.id){
                                     this.cart[i].quantity = this.cart[i].quantity + 1
-                                    console.log('quantita ' + this.cart[i].quantity);
-                                    console.log('cart' + this.cart);
                                     this.saveCart();
+                                    this.addedToCartMsg();
                                     return
                                 }
                             }
-                        }
                         this.cart.push(food);
                         this.saveCart();
+                        this.addedToCartMsg();
                     }
                 }
             }
             catch(e){
                 localStorage.removeItem('cart');
             }
+        },
+        addedToCartMsg(){
+            this.addedToCart = true;
+            let self = this;
+            setTimeout(function(){
+                self.addedToCart = false;
+            }, 2*1000);
         },
         removeItem(x) {
             this.cart.splice(x, 1);
@@ -124,8 +123,8 @@ export default {
     min-height: 380px;
     box-shadow: 0px 0px 15px rgb(189, 189, 189);
     border-radius: 10px;
-    overflow: hidden;
     img{
+        border-radius: 10px 10px 0 0;
         height: 200px;
         width: 100%;
         margin-bottom: 10px;
@@ -183,7 +182,9 @@ export default {
         .lower-btns{
             display: flex;
             justify-content: space-between;
+            column-gap: 0;
             align-items: center;
+            position: relative;
             padding: 0 20px;
             margin-bottom: 15px;
             .price{
@@ -191,14 +192,36 @@ export default {
                 color: #4E54C8;
                 font-weight: bold;
             }
+            .add-to-cart-label{
+                position: absolute;
+                right: 20px;
+                bottom: -30px;
+                padding: 3px 10px;
+                background-color: rgb(147, 240, 147);
+                border: 2px solid green;
+                color: green;
+                opacity: 0;
+                font-weight: bold;
+                font-size: 12px;
+                user-select: none;
+                border-radius: 5px;
+                transition: 1s opacity;
+                &.added{
+                    transition: .2s opacity;
+                    opacity: 1;
+                }
+            }
             .btn-cart{
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 font-size: 20px;
                 background-color: #dd3546;
                 outline: 2px solid transparent;
                 outline-offset: -2px;
                 color: white;
                 border-radius: 5px;
-                padding: 0px 8px;
+                padding: 6px 8px;
                 cursor: pointer;
                 transition: .2s all;
                 &:hover{

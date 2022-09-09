@@ -118,9 +118,6 @@ export default {
                 }
             }
         },
-        showMenu(slug){
-            console.log(slug);
-        },
         loadMore(){
             if (this.length > this.users.length) return;
             this.length += 6;
