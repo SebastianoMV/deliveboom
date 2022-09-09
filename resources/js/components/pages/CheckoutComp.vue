@@ -153,14 +153,14 @@ export default {
             display: flex;
             width: 100%;
             height: 50px;
-            color: #FE3638;
+            color: #dd3546;
             h4{
                 width: 50%;
                 text-align: center;
                 margin: 0 auto;
                 &.active,
                 .active{
-                    border-bottom: 3px solid #FE3638;
+                    border-bottom: 3px solid #dd3546;
                     font-weight: bolder;
                 }
                 &.static,
@@ -172,7 +172,7 @@ export default {
                     display: block;
                     width: 100%;
                     height: 100%;
-                    color: #FE3638;
+                    color: #dd3546;
                     text-decoration: none;
                     transition: .2s all;
                     &:hover{

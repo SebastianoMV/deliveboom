@@ -18,5 +18,6 @@ export default {
 @import'~bootstrap/dist/css/bootstrap.css';
 .fluid-container{
     transition: .2s all;
+    min-width: 355px;
 }
 </style>

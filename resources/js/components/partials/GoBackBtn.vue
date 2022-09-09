@@ -32,7 +32,7 @@ button{
         background-color: #3f439b;
     }
     &:active{
-        background-color: #FE3638;
+        background-color: #dd3546;
     }
 }
 </style>

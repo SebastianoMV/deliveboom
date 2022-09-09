@@ -18,9 +18,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="jumbo-wallpaper">
-                <img src="https://wallpaper.dog/large/20461782.jpg" alt="">
-            </div>
+            <div class="jumbo-wallpaper"/>
         </div>
         <div class="foods-container container">
             <h1>Menù<span v-if="currentCategoryName!==''">: </span><span class="category-name">{{currentCategoryName}}</span></h1>
@@ -132,25 +130,27 @@ export default {
         background-color: transparent;
         color: white;
         width: 100%;
-        height: 250px;
-        padding: 150px 0 0 0;
+        height: 150px;
+        padding: 50px 0 0 0;
         h1{
             font-weight: bolder;
+            text-shadow: 0px 0px 10px black;
         }
         .jumbo-wallpaper{
             position: absolute;
             bottom: 0;
             left: 50%;
             width: 100%;
+            height: 571.5px;
             display: flex;
             justify-content: center;
             align-items: center;
             transform: translateX(-50%);
             z-index: -1;
             overflow: hidden;
-            img{
-                object-fit: cover;
-            }
+            background-image: url("http://www.businesscoot.com/uploads/study_main_image/410.jpg");
+            background-size: cover;
+            background-position: center;
         }
         .container{
             position: relative;
@@ -207,7 +207,7 @@ export default {
             text-align: center;
             margin-bottom: 40px;
             .category-name{
-                color: #FE3638;
+                color: #dd3546;
             }
         }
         .wrapper{

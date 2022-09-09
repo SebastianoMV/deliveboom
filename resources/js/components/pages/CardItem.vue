@@ -2,15 +2,27 @@
     <router-link :to="{name: 'foods', params: { slug: user.slug }}" class="card-item">
         <div class="card-images">
             <img
+                v-if="user.foods.length > 0"
                 class="thumbnail"
                 :src="`/images/foods/${user.foods[0].image}`"
                 :alt="user.name"
                 :title="user.name">
             <img
+                v-else
+                class="thumbnail"
+                src="/images/foods/placeholder_restaurant_bg.png"
+                :alt="user.name">
+            <img
+                v-if="user.image"
                 class="restaurant-logo"
                 :src="`/image/users/${user.image}`"
                 :alt="user.name"
                 :title="user.name">
+            <img
+                v-else
+                class="restaurant-logo"
+                src="/images/foods/placeholder_restaurant_profile.png"
+                :alt="user.name">
         </div>
         <h3>{{user.name}}</h3>
         <p>{{user.address}}, {{user.city}}</p>
