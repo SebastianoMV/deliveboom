@@ -3,17 +3,12 @@
         :class="($route.path === '/carrello' || $route.path === '/checkout') ? 'noJumbo' : ''">
         <div class="container header-container fluid-container">
             <div class="top-header">
-                <h1 class="logo">Deliveb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h1>
-
-                <!-- <img
-                v-if="$route.path === '/carrello' || $route.path === '/checkout'"
-                src="../../../../public/images/logo/logo-dark.png" alt="">
-                <img v-else src="../../../../public/images/logo/logo-ligth.png" alt=""> -->
+                <router-link :to="{name: 'home'}" class="logo-container">
+                    <h1 class="logo">Deliveb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h1>
+                </router-link>
                 <ul class="header-btns d-md-flex d-none">
                     <li><router-link :to="{name: 'home'}" class="navigation-list-element"><i class="fa-solid fa-house"></i></router-link></li>
-                    <li><router-link :to="{name: 'cart'}"
-                                     class="navigation-list-element"
-                                     :class="true ? '' : ''"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
+                    <li><router-link :to="{name: 'cart'}" class="navigation-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
                     <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-user"></i></a></li>
                 </ul>
                 <i
@@ -71,8 +66,9 @@ header{
         .top-header{
             display: flex;
             justify-content: space-between;
-            img{
-                width: 30%;
+            .logo-container{
+                color: inherit;
+                text-decoration: none;
             }
             .logo{
                 font-weight: bolder;
@@ -102,9 +98,6 @@ header{
                     }
                     &:active{
                         color: #dd3546;
-                    }
-                    &.debug{
-                        color: green;
                     }
                 }
             }
