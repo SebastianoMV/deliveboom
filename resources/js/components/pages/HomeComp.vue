@@ -176,7 +176,7 @@ main{
         }
     }
     .sliding-menu{
-        background-color: aliceblue;
+        background-color: bisque;
         margin-bottom: 45px;
         ul{
             overflow-x: auto;
@@ -295,6 +295,18 @@ main{
             outline-color: #4E54C8;
         }
     }
+}
+
+::-webkit-scrollbar{
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba($color: #dd3546, $alpha: 0.8);
+  border-radius: 20px;
 }
 </style>
 

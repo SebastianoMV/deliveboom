@@ -4,6 +4,11 @@
         <div class="container header-container fluid-container">
             <div class="top-header">
                 <h1 class="logo">Deliveb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h1>
+
+                <!-- <img
+                v-if="$route.path === '/carrello' || $route.path === '/checkout'"
+                src="../../../../public/images/logo/logo-dark.png" alt="">
+                <img v-else src="../../../../public/images/logo/logo-ligth.png" alt=""> -->
                 <ul class="header-btns d-md-flex d-none">
                     <li><router-link :to="{name: 'home'}" class="navigation-list-element"><i class="fa-solid fa-house"></i></router-link></li>
                     <li><router-link :to="{name: 'cart'}"
@@ -66,6 +71,9 @@ header{
         .top-header{
             display: flex;
             justify-content: space-between;
+            img{
+                width: 30%;
+            }
             .logo{
                 font-weight: bolder;
                 font-size: 37px;

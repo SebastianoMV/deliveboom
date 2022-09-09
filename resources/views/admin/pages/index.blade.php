@@ -32,7 +32,7 @@
                                         <th scope="row">{{ $food->id }}</th>
                                         <td><strong>{{ $food->name }}</strong></td>
                                         <td>
-                                            <img class="w-25" src="{{ $food->image }}" alt="{{ $food->name }}">
+                                            <img class="w-25" src="" alt="{{ $food->name }}">
                                         </td>
                                         <td>{{ $food->price }}</td>
 
