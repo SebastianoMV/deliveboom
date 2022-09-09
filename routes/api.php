@@ -22,3 +22,4 @@ Route::namespace('Api')
     });
 
 Route::post('/orders', 'Api\PageController@store');
+// Route::get('/chart', 'Admin\StatisticsController@index');

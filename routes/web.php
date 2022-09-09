@@ -27,9 +27,10 @@ Route::middleware('auth')
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('food', 'FoodController');
         Route::resource('orders', 'OrderController');
-    });
+        Route::get('chart', 'StatisticsController@index')->name('statistics');
+        Route::get('statistic', 'StatisticsController@files');
 
-Route::get('admin/statistiche', 'Admin\StatisticsController@index')->name('admin.statistics');
+    });
 
 Route::get('{any?}', function () {
     return view('guest.welcome');

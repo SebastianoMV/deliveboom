@@ -37269,6 +37269,7 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 $().ready(function () {
   userFormValidator($("#userCreateForm"));
   foodFormValidator($("#foodCreateForm"));
@@ -37485,25 +37486,64 @@ $().ready(function () {
   }
 });
 var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
-  type: "bar",
-  data: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [{
-      label: "# of Votes",
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)"],
-      borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)"],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
+var price = document.getElementById("priceChart");
+
+function createCharts(orders) {
+  var myChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+      datasets: [{
+        label: "Numero di ordini",
+        data: orders,
+        backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+        borderColor: ["rgba(255, 99, 132, 1)"],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
       }
     }
-  }
+  });
+}
+
+;
+
+function priceChart(total) {
+  var priceChart = new Chart(price, {
+    type: "line",
+    data: {
+      labels: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+      datasets: [{
+        label: "Guadagno totale",
+        data: total,
+        backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+        borderColor: ["rgba(255, 99, 132, 1)"],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+axios.get('/admin/statistic').then(function (res) {
+  var orders = res.data.totalOrdersForMonths;
+  var total = res.data.totalSellForMonths; // loader.classList.add('active');
+  // chartsWrapper.classList.remove('active');
+
+  var chart = createCharts(orders);
+  var price = priceChart(total);
+  console.log(res.data);
 });
 
 /***/ }),
@@ -37560,7 +37600,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\js\admin.js */"./resources/js/admin.js");
+module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\admin.js */"./resources/js/admin.js");
 
 
 /***/ })

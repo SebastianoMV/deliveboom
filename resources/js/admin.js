@@ -1,4 +1,5 @@
 require("./bootstrap");
+window.axios = require('axios');
 
 $().ready(function() {
     userFormValidator($("#userCreateForm"));
@@ -305,38 +306,82 @@ $().ready(function() {
     }
 });
 
+
+
+
 const ctx = document.getElementById("myChart");
-const myChart = new Chart(ctx, {
-    type: "bar",
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: "# of Votes",
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                "rgba(255, 99, 132, 0.2)",
-                "rgba(54, 162, 235, 0.2)",
-                "rgba(255, 206, 86, 0.2)",
-                "rgba(75, 192, 192, 0.2)",
-                "rgba(153, 102, 255, 0.2)",
-                "rgba(255, 159, 64, 0.2)",
-            ],
-            borderColor: [
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 159, 64, 1)",
-            ],
-            borderWidth: 1,
-        }, ],
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true,
+const price = document.getElementById("priceChart");
+
+function createCharts(orders){
+    const myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+            datasets: [{
+                label: "Numero di ordini",
+                data: orders,
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.2)",
+
+                ],
+                borderColor: [
+                    "rgba(255, 99, 132, 1)",
+
+                ],
+                borderWidth: 1,
+            }, ],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
             },
         },
-    },
-});
+    });
+
+};
+
+function priceChart(total){
+    const priceChart = new Chart(price, {
+        type: "line",
+        data: {
+            labels: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+            datasets: [{
+                label: "Guadagno totale",
+                data: total,
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.2)",
+
+                ],
+                borderColor: [
+                    "rgba(255, 99, 132, 1)",
+
+                ],
+                borderWidth: 1,
+            }, ],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
+            },
+        },
+    });
+
+}
+
+
+axios.get('/admin/statistic')
+    .then(res => {
+        const orders = res.data.totalOrdersForMonths;
+        const total = res.data.totalSellForMonths;
+
+        // loader.classList.add('active');
+        // chartsWrapper.classList.remove('active');
+
+        const chart = createCharts(orders);
+        const price = priceChart(total);
+        console.log(res.data);
+    });

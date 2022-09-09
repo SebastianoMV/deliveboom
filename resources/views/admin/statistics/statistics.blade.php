@@ -17,9 +17,17 @@
 <body>
 
     @section('content')
+
+
+
         <div style="width: 70%; margin: auto" class="container">
             <canvas id="myChart"></canvas>
         </div>
+
+        <div style="width: 70%; margin: auto" class="container">
+            <canvas id="priceChart"></canvas>
+        </div>
+
     @endsection
 
 </body>
