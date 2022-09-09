@@ -1,4 +1,3 @@
-
 <?php
 
 return [
@@ -35,7 +34,7 @@ return [
         'price' => '6.50',
         'is_visible' => 1,
         'vegan' => 1,
-        'image' => 'food_01.webp',
+        'image' => 'food_03.webp',
     ],
 
 
