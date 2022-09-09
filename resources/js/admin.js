@@ -1,193 +1,256 @@
+require("./bootstrap");
 
-require('./bootstrap');
+$().ready(function() {
+    userFormValidator($("#userCreateForm"));
+    foodFormValidator($("#foodCreateForm"));
+    foodFormValidator($("#foodEditForm"));
 
-$().ready(function(){
-    userFormValidator($('#userCreateForm'));
-    foodFormValidator($('#foodCreateForm'));
-    foodFormValidator($('#foodEditForm'));
-
-
-    function userFormValidator(form){
-        form.submit(function(event){
+    function userFormValidator(form) {
+        form.submit(function(event) {
             let errors = false;
-            $('#error-name').hide();
-            $('#error-email').hide();
-            $('#error-address').hide();
-            $('#error-vat_number').hide();
-            $('#error-image').hide();
-            $('#error-city').hide();
-            $('#error-password').hide();
-            $('#error-tipologies').hide();
+            $("#error-name").hide();
+            $("#error-email").hide();
+            $("#error-address").hide();
+            $("#error-vat_number").hide();
+            $("#error-image").hide();
+            $("#error-city").hide();
+            $("#error-password").hide();
+            $("#error-tipologies").hide();
 
             //NOME
-            if($('#name').val().length === 0){
-                $('#error-name').show('slow').text('Il campo nome è obbligatorio').fadeOut(4000);
-                $('#name').addClass('is-invalid');
+            if ($("#name").val().length === 0) {
+                $("#error-name")
+                    .show("slow")
+                    .text("Il campo nome è obbligatorio")
+                    .fadeOut(4000);
+                $("#name").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#name').val().length < 3){
-                $('#error-name').show('slow').text('Il campo nome deve avere minimo 3 caratteri').fadeOut(4000);
-                $('#name').addClass('is-invalid');
+            } else if ($("#name").val().length < 3) {
+                $("#error-name")
+                    .show("slow")
+                    .text("Il campo nome deve avere minimo 3 caratteri")
+                    .fadeOut(4000);
+                $("#name").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#name').val().length > 50){
-                $('#error-name').show('slow').text('Il campo nome può avere massimo 50 caratteri').fadeOut(4000);
-                $('#name').addClass('is-invalid');
+            } else if ($("#name").val().length > 50) {
+                $("#error-name")
+                    .show("slow")
+                    .text("Il campo nome può avere massimo 50 caratteri")
+                    .fadeOut(4000);
+                $("#name").addClass("is-invalid");
                 errors = true;
-            }else{
-                $('#name').removeClass('is-invalid')
+            } else {
+                $("#name").removeClass("is-invalid");
             }
 
-             //EMAIL
-             if($('#email').val().length === 0){
-                $('#error-email').show('slow').text('Il campo email è obbligatorio').fadeOut(4000);
-                $('#email').addClass('is-invalid');
+            //EMAIL
+            if ($("#email").val().length === 0) {
+                $("#error-email")
+                    .show("slow")
+                    .text("Il campo email è obbligatorio")
+                    .fadeOut(4000);
+                $("#email").addClass("is-invalid");
                 errors = true;
-            }else if($('#name').val().length > 255){
-                $('#error-name').show('slow').text('Il campo nome può avere massimo 255 caratteri').fadeOut(4000);
-                $('#name').addClass('is-invalid');
+            } else if ($("#name").val().length > 255) {
+                $("#error-name")
+                    .show("slow")
+                    .text("Il campo nome può avere massimo 255 caratteri")
+                    .fadeOut(4000);
+                $("#name").addClass("is-invalid");
                 errors = true;
-            }else{
-                $('#email').removeClass('is-invalid')
+            } else {
+                $("#email").removeClass("is-invalid");
             }
 
             //INDIRIZZO
-            if($('#address').val().length === 0){
-                $('#error-address').show('slow').text('Il campo indirizzo è obbligatorio').fadeOut(4000);
-                $('#address').addClass('is-invalid');
+            if ($("#address").val().length === 0) {
+                $("#error-address")
+                    .show("slow")
+                    .text("Il campo indirizzo è obbligatorio")
+                    .fadeOut(4000);
+                $("#address").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#address').val().length < 4){
-                $('#error-address').show('slow').text('Il campo indirizzo deve avere minimo 4 caratteri').fadeOut(4000);
-                $('#address').addClass('is-invalid');
+            } else if ($("#address").val().length < 4) {
+                $("#error-address")
+                    .show("slow")
+                    .text("Il campo indirizzo deve avere minimo 4 caratteri")
+                    .fadeOut(4000);
+                $("#address").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#address').val().length > 50){
-                $('#error-address').show('slow').text('Il campo indirizzo può avere massimo 255 caratteri').fadeOut(4000);
-                $('#address').addClass('is-invalid');
+            } else if ($("#address").val().length > 50) {
+                $("#error-address")
+                    .show("slow")
+                    .text("Il campo indirizzo può avere massimo 255 caratteri")
+                    .fadeOut(4000);
+                $("#address").addClass("is-invalid");
                 errors = true;
-            }else{
-                $('#address').removeClass('is-invalid')
+            } else {
+                $("#address").removeClass("is-invalid");
             }
 
             //CITTA
-            if($('#city').val().length === 0){
-                $('#error-city').show('slow').text('Il campo città è obbligatorio').fadeOut(4000);
-                $('#city').addClass('is-invalid');
+            if ($("#city").val().length === 0) {
+                $("#error-city")
+                    .show("slow")
+                    .text("Il campo città è obbligatorio")
+                    .fadeOut(4000);
+                $("#city").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#city').val().length < 2){
-                $('#error-city').show('slow').text('Il campo città deve avere minimo 2 caratteri').fadeOut(4000);
-                $('#city').addClass('is-invalid');
+            } else if ($("#city").val().length < 2) {
+                $("#error-city")
+                    .show("slow")
+                    .text("Il campo città deve avere minimo 2 caratteri")
+                    .fadeOut(4000);
+                $("#city").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#city').val().length > 50){
-                $('#error-city').show('slow').text('Il campo indirizzo può avere massimo 50 caratteri').fadeOut(4000);
-                $('#city').addClass('is-invalid');
+            } else if ($("#city").val().length > 50) {
+                $("#error-city")
+                    .show("slow")
+                    .text("Il campo indirizzo può avere massimo 50 caratteri")
+                    .fadeOut(4000);
+                $("#city").addClass("is-invalid");
                 errors = true;
-            }else{
-                $('#city').removeClass('is-invalid')
+            } else {
+                $("#city").removeClass("is-invalid");
             }
 
             //P-IVA
-            if($('#vat_number').val().length === 0){
-                $('#error-vat').show('slow').text('Il campo P. Iva è obbligatorio').fadeOut(4000);
-                $('#vat_number').addClass('is-invalid');
+            if ($("#vat_number").val().length === 0) {
+                $("#error-vat")
+                    .show("slow")
+                    .text("Il campo P. Iva è obbligatorio")
+                    .fadeOut(4000);
+                $("#vat_number").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#vat_number').val().length < 11 || $('#vat_number').val().length > 11){
-                $('#error-vat').show('slow').text('Il campo P. Iva deve avere 11 caratteri').fadeOut(4000);
-                $('#vat_number').addClass('is-invalid');
+            } else if (
+                $("#vat_number").val().length < 11 ||
+                $("#vat_number").val().length > 11
+            ) {
+                $("#error-vat")
+                    .show("slow")
+                    .text("Il campo P. Iva deve avere 11 caratteri")
+                    .fadeOut(4000);
+                $("#vat_number").addClass("is-invalid");
                 errors = true;
-            }else{
-                $('#vat_number').removeClass('is-invalid')
+            } else {
+                $("#vat_number").removeClass("is-invalid");
             }
 
             //PASSWORD
-            if($('#password').val().length === 0){
-                $('#error-password').show('slow').text('Il campo password è obbligatorio').fadeOut(4000);
-                $('#password').addClass('is-invalid');
+            if ($("#password").val().length === 0) {
+                $("#error-password")
+                    .show("slow")
+                    .text("Il campo password è obbligatorio")
+                    .fadeOut(4000);
+                $("#password").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#password').val().length < 8 ){
-                $('#error-password').show('slow').text('Il campo password deve avere 8 caratteri').fadeOut(4000);
-                $('#password').addClass('is-invalid');
+            } else if ($("#password").val().length < 8) {
+                $("#error-password")
+                    .show("slow")
+                    .text("Il campo password deve avere 8 caratteri")
+                    .fadeOut(4000);
+                $("#password").addClass("is-invalid");
                 errors = true;
-            }else{
-                $('#password').removeClass('is-invalid')
+            } else {
+                $("#password").removeClass("is-invalid");
             }
             //CONFERMA PASSWORD
-            if($('#password-confirm').val().length === 0){
-                $('#error-password-confirm').show('slow').text('Il campo password è obbligatorio').fadeOut(4000);
-                $('#password-confirm').addClass('is-invalid');
+            if ($("#password-confirm").val().length === 0) {
+                $("#error-password-confirm")
+                    .show("slow")
+                    .text("Il campo password è obbligatorio")
+                    .fadeOut(4000);
+                $("#password-confirm").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#password').val().length < 8 ){
-                $('#error-password').show('slow').text('Il campo password deve avere 8 caratteri').fadeOut(4000);
-                $('#password').addClass('is-invalid');
+            } else if ($("#password").val().length < 8) {
+                $("#error-password")
+                    .show("slow")
+                    .text("Il campo password deve avere 8 caratteri")
+                    .fadeOut(4000);
+                $("#password").addClass("is-invalid");
                 errors = true;
-            }else{
-                $('#password').removeClass('is-invalid')
+            } else {
+                $("#password").removeClass("is-invalid");
             }
 
             //TIPOLOGIE
 
             checked = $("input[type=checkbox]:checked").length;
 
-            if(!checked) {
-                $('#error-tipologies').show('slow').text('Seleziona almeno una tipologia').fadeOut(4000);
+            if (!checked) {
+                $("#error-tipologies")
+                    .show("slow")
+                    .text("Seleziona almeno una tipologia")
+                    .fadeOut(4000);
                 errors = true;
             }
 
-
-            if(errors === true){
+            if (errors === true) {
                 event.preventDefault();
             }
-        })
+        });
     }
 
-    function foodFormValidator(form){
-        form.submit(function(event){
+    function foodFormValidator(form) {
+        form.submit(function(event) {
             let errors = false;
-            $('#error-name').hide();
-            $('#error-description').hide();
-            $('#error-image').hide();
-            $('#error-price').hide();
+            $("#error-name").hide();
+            $("#error-description").hide();
+            $("#error-image").hide();
+            $("#error-price").hide();
 
             //NOME
-            if($('#name').val().length === 0){
-                $('#error-name').show('slow').text('Il campo nome è obbligatorio').fadeOut(4000);
-                $('#name').addClass('is-invalid');
+            if ($("#name").val().length === 0) {
+                $("#error-name")
+                    .show("slow")
+                    .text("Il campo nome è obbligatorio")
+                    .fadeOut(4000);
+                $("#name").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#name').val().length < 3){
-                $('#error-name').show('slow').text('Il campo nome deve avere minimo 3 caratteri').fadeOut(4000);
-                $('#name').addClass('is-invalid');
+            } else if ($("#name").val().length < 3) {
+                $("#error-name")
+                    .show("slow")
+                    .text("Il campo nome deve avere minimo 3 caratteri")
+                    .fadeOut(4000);
+                $("#name").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#name').val().length > 50){
-                $('#error-name').show('slow').text('Il campo nome può avere massimo 50 caratteri').fadeOut(4000);
-                $('#name').addClass('is-invalid');
+            } else if ($("#name").val().length > 50) {
+                $("#error-name")
+                    .show("slow")
+                    .text("Il campo nome può avere massimo 50 caratteri")
+                    .fadeOut(4000);
+                $("#name").addClass("is-invalid");
                 errors = true;
-            }else{
-                $('#name').removeClass('is-invalid')
+            } else {
+                $("#name").removeClass("is-invalid");
             }
 
-             //DESCRIZIONE
-             if($('#description').val().length === 0){
-                $('#error-description').show('slow').text('Il campo descrizione è obbligatorio').fadeOut(4000);
-                $('#description').addClass('is-invalid');
+            //DESCRIZIONE
+            if ($("#description").val().length === 0) {
+                $("#error-description")
+                    .show("slow")
+                    .text("Il campo descrizione è obbligatorio")
+                    .fadeOut(4000);
+                $("#description").addClass("is-invalid");
                 errors = true;
-            }else if($('#description').val().length < 3){
-                $('#error-description').show('slow').text('Il campo descrizione deve avere minimo 3 caratteri').fadeOut(4000);
-                $('#description').addClass('is-invalid');
+            } else if ($("#description").val().length < 3) {
+                $("#error-description")
+                    .show("slow")
+                    .text("Il campo descrizione deve avere minimo 3 caratteri")
+                    .fadeOut(4000);
+                $("#description").addClass("is-invalid");
                 errors = true;
-            }else if($('#description').val().length > 255){
-                $('#error-description').show('slow').text('Il campo descrizione può avere massimo 255 caratteri').fadeOut(4000);
-                $('#description').addClass('is-invalid');
+            } else if ($("#description").val().length > 255) {
+                $("#error-description")
+                    .show("slow")
+                    .text(
+                        "Il campo descrizione può avere massimo 255 caratteri"
+                    )
+                    .fadeOut(4000);
+                $("#description").addClass("is-invalid");
                 errors = true;
-            }else{
-                $('#description').removeClass('is-invalid')
+            } else {
+                $("#description").removeClass("is-invalid");
             }
 
             //IMMAGINE
@@ -210,28 +273,70 @@ $().ready(function(){
             // }
 
             //PREZZO
-            if($('#price').val().length === 0){
-                $('#error-price').show('slow').text('Il campo prezzo è obbligatorio').fadeOut(4000);
-                $('#price').addClass('is-invalid');
+            if ($("#price").val().length === 0) {
+                $("#error-price")
+                    .show("slow")
+                    .text("Il campo prezzo è obbligatorio")
+                    .fadeOut(4000);
+                $("#price").addClass("is-invalid");
                 errors = true;
-            }
-            else if($('#price').val() >= 100){
-                $('#error-price').show('slow').text("Il campo prezzo deve essere inferiore a 100€").fadeOut(4000);
-                $('#price').addClass('is-invalid');
+            } else if ($("#price").val() >= 100) {
+                $("#error-price")
+                    .show("slow")
+                    .text("Il campo prezzo deve essere inferiore a 100€")
+                    .fadeOut(4000);
+                $("#price").addClass("is-invalid");
                 errors = true;
-            }
-            else if(isNaN($('#price').val())){
-                $('#error-price').show('slow').text('Il campo prezzo deve contenere solo numeri').fadeOut(4000);
-                $('#price').addClass('is-invalid');
+            } else if (isNaN($("#price").val())) {
+                $("#error-price")
+                    .show("slow")
+                    .text("Il campo prezzo deve contenere solo numeri")
+                    .fadeOut(4000);
+                $("#price").addClass("is-invalid");
                 errors = true;
-            }else{
-                $('#price').removeClass('is-invalid')
+            } else {
+                $("#price").removeClass("is-invalid");
             }
 
-
-            if(errors === true){
+            if (errors === true) {
                 event.preventDefault();
             }
-        })
+        });
     }
-})
+});
+
+const ctx = document.getElementById("myChart");
+const myChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: "# of Votes",
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+                "rgba(75, 192, 192, 0.2)",
+                "rgba(153, 102, 255, 0.2)",
+                "rgba(255, 159, 64, 0.2)",
+            ],
+            borderColor: [
+                "rgba(255, 99, 132, 1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(75, 192, 192, 1)",
+                "rgba(153, 102, 255, 1)",
+                "rgba(255, 159, 64, 1)",
+            ],
+            borderWidth: 1,
+        }, ],
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    },
+});

@@ -22,7 +22,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- FontAwsome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -34,11 +36,14 @@
                 </a>
 
                 @auth
-                    <a class="navbar-brand" href="{{route('admin.food.index')}}">
+                    <a class="navbar-brand" href="{{ route('admin.food.index') }}">
                         Vai alla Index
                     </a>
-                    <a class="navbar-brand" href="{{route('admin.food.create')}}">
+                    <a class="navbar-brand" href="{{ route('admin.food.create') }}">
                         Aggiungi un nuovo prodotto
+                    </a>
+                    <a class="navbar-brand" href="{{ route('admin.statistics') }}">
+                        Statistiche vendite
                     </a>
                 @endauth
 
@@ -67,23 +72,22 @@
                                 </li>
                             @endif
                         @else
-
-                                {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a> --}}
 
-                                {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> --}}
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
+                            {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> --}}
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                {{ __('Logout') }}
+                            </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                {{-- </div> --}}
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                            {{-- </div> --}}
 
                         @endguest
                     </ul>

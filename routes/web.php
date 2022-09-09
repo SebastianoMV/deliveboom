@@ -29,6 +29,8 @@ Route::middleware('auth')
         Route::resource('orders', 'OrderController');
     });
 
+Route::get('admin/statistiche', 'Admin\StatisticsController@index')->name('admin.statistics');
+
 Route::get('{any?}', function () {
     return view('guest.welcome');
 })->where('any', '.*')->name('home');
