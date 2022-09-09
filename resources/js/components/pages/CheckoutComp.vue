@@ -27,7 +27,9 @@
                     <div
                         v-if="!paidFor"
                         class="paypal-side">
-                        <span @click="showPayment = false">Torna al form</span>
+                        <div
+                            class="back-to-form"
+                            @click="showPayment = false">Torna al form</div>
                         <h2>Totale ordine: <span class="price">€ {{newOrder.total_price}}</span></h2>
                         <div ref="paypal"></div>
                     </div>
@@ -220,6 +222,25 @@ export default {
                 text-align: center;
                 width: 70%;
                 margin: 0 auto;
+                .back-to-form{
+                    text-align: center;
+                    width: 120px;
+                    height: 25px;
+                    line-height: 25px;
+                    background-color: #4E54C8;
+                    border-radius: 5px;
+                    color: white;
+                    font-weight: bold;
+                    margin: 20px auto;
+                    cursor: pointer;
+                    transition: .2s all;
+                    &:hover{
+                        background-color: #3f439b;
+                    }
+                    &:active{
+                        background-color: #dd3546;
+                    }
+                }
             }
         }
     }

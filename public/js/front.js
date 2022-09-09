@@ -2209,7 +2209,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       cart: [],
       placeHolder: false,
-      fade: false
+      addedToCart: false
     };
   },
   mounted: function mounted() {
@@ -2222,22 +2222,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    setTimeout: function (_setTimeout) {
-      function setTimeout() {
-        return _setTimeout.apply(this, arguments);
-      }
-
-      setTimeout.toString = function () {
-        return _setTimeout.toString();
-      };
-
-      return setTimeout;
-    }(function () {
-      setTimeout(this.fadetimer, 1500);
-    }),
-    fadetimer: function fadetimer() {
-      this.fade = false;
-    },
     addItem: function addItem(food) {
       if (!food) {
         return;
@@ -2245,11 +2229,10 @@ __webpack_require__.r(__webpack_exports__);
 
       try {
         if (localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0) {
-          if (confirm('Vuoi aggiungere al carrello?')) {
-            food.quantity = 1;
-            this.cart.push(food);
-            this.saveCart();
-          }
+          food.quantity = 1;
+          this.cart.push(food);
+          this.saveCart();
+          this.addedToCartMsg();
         } else {
           this.cart = JSON.parse(localStorage.getItem('cart'));
 
@@ -2259,38 +2242,38 @@ __webpack_require__.r(__webpack_exports__);
               food.quantity = 1;
               this.cart.push(food);
               this.saveCart();
+              this.addedToCartMsg();
             }
 
             ;
           } else {
-            var chek = this.cart.find(function (_ref) {
+            var check = this.cart.find(function (_ref) {
               var id = _ref.id;
               return id == food.id;
             });
-            console.log('check' + chek);
-
-            if (!chek) {
-              food.quantity = 1;
-              console.log('checkedcart' + this.cart);
-            } else {
-              for (var i = 0; i < this.cart.length + 1; i++) {
-                if (this.cart[i].id == food.id) {
-                  this.cart[i].quantity = this.cart[i].quantity + 1;
-                  console.log('quantita ' + this.cart[i].quantity);
-                  console.log('cart' + this.cart);
-                  this.saveCart();
-                  return;
-                }
+            if (!check) food.quantity = 1;else for (var i = 0; i < this.cart.length + 1; i++) {
+              if (this.cart[i].id == food.id) {
+                this.cart[i].quantity = this.cart[i].quantity + 1;
+                this.saveCart();
+                this.addedToCartMsg();
+                return;
               }
             }
-
             this.cart.push(food);
             this.saveCart();
+            this.addedToCartMsg();
           }
         }
       } catch (e) {
         localStorage.removeItem('cart');
       }
+    },
+    addedToCartMsg: function addedToCartMsg() {
+      this.addedToCart = true;
+      var self = this;
+      setTimeout(function () {
+        self.addedToCart = false;
+      }, 2 * 1000);
     },
     removeItem: function removeItem(x) {
       this.cart.splice(x, 1);
@@ -2361,8 +2344,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.foods = r.data.foods;
         _this2.foodsFiltered = r.data.foods;
         _this2.categories = r.data.categories;
-        _this2.isLoaded = true; // console.log(id);
-        // console.log(this.categories);
+        _this2.isLoaded = true;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -2377,15 +2359,13 @@ __webpack_require__.r(__webpack_exports__);
             this.foodsFiltered.push(this.foods[i]);
           }
         }
-      } // console.log(this.foodsFiltered);
+      }
     },
     foodHasCategory: function foodHasCategory(categoryId) {
       var flag = false;
 
       for (var i = 0; i < this.foods.length; i++) {
-        if (this.foods[i].category_id == categoryId) {
-          flag = true;
-        }
+        if (this.foods[i].category_id == categoryId) flag = true;
       }
 
       return flag;
@@ -2486,9 +2466,6 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
     },
-    showMenu: function showMenu(slug) {
-      console.log(slug);
-    },
     loadMore: function loadMore() {
       if (this.length > this.users.length) return;
       this.length += 6;
@@ -2574,9 +2551,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       activeMenu: false,
-      headerWidth: document.documentElement.clientWidth,
-      cartFlag: false,
-      counteritems: ''
+      headerWidth: document.documentElement.clientWidth
     };
   },
   created: function created() {
@@ -2589,20 +2564,7 @@ __webpack_require__.r(__webpack_exports__);
     headerWidthHandler: function headerWidthHandler() {
       this.headerWidth = document.documentElement.clientWidth;
       if (this.headerWidth > 768) this.activeMenu = false;
-    } // counter: function(){
-    //     setInterval(function () {
-    //         this.counteritems = 3
-    //     }, 1000);
-    // }
-
-  },
-  // computed:{
-  //     counter(){
-  //         return localStorage.getItem('cart') ? true : false
-  //     }
-  // },
-  mounted: function mounted() {
-    console.log(JSON.parse(localStorage.getItem('cart')).length);
+    }
   }
 });
 
@@ -3011,7 +2973,8 @@ var render = function render() {
     staticClass: "m-auto w-75"
   }, [!_vm.paidFor ? _c("div", {
     staticClass: "paypal-side"
-  }, [_c("span", {
+  }, [_c("div", {
+    staticClass: "back-to-form",
     on: {
       click: function click($event) {
         _vm.showPayment = false;
@@ -3085,16 +3048,14 @@ var render = function render() {
     staticClass: "lower-btns"
   }, [_c("span", {
     staticClass: "price"
-  }, [_vm._v("€ " + _vm._s(_vm.food.price))]), _vm._v(" "), _vm.fade ? _c("span", {
-    staticClass: "animate__animated animate__fadeIn"
-  }, [_vm._v(" Aggiunto al carrello")]) : _vm._e(), _vm._v(" "), _c("div", {
+  }, [_vm._v("€ " + _vm._s(_vm.food.price))]), _vm._v(" "), _c("div", {
+    staticClass: "add-to-cart-label",
+    "class": _vm.addedToCart ? "added" : ""
+  }, [_vm._v("Aggiunto al carrello")]), _vm._v(" "), _c("div", {
     staticClass: "btn-cart",
-    attrs: {
-      id: "add_button"
-    },
     on: {
       click: function click($event) {
-        _vm.addItem(_vm.food), _vm.fade = !_vm.fade, _vm.setTimeout();
+        return _vm.addItem(_vm.food);
       }
     }
   }, [_c("i", {
@@ -3488,6 +3449,7 @@ var render = function render() {
     staticClass: "fa-solid fa-house"
   })])], 1), _vm._v(" "), _c("li", [_c("router-link", {
     staticClass: "navigation-list-element",
+    "class": true ? "" : undefined,
     attrs: {
       to: {
         name: "cart"
@@ -3563,7 +3525,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-user"
-  }), _vm._v(" "), _c("h5", [_vm._v("Login")])])]);
+  }), _c("h5", [_vm._v("Login")])])]);
 }];
 render._withStripped = true;
 
@@ -8050,7 +8012,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".checkout-comp .checkout-container[data-v-5c3420ea] {\n  width: 100%;\n  margin: 50px 0;\n  min-height: calc(100vh - 590px);\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 20px;\n  overflow: hidden;\n}\n.checkout-comp .checkout-container .top-links[data-v-5c3420ea] {\n  display: flex;\n  width: 100%;\n  height: 50px;\n  color: #dd3546;\n}\n.checkout-comp .checkout-container .top-links h4[data-v-5c3420ea] {\n  width: 50%;\n  text-align: center;\n  margin: 0 auto;\n}\n.checkout-comp .checkout-container .top-links h4.active[data-v-5c3420ea],\n.checkout-comp .checkout-container .top-links h4 .active[data-v-5c3420ea] {\n  border-bottom: 3px solid #dd3546;\n  font-weight: bolder;\n}\n.checkout-comp .checkout-container .top-links h4.static[data-v-5c3420ea],\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea] {\n  padding-top: 10px;\n}\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea] {\n  cursor: pointer;\n  display: block;\n  width: 100%;\n  height: 100%;\n  color: #dd3546;\n  text-decoration: none;\n  transition: 0.2s all;\n}\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea]:hover {\n  background-color: rgb(240, 240, 240);\n}\n.checkout-comp .checkout-container .mid-bar[data-v-5c3420ea] {\n  width: 100%;\n  padding: 15px 15px 0;\n}\n.checkout-comp .checkout-container .checkout-body[data-v-5c3420ea] {\n  margin-top: 30px;\n}\n.checkout-comp .checkout-container .checkout-body h2[data-v-5c3420ea] {\n  font-weight: bolder;\n  margin-bottom: 30px;\n}\n.checkout-comp .checkout-container .checkout-body h2 .price[data-v-5c3420ea] {\n  display: inline-block;\n  font-weight: bold;\n  color: #4E54C8;\n}\n.checkout-comp .checkout-container .checkout-body form[data-v-5c3420ea] {\n  text-align: center;\n}\n.checkout-comp .checkout-container .checkout-body form p[data-v-5c3420ea] {\n  margin-bottom: 0;\n}\n.checkout-comp .checkout-container .checkout-body form input[data-v-5c3420ea] {\n  width: 70%;\n  margin: 0 auto;\n  margin-bottom: 10px;\n  font-size: 14px;\n  display: block;\n  border-radius: 5px;\n  border: 2px solid gray;\n}\n.checkout-comp .checkout-container .checkout-body form .send-btn[data-v-5c3420ea] {\n  width: 40%;\n  margin-bottom: 30px;\n  font-weight: bold;\n}\n.checkout-comp .checkout-container .checkout-body .paypal-side[data-v-5c3420ea] {\n  text-align: center;\n  width: 70%;\n  margin: 0 auto;\n}", ""]);
+exports.push([module.i, ".checkout-comp .checkout-container[data-v-5c3420ea] {\n  width: 100%;\n  margin: 50px 0;\n  min-height: calc(100vh - 590px);\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 20px;\n  overflow: hidden;\n}\n.checkout-comp .checkout-container .top-links[data-v-5c3420ea] {\n  display: flex;\n  width: 100%;\n  height: 50px;\n  color: #dd3546;\n}\n.checkout-comp .checkout-container .top-links h4[data-v-5c3420ea] {\n  width: 50%;\n  text-align: center;\n  margin: 0 auto;\n}\n.checkout-comp .checkout-container .top-links h4.active[data-v-5c3420ea],\n.checkout-comp .checkout-container .top-links h4 .active[data-v-5c3420ea] {\n  border-bottom: 3px solid #dd3546;\n  font-weight: bolder;\n}\n.checkout-comp .checkout-container .top-links h4.static[data-v-5c3420ea],\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea] {\n  padding-top: 10px;\n}\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea] {\n  cursor: pointer;\n  display: block;\n  width: 100%;\n  height: 100%;\n  color: #dd3546;\n  text-decoration: none;\n  transition: 0.2s all;\n}\n.checkout-comp .checkout-container .top-links h4 .link[data-v-5c3420ea]:hover {\n  background-color: rgb(240, 240, 240);\n}\n.checkout-comp .checkout-container .mid-bar[data-v-5c3420ea] {\n  width: 100%;\n  padding: 15px 15px 0;\n}\n.checkout-comp .checkout-container .checkout-body[data-v-5c3420ea] {\n  margin-top: 30px;\n}\n.checkout-comp .checkout-container .checkout-body h2[data-v-5c3420ea] {\n  font-weight: bolder;\n  margin-bottom: 30px;\n}\n.checkout-comp .checkout-container .checkout-body h2 .price[data-v-5c3420ea] {\n  display: inline-block;\n  font-weight: bold;\n  color: #4E54C8;\n}\n.checkout-comp .checkout-container .checkout-body form[data-v-5c3420ea] {\n  text-align: center;\n}\n.checkout-comp .checkout-container .checkout-body form p[data-v-5c3420ea] {\n  margin-bottom: 0;\n}\n.checkout-comp .checkout-container .checkout-body form input[data-v-5c3420ea] {\n  width: 70%;\n  margin: 0 auto;\n  margin-bottom: 10px;\n  font-size: 14px;\n  display: block;\n  border-radius: 5px;\n  border: 2px solid gray;\n}\n.checkout-comp .checkout-container .checkout-body form .send-btn[data-v-5c3420ea] {\n  width: 40%;\n  margin-bottom: 30px;\n  font-weight: bold;\n}\n.checkout-comp .checkout-container .checkout-body .paypal-side[data-v-5c3420ea] {\n  text-align: center;\n  width: 70%;\n  margin: 0 auto;\n}\n.checkout-comp .checkout-container .checkout-body .paypal-side .back-to-form[data-v-5c3420ea] {\n  text-align: center;\n  width: 120px;\n  height: 25px;\n  line-height: 25px;\n  background-color: #4E54C8;\n  border-radius: 5px;\n  color: white;\n  font-weight: bold;\n  margin: 20px auto;\n  cursor: pointer;\n  transition: 0.2s all;\n}\n.checkout-comp .checkout-container .checkout-body .paypal-side .back-to-form[data-v-5c3420ea]:hover {\n  background-color: #3f439b;\n}\n.checkout-comp .checkout-container .checkout-body .paypal-side .back-to-form[data-v-5c3420ea]:active {\n  background-color: #dd3546;\n}", ""]);
 
 // exports
 
@@ -8069,7 +8031,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 260px;\n  min-height: 380px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.food-item img[data-v-ed5020b2] {\n  height: 200px;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.food-item h5[data-v-ed5020b2] {\n  font-weight: bolder;\n  margin-bottom: 12px;\n  text-align: center;\n  overflow: hidden;\n}\n.food-item .food-item-bottom[data-v-ed5020b2] {\n  position: relative;\n  text-align: center;\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2] {\n  font-size: 14px;\n  color: gray;\n  height: 63px;\n  overflow-y: scroll;\n  padding: 8px;\n  margin-bottom: 10px;\n  /* Nasconde scrollbar su IE, Edge e Firefox */\n  -ms-overflow-style: none; /* IE & Edge */\n  scrollbar-width: none; /* Firefox */\n  /* Nasconde scrollbar su Chrome, Safari e Opera */\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2]::-webkit-scrollbar {\n  display: none;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::before {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 55px;\n  left: 0;\n  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom .lower-btns[data-v-ed5020b2] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0 20px;\n  margin-bottom: 15px;\n}\n.food-item .food-item-bottom .lower-btns .price[data-v-ed5020b2] {\n  font-size: 25px;\n  color: #4E54C8;\n  font-weight: bold;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2] {\n  font-size: 20px;\n  background-color: #dd3546;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n  color: white;\n  border-radius: 5px;\n  padding: 0px 8px;\n  cursor: pointer;\n  transition: 0.2s all;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:hover {\n  background-color: #b42d3b;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:active {\n  background-color: white;\n  color: #dd3546;\n  outline-color: #dd3546;\n}", ""]);
+exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 260px;\n  min-height: 380px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.food-item img[data-v-ed5020b2] {\n  border-radius: 10px 10px 0 0;\n  height: 200px;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.food-item h5[data-v-ed5020b2] {\n  font-weight: bolder;\n  margin-bottom: 12px;\n  text-align: center;\n  overflow: hidden;\n}\n.food-item .food-item-bottom[data-v-ed5020b2] {\n  position: relative;\n  text-align: center;\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2] {\n  font-size: 14px;\n  color: gray;\n  height: 63px;\n  overflow-y: scroll;\n  padding: 8px;\n  margin-bottom: 10px;\n  /* Nasconde scrollbar su IE, Edge e Firefox */\n  -ms-overflow-style: none; /* IE & Edge */\n  scrollbar-width: none; /* Firefox */\n  /* Nasconde scrollbar su Chrome, Safari e Opera */\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2]::-webkit-scrollbar {\n  display: none;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::before {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 55px;\n  left: 0;\n  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom .lower-btns[data-v-ed5020b2] {\n  display: flex;\n  justify-content: space-between;\n  -moz-column-gap: 0;\n       column-gap: 0;\n  align-items: center;\n  position: relative;\n  padding: 0 20px;\n  margin-bottom: 15px;\n}\n.food-item .food-item-bottom .lower-btns .price[data-v-ed5020b2] {\n  font-size: 25px;\n  color: #4E54C8;\n  font-weight: bold;\n}\n.food-item .food-item-bottom .lower-btns .add-to-cart-label[data-v-ed5020b2] {\n  position: absolute;\n  right: 20px;\n  bottom: -30px;\n  padding: 3px 10px;\n  background-color: rgb(147, 240, 147);\n  border: 2px solid green;\n  color: green;\n  opacity: 0;\n  font-weight: bold;\n  font-size: 12px;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  border-radius: 5px;\n  transition: 1s opacity;\n}\n.food-item .food-item-bottom .lower-btns .add-to-cart-label.added[data-v-ed5020b2] {\n  transition: 0.2s opacity;\n  opacity: 1;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 20px;\n  background-color: #dd3546;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n  color: white;\n  border-radius: 5px;\n  padding: 6px 8px;\n  cursor: pointer;\n  transition: 0.2s all;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:hover {\n  background-color: #b42d3b;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:active {\n  background-color: white;\n  color: #dd3546;\n  outline-color: #dd3546;\n}", ""]);
 
 // exports
 
@@ -8164,7 +8126,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "header[data-v-494e1ffe] {\n  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));\n}\nheader .header-container[data-v-494e1ffe] {\n  width: 100%;\n  min-height: 200px;\n  color: white;\n  transition: 0.2s all;\n}\nheader .header-container .top-header[data-v-494e1ffe] {\n  display: flex;\n  justify-content: space-between;\n}\nheader .header-container .top-header .logo[data-v-494e1ffe] {\n  font-weight: bolder;\n  font-size: 37px;\n  margin: 25px 0 35px;\n}\nheader .header-container .top-header .logo .fix-bomb[data-v-494e1ffe] {\n  margin-left: 1px;\n  margin-right: -8px;\n  transition: 0.2s color;\n}\nheader .header-container .top-header .logo .fix-bomb[data-v-494e1ffe]:hover {\n  color: #dd3546;\n}\nheader .header-container .top-header .header-btns[data-v-494e1ffe] {\n  display: flex;\n  margin: auto 0;\n  list-style: none;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nheader .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe] {\n  color: white;\n  text-decoration: none;\n  font-size: 25px;\n  transition: 0.2s color;\n}\nheader .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe]:hover {\n  color: rgb(200, 200, 200);\n}\nheader .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe]:active {\n  color: #dd3546;\n}\nheader .header-container .top-header .hamburger-menu[data-v-494e1ffe] {\n  cursor: pointer;\n  margin: auto 0;\n  font-size: 45px;\n  transition: 0.2s all;\n}\nheader .header-container .top-header .hamburger-menu[data-v-494e1ffe]:hover {\n  color: rgb(200, 200, 200);\n}\nheader .header-container .top-header .hamburger-menu[data-v-494e1ffe]:active {\n  color: #dd3546;\n}\nheader .header-container .top-header .hamburger-menu.flipped[data-v-494e1ffe] {\n  transform: rotate(180deg);\n}\nheader .header-container .header-dropdown-menu[data-v-494e1ffe] {\n  transition: all 0.5s ease-in-out;\n  overflow: hidden;\n  max-height: 0;\n  margin-bottom: 0;\n  background-color: rgba(255, 255, 255, 0.15);\n  -webkit-backdrop-filter: blur(5px);\n          backdrop-filter: blur(5px);\n  border-radius: 10px;\n  box-shadow: 0px 0px 15px black;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns[data-v-494e1ffe] {\n  list-style: none;\n  padding: 0;\n  margin-bottom: 0;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li[data-v-494e1ffe] {\n  padding: 0 20px;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element[data-v-494e1ffe] {\n  padding: 15px 0;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  opacity: inherit;\n  color: white;\n  text-decoration: none;\n  font-size: 35px;\n  transition: 0.2s all;\n  border-bottom: 2px solid lightgray;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element[data-v-494e1ffe]:hover {\n  color: rgb(200, 200, 200);\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element[data-v-494e1ffe]:active {\n  color: #dd3546;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element i[data-v-494e1ffe] {\n  width: 100px;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element h5[data-v-494e1ffe] {\n  display: inline-block;\n  font-weight: bolder;\n  margin: 0;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li:last-of-type .dropdown-list-element[data-v-494e1ffe] {\n  margin-bottom: 0;\n  border-bottom: none;\n}\nheader .header-container .header-dropdown-menu.active[data-v-494e1ffe] {\n  max-height: 500px;\n}\nheader.noJumbo[data-v-494e1ffe] {\n  background: linear-gradient(rgba(255, 228, 196, 0.75), rgba(0, 0, 0, 0));\n}\nheader.noJumbo .header-container[data-v-494e1ffe] {\n  color: #dd3546;\n}\nheader.noJumbo .header-container .top-header .logo .fix-bomb[data-v-494e1ffe]:hover {\n  color: #b42d3b;\n}\nheader.noJumbo .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe] {\n  color: #dd3546;\n}\nheader.noJumbo .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe]:hover {\n  color: #b42d3b;\n}\nheader.noJumbo .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe]:active {\n  color: #4E54C8;\n}\nheader.noJumbo .header-container .top-header .hamburger-menu[data-v-494e1ffe]:hover {\n  color: #b42d3b;\n}\nheader.noJumbo .header-container .top-header .hamburger-menu[data-v-494e1ffe]:active {\n  color: #4E54C8;\n}\nheader.noJumbo .header-container .header-dropdown-menu[data-v-494e1ffe] {\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n}\nheader.noJumbo .header-container .header-dropdown-menu .dropdown-btns .dropdown-list-element[data-v-494e1ffe] {\n  color: #dd3546;\n}\nheader.noJumbo .header-container .header-dropdown-menu .dropdown-btns .dropdown-list-element[data-v-494e1ffe]:hover {\n  color: #b42d3b;\n}\nheader.noJumbo .header-container .header-dropdown-menu .dropdown-btns .dropdown-list-element[data-v-494e1ffe]:active {\n  color: #4E54C8;\n}\n@media screen and (min-width: 450px) {\nheader .header-container .top-header .logo[data-v-494e1ffe] {\n    font-size: 45px;\n    margin: 20px 0 30px;\n}\n}", ""]);
+exports.push([module.i, "header[data-v-494e1ffe] {\n  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));\n}\nheader .header-container[data-v-494e1ffe] {\n  width: 100%;\n  min-height: 200px;\n  color: white;\n  transition: 0.2s all;\n}\nheader .header-container .top-header[data-v-494e1ffe] {\n  display: flex;\n  justify-content: space-between;\n}\nheader .header-container .top-header .logo[data-v-494e1ffe] {\n  font-weight: bolder;\n  font-size: 37px;\n  margin: 25px 0 35px;\n}\nheader .header-container .top-header .logo .fix-bomb[data-v-494e1ffe] {\n  margin-left: 1px;\n  margin-right: -8px;\n  transition: 0.2s color;\n}\nheader .header-container .top-header .logo .fix-bomb[data-v-494e1ffe]:hover {\n  color: #dd3546;\n}\nheader .header-container .top-header .header-btns[data-v-494e1ffe] {\n  display: flex;\n  margin: auto 0;\n  list-style: none;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n}\nheader .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe] {\n  color: white;\n  text-decoration: none;\n  font-size: 25px;\n  transition: 0.2s color;\n}\nheader .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe]:hover {\n  color: rgb(200, 200, 200);\n}\nheader .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe]:active {\n  color: #dd3546;\n}\nheader .header-container .top-header .header-btns .navigation-list-element.debug[data-v-494e1ffe] {\n  color: green;\n}\nheader .header-container .top-header .hamburger-menu[data-v-494e1ffe] {\n  cursor: pointer;\n  margin: auto 0;\n  font-size: 45px;\n  transition: 0.2s all;\n}\nheader .header-container .top-header .hamburger-menu[data-v-494e1ffe]:hover {\n  color: rgb(200, 200, 200);\n}\nheader .header-container .top-header .hamburger-menu[data-v-494e1ffe]:active {\n  color: #dd3546;\n}\nheader .header-container .top-header .hamburger-menu.flipped[data-v-494e1ffe] {\n  transform: rotate(180deg);\n}\nheader .header-container .header-dropdown-menu[data-v-494e1ffe] {\n  transition: all 0.5s ease-in-out;\n  overflow: hidden;\n  max-height: 0;\n  margin-bottom: 0;\n  background-color: rgba(255, 255, 255, 0.15);\n  -webkit-backdrop-filter: blur(5px);\n          backdrop-filter: blur(5px);\n  border-radius: 10px;\n  box-shadow: 0px 0px 15px black;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns[data-v-494e1ffe] {\n  list-style: none;\n  padding: 0;\n  margin-bottom: 0;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li[data-v-494e1ffe] {\n  padding: 0 20px;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element[data-v-494e1ffe] {\n  padding: 15px 0;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  opacity: inherit;\n  color: white;\n  text-decoration: none;\n  font-size: 35px;\n  transition: 0.2s all;\n  border-bottom: 2px solid lightgray;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element[data-v-494e1ffe]:hover {\n  color: rgb(200, 200, 200);\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element[data-v-494e1ffe]:active {\n  color: #dd3546;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element i[data-v-494e1ffe] {\n  width: 100px;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element h5[data-v-494e1ffe] {\n  display: inline-block;\n  font-weight: bolder;\n  margin: 0;\n}\nheader .header-container .header-dropdown-menu .dropdown-btns li:last-of-type .dropdown-list-element[data-v-494e1ffe] {\n  margin-bottom: 0;\n  border-bottom: none;\n}\nheader .header-container .header-dropdown-menu.active[data-v-494e1ffe] {\n  max-height: 500px;\n}\nheader.noJumbo[data-v-494e1ffe] {\n  background: linear-gradient(rgba(255, 228, 196, 0.75), rgba(0, 0, 0, 0));\n}\nheader.noJumbo .header-container[data-v-494e1ffe] {\n  color: #dd3546;\n}\nheader.noJumbo .header-container .top-header .logo .fix-bomb[data-v-494e1ffe]:hover {\n  color: #b42d3b;\n}\nheader.noJumbo .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe] {\n  color: #dd3546;\n}\nheader.noJumbo .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe]:hover {\n  color: #b42d3b;\n}\nheader.noJumbo .header-container .top-header .header-btns .navigation-list-element[data-v-494e1ffe]:active {\n  color: #4E54C8;\n}\nheader.noJumbo .header-container .top-header .hamburger-menu[data-v-494e1ffe]:hover {\n  color: #b42d3b;\n}\nheader.noJumbo .header-container .top-header .hamburger-menu[data-v-494e1ffe]:active {\n  color: #4E54C8;\n}\nheader.noJumbo .header-container .header-dropdown-menu[data-v-494e1ffe] {\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n}\nheader.noJumbo .header-container .header-dropdown-menu .dropdown-btns .dropdown-list-element[data-v-494e1ffe] {\n  color: #dd3546;\n}\nheader.noJumbo .header-container .header-dropdown-menu .dropdown-btns .dropdown-list-element[data-v-494e1ffe]:hover {\n  color: #b42d3b;\n}\nheader.noJumbo .header-container .header-dropdown-menu .dropdown-btns .dropdown-list-element[data-v-494e1ffe]:active {\n  color: #4E54C8;\n}\n@media screen and (min-width: 450px) {\nheader .header-container .top-header .logo[data-v-494e1ffe] {\n    font-size: 45px;\n    margin: 20px 0 30px;\n}\n}", ""]);
 
 // exports
 

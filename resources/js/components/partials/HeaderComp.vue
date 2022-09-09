@@ -6,7 +6,9 @@
                 <h1 class="logo">Deliveb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h1>
                 <ul class="header-btns d-md-flex d-none">
                     <li><router-link :to="{name: 'home'}" class="navigation-list-element"><i class="fa-solid fa-house"></i></router-link></li>
-                    <li><router-link :to="{name: 'cart'}" class="navigation-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
+                    <li><router-link :to="{name: 'cart'}"
+                                     class="navigation-list-element"
+                                     :class="true ? '' : ''"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
                     <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-user"></i></a></li>
                 </ul>
                 <i
@@ -21,7 +23,7 @@
                 <ul class="dropdown-btns">
                     <li><router-link :to="{name: 'home'}" class="dropdown-list-element"><i class="fa-solid fa-house"></i> <h5>Home</h5></router-link></li>
                     <li><router-link :to="{name: 'cart'}" class="dropdown-list-element"><i class="fa-solid fa-cart-shopping"></i> <h5>Carrello</h5></router-link></li>
-                    <li><a href="/admin" class="dropdown-list-element"><i class="fa-solid fa-user"></i> <h5>Login</h5></a></li>
+                    <li><a href="/admin" class="dropdown-list-element"><i class="fa-solid fa-user"></i><h5>Login</h5></a></li>
                 </ul>
             </div>
         </div>
@@ -35,8 +37,6 @@ export default {
         return{
             activeMenu: false,
             headerWidth: document.documentElement.clientWidth,
-            cartFlag: false,
-            counteritems: '',
         }
     },
     created() {
@@ -50,21 +50,8 @@ export default {
             this.headerWidth = document.documentElement.clientWidth;
             if(this.headerWidth > 768)
                 this.activeMenu = false
-        },
-        // counter: function(){
-        //     setInterval(function () {
-        //         this.counteritems = 3
-        //     }, 1000);
-        // }
-    },
-    // computed:{
-    //     counter(){
-    //         return localStorage.getItem('cart') ? true : false
-    //     }
-    // },
-    mounted() {
-        console.log(JSON.parse(localStorage.getItem('cart')).length);
-    },
+        }
+    }
 }
 </script>
 
@@ -107,6 +94,9 @@ header{
                     }
                     &:active{
                         color: #dd3546;
+                    }
+                    &.debug{
+                        color: green;
                     }
                 }
             }
@@ -179,12 +169,11 @@ header{
                 }
             }
             &.active{
-                // margin-bottom: -100px;
                 max-height: 500px;
             }
         }
     }
-    &.noJumbo {
+    &.noJumbo{
         background: linear-gradient(rgba($color: #ffe4c4, $alpha: .75), rgba(0,0,0,0));
         .header-container{
             color: #dd3546;

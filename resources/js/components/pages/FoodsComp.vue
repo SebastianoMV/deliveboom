@@ -80,8 +80,6 @@ export default {
                     this.foodsFiltered = r.data.foods;
                     this.categories = r.data.categories;
                     this.isLoaded = true;
-                    // console.log(id);
-                    // console.log(this.categories);
                 })
                 .catch(err => {
                     console.log(err);
@@ -99,15 +97,12 @@ export default {
                     }
                 }
             }
-            // console.log(this.foodsFiltered);
         },
         foodHasCategory(categoryId){
             let flag = false;
-            for (let i=0; i<this.foods.length; i++) {
-                if (this.foods[i].category_id == categoryId) {
+            for (let i=0; i<this.foods.length; i++)
+                if (this.foods[i].category_id == categoryId)
                     flag = true;
-                }
-            }
             return flag;
         }
     },
