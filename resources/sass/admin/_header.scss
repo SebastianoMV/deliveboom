@@ -1,9 +1,9 @@
 header{
-    background: linear-gradient(rgba($color: #ffe4c4, $alpha: .75), rgba(0,0,0,0));
+    background: linear-gradient(rgba($color: #FFE4C4, $alpha: .75), rgba(0,0,0,0));
     .header-container{
         width: 100%;
         min-height: 200px;
-        color: #dd3546;
+        color: #DD3546;
         transition: .2s all;
         .top-header,
         nav{
@@ -22,7 +22,7 @@ header{
                     margin-right: -8px;
                     transition: .2s color;
                     &:hover{
-                        color: #b42d3b;
+                        color: #B42D3B;
                     }
                 }
             }
@@ -30,19 +30,24 @@ header{
                 display: flex;
                 margin: auto 0;
                 list-style: none;
-                column-gap: 30px;
+                column-gap: 15px;
                 .navigation-list-element{
                     display: flex;
                     align-items: center;
-                    color: #dd3546;
+                    color: #DD3546;
                     text-decoration: none;
                     font-size: 25px;
                     transition: .2s color;
+                    padding-right: 15px;
+                    border-right: 2px solid lightgray;
                     &:hover{
-                        color: #b42d3b;
+                        color: #B42D3B;
                     }
                     &:active{
                         color: #4E54C8;
+                    }
+                    &.no-border{
+                        border: none;
                     }
                     span{
                         display: block;
@@ -58,7 +63,7 @@ header{
                 font-size: 45px;
                 transition: .2s all;
                 &:hover{
-                    color: #b42d3b;
+                    color: #B42D3B;
                 }
                 &:active{
                     color: #4E54C8;
@@ -97,17 +102,16 @@ header{
                     .dropdown-list-element{
                         padding: 15px 0;
                         display: flex;
-                        // display: flex;
                         align-items: center;
                         width: 100%;
                         opacity: inherit;
-                        color: #dd3546;
+                        color: #DD3546;
                         text-decoration: none;
                         font-size: 35px;
                         transition: .2s all;
                         border-bottom: 2px solid lightgray;
                         &:hover{
-                            color: #b42d3b;
+                            color: #B42D3B;
                         }
                         &:active{
                             color: #4E54C8;
