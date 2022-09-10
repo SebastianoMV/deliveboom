@@ -67,7 +67,4 @@
         </div>
     </div>
 </section>
-<i class="fa-solid fa-seedling"></i>
-<i class="fa-solid fa-leaf"></i>
-
 @endsection
