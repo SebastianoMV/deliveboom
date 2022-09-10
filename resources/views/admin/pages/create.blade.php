@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container mb-5">
         <form id="foodCreateForm" action="{{ route('admin.food.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 

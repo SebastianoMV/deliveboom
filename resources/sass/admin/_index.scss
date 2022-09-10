@@ -4,14 +4,17 @@ section.index{
     }
     .index-container {
         width: 100%;
-        margin: 50px 0;
-        min-height: 200px;
+        margin-bottom: 50px;
+        min-height: 150px;
         background-color: white;
         color: black;
         box-shadow: 0px 0px 15px rgb(189, 189, 189);
         border-radius: 20px;
         overflow: hidden;
         transition: .2s all;
+        &.no-shadow{
+            box-shadow: none;
+        }
         .index-header{
             display: flex;
             column-gap: 7px;
@@ -19,24 +22,17 @@ section.index{
             align-items: center;
             width: 100%;
             min-height: 50px;
-            margin-bottom: 5px;
             background-color: rgb(240, 240, 240);
-            .index-btn{
-                padding: 0px 10px;
-                height: fit-content;
-                font-weight: bold;
-                i{
-                    margin-right: 7px;
-                }
-            }
         }
         .index-list{
+            padding-top: 7px;
             .list-head {
                 margin-bottom: 15px;
                 .list-head-el{
                     font-size: 16px;
                     font-weight: bold;
                     padding-bottom: 10px;
+                    color: #B42D3B;
                 }
             }
             .line-bottom{
@@ -55,23 +51,28 @@ section.index{
                     align-items: center;
                     font-weight: bold;
                     padding-bottom: 10px;
+                    word-break: break-all;
+                    padding-right: 0;
                     form{
                         margin-bottom: 0;
                     }
+                    &:last-of-type{
+                        padding-right: 15px;
+                    }
                 }
                 .food-image{
-                    width: 100%;
                     max-width: 140px;
-                    height: 100px;
-                    background-position: center;
+                    width: 100%;
+                    height: 80px;
                     background-size: cover;
+                    background-position: center;
                 }
                 .list-btn{
                     display: flex;
                     align-items: center;
                     height: 25px;
                     line-height: 25px;
-                    padding: 0 8px;
+                    padding: 0 5px;
                     font-weight: bold;
                     margin-right: 5px;
                     .btn-text{
@@ -83,5 +84,17 @@ section.index{
                 }
             }
         }
+        .index-btn{
+            padding: 0px 10px;
+            height: fit-content;
+            font-size: 16px;
+            font-weight: bold;
+            i{
+                margin-right: 7px;
+            }
+        }
+    }
+    .is-vegan{
+        width: 25px;
     }
 }

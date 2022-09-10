@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container mb-5">
         <form id="foodEditForm" action="{{ route('admin.food.update', $food) }}" method="POST" enctype="multipart/form-data">
             @method("PUT")
             @csrf

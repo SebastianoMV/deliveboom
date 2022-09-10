@@ -10,7 +10,7 @@
                 src="/images/foods/dishFoodPlaceholder.jpg"
                 :alt="`placeholder-${food.id}`"
                 v-else>
-            <h5>{{food.name}}</h5>
+            <h5>{{food.name}}<img v-if="food.vegan" src="/images/vegetarian-mark.png" alt=""></h5>
         </div>
         <div class="food-item-bottom">
             <div class="description">{{food.description}}</div>
@@ -134,6 +134,11 @@ export default {
         margin-bottom: 12px;
         text-align: center;
         overflow: hidden;
+        // padding: 15px;
+        img{
+            width: 25px;
+            height: 20px;
+        }
     }
     .food-item-bottom{
         position: relative;
