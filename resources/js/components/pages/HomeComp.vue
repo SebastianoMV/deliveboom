@@ -2,7 +2,7 @@
     <main>
         <div class="jumbotron">
             <div class="container fluid-container">
-                <h2>Mangia fino a scoppiare</h2>
+                <h2>{{currentTypologiesName}}</h2>
             </div>
             <div class="jumbo-wallpaper"/>
         </div>
@@ -55,7 +55,6 @@
         </section>
     </main>
 </template>
-
 <script>
 import CardItem from './CardItem.vue'
 import LoaderComp from '../partials/LoaderComp.vue'
@@ -135,14 +134,13 @@ export default {
             else{
                 let typologiesString = "Categorie: ";
                 for(let i=0; i<this.currentTypologiesIDs.length; i++)
-                    typologiesString += this.typologies.find(element => element.id === this.currentTypologiesIDs[i]).name+", ";
+                    typologiesString += this.typologies.find(element => element.id === this.currentTypologiesIDs[i]).name+" - ";
                 return typologiesString.slice(0, -2);;
             }
         }
     },
 }
 </script>
-
 <style lang="scss" scoped>
 main{
     .jumbotron{
@@ -253,7 +251,7 @@ main{
                 }
                 &.active:active{
                     .icon::after{
-                        background-color: rgba($color: #dd3546, $alpha: .35);
+                        background-color: rgba($color: #DD3546, $alpha: .35);
                     }
                 }
             }
@@ -278,7 +276,7 @@ main{
         margin-bottom: 20px;
         text-align: center;
         color: white;
-        background-color: #dd3546;
+        background-color: #DD3546;
         padding: 8px 0;
         border-radius: 5px;
         cursor: pointer;
@@ -286,8 +284,8 @@ main{
         outline: 2px solid transparent;
         outline-offset: -2px;
         &:hover{
-            background-color: #b42d3b;
-            outline-color: #b42d3b;
+            background-color: #B42D3B;
+            outline-color: #B42D3B;
         }
         &:active{
             background-color: white;
@@ -296,7 +294,6 @@ main{
         }
     }
 }
-
 ::-webkit-scrollbar{
   height: 7px;
 }
@@ -305,7 +302,7 @@ main{
   border-radius: 20px;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba($color: #dd3546, $alpha: 0.8);
+  background: rgba($color: #DD3546, $alpha: 0.8);
   border-radius: 20px;
 }
 </style>

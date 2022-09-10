@@ -59,16 +59,19 @@ section.index{
                         margin-bottom: 0;
                     }
                 }
-                img{
-                    max-width: 100%;
-                    height: 80px;
+                .food-image{
+                    width: 100%;
+                    max-width: 140px;
+                    height: 100px;
+                    background-position: center;
+                    background-size: cover;
                 }
                 .list-btn{
                     display: flex;
                     align-items: center;
                     height: 25px;
                     line-height: 25px;
-                    padding: 0 5px;
+                    padding: 0 8px;
                     font-weight: bold;
                     margin-right: 5px;
                     .btn-text{

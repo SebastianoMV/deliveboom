@@ -25,10 +25,8 @@
                         <div class="col-3 list-line-el">{{$food->name}}</strong></div>
                         <div class="col-3 list-line-el">
                             @if ($food->image)
-                                <div style="width: 100%; max-width: 140px;  height: 100px; background-image: url('{{asset('images/foods/' . $food->image)}}; background-position: center; background-size: cover;">
-
+                                <div class="food-image" style="background-image: url('{{asset('images/foods/'.$food->image)}};">
                                 </div>
-                                {{-- <img src="{{asset('images/foods/' . $food->image)}}" alt="{{$food->name}}"> --}}
                             @else
                                 <img src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/media/3cb974c28eb00627cc0671685c79ffd9.jpg" alt="placeholder-{{$food->name}}">
                             @endif
@@ -43,8 +41,8 @@
                                 action="{{ route('admin.food.destroy', $food) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger list-btn"><i
-                                        class="fa-solid fa-trash-can"></i>
+                                <button type="submit" class="btn btn-danger list-btn">
+                                    <i class="fa-solid fa-trash-can"></i><span class="btn-text">Elimina</span>
                                 </button>
                             </form>
                         </div>

@@ -21,7 +21,7 @@
                     <input type="text" v-model.trim="newOrder.address" id="address" placeholder="Indirizzo">
                     <p v-if="!newOrder.phone" class="text-danger">Telefono obbligatorio</p>
                     <input type="text" v-model.trim="newOrder.phone" id="phone" placeholder="Telefono">
-                    <input type="submit"  value="Vai al pagamento" class="send-btn btn btn-danger mt-4" >
+                    <input type="submit" value="Vai al pagamento" class="btn btn-danger mt-4 send-btn" >
                 </form>
                 <section v-show="showPayment" class="m-auto w-75">
                     <div
@@ -43,7 +43,6 @@
         </div>
     </section>
 </template>
-
 <script>
 import GoBackBtn from '../partials/GoBackBtn.vue';
 export default {
@@ -139,7 +138,6 @@ export default {
     }
 }
 </script>
-
 <style lang="scss" scoped>
 .checkout-comp{
     .checkout-container{
@@ -155,14 +153,14 @@ export default {
             display: flex;
             width: 100%;
             height: 50px;
-            color: #dd3546;
+            color: #DD3546;
             h4{
                 width: 50%;
                 text-align: center;
                 margin: 0 auto;
                 &.active,
                 .active{
-                    border-bottom: 3px solid #dd3546;
+                    border-bottom: 3px solid #DD3546;
                     font-weight: bolder;
                 }
                 &.static,
@@ -174,7 +172,7 @@ export default {
                     display: block;
                     width: 100%;
                     height: 100%;
-                    color: #dd3546;
+                    color: #DD3546;
                     text-decoration: none;
                     transition: .2s all;
                     &:hover{
@@ -216,6 +214,7 @@ export default {
                     width: 40%;
                     margin-bottom: 30px;
                     font-weight: bold;
+                    border-color: #DC3545;
                 }
             }
             .paypal-side{
@@ -235,10 +234,10 @@ export default {
                     cursor: pointer;
                     transition: .2s all;
                     &:hover{
-                        background-color: #3f439b;
+                        background-color: #3F439B;
                     }
                     &:active{
-                        background-color: #dd3546;
+                        background-color: #DD3546;
                     }
                 }
             }

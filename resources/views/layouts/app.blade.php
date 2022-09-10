@@ -39,13 +39,11 @@
                             @endif
                         @else
                             <li>
-                                <a
-                                    class="navigation-list-element no-border"
+                                <span class="username">{{Auth::user()->name}}</span><a
+                                    class="navigation-list-element"
                                     href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                            <span class="d-md-inline-block d-none mx-2">{{Auth::user()->name}}</span><i class="fa-solid fa-right-to-bracket" title="Logout"></i></i>
-                                </a>
+                                            document.getElementById('logout-form').submit();"><i class="fa-solid fa-right-to-bracket" title="Logout"></i></i></a>
                             </li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

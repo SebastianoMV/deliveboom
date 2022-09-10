@@ -31,29 +31,41 @@ header{
                 margin: auto 0;
                 list-style: none;
                 column-gap: 15px;
-                .navigation-list-element{
+                li{
                     display: flex;
                     align-items: center;
-                    color: #DD3546;
-                    text-decoration: none;
-                    font-size: 25px;
-                    transition: .2s color;
-                    padding-right: 15px;
-                    border-right: 2px solid lightgray;
-                    &:hover{
-                        color: #B42D3B;
-                    }
-                    &:active{
-                        color: #4E54C8;
-                    }
-                    &.no-border{
-                        border: none;
-                    }
-                    span{
-                        display: block;
+                    .username{
+                        display: inline-block;
+                        color: #DD3546;
                         font-size: 16px;
                         font-weight: bold;
-                        margin-left: 7px;
+                        margin-right: 7px;
+                    }
+                    .navigation-list-element{
+                        display: inline-flex;
+                        align-items: center;
+                        color: #DD3546;
+                        text-decoration: none;
+                        font-size: 25px;
+                        transition: .2s color;
+                        padding-right: 15px;
+                        border-right: 2px solid lightgray;
+                        &:hover{
+                            color: #B42D3B;
+                        }
+                        &:active{
+                            color: #4E54C8;
+                        }
+                        span{
+                            display: block;
+                            font-size: 16px;
+                            font-weight: bold;
+                            margin-left: 7px;
+                        }
+                    }
+                    &:last-of-type .navigation-list-element{
+                        border: none;
+                        padding-right: 0;
                     }
                 }
             }

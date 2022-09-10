@@ -11044,9 +11044,24 @@ header .header-container nav .header-btns {
        column-gap: 15px;
 }
 
-header .header-container .top-header .header-btns .navigation-list-element,
-header .header-container nav .header-btns .navigation-list-element {
+header .header-container .top-header .header-btns li,
+header .header-container nav .header-btns li {
   display: flex;
+  align-items: center;
+}
+
+header .header-container .top-header .header-btns li .username,
+header .header-container nav .header-btns li .username {
+  display: inline-block;
+  color: #DD3546;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 7px;
+}
+
+header .header-container .top-header .header-btns li .navigation-list-element,
+header .header-container nav .header-btns li .navigation-list-element {
+  display: inline-flex;
   align-items: center;
   color: #DD3546;
   text-decoration: none;
@@ -11056,27 +11071,28 @@ header .header-container nav .header-btns .navigation-list-element {
   border-right: 2px solid lightgray;
 }
 
-header .header-container .top-header .header-btns .navigation-list-element:hover,
-header .header-container nav .header-btns .navigation-list-element:hover {
+header .header-container .top-header .header-btns li .navigation-list-element:hover,
+header .header-container nav .header-btns li .navigation-list-element:hover {
   color: #B42D3B;
 }
 
-header .header-container .top-header .header-btns .navigation-list-element:active,
-header .header-container nav .header-btns .navigation-list-element:active {
+header .header-container .top-header .header-btns li .navigation-list-element:active,
+header .header-container nav .header-btns li .navigation-list-element:active {
   color: #4E54C8;
 }
 
-header .header-container .top-header .header-btns .navigation-list-element.no-border,
-header .header-container nav .header-btns .navigation-list-element.no-border {
-  border: none;
-}
-
-header .header-container .top-header .header-btns .navigation-list-element span,
-header .header-container nav .header-btns .navigation-list-element span {
+header .header-container .top-header .header-btns li .navigation-list-element span,
+header .header-container nav .header-btns li .navigation-list-element span {
   display: block;
   font-size: 16px;
   font-weight: bold;
   margin-left: 7px;
+}
+
+header .header-container .top-header .header-btns li:last-of-type .navigation-list-element,
+header .header-container nav .header-btns li:last-of-type .navigation-list-element {
+  border: none;
+  padding-right: 0;
 }
 
 header .header-container .top-header .hamburger-menu,
@@ -11253,9 +11269,12 @@ section.index .index-container .index-list .list-line .list-line-el form {
   margin-bottom: 0;
 }
 
-section.index .index-container .index-list .list-line img {
-  max-width: 100%;
-  height: 80px;
+section.index .index-container .index-list .list-line .food-image {
+  width: 100%;
+  max-width: 140px;
+  height: 100px;
+  background-position: center;
+  background-size: cover;
 }
 
 section.index .index-container .index-list .list-line .list-btn {
@@ -11263,7 +11282,7 @@ section.index .index-container .index-list .list-line .list-btn {
   align-items: center;
   height: 25px;
   line-height: 25px;
-  padding: 0 5px;
+  padding: 0 8px;
   font-weight: bold;
   margin-right: 5px;
 }

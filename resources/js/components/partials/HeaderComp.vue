@@ -1,3 +1,4 @@
+10
 <template>
     <header
         :class="($route.path === '/carrello' || $route.path === '/checkout') ? 'noJumbo' : ''">
@@ -5,6 +6,7 @@
             <div class="top-header">
                 <router-link :to="{name: 'home'}" class="logo-container">
                     <h1 class="logo">Deliveb<i class="fa-solid fa-bomb fix-bomb"></i><i class="fa-solid fa-bomb fix-bomb"></i>m</h1>
+                    <div class="underlogo">Mangia fino a scoppiare!</div>
                 </router-link>
                 <ul class="header-btns d-md-flex d-none">
                     <li><router-link :to="{name: 'home'}" class="navigation-list-element"><i class="fa-solid fa-house"></i></router-link></li>
@@ -29,7 +31,6 @@
         </div>
     </header>
 </template>
-
 <script>
 export default {
     name: 'HeaderComp',
@@ -54,7 +55,6 @@ export default {
     }
 }
 </script>
-
 <style lang="scss" scoped>
 header{
     background: linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,0));
@@ -67,8 +67,16 @@ header{
             display: flex;
             justify-content: space-between;
             .logo-container{
+                position: relative;
                 color: inherit;
                 text-decoration: none;
+                .underlogo{
+                    position: absolute;
+                    bottom: 10px;
+                    right: 0;
+                    font-style: italic;
+                    text-shadow: 0px 0px 10px black;
+                }
             }
             .logo{
                 font-weight: bolder;
@@ -79,7 +87,7 @@ header{
                     margin-right: -8px;
                     transition: .2s color;
                     &:hover{
-                        color: #dd3546;
+                        color: #DD3546;
                     }
                 }
             }
@@ -97,7 +105,7 @@ header{
                         color: rgb(200, 200, 200);
                     }
                     &:active{
-                        color: #dd3546;
+                        color: #DD3546;
                     }
                 }
             }
@@ -110,7 +118,7 @@ header{
                     color: rgb(200, 200, 200);
                 }
                 &:active{
-                    color: #dd3546;
+                    color: #DD3546;
                 }
                 &.flipped{
                     transform: rotate(180deg);
@@ -152,7 +160,7 @@ header{
                             color: rgb(200, 200, 200);
                         }
                         &:active{
-                            color: #dd3546;
+                            color: #DD3546;
                         }
                         i{
                             width: 100px;
@@ -175,17 +183,20 @@ header{
         }
     }
     &.noJumbo{
-        background: linear-gradient(rgba($color: #ffe4c4, $alpha: .75), rgba(0,0,0,0));
+        background: linear-gradient(rgba($color: #FFE4C4, $alpha: .75), rgba(0,0,0,0));
         .header-container{
-            color: #dd3546;
+            color: #DD3546;
             .top-header{
                 .logo .fix-bomb:hover{
-                    color: #b42d3b;
+                    color: #B42D3B;
+                }
+                .underlogo{
+                    text-shadow: none;
                 }
                 .header-btns .navigation-list-element{
-                    color: #dd3546;
+                    color: #DD3546;
                     &:hover{
-                        color: #b42d3b;
+                        color: #B42D3B;
                     }
                     &:active{
                         color: #4E54C8;
@@ -193,7 +204,7 @@ header{
                 }
                 .hamburger-menu{
                     &:hover{
-                        color: #b42d3b;
+                        color: #B42D3B;
                     }
                     &:active{
                         color: #4E54C8;
@@ -203,9 +214,9 @@ header{
             .header-dropdown-menu{
                 box-shadow: 0px 0px 15px rgb(189, 189, 189);
                 .dropdown-btns .dropdown-list-element{
-                    color: #dd3546;
+                    color: #DD3546;
                     &:hover{
-                        color: #b42d3b;
+                        color: #B42D3B;
                     }
                     &:active{
                         color: #4E54C8;

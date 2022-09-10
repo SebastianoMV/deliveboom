@@ -2,9 +2,8 @@
     <section class="foods">
         <div class="jumbotron">
             <div class="container fluid-container">
-                <h2>Mangia fino a scoppiare</h2>
+                <h2>{{user.name}}</h2>
                 <nav class="jumbo-nav">
-
                     <img :src="`/image/users/${user.image}`" alt="" @click="filteredFoods(0)">
                     <ul>
                         <li
@@ -21,8 +20,7 @@
             <div class="jumbo-wallpaper"/>
         </div>
         <div class="foods-container container">
-            <go-back-btn/>
-            <h1>Menù<span v-if="currentCategoryName!==''">: </span><span class="category-name">{{currentCategoryName}}</span></h1>
+            <h1><go-back-btn class="back-btn"/>Menù<span v-if="currentCategoryName!==''">: </span><span class="category-name">{{currentCategoryName}}</span></h1>
             <div
                 v-if="isLoaded"
                 class="wrapper">
@@ -39,7 +37,6 @@
         </div>
     </section>
 </template>
-
 <script>
 import GoBackBtn from '../partials/GoBackBtn.vue';
 import LoaderComp from '../partials/LoaderComp.vue';
@@ -116,7 +113,6 @@ export default {
     }
 }
 </script>
-
 <style lang="scss" scoped>
 .foods{
     .jumbotron{
@@ -155,7 +151,6 @@ export default {
                 position: absolute;
                 display: flex;
                 align-items: center;
-
                 flex-wrap: wrap;
                 bottom: 0;
                 left: 50%;
@@ -199,11 +194,20 @@ export default {
     }
     .foods-container{
         h1{
+            width: 100%;
+            position: relative;
             font-weight: bolder;
             text-align: center;
             margin-bottom: 40px;
+            padding: 0 50px;
+            .back-btn{
+                position: absolute;
+                left: 0;
+                top: 9px;
+            }
             .category-name{
-                color: #dd3546;
+                color: #DD3546;
+                display: inline-block;
             }
         }
         .wrapper{
