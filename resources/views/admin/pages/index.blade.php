@@ -25,7 +25,10 @@
                         <div class="col-3 list-line-el">{{$food->name}}</strong></div>
                         <div class="col-3 list-line-el">
                             @if ($food->image)
-                                <img src="{{asset('images/foods/' . $food->image)}}" alt="{{$food->name}}">
+                                <div style="width: 100%; max-width: 140px;  height: 100px; background-image: url('{{asset('images/foods/' . $food->image)}}; background-position: center; background-size: cover;">
+
+                                </div>
+                                {{-- <img src="{{asset('images/foods/' . $food->image)}}" alt="{{$food->name}}"> --}}
                             @else
                                 <img src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/media/3cb974c28eb00627cc0671685c79ffd9.jpg" alt="placeholder-{{$food->name}}">
                             @endif
