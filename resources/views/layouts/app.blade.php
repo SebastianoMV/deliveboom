@@ -42,7 +42,7 @@
                             </li>
                             @if (Route::has('register'))
                                 <li>
-                                    <a class="navigation-list-element" href="{{ route('register') }}"><i class="fa-solid fa-id-card"></i><span>{{__('Register')}}</span></a>
+                                    <a class="navigation-list-element" href="{{ route('register') }}"><i class="fa-solid fa-id-card"></i><span>Registrati</span></a>
                                 </li>
                             @endif
                         @else

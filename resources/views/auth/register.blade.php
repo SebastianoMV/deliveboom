@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header">Registrazione</div>
 
                     <div class="card-body">
                         <form id="userCreateForm" method="POST" action="{{ route('register') }}">
@@ -14,7 +14,7 @@
                             {{-- NOME --}}
                             <div class="form-group row">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Name') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">Nome del Ristorante</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -34,7 +34,7 @@
                             {{-- EMAIL --}}
                             <div class="form-group row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">E-Mail</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -54,7 +54,7 @@
                             {{-- INDIRIZZO --}}
                             <div class="form-group row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">Indirizzo</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text" value="{{ old('address') }}"
@@ -72,7 +72,7 @@
                             {{-- CITTA --}}
                             <div class="form-group row">
                                 <label for="city"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">Città</label>
 
                                 <div class="col-md-6">
                                     <input id="city" type="text" value="{{ old('city') }}"
@@ -91,7 +91,7 @@
                             {{-- P. IVA --}}
                             <div class="form-group row">
                                 <label for="vat_number"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Vat Number') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">Partita Iva</label>
 
                                 <div class="col-md-6">
                                     <input id="vat_number" type="text" value="{{ old('vat_number') }}"
@@ -110,7 +110,7 @@
                             {{-- PASSWORD --}}
                             <div class="form-group row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">Password</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -129,7 +129,7 @@
                             {{-- CONFERMA PASSWORD --}}
                             <div class="form-group row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">Conferma Password</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -145,7 +145,7 @@
                                 </div>
                             </div>
 
-                            <div class="mt-4">Choose one or more typologies:</div>
+                            <div class="mt-4">Seleziona una o più tipologie:</div>
                             <div class="form-group row">
 
                                 @foreach ($typologies as $typology)
@@ -169,7 +169,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                        Registrati
                                     </button>
                                 </div>
                             </div>

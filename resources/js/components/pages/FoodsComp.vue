@@ -2,9 +2,9 @@
     <section class="foods">
         <div class="jumbotron">
             <div class="container fluid-container">
-                <h1>{{user.name}}</h1>
+                <h2>Mangia fino a scoppiare</h2>
                 <nav class="jumbo-nav">
-                    <go-back-btn/>
+
                     <img :src="`/image/users/${user.image}`" alt="" @click="filteredFoods(0)">
                     <ul>
                         <li
@@ -21,6 +21,7 @@
             <div class="jumbo-wallpaper"/>
         </div>
         <div class="foods-container container">
+            <go-back-btn/>
             <h1>Menù<span v-if="currentCategoryName!==''">: </span><span class="category-name">{{currentCategoryName}}</span></h1>
             <div
                 v-if="isLoaded"
@@ -120,15 +121,15 @@ export default {
 .foods{
     .jumbotron{
         position: relative;
-        margin: 0 0 110px 0;
+        margin: 0 0 80px 0;
         border-radius: 0;
         background-color: transparent;
         color: white;
         width: 100%;
         height: 150px;
         padding: 50px 0 0 0;
-        h1{
-            font-weight: bolder;
+        h2{
+            font-weight: bold;
             text-shadow: 0px 0px 10px black;
         }
         .jumbo-wallpaper{
@@ -154,7 +155,7 @@ export default {
                 position: absolute;
                 display: flex;
                 align-items: center;
-                padding-left: 20px;
+
                 flex-wrap: wrap;
                 bottom: 0;
                 left: 50%;

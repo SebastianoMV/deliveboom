@@ -2,7 +2,7 @@
     <main>
         <div class="jumbotron">
             <div class="container fluid-container">
-                <h2>{{currentTypologiesName}}</h2>
+                <h2>Mangia fino a scoppiare</h2>
             </div>
             <div class="jumbo-wallpaper"/>
         </div>

@@ -3090,9 +3090,9 @@ var render = function render() {
     staticClass: "jumbotron"
   }, [_c("div", {
     staticClass: "container fluid-container"
-  }, [_c("h1", [_vm._v(_vm._s(_vm.user.name))]), _vm._v(" "), _c("nav", {
+  }, [_c("h2", [_vm._v("Mangia fino a scoppiare")]), _vm._v(" "), _c("nav", {
     staticClass: "jumbo-nav"
-  }, [_c("go-back-btn"), _vm._v(" "), _c("img", {
+  }, [_c("img", {
     attrs: {
       src: "/image/users/".concat(_vm.user.image),
       alt: ""
@@ -3118,11 +3118,11 @@ var render = function render() {
         }
       }
     }, [_vm._v("\n                        " + _vm._s(category.name) + "\n                    ")]);
-  }), 0)], 1)]), _vm._v(" "), _c("div", {
+  }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "jumbo-wallpaper"
   })]), _vm._v(" "), _c("div", {
     staticClass: "foods-container container"
-  }, [_c("h1", [_vm._v("Menù"), _vm.currentCategoryName !== "" ? _c("span", [_vm._v(": ")]) : _vm._e(), _c("span", {
+  }, [_c("go-back-btn"), _vm._v(" "), _c("h1", [_vm._v("Menù"), _vm.currentCategoryName !== "" ? _c("span", [_vm._v(": ")]) : _vm._e(), _c("span", {
     staticClass: "category-name"
   }, [_vm._v(_vm._s(_vm.currentCategoryName))])]), _vm._v(" "), _vm.isLoaded ? _c("div", {
     staticClass: "wrapper"
@@ -3135,7 +3135,7 @@ var render = function render() {
     });
   }), 1) : _c("div", {
     staticClass: "wrapper"
-  }, [_c("loader-comp")], 1)])]);
+  }, [_c("loader-comp")], 1)], 1)]);
 };
 
 var staticRenderFns = [];
@@ -3159,13 +3159,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("main", [_c("div", {
-    staticClass: "jumbotron"
-  }, [_c("div", {
-    staticClass: "container fluid-container"
-  }, [_c("h2", [_vm._v(_vm._s(_vm.currentTypologiesName))])]), _vm._v(" "), _c("div", {
-    staticClass: "jumbo-wallpaper"
-  })]), _vm._v(" "), _c("div", {
+  return _c("main", [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "sliding-menu"
   }, [_c("div", {
     staticClass: "container fluid-container"
@@ -3176,7 +3170,7 @@ var render = function render() {
         return _vm.getUserApi();
       }
     }
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "typology-title"
   }, [_vm._v("Tutti i ristoranti")])]), _vm._v(" "), _vm._l(_vm.typologies, function (typology) {
     return _c("li", {
@@ -3223,6 +3217,17 @@ var render = function render() {
 };
 
 var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "jumbotron"
+  }, [_c("div", {
+    staticClass: "container fluid-container"
+  }, [_c("h2", [_vm._v("Mangia fino a scoppiare")])]), _vm._v(" "), _c("div", {
+    staticClass: "jumbo-wallpaper"
+  })]);
+}, function () {
   var _vm = this,
       _c = _vm._self._c;
 
@@ -8051,7 +8056,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".foods .jumbotron[data-v-27464fde] {\n  position: relative;\n  margin: 0 0 110px 0;\n  border-radius: 0;\n  background-color: transparent;\n  color: white;\n  width: 100%;\n  height: 150px;\n  padding: 50px 0 0 0;\n}\n.foods .jumbotron h1[data-v-27464fde] {\n  font-weight: bolder;\n  text-shadow: 0px 0px 10px black;\n}\n.foods .jumbotron .jumbo-wallpaper[data-v-27464fde] {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  width: 100%;\n  height: 571.5px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transform: translateX(-50%);\n  z-index: -1;\n  overflow: hidden;\n  background-image: url(\"http://www.businesscoot.com/uploads/study_main_image/410.jpg\");\n  background-size: cover;\n  background-position: center;\n}\n.foods .jumbotron .container[data-v-27464fde] {\n  position: relative;\n  height: 100%;\n}\n.foods .jumbotron .container .jumbo-nav[data-v-27464fde] {\n  position: absolute;\n  display: flex;\n  align-items: center;\n  padding-left: 20px;\n  flex-wrap: wrap;\n  bottom: 0;\n  left: 50%;\n  transform: translate(-50%, calc(100% - 40px));\n  width: calc(100% - 30px);\n  min-height: 80px;\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde],\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  cursor: pointer;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde] {\n  height: 60px;\n  margin: 10px 50px 10px 30px;\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav ul[data-v-27464fde] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  list-style: none;\n  padding: 0;\n  flex-grow: 1;\n  flex-wrap: wrap;\n  margin: 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  margin: 20px 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde]:hover, .foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  color: darkred;\n}\n.foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  font-weight: bold;\n}\n.foods .foods-container h1[data-v-27464fde] {\n  font-weight: bolder;\n  text-align: center;\n  margin-bottom: 40px;\n}\n.foods .foods-container h1 .category-name[data-v-27464fde] {\n  color: #dd3546;\n}\n.foods .foods-container .wrapper[data-v-27464fde] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 23px;\n  margin-bottom: 50px;\n}", ""]);
+exports.push([module.i, ".foods .jumbotron[data-v-27464fde] {\n  position: relative;\n  margin: 0 0 80px 0;\n  border-radius: 0;\n  background-color: transparent;\n  color: white;\n  width: 100%;\n  height: 150px;\n  padding: 50px 0 0 0;\n}\n.foods .jumbotron h2[data-v-27464fde] {\n  font-weight: bold;\n  text-shadow: 0px 0px 10px black;\n}\n.foods .jumbotron .jumbo-wallpaper[data-v-27464fde] {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  width: 100%;\n  height: 571.5px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transform: translateX(-50%);\n  z-index: -1;\n  overflow: hidden;\n  background-image: url(\"http://www.businesscoot.com/uploads/study_main_image/410.jpg\");\n  background-size: cover;\n  background-position: center;\n}\n.foods .jumbotron .container[data-v-27464fde] {\n  position: relative;\n  height: 100%;\n}\n.foods .jumbotron .container .jumbo-nav[data-v-27464fde] {\n  position: absolute;\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  bottom: 0;\n  left: 50%;\n  transform: translate(-50%, calc(100% - 40px));\n  width: calc(100% - 30px);\n  min-height: 80px;\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde],\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  cursor: pointer;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde] {\n  height: 60px;\n  margin: 10px 50px 10px 30px;\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav ul[data-v-27464fde] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  list-style: none;\n  padding: 0;\n  flex-grow: 1;\n  flex-wrap: wrap;\n  margin: 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  margin: 20px 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde]:hover, .foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  color: darkred;\n}\n.foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  font-weight: bold;\n}\n.foods .foods-container h1[data-v-27464fde] {\n  font-weight: bolder;\n  text-align: center;\n  margin-bottom: 40px;\n}\n.foods .foods-container h1 .category-name[data-v-27464fde] {\n  color: #dd3546;\n}\n.foods .foods-container .wrapper[data-v-27464fde] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 23px;\n  margin-bottom: 50px;\n}", ""]);
 
 // exports
 
