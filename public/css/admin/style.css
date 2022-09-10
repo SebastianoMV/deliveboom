@@ -11039,6 +11039,7 @@ header .header-container .top-header .header-btns,
 header .header-container nav .header-btns {
   display: flex;
   margin: auto 0;
+  padding: 0;
   list-style: none;
   -moz-column-gap: 15px;
        column-gap: 15px;
@@ -11087,6 +11088,7 @@ header .header-container nav .header-btns li .navigation-list-element span {
   font-size: 16px;
   font-weight: bold;
   margin-left: 7px;
+  color: black;
 }
 
 header .header-container .top-header .header-btns li:last-of-type .navigation-list-element,
@@ -11132,7 +11134,7 @@ header .header-container .header-dropdown-menu {
   transition: all 0.5s ease-in-out;
   overflow: hidden;
   max-height: 500px;
-  margin-bottom: 0;
+  margin-bottom: 50px;
   box-shadow: 0px 0px 15px rgb(189, 189, 189);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
@@ -11179,6 +11181,7 @@ header .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-
   font-size: 16px;
   font-weight: bold;
   margin-left: 7px;
+  color: black;
 }
 
 header .header-container .header-dropdown-menu .dropdown-btns li:last-of-type .dropdown-list-element {
@@ -11199,14 +11202,18 @@ section.index .fluid-resize {
 
 section.index .index-container {
   width: 100%;
-  margin: 50px 0;
-  min-height: 200px;
+  margin-bottom: 50px;
+  min-height: 150px;
   background-color: white;
   color: black;
   box-shadow: 0px 0px 15px rgb(189, 189, 189);
   border-radius: 20px;
   overflow: hidden;
   transition: 0.2s all;
+}
+
+section.index .index-container.no-shadow {
+  box-shadow: none;
 }
 
 section.index .index-container .index-header {
@@ -11217,20 +11224,11 @@ section.index .index-container .index-header {
   align-items: center;
   width: 100%;
   min-height: 50px;
-  margin-bottom: 5px;
   background-color: rgb(240, 240, 240);
 }
 
-section.index .index-container .index-header .index-btn {
-  padding: 0px 10px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  font-weight: bold;
-}
-
-section.index .index-container .index-header .index-btn i {
-  margin-right: 7px;
+section.index .index-container .index-list {
+  padding-top: 7px;
 }
 
 section.index .index-container .index-list .list-head {
@@ -11241,6 +11239,7 @@ section.index .index-container .index-list .list-head .list-head-el {
   font-size: 16px;
   font-weight: bold;
   padding-bottom: 10px;
+  color: #B42D3B;
 }
 
 section.index .index-container .index-list .line-bottom {
@@ -11263,18 +11262,24 @@ section.index .index-container .index-list .list-line .list-line-el {
   align-items: center;
   font-weight: bold;
   padding-bottom: 10px;
+  word-break: break-all;
+  padding-right: 0;
 }
 
 section.index .index-container .index-list .list-line .list-line-el form {
   margin-bottom: 0;
 }
 
+section.index .index-container .index-list .list-line .list-line-el:last-of-type {
+  padding-right: 15px;
+}
+
 section.index .index-container .index-list .list-line .food-image {
-  width: 100%;
   max-width: 140px;
-  height: 100px;
-  background-position: center;
+  width: 100%;
+  height: 80px;
   background-size: cover;
+  background-position: center;
 }
 
 section.index .index-container .index-list .list-line .list-btn {
@@ -11282,7 +11287,7 @@ section.index .index-container .index-list .list-line .list-btn {
   align-items: center;
   height: 25px;
   line-height: 25px;
-  padding: 0 8px;
+  padding: 0 5px;
   font-weight: bold;
   margin-right: 5px;
 }
@@ -11293,6 +11298,23 @@ section.index .index-container .index-list .list-line .list-btn .btn-text {
 
 section.index .index-container .index-list .list-line:last-of-type .line-bottom {
   border: none;
+}
+
+section.index .index-container .index-btn {
+  padding: 0px 10px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+section.index .index-container .index-btn i {
+  margin-right: 7px;
+}
+
+section.index .is-vegan {
+  width: 25px;
 }
 
 body {

@@ -4,13 +4,12 @@
     <div class="container fluid-resize">
         <div class="index-container">
             <div class="index-header">
-                <span class="btn btn-primary index-btn"><i class="fa-solid fa-utensils"></i>Cibi</span>
-                <a class="btn btn-success index-btn" href="{{ route('admin.orders.index') }}"><i class="fa-solid fa-list-check"></i>Ordini</a>
+                <span class="btn btn-danger index-btn"><i class="fa-solid fa-utensils"></i>Cibi</span>
+                <a class="btn btn-outline-danger index-btn" href="{{ route('admin.orders.index') }}"><i class="fa-solid fa-list-check"></i>Ordini</a>
             </div>
             <div class="index-list">
                 <div class="list-head row mx-0">
-                    <div class="col-3 list-head-el">Nome</div>
-                    <div class="col-3 list-head-el">Immagine</div>
+                    <div class="col-6 list-head-el">Piatto</div>
                     <div class="col-6 list-head-el">Prezzo &lpar;&euro;&rpar;</div>
                     <div class="line-bottom first"></div>
                 </div>
@@ -21,7 +20,7 @@
                     </div>
                 @endif
                 @foreach ($foods as $food)
-                    <div class="list-line row mx-0">
+                    <div class="row list-line mx-0">
                         <div class="col-3 list-line-el">{{$food->name}}</strong></div>
                         <div class="col-3 list-line-el">
                             @if ($food->image)
@@ -32,31 +31,21 @@
                             @endif
                         </div>
                         <div class="col-2 list-line-el">{{$food->price}}</div>
-                        <div class="col-4 d-lg-flex d-none list-line-el">
-                            <a class="btn btn-primary list-btn" href="{{route('admin.food.show', $food)}}"><i class="fa-solid fa-eye"></i><span class="btn-text">Mostra</span></a>
+                        <div class="col-4 d-flex list-line-el">
+                            <a class="btn btn-primary list-btn" href="{{route('admin.food.show', $food)}}">
+                                <i class="fa-solid fa-eye"></i><span class="d-lg-flex d-none btn-text">Mostra</span>
+                            </a>
                             <a class="btn btn-secondary list-btn"
-                                href="{{route('admin.food.edit', $food)}}"> <i class="fa-solid fa-pen-to-square"></i><span class="btn-text">Modifica</span></a>
+                                href="{{route('admin.food.edit', $food)}}">
+                                <i class="fa-solid fa-pen-to-square"></i><span class="d-lg-flex d-none btn-text">Modifica</span>
+                            </a>
                             <form
                                 onclick="return confirm('Sei sicuro di voler eliminare {{$food->name}}?')"
                                 action="{{ route('admin.food.destroy', $food) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger list-btn">
-                                    <i class="fa-solid fa-trash-can"></i><span class="btn-text">Elimina</span>
-                                </button>
-                            </form>
-                        </div>
-                        <div class="col-4 d-lg-none d-flex list-line-el">
-                            <a class="btn btn-primary list-btn" href="{{route('admin.food.show', $food)}}"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-secondary list-btn"
-                                href="{{route('admin.food.edit', $food)}}"> <i class="fa-solid fa-pen-to-square"></i></a>
-                            <form
-                                onclick="return confirm('Sei sicuro di voler eliminare {{$food->name}}?')"
-                                action="{{ route('admin.food.destroy', $food) }}" method="POST">
-                                @method('DELETE')
-                                @csrf
-                                <button type="submit" class="btn btn-danger list-btn"><i
-                                        class="fa-solid fa-trash-can"></i>
+                                    <i class="fa-solid fa-trash-can"></i><span class="d-lg-flex d-none btn-text">Elimina</span>
                                 </button>
                             </form>
                         </div>
