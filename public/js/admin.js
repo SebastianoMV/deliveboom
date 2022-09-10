@@ -37521,8 +37521,8 @@ function priceChart(total) {
       datasets: [{
         label: "Guadagno totale",
         data: total,
-        backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-        borderColor: ["rgba(255, 99, 132, 1)"],
+        backgroundColor: ["rgba(99, 100, 255, 0.5)"],
+        borderColor: ["rgba(99, 100, 255, 1)"],
         borderWidth: 1
       }]
     },

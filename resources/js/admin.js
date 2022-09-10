@@ -351,11 +351,11 @@ function priceChart(total){
                 label: "Guadagno totale",
                 data: total,
                 backgroundColor: [
-                    "rgba(255, 99, 132, 0.2)",
+                    "rgba(99, 100, 255, 0.5)",
 
                 ],
                 borderColor: [
-                    "rgba(255, 99, 132, 1)",
+                    "rgba(99, 100, 255, 1)",
 
                 ],
                 borderWidth: 1,

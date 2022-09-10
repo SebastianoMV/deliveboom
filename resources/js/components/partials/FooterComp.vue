@@ -79,6 +79,7 @@ export default {
         background-color: #2b3445;
         color: white;
         padding-top: 40px;
+        margin-top: 100px;
         a{
             color: #9ea6b6;
             text-decoration: none;

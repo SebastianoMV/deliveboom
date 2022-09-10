@@ -19,10 +19,12 @@
     @section('content')
 
 
-
+        <h2 class="text-center">Panoramica ordini</h2>
         <div style="width: 70%; margin: auto" class="container">
             <canvas id="myChart"></canvas>
         </div>
+
+        <h2 class="text-center mt-5">Panoramica guadagni</h2>
 
         <div style="width: 70%; margin: auto" class="container">
             <canvas id="priceChart"></canvas>

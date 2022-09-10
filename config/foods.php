@@ -50,31 +50,6 @@ return [
         'vegan' => 1,
         'image' => 'food_04.jpg',
     ],
-
-
-    [
-        'name' => 'Coca Cola',
-        'category_id' => '2',
-        'user_id' => '25',
-        'description' => 'Un gusto unico, come te: prova il gusto originale di Coca-Cola',
-        'price' => '2.50',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_07.jpg',
-    ],
-
-    [
-        'name' => 'Coca Cola Zero',
-        'category_id' => '2',
-        'user_id' => '6',
-        'description' => 'Coca-Cola Zero Zuccheri è la bevanda senza zuccheri dall’inconfondibile gusto Coca-Cola;',
-        'price' => '2.50',
-        'is_visible' => 1,
-        'vegan' => 1,
-        'image' => 'food_08.png',
-    ],
-
-
     [
         'name' => 'Ramen',
         'category_id' => '5',
@@ -1167,6 +1142,16 @@ return [
         'vegan' => 0,
         'image' => 'food_94.jpg',
     ],
+    [
+        'name' => 'Coca Cola',
+        'category_id' => '2',
+        'user_id' => '25',
+        'description' => 'Un gusto unico, come te: prova il gusto originale di Coca-Cola',
+        'price' => '2.50',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_07.jpg',
+    ],
 
 
     [
@@ -1963,6 +1948,16 @@ return [
         'is_visible' => 1,
         'vegan' => 1,
         'image' => 'food_07.jpg',
+    ],
+    [
+        'name' => 'Coca Cola Zero',
+        'category_id' => '2',
+        'user_id' => '6',
+        'description' => 'Coca-Cola Zero Zuccheri è la bevanda senza zuccheri dall’inconfondibile gusto Coca-Cola;',
+        'price' => '2.50',
+        'is_visible' => 1,
+        'vegan' => 1,
+        'image' => 'food_08.png',
     ],
 
 ];
