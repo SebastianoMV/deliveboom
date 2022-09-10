@@ -170,7 +170,7 @@ main{
             transform: translateX(-50%);
             z-index: -1;
             overflow: hidden;
-            background-image: url("http://www.businesscoot.com/uploads/study_main_image/410.jpg");
+            background-image: url("/images/jumbotron-food.png");
             background-size: cover;
             background-position: center;
         }

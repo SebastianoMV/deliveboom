@@ -1,86 +1,73 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="cart-container row justify-email-center">
-            <div class="col">
-                <div class="">
-                    @if (session('food_delete_success'))
-                        <div class="alert alert-success d-flex justify-content-between" role="danger">
-                            <p>{{ session('food_delete_success') }}</p>
-                            <a href="{{ route('admin.food.index') }}" class=""><i class="fa-solid fa-xmark"></i></a>
-                        </div>
-                    @endif
-                    <div class="card-header">
-                        <span class="btn btn-primary">Cibi <i class="fa-solid fa-utensils"></i></span>
-                        <a class="btn btn-success" href="{{ route('admin.orders.index') }}"> Ordini <i
-                                class="fa-solid fa-list-check"></i></a>
-                    </div>
-
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Immagine</th>
-                                <th scope="col">Prezzo</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($foods as $food)
-                                <tr>
-                                    <td><strong>{{ $food->name }}</strong></td>
-                                    <td>
-                                        @if ($food->image)
-                                            <img style="width: 100px; max-height: 120px;"
-                                                src="{{ asset('images/foods/' . $food->image) }}" alt="{{ $food->name }}">
-                                        @else
-                                            <img style="width: 100px; max-height: 120px;"
-                                                src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/media/3cb974c28eb00627cc0671685c79ffd9.jpg"
-                                                alt="">
-                                        @endif
-                                    </td>
-                                    <td>{{ $food->price }}</td>
-
-
-                                    <td class="w-25">
-                                        <a class="btn btn-primary" href="{{ route('admin.food.show', $food) }}">Mostra</a>
-                                        <a class="btn btn-secondary"
-                                            href="{{ route('admin.food.edit', $food) }}">Modifica</a>
-                                        <form class="d-inline"
-                                            onclick="return confirm('Sei sicuro di voler eliminare {{ $food->name }}?')"
-                                            action="{{ route('admin.food.destroy', $food) }}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash-can"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
+<section class="index">
+    <div class="container fluid-resize">
+        <div class="index-container">
+            <div class="index-header">
+                <span class="btn btn-primary index-btn"><i class="fa-solid fa-utensils"></i>Cibi</span>
+                <a class="btn btn-success index-btn" href="{{ route('admin.orders.index') }}"><i class="fa-solid fa-list-check"></i>Ordini</a>
+            </div>
+            <div class="index-list">
+                <div class="list-head row mx-0">
+                    <div class="col-3 list-head-el">Nome</div>
+                    <div class="col-3 list-head-el">Immagine</div>
+                    <div class="col-6 list-head-el">Prezzo &lpar;&euro;&rpar;</div>
+                    <div class="line-bottom first"></div>
                 </div>
+                @if (session('food_delete_success'))
+                    <div class="alert alert-success d-flex justify-content-between w-75 mx-auto" role="danger">
+                        <p>{{ session('food_delete_success') }}</p>
+                        <a href="{{ route('admin.food.index') }}" class=""><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                @endif
+                @foreach ($foods as $food)
+                    <div class="list-line row mx-0">
+                        <div class="col-3 list-line-el">{{$food->name}}</strong></div>
+                        <div class="col-3 list-line-el">
+                            @if ($food->image)
+                                <img src="{{asset('images/foods/' . $food->image)}}" alt="{{$food->name}}">
+                            @else
+                                <img src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/media/3cb974c28eb00627cc0671685c79ffd9.jpg" alt="placeholder-{{$food->name}}">
+                            @endif
+                        </div>
+                        <div class="col-2 list-line-el">{{$food->price}}</div>
+                        <div class="col-4 d-lg-flex d-none list-line-el">
+                            <a class="btn btn-primary list-btn" href="{{route('admin.food.show', $food)}}"><i class="fa-solid fa-eye"></i><span class="btn-text">Mostra</span></a>
+                            <a class="btn btn-secondary list-btn"
+                                href="{{route('admin.food.edit', $food)}}"> <i class="fa-solid fa-pen-to-square"></i><span class="btn-text">Modifica</span></a>
+                            <form
+                                onclick="return confirm('Sei sicuro di voler eliminare {{$food->name}}?')"
+                                action="{{ route('admin.food.destroy', $food) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger list-btn"><i
+                                        class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col-4 d-lg-none d-flex list-line-el">
+                            <a class="btn btn-primary list-btn" href="{{route('admin.food.show', $food)}}"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-secondary list-btn"
+                                href="{{route('admin.food.edit', $food)}}"> <i class="fa-solid fa-pen-to-square"></i></a>
+                            <form
+                                onclick="return confirm('Sei sicuro di voler eliminare {{$food->name}}?')"
+                                action="{{ route('admin.food.destroy', $food) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger list-btn"><i
+                                        class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="line-bottom"></div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
+</section>
+<i class="fa-solid fa-seedling"></i>
+<i class="fa-solid fa-leaf"></i>
+
 @endsection
-
-<style>
-    .cart-container {
-        width: 100%;
-        margin: 50px 0;
-        min-height: calc(100vh - 590px);
-        background-color: white;
-        color: black;
-        box-shadow: 0px 0px 15px rgb(189, 189, 189);
-        border-radius: 20px;
-        overflow: hidden;
-    }
-
-    button.btn-danger {
-        padding: 10px;
-    }
-</style>
