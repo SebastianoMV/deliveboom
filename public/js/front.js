@@ -3515,7 +3515,7 @@ var staticRenderFns = [function () {
   return _c("li", [_c("a", {
     staticClass: "navigation-list-element",
     attrs: {
-      href: "/admin"
+      href: "/admin/food"
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-user"

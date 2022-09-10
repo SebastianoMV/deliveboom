@@ -9,7 +9,7 @@
                 <ul class="header-btns d-md-flex d-none">
                     <li><router-link :to="{name: 'home'}" class="navigation-list-element"><i class="fa-solid fa-house"></i></router-link></li>
                     <li><router-link :to="{name: 'cart'}" class="navigation-list-element"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
-                    <li><a href="/admin" class="navigation-list-element"><i class="fa-solid fa-user"></i></a></li>
+                    <li><a href="/admin/food" class="navigation-list-element"><i class="fa-solid fa-user"></i></a></li>
                 </ul>
                 <i
                     class="hamburger-menu fa-solid fa-bars d-md-none d-block"
