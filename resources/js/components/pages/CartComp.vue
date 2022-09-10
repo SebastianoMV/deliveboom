@@ -126,7 +126,7 @@ export default {
         margin: 50px 0;
         min-height: calc(100vh - 590px);
         background-color: white;
-        color: black;
+        color: rgb(2, 2, 2);
         box-shadow: 0px 0px 15px rgb(189, 189, 189);
         border-radius: 20px;
         overflow: hidden;
