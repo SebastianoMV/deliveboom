@@ -8,20 +8,22 @@
             </div>
             <div class="index-list">
                 <div class="list-head row mx-0">
-                    <div class="col-2 list-head-el"><span>N° Ordine</span></div>
-                    <div class="col-2 list-head-el"><span>Totale</span></div>
+                    <div class="col-1 list-head-el"><span>N° Ordine</span></div>
+                    <div class="col-1 list-head-el"><span>Totale</span></div>
                     <div class="col-2 list-head-el"><span>Cliente</span></div>
                     <div class="col-2 list-head-el"><span>Telefono</span></div>
                     <div class="col-2 list-head-el"><span>E-Mail</span></div>
+                    <div class="col-2 list-head-el"><span>Indirizzo</span></div>
                     <div class="col-2 list-head-el"><span>Data ordine</span></div>
                     <div class="line-bottom first"></div>
                 </div>
                 <div class="list-line row mx-0">
-                    <div class="col-2 list-line-el">{{$order->id}}</div>
-                    <div class="col-2 list-line-el">{{$order->total_price}}</div>
+                    <div class="col-1 list-line-el">{{$order->id}}</div>
+                    <div class="col-1 list-line-el">{{$order->total_price}}</div>
                     <div class="col-2 list-line-el">{{$order->name}}</div>
                     <div class="col-2 list-line-el">{{$order->phone}}</div>
                     <div class="col-2 list-line-el">{{$order->email}}</div>
+                    <div class="col-2 list-line-el">{{$order->address}}</div>
                     <div class="col-2 list-line-el">{{$order->created_at}}</div>
                     <div class="line-bottom first"></div>
                 </div>
