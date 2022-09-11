@@ -1445,7 +1445,7 @@ return [
         'description' => 'Un gusto unico, come te: prova il gusto originale di Coca-Cola',
         'price' => '2.50',
         'is_visible' => 1,
-        'vegan' => 1,
+        'vegan' => 0,
         'image' => 'food_07.jpg',
     ],
 
@@ -1456,11 +1456,9 @@ return [
         'description' => 'Coca-Cola Zero Zuccheri è la bevanda senza zuccheri dall’inconfondibile gusto Coca-Cola',
         'price' => '2.50',
         'is_visible' => 1,
-        'vegan' => 1,
+        'vegan' => 0,
         'image' => 'food_08.png',
     ],
-
-
 
 
     [
