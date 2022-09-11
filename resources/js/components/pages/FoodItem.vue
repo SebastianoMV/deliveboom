@@ -10,7 +10,13 @@
                 src="/images/foods/dishFoodPlaceholder.jpg"
                 :alt="`placeholder-${food.id}`"
                 v-else>
-            <h5>{{food.name}}<img v-if="food.vegan" src="/images/vegetarian-mark.png" alt=""></h5>
+            <h5>{{food.name}}</h5>
+            <div
+                v-if="food.vegan"
+                class="is-vegan"
+                title="Prodotto vegetariano">
+                <img src="/images/vegetarian-mark.png" alt="Veg">
+            </div>
         </div>
         <div class="food-item-bottom">
             <div class="description">{{food.description}}</div>
@@ -123,21 +129,43 @@ export default {
     min-height: 380px;
     box-shadow: 0px 0px 15px rgb(189, 189, 189);
     border-radius: 10px;
-    img{
-        border-radius: 10px 10px 0 0;
-        height: 200px;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    h5{
-        font-weight: bolder;
-        margin-bottom: 12px;
-        text-align: center;
-        overflow: hidden;
-        // padding: 15px;
+    .food-item-top{
+        position: relative;
         img{
-            width: 25px;
-            height: 20px;
+            border-radius: 10px 10px 0 0;
+            height: 200px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        h5{
+            font-weight: bolder;
+            margin-bottom: 12px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .is-vegan{
+            position: absolute;
+            cursor: pointer;
+            top: 164px;
+            right: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            outline: 2px solid #058205;
+            outline-offset: -4px;
+            border-radius: 50px;
+            transition: .2s transform;
+            img{
+                width: 21px;
+                height: 16px;
+                margin: 0;
+            }
+            &:hover{
+                transform: scale(1.2);
+            }
         }
     }
     .food-item-bottom{

@@ -9,8 +9,8 @@
             </div>
             <div class="index-list">
                 <div class="list-head row mx-0">
-                    <div class="col-6 list-head-el">Piatto</div>
-                    <div class="col-6 list-head-el">Prezzo &lpar;&euro;&rpar;</div>
+                    <div class="col-6 list-head-el"><span>Piatto</span></div>
+                    <div class="col-6 list-head-el"><span>Prezzo &lpar;&euro;&rpar;</span></div>
                     <div class="line-bottom first"></div>
                 </div>
                 @if (session('food_delete_success'))
@@ -27,7 +27,8 @@
                                 <div class="food-image" style="background-image: url('{{asset('images/foods/'.$food->image)}};">
                                 </div>
                             @else
-                                <img src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/media/3cb974c28eb00627cc0671685c79ffd9.jpg" alt="placeholder-{{$food->name}}">
+                                <div class="food-image" style="background-image: url('https://cdn.dribbble.com/users/1012566/screenshots/4187820/media/3cb974c28eb00627cc0671685c79ffd9.jpg">
+                                </div>
                             @endif
                         </div>
                         <div class="col-2 list-line-el">{{$food->price}}</div>

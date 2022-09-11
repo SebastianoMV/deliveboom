@@ -23,7 +23,9 @@
                 </p>
                 <p>
                     @if ($food->vegan == 1)
-                        <img class="is-vegan" src="{{ asset('images/vegetarian-mark.png') }}" alt="">
+                        <div class="is-vegan">
+                            <img src="{{asset('images/vegetarian-mark.png')}}" alt="">
+                        </div>
                     @endif
                 </p>
                 <a href="{{route('admin.food.index')}}" class="btn btn-primary index-btn"><i class="fa-solid fa-arrow-left"></i>Torna indietro</a>
