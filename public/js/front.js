@@ -3116,7 +3116,14 @@ var render = function render() {
         return _vm.filteredFoods(0);
       }
     }
-  }), _vm._v(" "), _c("ul", _vm._l(_vm.categories, function (category) {
+  }), _vm._v(" "), _c("ul", [_vm.categories.length > 1 ? _c("li", {
+    "class": _vm.currentCategory === 0 ? "active" : "",
+    on: {
+      click: function click($event) {
+        return _vm.filteredFoods(0);
+      }
+    }
+  }, [_vm._v("Tutti")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.categories, function (category) {
     return _c("li", {
       directives: [{
         name: "show",
@@ -3132,7 +3139,7 @@ var render = function render() {
         }
       }
     }, [_vm._v("\n                    " + _vm._s(category.name) + "\n                ")]);
-  }), 0)])]), _vm._v(" "), _c("div", {
+  })], 2)])]), _vm._v(" "), _c("div", {
     staticClass: "foods-container container"
   }, [_c("h1", [_c("go-back-btn", {
     staticClass: "back-btn"
@@ -56023,9 +56030,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })

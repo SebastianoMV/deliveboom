@@ -24,6 +24,10 @@
                 <img :src="`/image/users/${user.image}`" alt="" @click="filteredFoods(0)">
                 <ul>
                     <li
+                        :class="currentCategory === 0 ? 'active' : ''"
+                        @click="filteredFoods(0)"
+                        v-if="categories.length > 1">Tutti</li>
+                    <li
                         v-for="category in categories"
                         :key="category.id"
                         :class="category.id == currentCategory ? 'active' : ''"
