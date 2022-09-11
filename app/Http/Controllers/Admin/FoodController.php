@@ -92,7 +92,7 @@ class FoodController extends Controller
 
             $file = $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('image/foods'), $filename);
+            $file-> move(public_path('images/foods'), $filename);
             $data['image']= $filename;
 
             return $data['image'];

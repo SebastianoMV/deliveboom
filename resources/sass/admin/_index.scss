@@ -32,7 +32,17 @@ section.index{
                     font-size: 16px;
                     font-weight: bold;
                     padding-bottom: 10px;
+                    padding-right: 0;
                     color: #B42D3B;
+                    display: table;
+                    table-layout: fixed;
+                    max-width: 100%;
+                    white-space: nowrap;
+                    & > *{
+                        display: table-cell;
+                        overflow: hidden;
+                        text-overflow: "..";
+                    }
                 }
             }
             .line-bottom{
@@ -95,6 +105,21 @@ section.index{
         }
     }
     .is-vegan{
-        width: 25px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        outline: 2px solid #058205;
+        outline-offset: -1px;
+        border-radius: 50px;
+        transition: .2s transform;
+        img{
+            width: 21px;
+            height: 18px;
+            margin: 0;
+        }
     }
 }

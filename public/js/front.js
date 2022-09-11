@@ -2146,7 +2146,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           return actions.order.create({
             purchase_units: [{
               amount: {
-                currency_code: "USD",
+                currency_code: "EUR",
                 value: _this.newOrder.total_price
               }
             }]
@@ -3040,12 +3040,17 @@ var render = function render() {
       src: "/images/foods/dishFoodPlaceholder.jpg",
       alt: "placeholder-".concat(_vm.food.id)
     }
-  }), _vm._v(" "), _c("h5", [_vm._v(_vm._s(_vm.food.name)), _vm.food.vegan ? _c("img", {
+  }), _vm._v(" "), _c("h5", [_vm._v(_vm._s(_vm.food.name))]), _vm._v(" "), _vm.food.vegan ? _c("div", {
+    staticClass: "is-vegan",
+    attrs: {
+      title: "Prodotto vegetariano"
+    }
+  }, [_c("img", {
     attrs: {
       src: "/images/vegetarian-mark.png",
-      alt: ""
+      alt: "Veg"
     }
-  }) : _vm._e()])]), _vm._v(" "), _c("div", {
+  })]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "food-item-bottom"
   }, [_c("div", {
     staticClass: "description"
@@ -3095,7 +3100,11 @@ var render = function render() {
     staticClass: "jumbotron"
   }, [_c("div", {
     staticClass: "container fluid-container"
-  }, [_c("h2", [_vm._v(_vm._s(_vm.user.name))]), _vm._v(" "), _c("nav", {
+  }, [_c("h2", [_vm._v(_vm._s(_vm.user.name))])]), _vm._v(" "), _c("div", {
+    staticClass: "jumbo-wallpaper"
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "container fluid-container"
+  }, [_c("nav", {
     staticClass: "jumbo-nav"
   }, [_c("img", {
     attrs: {
@@ -3122,10 +3131,8 @@ var render = function render() {
           return _vm.filteredFoods(category.id);
         }
       }
-    }, [_vm._v("\n                        " + _vm._s(category.name) + "\n                    ")]);
+    }, [_vm._v("\n                    " + _vm._s(category.name) + "\n                ")]);
   }), 0)])]), _vm._v(" "), _c("div", {
-    staticClass: "jumbo-wallpaper"
-  })]), _vm._v(" "), _c("div", {
     staticClass: "foods-container container"
   }, [_c("h1", [_c("go-back-btn", {
     staticClass: "back-btn"
@@ -8041,7 +8048,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 260px;\n  min-height: 380px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.food-item img[data-v-ed5020b2] {\n  border-radius: 10px 10px 0 0;\n  height: 200px;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.food-item h5[data-v-ed5020b2] {\n  font-weight: bolder;\n  margin-bottom: 12px;\n  text-align: center;\n  overflow: hidden;\n}\n.food-item h5 img[data-v-ed5020b2] {\n  width: 25px;\n  height: 20px;\n}\n.food-item .food-item-bottom[data-v-ed5020b2] {\n  position: relative;\n  text-align: center;\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2] {\n  font-size: 14px;\n  color: gray;\n  height: 63px;\n  overflow-y: scroll;\n  padding: 8px;\n  margin-bottom: 10px;\n  /* Nasconde scrollbar su IE, Edge e Firefox */\n  -ms-overflow-style: none; /* IE & Edge */\n  scrollbar-width: none; /* Firefox */\n  /* Nasconde scrollbar su Chrome, Safari e Opera */\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2]::-webkit-scrollbar {\n  display: none;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::before {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 55px;\n  left: 0;\n  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom .lower-btns[data-v-ed5020b2] {\n  display: flex;\n  justify-content: space-between;\n  -moz-column-gap: 0;\n       column-gap: 0;\n  align-items: center;\n  position: relative;\n  padding: 0 20px;\n  margin-bottom: 15px;\n}\n.food-item .food-item-bottom .lower-btns .price[data-v-ed5020b2] {\n  font-size: 25px;\n  color: #4E54C8;\n  font-weight: bold;\n}\n.food-item .food-item-bottom .lower-btns .add-to-cart-label[data-v-ed5020b2] {\n  position: absolute;\n  right: 20px;\n  bottom: -30px;\n  padding: 3px 10px;\n  background-color: rgb(147, 240, 147);\n  border: 2px solid green;\n  color: green;\n  opacity: 0;\n  font-weight: bold;\n  font-size: 12px;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  border-radius: 5px;\n  transition: 1s opacity;\n}\n.food-item .food-item-bottom .lower-btns .add-to-cart-label.added[data-v-ed5020b2] {\n  transition: 0.2s opacity;\n  opacity: 1;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 20px;\n  background-color: #dd3546;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n  color: white;\n  border-radius: 5px;\n  padding: 6px 8px;\n  cursor: pointer;\n  transition: 0.2s all;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:hover {\n  background-color: #b42d3b;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:active {\n  background-color: white;\n  color: #dd3546;\n  outline-color: #dd3546;\n}", ""]);
+exports.push([module.i, ".food-item[data-v-ed5020b2] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 260px;\n  min-height: 380px;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.food-item .food-item-top[data-v-ed5020b2] {\n  position: relative;\n}\n.food-item .food-item-top img[data-v-ed5020b2] {\n  border-radius: 10px 10px 0 0;\n  height: 200px;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.food-item .food-item-top h5[data-v-ed5020b2] {\n  font-weight: bolder;\n  margin-bottom: 12px;\n  text-align: center;\n  overflow: hidden;\n}\n.food-item .food-item-top .is-vegan[data-v-ed5020b2] {\n  position: absolute;\n  cursor: pointer;\n  top: 164px;\n  right: 6px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  background-color: white;\n  outline: 2px solid #058205;\n  outline-offset: -4px;\n  border-radius: 50px;\n  transition: 0.2s transform;\n}\n.food-item .food-item-top .is-vegan img[data-v-ed5020b2] {\n  width: 21px;\n  height: 16px;\n  margin: 0;\n}\n.food-item .food-item-top .is-vegan[data-v-ed5020b2]:hover {\n  transform: scale(1.2);\n}\n.food-item .food-item-bottom[data-v-ed5020b2] {\n  position: relative;\n  text-align: center;\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2] {\n  font-size: 14px;\n  color: gray;\n  height: 63px;\n  overflow-y: scroll;\n  padding: 8px;\n  margin-bottom: 10px;\n  /* Nasconde scrollbar su IE, Edge e Firefox */\n  -ms-overflow-style: none; /* IE & Edge */\n  scrollbar-width: none; /* Firefox */\n  /* Nasconde scrollbar su Chrome, Safari e Opera */\n}\n.food-item .food-item-bottom .description[data-v-ed5020b2]::-webkit-scrollbar {\n  display: none;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::before {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom[data-v-ed5020b2]::after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  top: 55px;\n  left: 0;\n  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));\n  width: 100%;\n  height: 8px;\n}\n.food-item .food-item-bottom .lower-btns[data-v-ed5020b2] {\n  display: flex;\n  justify-content: space-between;\n  -moz-column-gap: 0;\n       column-gap: 0;\n  align-items: center;\n  position: relative;\n  padding: 0 20px;\n  margin-bottom: 15px;\n}\n.food-item .food-item-bottom .lower-btns .price[data-v-ed5020b2] {\n  font-size: 25px;\n  color: #4E54C8;\n  font-weight: bold;\n}\n.food-item .food-item-bottom .lower-btns .add-to-cart-label[data-v-ed5020b2] {\n  position: absolute;\n  right: 20px;\n  bottom: -30px;\n  padding: 3px 10px;\n  background-color: rgb(147, 240, 147);\n  border: 2px solid green;\n  color: green;\n  opacity: 0;\n  font-weight: bold;\n  font-size: 12px;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  border-radius: 5px;\n  transition: 1s opacity;\n}\n.food-item .food-item-bottom .lower-btns .add-to-cart-label.added[data-v-ed5020b2] {\n  transition: 0.2s opacity;\n  opacity: 1;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 20px;\n  background-color: #DD3546;\n  outline: 2px solid transparent;\n  outline-offset: -2px;\n  color: white;\n  border-radius: 5px;\n  padding: 6px 8px;\n  cursor: pointer;\n  transition: 0.2s all;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:hover {\n  background-color: #B42D3B;\n}\n.food-item .food-item-bottom .lower-btns .btn-cart[data-v-ed5020b2]:active {\n  background-color: white;\n  color: #DD3546;\n  outline-color: #DD3546;\n}", ""]);
 
 // exports
 
@@ -8060,7 +8067,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".foods .jumbotron[data-v-27464fde] {\n  position: relative;\n  margin: 0 0 80px 0;\n  border-radius: 0;\n  background-color: transparent;\n  color: white;\n  width: 100%;\n  height: 150px;\n  padding: 50px 0 0 0;\n}\n.foods .jumbotron h2[data-v-27464fde] {\n  font-weight: bold;\n  text-shadow: 0px 0px 10px black;\n}\n.foods .jumbotron .jumbo-wallpaper[data-v-27464fde] {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  width: 100%;\n  height: 571.5px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transform: translateX(-50%);\n  z-index: -1;\n  overflow: hidden;\n  background-image: url(\"http://www.businesscoot.com/uploads/study_main_image/410.jpg\");\n  background-size: cover;\n  background-position: center;\n}\n.foods .jumbotron .container[data-v-27464fde] {\n  position: relative;\n  height: 100%;\n}\n.foods .jumbotron .container .jumbo-nav[data-v-27464fde] {\n  position: absolute;\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  bottom: 0;\n  left: 50%;\n  transform: translate(-50%, calc(100% - 40px));\n  width: calc(100% - 30px);\n  min-height: 80px;\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde],\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  cursor: pointer;\n}\n.foods .jumbotron .container .jumbo-nav img[data-v-27464fde] {\n  height: 60px;\n  margin: 10px 50px 10px 30px;\n  border-radius: 10px;\n}\n.foods .jumbotron .container .jumbo-nav ul[data-v-27464fde] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  list-style: none;\n  padding: 0;\n  flex-grow: 1;\n  flex-wrap: wrap;\n  margin: 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde] {\n  margin: 20px 0;\n}\n.foods .jumbotron .container .jumbo-nav ul li[data-v-27464fde]:hover, .foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  color: darkred;\n}\n.foods .jumbotron .container .jumbo-nav ul li.active[data-v-27464fde] {\n  font-weight: bold;\n}\n.foods .foods-container h1[data-v-27464fde] {\n  width: 100%;\n  position: relative;\n  font-weight: bolder;\n  text-align: center;\n  margin-bottom: 40px;\n  padding: 0 50px;\n}\n.foods .foods-container h1 .back-btn[data-v-27464fde] {\n  position: absolute;\n  left: 0;\n  top: 9px;\n}\n.foods .foods-container h1 .category-name[data-v-27464fde] {\n  color: #DD3546;\n  display: inline-block;\n}\n.foods .foods-container .wrapper[data-v-27464fde] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 23px;\n  margin-bottom: 50px;\n}", ""]);
+exports.push([module.i, ".foods .jumbotron[data-v-27464fde] {\n  position: relative;\n  margin: 0;\n  border-radius: 0;\n  background-color: transparent;\n  color: white;\n  width: 100%;\n  height: 150px;\n  padding: 50px 0 0 0;\n}\n.foods .jumbotron h2[data-v-27464fde] {\n  font-weight: bold;\n  text-shadow: 0px 0px 10px black;\n}\n.foods .jumbotron .jumbo-wallpaper[data-v-27464fde] {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  width: 100%;\n  height: 571.5px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transform: translateX(-50%);\n  z-index: -1;\n  overflow: hidden;\n  background-image: url(\"http://www.businesscoot.com/uploads/study_main_image/410.jpg\");\n  background-size: cover;\n  background-position: center;\n}\n.foods .jumbo-nav[data-v-27464fde] {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  width: 100%;\n  min-height: 80px;\n  margin: -40px 0 50px 0;\n  padding-left: 30px;\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 10px;\n}\n.foods .jumbo-nav img[data-v-27464fde],\n.foods .jumbo-nav ul li[data-v-27464fde] {\n  cursor: pointer;\n}\n.foods .jumbo-nav img[data-v-27464fde] {\n  height: 60px;\n  margin: 10px 50px 10px 0px;\n  border-radius: 10px;\n}\n.foods .jumbo-nav ul[data-v-27464fde] {\n  display: flex;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  list-style: none;\n  padding: 0;\n  flex-grow: 1;\n  flex-wrap: wrap;\n  margin: 0;\n}\n.foods .jumbo-nav ul li[data-v-27464fde] {\n  margin: 20px 0;\n}\n.foods .jumbo-nav ul li[data-v-27464fde]:hover, .foods .jumbo-nav ul li.active[data-v-27464fde] {\n  color: darkred;\n}\n.foods .jumbo-nav ul li.active[data-v-27464fde] {\n  font-weight: bold;\n}\n.foods .foods-container h1[data-v-27464fde] {\n  width: 100%;\n  position: relative;\n  font-weight: bolder;\n  text-align: center;\n  margin-bottom: 40px;\n  padding: 0 50px;\n}\n.foods .foods-container h1 .back-btn[data-v-27464fde] {\n  position: absolute;\n  left: 0;\n  top: 9px;\n}\n.foods .foods-container h1 .category-name[data-v-27464fde] {\n  color: #DD3546;\n  display: inline-block;\n}\n.foods .foods-container .wrapper[data-v-27464fde] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 23px;\n  margin-bottom: 50px;\n}", ""]);
 
 // exports
 
@@ -56016,9 +56023,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Boolean\deliveboom\resources\js\front.js */"./resources/js/front.js");
-__webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
-module.exports = __webpack_require__(/*! C:\Boolean\deliveboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\front\style.scss */"./resources/sass/front/style.scss");
+module.exports = __webpack_require__(/*! C:\LARAVEL\deliverboom\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 
 
 /***/ })

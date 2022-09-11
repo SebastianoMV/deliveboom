@@ -11014,6 +11014,8 @@ header .header-container .top-header .logo-container,
 header .header-container nav .logo-container {
   color: inherit;
   text-decoration: none;
+  display: block;
+  min-width: 225px;
 }
 
 header .header-container .top-header .logo,
@@ -11174,6 +11176,7 @@ header .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-
 
 header .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element i {
   width: 100px;
+  flex-shrink: 0;
 }
 
 header .header-container .header-dropdown-menu .dropdown-btns li .dropdown-list-element span {
@@ -11239,7 +11242,18 @@ section.index .index-container .index-list .list-head .list-head-el {
   font-size: 16px;
   font-weight: bold;
   padding-bottom: 10px;
+  padding-right: 0;
   color: #B42D3B;
+  display: table;
+  table-layout: fixed;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+section.index .index-container .index-list .list-head .list-head-el > * {
+  display: table-cell;
+  overflow: hidden;
+  text-overflow: "..";
 }
 
 section.index .index-container .index-list .line-bottom {
@@ -11314,7 +11328,23 @@ section.index .index-container .index-btn i {
 }
 
 section.index .is-vegan {
-  width: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  outline: 2px solid #058205;
+  outline-offset: -1px;
+  border-radius: 50px;
+  transition: 0.2s transform;
+}
+
+section.index .is-vegan img {
+  width: 21px;
+  height: 18px;
+  margin: 0;
 }
 
 body {

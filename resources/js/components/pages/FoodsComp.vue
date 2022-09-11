@@ -3,7 +3,7 @@
         <div class="jumbotron">
             <div class="container fluid-container">
                 <h2>{{user.name}}</h2>
-                <nav class="jumbo-nav">
+                <!-- <nav class="jumbo-nav">
                     <img :src="`/image/users/${user.image}`" alt="" @click="filteredFoods(0)">
                     <ul>
                         <li
@@ -15,9 +15,24 @@
                             {{category.name}}
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
             </div>
             <div class="jumbo-wallpaper"/>
+        </div>
+        <div class="container fluid-container">
+            <nav class="jumbo-nav">
+                <img :src="`/image/users/${user.image}`" alt="" @click="filteredFoods(0)">
+                <ul>
+                    <li
+                        v-for="category in categories"
+                        :key="category.id"
+                        :class="category.id == currentCategory ? 'active' : ''"
+                        @click="filteredFoods(category.id)"
+                        v-show="foodHasCategory(category.id)">
+                        {{category.name}}
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div class="foods-container container">
             <h1><go-back-btn class="back-btn"/>Menù<span v-if="currentCategoryName!==''">: </span><span class="category-name">{{currentCategoryName}}</span></h1>
@@ -117,7 +132,7 @@ export default {
 .foods{
     .jumbotron{
         position: relative;
-        margin: 0 0 80px 0;
+        margin: 0;
         border-radius: 0;
         background-color: transparent;
         color: white;
@@ -144,50 +159,44 @@ export default {
             background-size: cover;
             background-position: center;
         }
-        .container{
-            position: relative;
-            height: 100%;
-            .jumbo-nav{
-                position: absolute;
-                display: flex;
-                align-items: center;
-                flex-wrap: wrap;
-                bottom: 0;
-                left: 50%;
-                transform: translate(-50%, calc(100% - 40px));
-                width: calc(100% - 30px);
-                min-height: 80px;
-                background-color: white;
-                color: black;
-                box-shadow: 0px 0px 15px rgb(189, 189, 189);
-                border-radius: 10px;
-                img,
-                ul li{
-                    cursor: pointer;
+    }
+    .jumbo-nav{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        min-height: 80px;
+        margin: -40px 0 50px 0;
+        padding-left: 30px;
+        background-color: white;
+        color: black;
+        box-shadow: 0px 0px 15px rgb(189, 189, 189);
+        border-radius: 10px;
+        img,
+        ul li{
+            cursor: pointer;
+        }
+        img{
+            height: 60px;
+            margin: 10px 50px 10px 0px;
+            border-radius: 10px;
+        }
+        ul{
+            display: flex;
+            column-gap: 30px;
+            list-style: none;
+            padding: 0;
+            flex-grow: 1;
+            flex-wrap: wrap;
+            margin: 0;
+            li{
+                margin: 20px 0;
+                &:hover,
+                &.active{
+                    color: darkred;
                 }
-                img{
-                    height: 60px;
-                    margin: 10px 50px 10px 30px;
-                    border-radius: 10px;
-                }
-                ul{
-                    display: flex;
-                    column-gap: 30px;
-                    list-style: none;
-                    padding: 0;
-                    flex-grow: 1;
-                    flex-wrap: wrap;
-                    margin: 0;
-                    li{
-                        margin: 20px 0;
-                        &:hover,
-                        &.active{
-                            color: darkred;
-                        }
-                        &.active{
-                            font-weight: bold;
-                        }
-                    }
+                &.active{
+                    font-weight: bold;
                 }
             }
         }
