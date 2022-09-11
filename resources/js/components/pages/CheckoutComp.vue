@@ -117,7 +117,7 @@ export default {
                     purchase_units: [
                         {
                             amount: {
-                            currency_code: "EUR",
+                            currency_code: "USD",
                             value: this.newOrder.total_price
                             }
                         }
