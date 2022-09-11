@@ -84,7 +84,7 @@ header{
                 margin: 25px 0 35px;
                 .fix-bomb{
                     margin-left: 1px;
-                    margin-right: -8px;
+                    margin-right: -6px;
                     transition: .2s color;
                     &:hover{
                         color: #DD3546;
@@ -229,6 +229,10 @@ header{
         .header-container .top-header .logo{
             font-size: 45px;
             margin: 20px 0 30px;
+            .fix-bomb{
+                margin-left: 1px;
+                margin-right: -8px;
+            }
         }
     }
 }
