@@ -2,10 +2,13 @@ section.index{
     .fluid-resize{
         transition: .2s all;
     }
+    .custom-red{
+        color: #DD3546
+    }
     .index-container {
         width: 100%;
         margin-bottom: 50px;
-        min-height: 150px;
+        min-height: 100px;
         background-color: white;
         color: black;
         box-shadow: 0px 0px 15px rgb(189, 189, 189);
@@ -15,10 +18,16 @@ section.index{
         &.no-shadow{
             box-shadow: none;
         }
+        &.form-style{
+            background-color: #fff6eb;
+        }
+        .form-margin{
+            margin: 15px;
+        }
         .index-header{
             display: flex;
             column-gap: 7px;
-            padding-left: 20px;
+            padding-left: 15px;
             align-items: center;
             width: 100%;
             min-height: 50px;
@@ -101,6 +110,9 @@ section.index{
             font-weight: bold;
             i{
                 margin-right: 7px;
+            }
+            &.reset-pwd{
+                font-size: 13px;
             }
         }
     }

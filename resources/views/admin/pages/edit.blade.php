@@ -4,11 +4,10 @@
     <div class="container fluid-resize mb-5">
         <form
             id="foodEditForm"
-            class="index-container px-4 pt-2 pb-4"
+            class="index-container form-style px-4 pt-2 pb-4"
             action="{{route('admin.food.update', $food)}}"
             method="POST"
-            enctype="multipart/form-data"
-            style="background-color: #fff6eb">
+            enctype="multipart/form-data">
             @method("PUT")
             @csrf
             {{-- NOME --}}

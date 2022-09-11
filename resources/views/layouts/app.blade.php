@@ -30,11 +30,11 @@
                     <ul class="header-btns">
                         @guest
                             <li>
-                                <a class="navigation-list-element" href="{{ route('login') }}"><i class="fa-solid fa-user"></i><span>{{__('Login')}}</span></a>
+                                <a class="navigation-list-element" href="{{ route('login') }}"><i class="fa-solid fa-user" title="Login"></i><span class="d-md-block d-none">{{__('Login')}}</span></a>
                             </li>
                             @if (Route::has('register'))
                                 <li>
-                                    <a class="navigation-list-element" href="{{ route('register') }}"><i class="fa-solid fa-id-card"></i><span>Registrati</span></a>
+                                    <a class="navigation-list-element" href="{{ route('register') }}"><i class="fa-solid fa-id-card" title="Registrati"></i><span class="d-md-block d-none">Registrati</span></a>
                                 </li>
                             @endif
                         @else
