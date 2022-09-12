@@ -18,8 +18,13 @@
                         v-for="(item, index) in items"
                         :key="index">
                         <img
+                            v-if="item.image"
                             :src="`/images/foods/${item.image}`"
                             :alt="item.name">
+                        <img
+                            v-else
+                            src="/images/foods/dishFoodPlaceholder.jpg"
+                            :alt="`item.name`">
                         <div class="right-side row">
                             <div class="info col-lg-8 col-12">
                                 <h5>{{item.name}}</h5>
