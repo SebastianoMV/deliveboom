@@ -32,7 +32,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <span id="error-name"></span>
+                                <span class="text-danger" id="error-name"></span>
                             </div>
                         </div>
                         {{-- EMAIL --}}
@@ -50,7 +50,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <span id="error-email"></span>
+                                <span class="text-danger" id="error-email"></span>
                             </div>
                         </div>
                         {{-- INDIRIZZO --}}
@@ -68,7 +68,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <span id="error-address"></span>
+                                <span class="text-danger" id="error-address"></span>
                             </div>
                         </div>
                         {{-- CITTA --}}
@@ -87,7 +87,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <span id="error-city"></span>
+                                <span class="text-danger" id="error-city"></span>
                             </div>
                         </div>
                         {{-- P. IVA --}}
@@ -106,7 +106,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <span id="error-vat"></span>
+                                <span class="text-danger" id="error-vat"></span>
                             </div>
                         </div>
                         {{-- PASSWORD --}}
@@ -124,7 +124,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <span id="error-password"></span>
+                                <span class="text-danger" id="error-password"></span>
                             </div>
                         </div>
                         {{-- CONFERMA PASSWORD --}}
@@ -143,7 +143,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <span id="error-password-confirm"></span>
+                                <span class="text-danger" id="error-password-confirm"></span>
                             </div>
                         </div>
                         <div class="row">
@@ -169,7 +169,7 @@
                                 </span>
                             @enderror
                             <div class="col-4 text-md-right">
-                                <span id="error-tipologies"></span>
+                                <span class="text-danger" id="error-tipologies"></span>
                             </div>
                         </div>
                         <div class="form-group row mb-0">
