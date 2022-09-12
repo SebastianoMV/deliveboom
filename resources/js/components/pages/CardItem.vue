@@ -2,7 +2,7 @@
     <router-link :to="{name: 'foods', params: { slug: user.slug }}" class="card-item">
         <div class="card-images">
             <img
-                v-if="user.foods.length > 0"
+                v-if="user.foods.length > 0 && user.foods[0].image != null"
                 class="thumbnail"
                 :src="`/images/foods/${user.foods[0].image}`"
                 :alt="user.name"
