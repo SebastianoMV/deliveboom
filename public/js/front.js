@@ -2636,7 +2636,7 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "card-images"
-  }, [_vm.user.foods.length > 0 ? _c("img", {
+  }, [_vm.user.foods.length > 0 && _vm.user.foods[0].image != null ? _c("img", {
     staticClass: "thumbnail",
     attrs: {
       src: "/images/foods/".concat(_vm.user.foods[0].image),
